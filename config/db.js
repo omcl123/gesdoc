@@ -1,23 +1,21 @@
-const Sequelize = require('sequelize');
 const db = 'dbiot';
 const user = 'jjarenas26';
 const password = 'jjarenas26';
 const host = 'dbiot.clnhdetlnsuw.us-east-1.rds.amazonaws.com';
 const dialect = 'mysql';
 
-const sequelize = new Sequelize(db, user, password, {
-  host: host,
-  dialect: dialect,
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  },
-});
 
-function connect {
-	return sequelize;
+function connect () {
+	dbObj = {};
+	dbObj.db = db;
+	dbObj.user = user;
+	dbObj.password = password;
+	dbObj.host = host;
+	dbObj.dialect = dialect;
+	console.log(dbObj);
+	return dbObj;
 }
-
-module.exports = connect;
+	
+module.exports ={
+	connect: connect
+}
