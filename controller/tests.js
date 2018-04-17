@@ -1,3 +1,4 @@
+var winston = require('../config/winston');
 const dbCon = require('../config/db');
 const Sequelize = require('sequelize');
 const dbSpecs =  dbCon.connect();
@@ -21,9 +22,11 @@ async function devuelveTabla() {
 	let jsonBlock = {};
 	try {
 		let jsonBlock = await queryDb();
+		winston.info("devuelveTabla succesful");
 		return jsonBlock;
 	} catch (e){
 		console.log(e);
+		winston.error("devuelveTabla failed");
 	}
 }
 

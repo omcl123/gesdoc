@@ -12,7 +12,6 @@ function connect () {
 	dbObj.password = password;
 	dbObj.host = host;
 	dbObj.dialect = dialect;
-	console.log(dbObj);
 	return dbObj;
 }
 	
