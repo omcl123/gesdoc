@@ -13,7 +13,8 @@ router.get('/', async function(req, res,next) {
 router.get('/actividad',async function (req,res,next){
     //let jsonBlock = await docenteActividadController.devuelveActividad();
     //res.send(jsonBlock);
-    res.send('Activities go here');
+    res.send('Activities go here #####');
+
 });
 
 module.exports = router;
