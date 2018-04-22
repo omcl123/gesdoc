@@ -317,7 +317,7 @@
       <workItem from="1524097983870" duration="1933000" />
       <workItem from="1524336539244" duration="2049000" />
       <workItem from="1524355434856" duration="601000" />
-      <workItem from="1524356080149" duration="1970000" />
+      <workItem from="1524356080149" duration="1977000" />
     </task>
     <task id="LOCAL-00001" summary="changen db config">
       <created>1524355810336</created>
@@ -333,11 +333,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524359819069</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added router to perfilDocente">
+      <created>1524359925530</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1524359925530</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7113000" />
+    <option name="totallyTimeSpent" value="7120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
