@@ -1,7 +1,7 @@
-const db = 'dbiot';
-const user = 'jjarenas26';
-const password = 'jjarenas26';
-const host = 'dbiot.clnhdetlnsuw.us-east-1.rds.amazonaws.com';
+const db = 'dbsw';
+const user = 'root';
+const password = 'kairosdb';
+const host = 'localhost:3306';
 const dialect = 'mysql';
 
 
@@ -15,6 +15,6 @@ function connect () {
 	return dbObj;
 }
 	
-module.exports ={
+module.exports = {
 	connect: connect
-}
+};

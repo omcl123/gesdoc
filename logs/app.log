@@ -56,3 +56,8 @@
 {"level":"info","message":"::1 - - [17/Apr/2018:21:14:56 +0000] \"GET /tests HTTP/1.1\" 200 3854 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-17T21:14:56.008Z"}
 {"level":"info","message":"devuelveTabla succesful","timestamp":"2018-04-17T21:16:44.606Z"}
 {"level":"info","message":"::1 - - [17/Apr/2018:21:16:44 +0000] \"GET /tests HTTP/1.1\" 200 3854 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-17T21:16:44.616Z"}
+{"level":"info","message":"devuelveTabla succesful","timestamp":"2018-04-19T00:38:12.803Z"}
+{"level":"info","message":"::1 - - [19/Apr/2018:00:38:12 +0000] \"GET /tests HTTP/1.1\" 200 3854 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-19T00:38:12.826Z"}
+{"level":"info","message":"::1 - - [19/Apr/2018:00:42:58 +0000] \"GET / HTTP/1.1\" 200 7 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-19T00:42:58.551Z"}
+{"level":"info","message":"devuelveTabla succesful","timestamp":"2018-04-19T01:38:47.117Z"}
+{"level":"info","message":"::1 - - [19/Apr/2018:01:38:47 +0000] \"GET /tests HTTP/1.1\" 200 3854 \"http://localhost:3000/profesores\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-19T01:38:47.130Z"}

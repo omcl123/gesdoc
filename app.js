@@ -1,20 +1,21 @@
-var winston = require('./config/winston');
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var morgan = require('morgan');
+const winston = require('./config/winston');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
 
-var indexRouter = require('./routes/index');
-var testsRouter = require('./routes/tests');
+const indexRouter = require('./routes/index');
+const testsRouter = require('./routes/tests');
+const docenteRouter = require('./routes/perfilDocente');
 
-var app = express();
-var allowCrossDomain = function(req, res, next) {
+const app = express();
+const allowCrossDomain = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
-}
+};
 
 app.use(morgan('combined', { stream: winston.stream }));
 app.use(express.json());
@@ -25,6 +26,7 @@ app.use(allowCrossDomain);
 
 app.use('/', indexRouter);
 app.use('/tests', testsRouter);
+app.use('/docente',docenteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
