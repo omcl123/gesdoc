@@ -13,11 +13,8 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function querydB(){
-    let query = `SELECT p.idProfesor AS 'Codigo Profesor',p.Nombre AS 'Nombre Profesor',d.Nombre AS 'Deparamento'
-                FROM profesor AS p
-                INNER JOIN departamento AS d
-                ON p.idDepartamento = d.idDepartamento`;
+function querydB(query){ //query inside the code
+
 
     return sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
 }
@@ -26,7 +23,9 @@ function querydB(){
 async function devuelveDocente(){
     let jsonblock = {};
     try{
-        let jsonBlock = await querydB();
+        let query = 'Call devuelveDocente()';
+        let jsonBlock =await querydB(query); //calling sp from the db
+        //let jsonBlock = sequelize.query(query,{type:Sequelize.QueryTypes.SELECT});
         winston.info("devuelveDocente succesful");
         return jsonBlock;
 
