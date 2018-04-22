@@ -14,7 +14,11 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 });
 
 function querydB(){
-    let query = `SELECT * from docente`;
+    let query = `SELECT p.idProfesor AS 'Codigo Profesor',p.Nombre AS 'Nombre Profesor',d.Nombre AS 'Deparamento'
+                FROM profesor AS p
+                INNER JOIN departamento AS d
+                ON p.idDepartamento = d.idDepartamento`;
+
     return sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
 }
 

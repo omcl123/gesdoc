@@ -242,3 +242,11 @@
 {"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T16:42:35.294Z"}
 {"level":"info","message":"::1 - - [22/Apr/2018:16:42:35 +0000] \"GET /docente HTTP/1.1\" 200 334 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T16:42:35.308Z"}
 {"level":"info","message":"::1 - - [22/Apr/2018:16:42:39 +0000] \"GET /docente/actividad HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T16:42:39.902Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T17:17:31.186Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:17:31 +0000] \"GET /docente HTTP/1.1\" 200 216 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T17:17:31.195Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T17:21:27.198Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:21:27 +0000] \"GET /docente HTTP/1.1\" 200 216 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T17:21:27.208Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T17:21:37.267Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:21:37 +0000] \"GET /docente/actividad HTTP/1.1\" 200 245 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T17:21:37.268Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T17:21:50.676Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:21:50 +0000] \"GET /docente HTTP/1.1\" 200 216 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T17:21:50.677Z"}
