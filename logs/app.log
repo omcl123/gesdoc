@@ -250,3 +250,15 @@
 {"level":"info","message":"::1 - - [22/Apr/2018:17:21:37 +0000] \"GET /docente/actividad HTTP/1.1\" 200 245 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T17:21:37.268Z"}
 {"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T17:21:50.676Z"}
 {"level":"info","message":"::1 - - [22/Apr/2018:17:21:50 +0000] \"GET /docente HTTP/1.1\" 200 216 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T17:21:50.677Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:23:15 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T17:23:15.730Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-04-22T17:23:17.257Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:23:17 +0000] \"GET /favicon.ico HTTP/1.1\" 404 2761 \"http://localhost:8080/\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T17:23:17.262Z"}
+{"level":"info","message":"devuelveTabla succesful","timestamp":"2018-04-22T17:23:23.674Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:23:23 +0000] \"GET /tests HTTP/1.1\" 200 175 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T17:23:23.678Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T17:23:29.945Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:23:29 +0000] \"GET /docente HTTP/1.1\" 200 243 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T17:23:29.946Z"}
+{"level":"error","message":"404 - Not Found - /profesor - GET - ::1","timestamp":"2018-04-22T17:23:37.688Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:23:37 +0000] \"GET /profesor HTTP/1.1\" 404 2761 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T17:23:37.692Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:23:42 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T17:23:42.436Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T17:23:54.424Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:17:23:54 +0000] \"GET /docente/actividad HTTP/1.1\" 200 245 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T17:23:54.425Z"}

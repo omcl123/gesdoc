@@ -27,12 +27,12 @@ async function devuelveActividad(){
     let jsonblock = {};
     try{
         let jsonBlock = await querydB();
-        winston.info("devuelveDocente succesful");
+        winston.info("devuelveActividad succesful");
         return jsonBlock;
 
     }catch(e){
         console.log(e);
-        winston.error("devuelveDocente failed");
+        winston.error("devuelveActividad failed");
     }
 }
 
