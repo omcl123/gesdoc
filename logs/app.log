@@ -227,3 +227,5 @@
 {"level":"info","message":"::1 - - [22/Apr/2018:05:30:04 +0000] \"GET /tests HTTP/1.1\" 200 175 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T05:30:04.562Z"}
 {"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T05:30:09.334Z"}
 {"level":"info","message":"::1 - - [22/Apr/2018:05:30:09 +0000] \"GET /docente HTTP/1.1\" 200 334 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T05:30:09.337Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-22T05:34:21.049Z"}
+{"level":"info","message":"::1 - - [22/Apr/2018:05:34:21 +0000] \"GET /docente HTTP/1.1\" 200 334 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-22T05:34:21.056Z"}
