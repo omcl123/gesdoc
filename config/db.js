@@ -1,7 +1,10 @@
+const mysql= require('mysql');
+
 const db = 'dbsw';
 const user = 'root';
 const password = 'kairosdb';
-const host = 'localhost:3306';
+//const host = 'localhost:3306';
+const host = 'localhost';
 const dialect = 'mysql';
 
 
@@ -13,6 +16,7 @@ function connect () {
 	dbObj.host = host;
 	dbObj.dialect = dialect;
 	return dbObj;
+
 }
 	
 module.exports = {
