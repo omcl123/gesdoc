@@ -1,4 +1,4 @@
-const mysql= require('mysql');
+
 
 const db = 'dbsw';
 const user = 'root';
