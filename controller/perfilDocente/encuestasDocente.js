@@ -15,17 +15,32 @@ const sequelize = new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function queryDb(query) {
-    return sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
-}
-
-
-function queryDbDetalle(id) {
+function queryDbList(id) {
     try {
-        let result =  sequelize.query('CALL ENCUESTA_DETALLE(:id)',
+        let result =  sequelize.query('CALL ENCUESTA_LISTAR(:id)',
             {
                 replacements: {
                     id: id
+                }
+            }
+        );
+        winston.info("queryDbList succesful");
+        return result;
+    } catch (e) {
+        console.log(e);
+        winston.error("queryDbList failed");
+    }
+}
+
+
+function queryDbDetalle(id_profesor,id_curso,id_ciclo) {
+    try {
+        let result =  sequelize.query('CALL ENCUESTA_DETALLE(:id_profesor,:id_curso,:id_ciclo)',
+            {
+                replacements: {
+                    id_profesor: id_profesor,
+                    id_curso: id_curso,
+                    id_ciclo: id_ciclo
                 }
             }
         );
@@ -37,12 +52,14 @@ function queryDbDetalle(id) {
     }
 }
 
-function queryDbComments(id) {
+function queryDbComments(id_profesor,id_curso,id_ciclo) {
     try {
-        let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:id)',
+        let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:id_profesor,:id_curso,:id_ciclo)',
             {
                 replacements: {
-                    id: id
+                    id_profesor: id_profesor,
+                    id_curso: id_curso,
+                    id_ciclo: id_ciclo
                 }
             }
         );
@@ -55,11 +72,11 @@ function queryDbComments(id) {
 }
 
 
-async function returnList() {
+async function returnList(id_profesor) {
     let jsonBlock = {};
     try {
-        let query = `CALL ENCUESTA_LISTAR()`;
-        let jsonBlock = await queryDb(query);
+        winston.info("id_profesor : " + id_profesor);
+        let jsonBlock = await queryDbList(id_profesor);
         winston.info("returnList succesful");
         return jsonBlock;
     } catch (e){
@@ -69,11 +86,13 @@ async function returnList() {
 }
 
 
-async function returnDet(id) {
+async function returnDet(id_profesor,id_curso,id_ciclo) {
     let jsonBlock = {};
     try {
-        winston.info("id : " + id);
-        let jsonBlock = await queryDbDetalle(id);
+        winston.info("id_profesor : " + id_profesor);
+        winston.info("id_curso : " + id_curso);
+        winston.info("id_ciclo : " + id_ciclo);
+        let jsonBlock = await queryDbDetalle(id_profesor,id_curso,id_ciclo);
         winston.info("returnDet succesful");
         return jsonBlock;
     } catch (e){
@@ -83,11 +102,13 @@ async function returnDet(id) {
 }
 
 
-async function returnComment(id) {
+async function returnComment(id_profesor,id_curso,id_ciclo) {
     let jsonBlock = {};
     try {
-        winston.info("id : " + id);
-        let jsonBlock = await queryDbComments(id);
+        winston.info("id_profesor : " + id_profesor);
+        winston.info("id_curso : " + id_curso);
+        winston.info("id_ciclo : " + id_ciclo);
+        let jsonBlock = await queryDbComments(id_profesor,id_curso,id_ciclo);
         winston.info("returnComment succesful");
         return jsonBlock;
     } catch (e){
