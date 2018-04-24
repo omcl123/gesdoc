@@ -370,3 +370,27 @@
 {"level":"info","message":"::1 - - [22/Apr/2018:18:59:52 +0000] \"GET /docente/actividad HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T18:59:52.197Z"}
 {"level":"info","message":"devuelveActividad succesful","timestamp":"2018-04-22T19:00:19.128Z"}
 {"level":"info","message":"::1 - - [22/Apr/2018:19:00:19 +0000] \"GET /docente/actividad HTTP/1.1\" 200 352 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-22T19:00:19.137Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:192.168.190.239","timestamp":"2018-04-24T19:38:47.622Z"}
+{"level":"info","message":"::ffff:192.168.190.239 - - [24/Apr/2018:19:38:47 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 2739 \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-04-24T19:38:47.650Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:192.168.190.239","timestamp":"2018-04-24T19:38:47.745Z"}
+{"level":"info","message":"::ffff:192.168.190.239 - - [24/Apr/2018:19:38:47 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 2739 \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-04-24T19:38:47.747Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:192.168.190.239","timestamp":"2018-04-24T19:38:47.752Z"}
+{"level":"info","message":"::ffff:192.168.190.239 - - [24/Apr/2018:19:38:47 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 2739 \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-04-24T19:38:47.753Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:192.168.190.239","timestamp":"2018-04-24T19:39:08.770Z"}
+{"level":"info","message":"::ffff:192.168.190.239 - - [24/Apr/2018:19:39:08 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 2739 \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-04-24T19:39:08.772Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:192.168.190.239","timestamp":"2018-04-24T19:39:08.776Z"}
+{"level":"info","message":"::ffff:192.168.190.239 - - [24/Apr/2018:19:39:08 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 2739 \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-04-24T19:39:08.778Z"}
+{"level":"info","message":"::1 - - [24/Apr/2018:19:40:16 +0000] \"POST /carga/cargaDatos HTTP/1.1\" 200 19 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-24T19:40:16.986Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:192.168.190.239","timestamp":"2018-04-24T19:40:32.869Z"}
+{"level":"info","message":"::ffff:192.168.190.239 - - [24/Apr/2018:19:40:32 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 2739 \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-04-24T19:40:32.872Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:192.168.190.239","timestamp":"2018-04-24T19:40:32.875Z"}
+{"level":"info","message":"::ffff:192.168.190.239 - - [24/Apr/2018:19:40:32 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 2739 \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-04-24T19:40:32.876Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:192.168.190.239","timestamp":"2018-04-24T19:40:32.880Z"}
+{"level":"info","message":"::ffff:192.168.190.239 - - [24/Apr/2018:19:40:32 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 2739 \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-04-24T19:40:32.881Z"}
+{"level":"info","message":"::1 - - [24/Apr/2018:19:40:49 +0000] \"POST /carga/cargaDatos HTTP/1.1\" 200 19 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-24T19:40:49.152Z"}
+{"level":"info","message":"::ffff:192.168.56.1 - - [24/Apr/2018:19:42:21 +0000] \"POST /carga/cargaDatos HTTP/1.1\" 200 19 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-24T19:42:21.394Z"}
+{"level":"error","message":"404 - Not Found - /carga/cargaDatos - GET - ::ffff:192.168.56.1","timestamp":"2018-04-24T19:42:25.361Z"}
+{"level":"info","message":"::ffff:192.168.56.1 - - [24/Apr/2018:19:42:25 +0000] \"GET /carga/cargaDatos HTTP/1.1\" 404 2739 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-24T19:42:25.362Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::ffff:192.168.56.1","timestamp":"2018-04-24T19:42:26.312Z"}
+{"level":"info","message":"::ffff:192.168.56.1 - - [24/Apr/2018:19:42:26 +0000] \"GET /favicon.ico HTTP/1.1\" 404 2739 \"http://192.168.56.1:8080/carga/cargaDatos\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-24T19:42:26.312Z"}
+{"level":"info","message":"::ffff:192.168.56.1 - - [24/Apr/2018:19:42:39 +0000] \"POST /carga/cargaDatos HTTP/1.1\" 200 19 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-24T19:42:39.208Z"}

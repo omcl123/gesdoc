@@ -11,15 +11,15 @@ async function cargaPrincipal(preferencesObject) {
     try {
         let result = {};
         if (preferencesObject.type === 'docentes') {
-            result.message = await cargaProfesores.cargaDocente(preferencesObject);
+            result.message = await cargaProfesores.cargaDocente(preferencesObject.data);
         } else if (preferencesObject.type === 'cursos'){
-            result.message = await cargaCurso.cargaCurso(preferencesObject);
+            result.message = await cargaCurso.cargaCurso(preferencesObject.data);
         } else if (preferencesObject.type === 'encuestas'){
-            result.message = await cargaEncuestas.cargaEncuestas(preferencesObject);
+            result.message = await cargaEncuestas.cargaEncuestas(preferencesObject.data);
         } else if (preferencesObject.type === 'investigacion'){
-            result.message = await cargaInvestigacion.cargaInvestigacion(preferencesObject);
+            result.message = await cargaInvestigacion.cargaInvestigacion(preferencesObject.data);
         } else if (preferencesObject.type === 'horarios'){
-            result.message = await cargaHorarios.cargaHorarios(preferencesObject);
+            result.message = await cargaHorarios.cargaHorarios(preferencesObject.data);
         }
         winston.info("cargaPrincipal success on execution");
 

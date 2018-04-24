@@ -13,41 +13,26 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function searchCourses(preferencesObject) {
-    let codigo = preferencesObject.codigo;
-    let ciclo = preferencesObject.ciclo;
+function listaCiclos() {
+    return sequelize.query('CALL cixclosVigentes()'):
+}
 
+function searchCourses(codigo, ciclo) {
     return sequelize.query('CALL cursoXcicloXprofesor (:codigo, :ciclo)',
             {replacements: { codigo: codigo, ciclo: ciclo }});
 }
 
-async function processCursos(preferencesObject, queryResponse) {
-    let jsonBlock = {};
 
-    jsonBlock.codigo = preferencesObject.codigo;
-    jsonBlock.curso = preferencesObject.curso;
-
-    jsonBlock.courses = await Promise.all(queryResponse.map((item) => {
-        let part = {};
-
-        part.codCur = item.codCur;
-        part.nomCur = item.nomCur;
-        part.horCur = item.horCur;
-        part.numCred = item.numCred;
-        part.horaCurso = item.horaCurso;
-
-        return part;
-    }));
-    return jsonBlock;
-}
 
 async function muestraCursoCiclo(preferencesObject) {
 
     try {
-        let queryResponse = await searchCourses(preferencesObject);
-        let jsonBlock = await processCursos(preferencesObject, queryResponse);
+        let ciclosVigentes = await listaCiclos();
+        let detalleCursos = await Promise.all(ciclosVigentes.map(async item => {
+            return await searchCourses(preferencesObject.codigo, item.ciclo);
+        }));
         winston.info("muestraCursosCiclo success on execution");
-        return jsonBlock;
+        return detalleCursos;
     } catch(e) {
         winston.error("muestraCursosCiclo Failed: ",e);
     }
