@@ -13,13 +13,10 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function listaCiclos() {
-    return sequelize.query('CALL cixclosVigentes()'):
-}
 
-function searchCourses(codigo, ciclo) {
+function searchCourses(preferencesObject) {
     return sequelize.query('CALL cursoXcicloXprofesor (:codigo, :ciclo)',
-            {replacements: { codigo: codigo, ciclo: ciclo }});
+            {replacements: { codigo: preferencesObject.codigo, ciclo: preferencesObject.ciclo }});
 }
 
 
@@ -27,14 +24,19 @@ function searchCourses(codigo, ciclo) {
 async function muestraCursoCiclo(preferencesObject) {
 
     try {
-        let ciclosVigentes = await listaCiclos();
-        let detalleCursos = await Promise.all(ciclosVigentes.map(async item => {
-            return await searchCourses(preferencesObject.codigo, item.ciclo);
+        let arrayTipo = ["pregrado", "posgrado", "otros"];
+        let arrayCursos = Promise.all(arrayTipo.map(async item => {
+            let innerPart = {};
+            innerPart.tipo = item;
+            let listaCursos = await searchCourses(preferencesObject);
+            innerPart.listaCursos = listaCursos;
+            return innerPart;
         }));
-        winston.info("muestraCursosCiclo success on execution");
-        return detalleCursos;
+        winston.info("muestraCursosCiclo success");
+        return arrayCursos;
     } catch(e) {
         winston.error("muestraCursosCiclo Failed: ",e);
+        return "error";
     }
 }
 

@@ -9,8 +9,13 @@ router.get('/', async function(req, res) {
     let jsonBlock = {};
 
     await docenteController.devuelveDocente(jsonBlock, req.query);
-    await docenteActividadController.devuelveActividad(jsonBlock, req.query);
-    await docenteCursosController.muestraCursoCiclo(jsonBlock, req.query);
+    // await investigacionController.devuelveInvestigacion(jsonBlock.investigaciones, req.query);
+    await docenteActividadController.devuelveActividad(jsonBlock.actividades, req.query);
+    await docenteCursosController.muestraCursoCiclo(jsonBlock.cursos, req.query);
+    // await encuestaController.listaEncuestas(jsonBlock.encuestas, req.query);
+    // await descargaController.horasDescarga(jsonBlock.horasDescarga,req.query);
+
+
 
     res.send(jsonBlock);
 });

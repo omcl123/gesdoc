@@ -29,7 +29,7 @@ async function cargaDocente(dataArray) {
             let departamento = item[8];
             let fechaN = item[9];
             await sequelize.query(`CALL registraProfesor (:${nombre}, :${apellidoP}, :${apellidoM},
-             ${codigo}, ${dni}, ${email}, ${telefono}, ${seccion}, ${departamento}, ${fechaN}`);
+             :${codigo}, :${dni}, :${email}, :${telefono}, :${seccion}, :${departamento}, :${fechaN}`);
         });
 
         winston.info("cargaDocente success on execution");
