@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const cargaController = require("../controller/cargaDatos/cargaProfesores");
+const cargaController = require("../controller/cargaDatos/cargaPrincipal");
 
 /* GET home page. */
-router.post('/cargaProf', async function(req, res) {
-    let carga = await cargaController.cargaDocente(req.body);
+router.post('/cargaDatos', async function(req, res) {
+    let carga = await cargaController.cargaPrincipal(req.body);
     res.send(carga);
 });
 
