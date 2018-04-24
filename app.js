@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const indexRouter = require('./routes/index');
 const testsRouter = require('./routes/tests');
 const docenteRouter = require('./routes/perfilDocente');
-
+const cargaRouter = require('./routes/cargaDatos');
 
 const app = express();
 
@@ -29,6 +29,7 @@ app.use(allowCrossDomain);
 app.use('/', indexRouter);
 app.use('/tests', testsRouter);
 app.use('/docente',docenteRouter);
+app.use('/carga',cargaRouter);
 
 
 
