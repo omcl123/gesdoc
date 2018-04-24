@@ -8,7 +8,6 @@ const morgan = require('morgan');
 const indexRouter = require('./routes/index');
 const testsRouter = require('./routes/tests');
 const docenteRouter = require('./routes/perfilDocente');
-const docenteEncuestas = require('./routes/encuestasDocente');
 
 const app = express();
 const allowCrossDomain = function (req, res, next) {
@@ -28,7 +27,6 @@ app.use(allowCrossDomain);
 app.use('/', indexRouter);
 app.use('/tests', testsRouter);
 app.use('/docente',docenteRouter);
-app.use('/docente/encuestas',docenteEncuestas);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
