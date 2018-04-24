@@ -12,7 +12,7 @@ router.get('/', async function(req, res) {
     // await investigacionController.devuelveInvestigacion(jsonBlock.investigaciones, req.query);
     await docenteActividadController.devuelveActividad(jsonBlock.actividades, req.query);
     await docenteCursosController.muestraCursoCiclo(jsonBlock.cursos, req.query);
-    // await encuestaController.listaEncuestas(jsonBlock.encuestas, req.query);
+    await docenteController.listaEncuestas(jsonBlock.encuestas, req.query);
     // await descargaController.horasDescarga(jsonBlock.horasDescarga,req.query);
 
 
