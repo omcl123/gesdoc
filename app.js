@@ -9,7 +9,9 @@ const indexRouter = require('./routes/index');
 const testsRouter = require('./routes/tests');
 const docenteRouter = require('./routes/perfilDocente');
 
+
 const app = express();
+
 const allowCrossDomain = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -28,10 +30,16 @@ app.use('/', indexRouter);
 app.use('/tests', testsRouter);
 app.use('/docente',docenteRouter);
 
+
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -45,5 +53,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
