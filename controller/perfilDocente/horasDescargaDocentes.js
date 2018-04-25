@@ -16,12 +16,11 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 
 function horasDescargaDetalle(preferencesObject) {
     try {
-        let result =  sequelize.query('CALL HORAS_DESCARGA_DETALLE(:id_profesor,:id_curso,:id_ciclo)',
+        let result =  sequelize.query('CALL HORAS_DESCARGA_DETALLE(:codigo,:ciclo)',
             {
                 replacements: {
-                    id_profesor: preferencesObject.id_profesor,
-                    id_curso: preferencesObject.id_curso,
-                    id_ciclo: preferencesObject.id_ciclo
+                    codigo: preferencesObject.codigo,
+                    ciclo: preferencesObject.ciclo
                 }
             }
         );
@@ -35,12 +34,11 @@ function horasDescargaDetalle(preferencesObject) {
 
 function horasDescargaListar(preferencesObject) {
     try {
-        let result =  sequelize.query('CALL HORAS_DESCARGA_LISTAR(:id_profesor,:id_curso,:id_ciclo)',
+        let result =  sequelize.query('CALL HORAS_DESCARGA_LISTAR(:codigo,:ciclo)',
             {
                 replacements: {
-                    id_profesor: preferencesObject.id_profesor,
-                    id_curso: preferencesObject.id_curso,
-                    id_ciclo: preferencesObject.id_ciclo
+                    codigo: preferencesObject.codigo,
+                    ciclo: preferencesObject.ciclo
                 }
             }
         );
