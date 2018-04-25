@@ -563,3 +563,62 @@
 {"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:24:30.814Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:19:24:30 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1643 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:24:30.841Z"}
 >>>>>>> develop
+{"level":"error","message":"404 - Not Found - /docente - GET - ::1","timestamp":"2018-04-25T20:43:08.954Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:20:43:09 +0000] \"GET /docente HTTP/1.1\" 404 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T20:43:09.335Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T20:43:19.032Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T20:43:19.487Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T20:43:19.489Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:20:43:20 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1256 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T20:43:20.015Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-04-25T20:43:25.418Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:20:43:25 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente?codigo=1&ciclo=2018-1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T20:43:25.419Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:14:05 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T21:14:05.475Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-04-25T21:14:06.003Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:14:06 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T21:14:06.005Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:14:33.061Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:14:33.149Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:14:36 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T21:14:36.746Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:14:36.762Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:14:36.766Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:15:39.972Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:15:40.154Z"}
+{"level":"error","message":"devuelveListaActividad failed","timestamp":"2018-04-25T21:15:40.270Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T21:15:40.271Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:15:40 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1256 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T21:15:40.487Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-04-25T21:15:40.616Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:15:40 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente?codigo=1&ciclo=2018-1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T21:15:40.618Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:16:51.397Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:16:51.571Z"}
+{"level":"error","message":"devuelveListaActividad failed","timestamp":"2018-04-25T21:16:51.646Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T21:16:51.648Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:16:51 +0000] \"GET /docente/docente?codigo=2&ciclo=2018-1 HTTP/1.1\" 200 972 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:16:51.895Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:18:13.631Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:18:13.699Z"}
+{"level":"error","message":"devuelveListaActividad failed","timestamp":"2018-04-25T21:18:13.772Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:18:13 +0000] \"GET /docente/docente?codigo=2&ciclo=2018-1 HTTP/1.1\" 200 946 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:18:13.785Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:19:38.860Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:19:38.919Z"}
+{"level":"error","message":"devuelveListaActividad failed","timestamp":"2018-04-25T21:19:39.001Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:19:39 +0000] \"GET /docente/docente?codigo=2&ciclo=2018-1 HTTP/1.1\" 200 946 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:19:39.010Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:20:01.465Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:20:01.523Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-25T21:20:01.559Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:20:01 +0000] \"GET /docente/docente?codigo=2&ciclo=2018-1 HTTP/1.1\" 200 1254 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:20:01.569Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:21:43.496Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:21:43.527Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-25T21:21:43.588Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:21:43 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1555 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:21:43.591Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:21:53.293Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:21:53.300Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-25T21:21:53.314Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:21:53 +0000] \"GET /docente/docente?codigo=2&ciclo=2018-1 HTTP/1.1\" 200 1254 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:21:53.318Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:21:57.806Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:21:57.809Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-25T21:21:57.851Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:21:57 +0000] \"GET /docente/docente?codigo=2&ciclo=2018-12 HTTP/1.1\" 200 231 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:21:57.851Z"}
+{"level":"error","message":"devuelveDocente failed","timestamp":"2018-04-25T21:22:08.381Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:22:08.444Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:22:15 +0000] \"GET /docente/docente?codigo=3&ciclo=2018- HTTP/1.1\" - - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:22:15.589Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:22:22.447Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:22:22.513Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-25T21:22:22.552Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:22:22 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1555 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:22:22.554Z"}

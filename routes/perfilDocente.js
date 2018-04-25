@@ -14,8 +14,8 @@ router.get('/docente', async function(req, res) {
     jsonBlock= await docenteController.devuelveDocente(req.query);
     jsonBlock.investigaciones = await investigacionController.devuelveListaInvestigacion(req.query);
 
-   // jsonBlock.actividades = await docenteActividadController.devuelveActividad(req.query);
-   jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
+    jsonBlock.actividades = await docenteActividadController.devuelveListaActividad(req.query);
+    //jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
     //jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
     //jsonBlock.horasDescarga = await descargaController.horasDescarga(req.query);
 
