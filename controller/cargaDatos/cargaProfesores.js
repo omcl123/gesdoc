@@ -18,31 +18,34 @@ async function cargaDocente(dataArray) {
 
     try {
         await dataArray.map(async item => {
-            let nombre = item[0];
-            let apellidoP = item[1];
-            let apellidoM = item[2];
-            let dni = item[3];
-            let telefono = item[4];
-            let email = item[5];
-            let seccion = item[6]
-            let tipo = item[7];
-            if (nombre === undefined || apellidoP === undefined || apellidoM === undefined|| dni === undefined
-                || telefono === undefined|| seccion === undefined|| tipo === undefined|| email === undefined){
-                throw  error("cargaDocente Failed");
-            }else{
-                try {
-                    await sequelize.query(`CALL insert_docente ('${nombre}', '${apellidoP}', '${apellidoM}',
-                    ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}')`);
-                } catch (e) {
-                    winston.error("cargaDocente Failed: ",e);
-                    message = "cargaDocente Failed";
-                    return message;
+            try{
+                let nombre = item[0];
+                let apellidoP = item[1];
+                let apellidoM = item[2];
+                let dni = item[3];
+                let telefono = item[4];
+                let email = item[5];
+                let seccion = item[6]
+                let tipo = item[7];
+                if (nombre === undefined || apellidoP === undefined || apellidoM === undefined|| dni === undefined
+                    || telefono === undefined|| seccion === undefined|| tipo === undefined|| email === undefined){
+                    return message = "cargaDocente Failed undefined or empty columns";
+                }else{
+                    let esRepetido = await sequelize.query(`CALL verifica_docente_repetido (${dni})`);
+
+                    if (esRepetido[0] === undefined) {
+                        await sequelize.query(`CALL insert_docente ('${nombre}', '${apellidoP}', '${apellidoM}',
+                        ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}')`);
+                    }
+                    return message = "cargaDocente success on execution";
                 }
+            }catch (e) {
+                winston.error("cargaDocente Failed: ",e);
+                message = "cargaDocente Failed";
+                return message;
             }
         });
-
         winston.info("cargaDocente success on execution");
-        message = "cargaDocente success on execution";
         return message;
     } catch(e) {
         winston.error("cargaDocente Failed: ",e);
