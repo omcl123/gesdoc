@@ -1,10 +1,8 @@
 var winston = require('../../config/winston');
-var mysql = require('mysql');
 const dbCon = require('../../config/db');
-const Sequelize = require('sequelize');
-const dbSpecs =  dbCon.connect();
-
-const sequelize = new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
+const Sequelize = require ('sequelize');
+const dbSpecs = dbCon.connect();
+const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     host: dbSpecs.host,
     dialect: dbSpecs.dialect,
     pool: {
@@ -15,110 +13,70 @@ const sequelize = new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function queryDbList(id) {
+function queryListaEncuestas(preferencesObject) {
     try {
-        let result =  sequelize.query('CALL ENCUESTA_LISTAR(:id)',
+        let result =  sequelize.query('CALL ENCUESTA_LISTAR(:id_curso)',
             {
                 replacements: {
-                    id: id
+                    id_curso: preferencesObject.id_curso
                 }
             }
         );
-        winston.info("queryDbList succesful");
+        winston.info("queryListaEncuestas succesful");
         return result;
     } catch (e) {
         console.log(e);
-        winston.error("queryDbList failed");
+        winston.error("queryListaEncuestas failed");
     }
 }
 
 
-function queryDbDetalle(id_profesor,id_curso,id_ciclo) {
-    try {
-        let result =  sequelize.query('CALL ENCUESTA_DETALLE(:id_profesor,:id_curso,:id_ciclo)',
-            {
-                replacements: {
-                    id_profesor: id_profesor,
-                    id_curso: id_curso,
-                    id_ciclo: id_ciclo
-                }
-            }
-        );
-        winston.info("queryDbDetalle succesful");
-        return result;
-    } catch (e) {
-        console.log(e);
-        winston.error("queryDbDetalle failed");
-    }
-}
-
-function queryDbComments(id_profesor,id_curso,id_ciclo) {
+function queryListaComentarios(preferencesObject) {
     try {
         let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:id_profesor,:id_curso,:id_ciclo)',
             {
                 replacements: {
-                    id_profesor: id_profesor,
-                    id_curso: id_curso,
-                    id_ciclo: id_ciclo
+                    id_profesor: preferencesObject.id_profesor,
+                    id_curso: preferencesObject.id_curso,
+                    id_ciclo: preferencesObject.id_ciclo
                 }
             }
         );
-        winston.info("queryDbComents succesful");
+        winston.info("queryListaComentarios succesful");
         return result;
     } catch (e) {
         console.log(e);
-        winston.error("queryDbComents failed");
+        winston.error("queryListaComentarios failed");
     }
 }
 
 
-async function returnList(id_profesor) {
-    let jsonBlock = {};
+
+async function listaEncuestas(preferencesObject) {
     try {
-        winston.info("id_profesor : " + id_profesor);
-        let jsonBlock = await queryDbList(id_profesor);
-        winston.info("returnList succesful");
-        return jsonBlock;
+
+        let jsonEncuestas = await queryListaEncuestas(preferencesObject);
+
+        let jsonEncuestasComentarios = Promise.all(jsonEncuestas.map(async item => {
+            let innerPart = {};
+            innerPart.id = item.id;
+            innerPart.curso = item.curso;
+            innerPart.horario = item.horario;
+            innerPart.porcentaje = item.porcentaje;
+            innerPart.puntaje = item.puntaje;
+            let listaComentarios = await queryListaComentarios(preferencesObject);
+            innerPart.comentarios = listaComentarios;
+            return innerPart;
+        }));
+
+        return jsonEncuestasComentarios;
+
     } catch (e){
         console.log(e);
-        winston.error("returnList failed");
+        winston.error("listaEncuestas failed");
     }
 }
 
-
-async function returnDet(id_profesor,id_curso,id_ciclo) {
-    let jsonBlock = {};
-    try {
-        winston.info("id_profesor : " + id_profesor);
-        winston.info("id_curso : " + id_curso);
-        winston.info("id_ciclo : " + id_ciclo);
-        let jsonBlock = await queryDbDetalle(id_profesor,id_curso,id_ciclo);
-        winston.info("returnDet succesful");
-        return jsonBlock;
-    } catch (e){
-        console.log(e);
-        winston.error("returnDet failed");
-    }
-}
-
-
-async function returnComment(id_profesor,id_curso,id_ciclo) {
-    let jsonBlock = {};
-    try {
-        winston.info("id_profesor : " + id_profesor);
-        winston.info("id_curso : " + id_curso);
-        winston.info("id_ciclo : " + id_ciclo);
-        let jsonBlock = await queryDbComments(id_profesor,id_curso,id_ciclo);
-        winston.info("returnComment succesful");
-        return jsonBlock;
-    } catch (e){
-        console.log(e);
-        winston.error("returnComment failed");
-    }
-}
-
-module.exports = {
-    returnList: returnList,
-    returnDet: returnDet,
-    returnComment: returnComment
+module.exports ={
+    listaEncuestas:listaEncuestas
 }

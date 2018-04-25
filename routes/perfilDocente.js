@@ -1,39 +1,28 @@
-var express = require('express');
-var router = express.Router();
-var DocenteEncuestasController = require("../controller/perfilDocente/encuestasDocente");
+const express = require('express');
+const router = express.Router();
+const docenteController = require('../controller/perfilDocente/perfilDocente');
+const docenteActividadController = require('../controller/perfilDocente/actividadDocente');
+const docenteCursosController = require('../controller/perfilDocente/cursosCiclo');
+const docenteEncuestaController = require('../controller/perfilDocente/encuestasDocente');
+const listaDocenteController = require('../controller/perfilDocente/listaDocentes');
 
-router.get('/encuestas/', async function(req, res, next) {
-    let id_profesor = req.param('id_profesor');
-    let jsonBlock = await DocenteEncuestasController.returnList(id_profesor);
-    res.send(jsonBlock);
-});
-
-/*
-router.get('/detalleencuestas', async function(req, res, next) {
-    let id_profesor = req.param('id_profesor');
-    let id_curso = req.param('id_curso');
-    let id_ciclo = req.param('id_ciclo');
-    let jsonBlock = await DocenteEncuestasController.returnDet(id_profesor,id_curso,id_ciclo);
-    res.send(jsonBlock);
-});
-
-router.get('/comentarios', async function(req, res, next) {
-    let id_profesor = req.param('id_profesor');
-    let id_curso = req.param('id_curso');
-    let id_ciclo = req.param('id_ciclo');
-    let jsonBlock = await DocenteEncuestasController.returnComment(id_profesor,id_curso,id_ciclo);
-    res.send(jsonBlock);
-});*/
-
-
-router.get('/encuestas/det', async function(req, res, next){
+/* GET home page. */
+router.get('/docente', async function(req, res) {
     let jsonBlock = {};
-    let id_profesor = req.param('id_profesor');
-    let id_curso = req.param('id_curso');
-    let id_ciclo = req.param('id_ciclo');
-    await DocenteEncuestasController.returnDet(jsonBlock,id_profesor,id_curso,id_ciclo);
-    await DocenteEncuestasController.returnComment(jsonBlock,id_profesor,id_curso,id_ciclo);
+
+    //jsonBloc = await docenteController.devuelveDocente(req.query);
+    //jsonBlock.investigaciones = await investigacionController.devuelveInvestigacion(req.query);
+   // jsonBlock.actividades = await docenteActividadController.devuelveActividad(req.query);
+    jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
+    //jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
+    //jsonBlock.horasDescarga = await descargaController.horasDescarga(req.query);
+
     res.send(jsonBlock);
+});
+
+router.get('/listaDocente', async function (req, res) {
+    let queryResult = await listaDocenteController.listaDocente()
+   res.send(queryResult) ;
 });
 
 module.exports = router;

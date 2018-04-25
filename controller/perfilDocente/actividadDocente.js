@@ -13,28 +13,30 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function querydB(query){ //query inside the code
-
+function querydB(query){
+    /*let query = `SELECT p.idProfesor AS 'Codigo Profesor',p.Nombre AS 'Nombre Profesor',a.Descripcion AS 'Actividad'
+                FROM profesor AS p
+                INNER JOIN actividad AS a
+                ON p.idProfesor = a.idProfesor;`;*/
 
     return sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
 }
 
 
-async function devuelveDocente(){
+async function devuelveActividad(){
     let jsonblock = {};
     try{
-        let query = 'Call devuelveDocente()';
-        let jsonBlock =await querydB(query); //calling sp from the db
-        //let jsonBlock = sequelize.query(query,{type:Sequelize.QueryTypes.SELECT});
-        winston.info("devuelveDocente succesful");
+        let query = 'Call devuelveActividad()';
+        let jsonBlock = await querydB(query);
+        winston.info("devuelveActividad succesful");
         return jsonBlock;
 
     }catch(e){
         console.log(e);
-        winston.error("devuelveDocente failed");
+        winston.error("devuelveActividad failed");
     }
 }
 
 module.exports ={
-    devuelveDocente:devuelveDocente
+    devuelveActividad:devuelveActividad
 }
