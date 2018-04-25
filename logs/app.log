@@ -468,3 +468,17 @@
 {"level":"info","message":"::1 - - [25/Apr/2018:06:10:26 +0000] \"GET /docente/docente?codigo=1111&ciclo=2017-1 HTTP/1.1\" 200 27 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T06:10:26.943Z"}
 {"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:10:55.771Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:06:10:55 +0000] \"GET /docente/docente?codigo=1111&ciclo=2017-1 HTTP/1.1\" 200 27 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T06:10:55.823Z"}
+{"level":"error","message":"400 - Unexpected token ' in JSON at position 19 - /docente/listaDocentes - POST - ::1","timestamp":"2018-04-25T12:59:07.816Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:12:59:07 +0000] \"POST /docente/listaDocentes HTTP/1.1\" 400 2783 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T12:59:07.886Z"}
+{"level":"error","message":"400 - Unexpected token ' in JSON at position 19 - /docente/listaDocente - POST - ::1","timestamp":"2018-04-25T12:59:22.007Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:12:59:22 +0000] \"POST /docente/listaDocente HTTP/1.1\" 400 2783 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T12:59:22.008Z"}
+{"level":"error","message":"400 - Unexpected token ' in JSON at position 19 - /docente/ - POST - ::1","timestamp":"2018-04-25T13:00:22.475Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:13:00:22 +0000] \"POST /docente/ HTTP/1.1\" 400 2783 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T13:00:22.477Z"}
+{"level":"error","message":"400 - Unexpected token ' in JSON at position 19 - /docente - POST - ::1","timestamp":"2018-04-25T13:00:25.057Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:13:00:25 +0000] \"POST /docente HTTP/1.1\" 400 2783 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T13:00:25.058Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T13:01:00.968Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T13:01:45.222Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T13:02:27.496Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T13:03:31.344Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T13:04:23.296Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:13:04:23 +0000] \"GET /docente/listaDocente HTTP/1.1\" 200 84 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T13:04:23.303Z"}
