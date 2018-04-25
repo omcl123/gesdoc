@@ -498,3 +498,6 @@
 {"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:00:11.968Z"}
 {"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:00:12.071Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:19:00:12 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 185 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T19:00:12.088Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:01:25.389Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:01:25.611Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:01:25 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 185 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T19:01:25.630Z"}
