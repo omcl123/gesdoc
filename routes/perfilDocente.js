@@ -25,4 +25,9 @@ router.get('/listaDocente', async function (req, res) {
    res.send(queryResult) ;
 });
 
+router.get('/listaCiclos', async function (req, res) {
+    let queryResult = await listaDocenteController.listaCiclos()
+    res.send(queryResult) ;
+});
+
 module.exports = router;
