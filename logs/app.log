@@ -622,3 +622,7 @@
 {"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:22:22.513Z"}
 {"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-25T21:22:22.552Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:21:22:22 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1555 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:22:22.554Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T21:36:47.878Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T21:36:48.530Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-25T21:36:49.065Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:21:36:49 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1555 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T21:36:49.114Z"}
