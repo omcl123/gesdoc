@@ -13,17 +13,18 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-async function cargaInvestigacion(preferencesObject) {
+async function listaDocente() {
 
     try {
-        let result = {};
-        winston.info("cargaInvestigacion success on execution");
-        return result;
+        let response = sequelize.query('CALL listaDocentes ()');
+        winston.info("muestraCursosCiclo success");
+        return response;
     } catch(e) {
-        winston.error("cargaInvestigacion Failed: ",e);
+        winston.error("muestraCursosCiclo Failed: ",e);
+        return "error";
     }
 }
 
 module.exports = {
-    cargaInvestigacion: cargaInvestigacion
+    listaDocente: listaDocente
 };
