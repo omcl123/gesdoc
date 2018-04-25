@@ -31,6 +31,14 @@ app.use('/tests', testsRouter);
 app.use('/docente',docenteRouter);
 app.use('/carga',cargaRouter);
 
+app.use('*',(req,res,next)=>{
+    res.end('The link you followed may be broken, or the page may have been removed.');
+    next();
+});
+
+
+
+
 
 
 
