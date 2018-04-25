@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0047162d-ab76-47be-b3bd-2f5c0fa9efbf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/cargaDatos/cargaCurso.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/cargaDatos/cargaEncuestas.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/cargaDatos/cargaHorarios.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/cargaDatos/cargaPrincipal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/cargaDatos/cargaProfesores.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/perfilDocente/encuestasDocente.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/perfilDocente/listaDocentes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/cargaDatos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/perfilDocente/cursosCiclo.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/perfilDocente/cursosCiclo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/perfilDocente.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/perfilDocente.js" afterDir="false" />
-    </list>
+    <list default="true" id="0047162d-ab76-47be-b3bd-2f5c0fa9efbf" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +14,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+            <state relative-caret-position="527">
+              <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -300,7 +286,7 @@
       <workItem from="1524501559485" duration="963000" />
       <workItem from="1524583902609" duration="1759000" />
       <workItem from="1524670790446" duration="124000" />
-      <workItem from="1524670963439" duration="477000" />
+      <workItem from="1524670963439" duration="1092000" />
     </task>
     <task id="LOCAL-00001" summary="changen db config">
       <created>1524355810336</created>
@@ -327,10 +313,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12116000" />
+    <option name="totallyTimeSpent" value="12731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -709,8 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+        <state relative-caret-position="527">
+          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
         </state>
       </provider>
     </entry>
