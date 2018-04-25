@@ -456,3 +456,15 @@
 {"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"https://l.facebook.com/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0\"\n","timestamp":"2018-04-25T03:49:50.409Z"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:49:50.410Z"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T03:49:50.411Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:02:28.085Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:03:07.800Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:03:55.046Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:04:46.864Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:06:18.623Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:06:08:18 +0000] \"GET /docente/docente?codigo=1111&ciclo=2017-1 HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T06:08:18.626Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:08:32.985Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:06:08:32 +0000] \"GET /docente/docente?codigo=1111&ciclo=2017-1 HTTP/1.1\" 200 2 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T06:08:32.995Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:10:26.879Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:06:10:26 +0000] \"GET /docente/docente?codigo=1111&ciclo=2017-1 HTTP/1.1\" 200 27 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T06:10:26.943Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T06:10:55.771Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:06:10:55 +0000] \"GET /docente/docente?codigo=1111&ciclo=2017-1 HTTP/1.1\" 200 27 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T06:10:55.823Z"}

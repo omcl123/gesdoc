@@ -14,9 +14,10 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 });
 
 
-function searchCourses(preferencesObject) {
-    return sequelize.query('CALL cursoXcicloXprofesor (:codigo, :ciclo)',
-            {replacements: { codigo: preferencesObject.codigo, ciclo: preferencesObject.ciclo }});
+function searchCourses(preferencesObject,tipo) {
+
+    return sequelize.query('CALL cursoXcicloXprofesor (:codigo, :ciclo, :tipo)',
+            {replacements: { codigo: preferencesObject.codigo, ciclo: preferencesObject.ciclo, tipo }});
 }
 
 
@@ -24,13 +25,19 @@ function searchCourses(preferencesObject) {
 async function muestraCursoCiclo(preferencesObject) {
 
     try {
+
         let arrayTipo = ["pregrado", "posgrado", "otros"];
         let arrayCursos = Promise.all(arrayTipo.map(async item => {
-            let innerPart = {};
-            innerPart.tipo = item;
-            let listaCursos = await searchCourses(preferencesObject);
-            innerPart.listaCursos = listaCursos;
-            return innerPart;
+            try{
+                let innerPart = {};
+                innerPart.tipo = item;
+                let listaCursos = await searchCourses(preferencesObject,innerPart.tipo);
+                innerPart.listaCursos = listaCursos;
+                return innerPart;
+            }catch (e){
+
+            }
+
         }));
         winston.info("muestraCursosCiclo success");
         return arrayCursos;
