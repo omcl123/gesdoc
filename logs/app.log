@@ -501,3 +501,46 @@
 {"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:01:25.389Z"}
 {"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:01:25.611Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:19:01:25 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 185 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T19:01:25.630Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:11:30.758Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:11:30.887Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:11:30 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 192 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:11:30.897Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:12:31.106Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:12:31.145Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:12:31 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 192 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:12:31.154Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:12:49.793Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:12:49.911Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:12:49 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 192 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:12:49.923Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:14:50.505Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:14:50.595Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:14:50 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 192 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:14:50.607Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:15:14.905Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:15:14.919Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:15:14 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 192 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:15:14.925Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:16:10.277Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:16:10.333Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:16:10.335Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:16:10 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 192 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:16:10.538Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:16:23.235Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:16:34.799Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:16:34.801Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:16:34 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1473 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:16:34.846Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:16:56.902Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:16:56.915Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:16:56.915Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:16:56 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1676 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:16:56.952Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:17:58.153Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:17:58.167Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:17:58.167Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:17:58 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 192 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:17:58.182Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:18:42.864Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:18:42.877Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:18:42.878Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:18:42 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1676 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:18:42.923Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:22:18.423Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:22:18.451Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:22:18.452Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:22:18 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1484 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:22:18.475Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:24:30.766Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:24:30.812Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:24:30.814Z"}
+{"level":"info","message":"::1 - - [25/Apr/2018:19:24:30 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1643 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:24:30.841Z"}

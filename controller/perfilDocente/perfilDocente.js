@@ -37,9 +37,19 @@ async function devuelveDocente(preferencesObject){
                 }
             }
         );
+        jsonbloc = {};
+        jsonbloc.codigo = result[0].codigo;
+        jsonbloc.nombres = result[0].nombres;
+        jsonbloc.apellidoP = result[0].apellidoP;
+        jsonbloc.apellidoM = result[0].apellidoM;
+        jsonbloc.tipo = result[0].tipo;
+        jsonbloc.telefono = result[0].telefono;
+        jsonbloc.correo = result[0].correo;
+        jsonbloc.seccion = result[0].seccion;
+        jsonbloc.departamento = result[0].departamento;
         winston.info("devuelveDocente succesful");
         console.log (result);
-        return result;
+        return jsonbloc;
 
     }catch(e){
         console.log(e);
