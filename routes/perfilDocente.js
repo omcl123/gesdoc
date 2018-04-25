@@ -1,25 +1,28 @@
-var express = require('express');
-var router = express.Router();
-var docenteController = require('../controller/perfilDocente/perfilDocente');
-var docenteActividadController = require('../controller/perfilDocente/actividadDocente');
+const express = require('express');
+const router = express.Router();
+const docenteController = require('../controller/perfilDocente/perfilDocente');
+const docenteActividadController = require('../controller/perfilDocente/actividadDocente');
 const docenteCursosController = require('../controller/perfilDocente/cursosCiclo');
+const docenteEncuestaController = require('../controller/perfilDocente/encuestasDocente');
+const listaDocenteController = require('../controller/perfilDocente/listaDocentes');
 
 /* GET home page. */
-router.get('/', async function(req, res,next) {
-    //res.send('welcome to the jungle');
-    let jsonBlock = await docenteController.devuelveDocente();
+router.get('/docente', async function(req, res) {
+    let jsonBlock = {};
+
+    //jsonBloc = await docenteController.devuelveDocente(req.query);
+    //jsonBlock.investigaciones = await investigacionController.devuelveInvestigacion(req.query);
+   // jsonBlock.actividades = await docenteActividadController.devuelveActividad(req.query);
+    jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
+    //jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
+    //jsonBlock.horasDescarga = await descargaController.horasDescarga(req.query);
+
     res.send(jsonBlock);
 });
 
-router.get('/actividad',async function (req,res,next){
-    let jsonBlock = await docenteActividadController.devuelveActividad();
-    res.send(jsonBlock);
-    //res.send('Activities go here #####');
-
+router.get('/listaDocente', async function (req, res) {
+    let queryResult = await listaDocenteController.listaDocente()
+   res.send(queryResult) ;
 });
 
-router.get('/cursosCiclo', async function (req, res) {
-   let jsonBlock = await  docenteCursosController.muestraCursoCiclo(req.query);
-   res.send(jsonBlock);
-});
 module.exports = router;

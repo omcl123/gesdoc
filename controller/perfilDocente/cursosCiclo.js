@@ -13,43 +13,37 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function searchCourses(preferencesObject) {
-    let codigo = preferencesObject.codigo;
-    let ciclo = preferencesObject.ciclo;
 
-    return sequelize.query('CALL cursoXcicloXprofesor (:codigo, :ciclo)',
-            {replacements: { codigo: codigo, ciclo: ciclo }});
+function searchCourses(preferencesObject,tipo) {
+
+    return sequelize.query('CALL cursoXcicloXprofesor (:codigo, :ciclo, :tipo)',
+            {replacements: { codigo: preferencesObject.codigo, ciclo: preferencesObject.ciclo, tipo }});
 }
 
-async function processCursos(preferencesObject, queryResponse) {
-    let jsonBlock = {};
 
-    jsonBlock.codigo = preferencesObject.codigo;
-    jsonBlock.curso = preferencesObject.curso;
-
-    jsonBlock.courses = await Promise.all(queryResponse.map((item) => {
-        let part = {};
-
-        part.codCur = item.codCur;
-        part.nomCur = item.nomCur;
-        part.horCur = item.horCur;
-        part.numCred = item.numCred;
-        part.horaCurso = item.horaCurso;
-
-        return part;
-    }));
-    return jsonBlock;
-}
 
 async function muestraCursoCiclo(preferencesObject) {
 
     try {
-        let queryResponse = await searchCourses(preferencesObject);
-        let jsonBlock = await processCursos(preferencesObject, queryResponse);
-        winston.info("muestraCursosCiclo success on execution");
-        return jsonBlock;
+
+        let arrayTipo = ["pregrado", "posgrado", "otros"];
+        let arrayCursos = Promise.all(arrayTipo.map(async item => {
+            try{
+                let innerPart = {};
+                innerPart.tipo = item;
+                let listaCursos = await searchCourses(preferencesObject,innerPart.tipo);
+                innerPart.listaCursos = listaCursos;
+                return innerPart;
+            }catch (e){
+
+            }
+
+        }));
+        winston.info("muestraCursosCiclo success");
+        return arrayCursos;
     } catch(e) {
         winston.error("muestraCursosCiclo Failed: ",e);
+        return "error";
     }
 }
 
