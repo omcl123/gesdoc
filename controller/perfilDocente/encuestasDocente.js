@@ -15,10 +15,10 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 
 function queryListaEncuestas(preferencesObject) {
     try {
-        let result =  sequelize.query('CALL ENCUESTA_LISTAR(:id_curso)',
+        let result =  sequelize.query('CALL ENCUESTA_LISTAR(:codigo)',
             {
                 replacements: {
-                    id_curso: preferencesObject.id_curso
+                    codigo: preferencesObject.codigo // codigo del profesor
                 }
             }
         );
@@ -33,12 +33,11 @@ function queryListaEncuestas(preferencesObject) {
 
 function queryListaComentarios(preferencesObject) {
     try {
-        let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:id_profesor,:id_curso,:id_ciclo)',
+        let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:codigo,:ciclo)',
             {
                 replacements: {
-                    id_profesor: preferencesObject.id_profesor,
-                    id_curso: preferencesObject.id_curso,
-                    id_ciclo: preferencesObject.id_ciclo
+                    codigo: preferencesObject.codigo,
+                    ciclo: preferencesObject.ciclo
                 }
             }
         );

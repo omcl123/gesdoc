@@ -4,21 +4,32 @@ const docenteController = require('../controller/perfilDocente/perfilDocente');
 const docenteActividadController = require('../controller/perfilDocente/actividadDocente');
 const docenteCursosController = require('../controller/perfilDocente/cursosCiclo');
 const docenteEncuestaController = require('../controller/perfilDocente/encuestasDocente');
+const listaDocenteController = require('../controller/perfilDocente/listaDocentes');
+const investigacionController = require ('../controller/perfilDocente/investigacionDocente');
+const descargaController = require('../controller/perfilDocente/horasDescargaDocentes');
 
 /* GET home page. */
-router.get('/', async function(req, res) {
+router.get('/docente', async function(req, res) {
     let jsonBlock = {};
+    jsonBlock= await docenteController.devuelveDocente(req.query);
+    jsonBlock.investigaciones = await investigacionController.devuelveListaInvestigacion(req.query);
 
-    await docenteController.devuelveDocente(jsonBlock, req.query);
-    // await investigacionController.devuelveInvestigacion(jsonBlock.investigaciones, req.query);
-    await docenteActividadController.devuelveActividad(jsonBlock.actividades, req.query);
-    await docenteCursosController.muestraCursoCiclo(jsonBlock.cursos, req.query);
-    await docenteEncuestaController.listaEncuestas(jsonBlock.encuestas, req.query);
-    // await descargaController.horasDescarga(jsonBlock.horasDescarga,req.query);
-
-
+    jsonBlock.actividades = await docenteActividadController.devuelveListaActividad(req.query);
+    //jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
+    //jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
+    //jsonBlock.horasDescarga = await descargaController.horasDescarga(req.query);
 
     res.send(jsonBlock);
+});
+
+router.get('/listaDocente', async function (req, res) {
+    let queryResult = await listaDocenteController.listaDocente()
+   res.send(queryResult) ;
+});
+
+router.get('/listaCiclos', async function (req, res) {
+    let queryResult = await listaDocenteController.listaCiclos()
+    res.send(queryResult) ;
 });
 
 module.exports = router;

@@ -1,7 +1,8 @@
 var winston = require('../../config/winston');
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
-const dbSpecs = dbCon.connect();
+const dbSpecs = dbCon.connect()
+
 const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     host: dbSpecs.host,
     dialect: dbSpecs.dialect,
@@ -18,10 +19,10 @@ function listaInvestigacion(preferenceObject){
 
 }
 
-async function devuelveListaActividad(preferencesObject){
+async function devuelveListaInvestigacion(preferencesObject){
     let arregloInv = [];
     try{
-        let actividades = await sequelize.query('CALL devuelveActividades(:id_profesor,:nombre_ciclo)',
+        let investigaciones = await sequelize.query('CALL devuelveInvestigaciones(:id_profesor,:nombre_ciclo)',
             {
                 replacements: {
                     id_profesor: parseInt(preferencesObject.codigo),
@@ -30,26 +31,24 @@ async function devuelveListaActividad(preferencesObject){
                 }
             }
         );
-        console.log(actividades);
-        let jsonActividades = await Promise.all(actividades.map(async item => {
+        console.log(investigaciones);
+        let jsonInvestigaciones = await Promise.all(investigaciones.map(async item => {
             let innerPart={};
-            innerPart.id=item.id;
             innerPart.titulo=item.titulo;
-            innerPart.tipo=item.tipo;
-            innerPart.fecha_inicio=item.fecha_inicio;
-            innerPart.fecha_fin=item.fecha_fin;
+            innerPart.resumen=item.resumen;
             innerPart.estado=item.estado;
+            innerPart.archivo=item.archivo;
             return innerPart;
         }));
-        console.log(jsonActividades);
-        winston.info("devuelveListaActividad succesful");
-        return jsonActividades;
+        console.log(jsonInvestigaciones);
+        winston.info("devuelveListaInvestigacion succesful");
+        return jsonInvestigaciones;
         //return arregloInv;
     }catch(e){
         console.log(e);
-        winston.error("devuelveListaActividad failed");
+        winston.error("devuelveListaInvestigacion failed");
     }
 }
 module.exports ={
-    devuelveListaActividad:devuelveListaActividad
+    devuelveListaInvestigacion:devuelveListaInvestigacion
 }
