@@ -5,6 +5,7 @@ const docenteActividadController = require('../controller/perfilDocente/activida
 const docenteCursosController = require('../controller/perfilDocente/cursosCiclo');
 const docenteEncuestaController = require('../controller/perfilDocente/encuestasDocente');
 const listaDocenteController = require('../controller/perfilDocente/listaDocentes');
+//const descargaController = require('../controller/perfilDocente/horasDescargaDocentes');
 
 /* GET home page. */
 router.get('/docente', async function(req, res) {
