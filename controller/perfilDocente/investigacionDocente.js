@@ -36,7 +36,7 @@ async function devuelveListaInvestigacion(preferencesObject){
             let innerPart={};
             innerPart.titulo=item.titulo;
             innerPart.resumen=item.resumen;
-            innerPart.descripcion=item.descripcion;
+            innerPart.estado=item.estado;
             innerPart.archivo=item.archivo;
             arregloInv.push(innerPart);
         }));
