@@ -26,6 +26,20 @@ async function listaDocente() {
     }
 }
 
+async function listaCiclos() {
+
+    try {
+        let response = await sequelize.query('CALL listaCiclos()');
+        console.log(response);
+        winston.info("listaCiclos success");
+        return response;
+    } catch(e) {
+        winston.error("listaCiclos Failed: ",e);
+        return "error";
+    }
+}
+
 module.exports = {
-    listaDocente: listaDocente
+    listaDocente: listaDocente,
+    listaCiclos: listaCiclos
 };

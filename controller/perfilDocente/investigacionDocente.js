@@ -31,19 +31,19 @@ async function devuelveListaInvestigacion(preferencesObject){
                 }
             }
         );
-
-        let jsonInvestigaciones = Promise.all(investigaciones.map(async item => {
+        console.log(investigaciones);
+        let jsonInvestigaciones = await Promise.all(investigaciones.map(async item => {
             let innerPart={};
             innerPart.titulo=item.titulo;
             innerPart.resumen=item.resumen;
             innerPart.estado=item.estado;
             innerPart.archivo=item.archivo;
-            arregloInv.push(innerPart);
+            return innerPart;
         }));
-
+        console.log(jsonInvestigaciones);
         winston.info("devuelveListaInvestigacion succesful");
-        //return jsonInvestigaciones;
-        return arregloInv;
+        return jsonInvestigaciones;
+        //return arregloInv;
     }catch(e){
         console.log(e);
         winston.error("devuelveListaInvestigacion failed");

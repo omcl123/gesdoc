@@ -48,6 +48,7 @@ async function devuelveDocente(preferencesObject){
         jsonbloc.seccion = result[0].seccion;
         jsonbloc.departamento = result[0].departamento;
         jsonbloc.ciclo=preferencesObject.ciclo;
+
         winston.info("devuelveDocente succesful");
         console.log (result);
         return jsonbloc;
