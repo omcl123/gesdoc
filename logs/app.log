@@ -394,3 +394,65 @@
 {"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::ffff:192.168.56.1","timestamp":"2018-04-24T19:42:26.312Z"}
 {"level":"info","message":"::ffff:192.168.56.1 - - [24/Apr/2018:19:42:26 +0000] \"GET /favicon.ico HTTP/1.1\" 404 2739 \"http://192.168.56.1:8080/carga/cargaDatos\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-24T19:42:26.312Z"}
 {"level":"info","message":"::ffff:192.168.56.1 - - [24/Apr/2018:19:42:39 +0000] \"POST /carga/cargaDatos HTTP/1.1\" 200 19 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-24T19:42:39.208Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:44:54 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:44:54.504Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:44:54 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:44:54.522Z"}
+{"level":"error","message":"404 - Not Found - /do - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:02.412Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:02 +0000] \"GET /do HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:02.416Z"}
+{"level":"error","message":"404 - Not Found - /do - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:02.486Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:02 +0000] \"GET /do HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:02.487Z"}
+{"level":"error","message":"404 - Not Found - /docente - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:03.542Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:03 +0000] \"GET /docente HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:03.545Z"}
+{"level":"error","message":"404 - Not Found - /docente - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:03.605Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:03 +0000] \"GET /docente HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:03.607Z"}
+{"level":"error","message":"404 - Not Found - /docente/l - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:04.690Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:04 +0000] \"GET /docente/l HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:04.691Z"}
+{"level":"error","message":"404 - Not Found - /docente/l - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:04.764Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:04 +0000] \"GET /docente/l HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:04.765Z"}
+{"level":"error","message":"404 - Not Found - /docente/li - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:05.075Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:05 +0000] \"GET /docente/li HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:05.076Z"}
+{"level":"error","message":"404 - Not Found - /docente/li - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:05.139Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:05 +0000] \"GET /docente/li HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:05.142Z"}
+{"level":"error","message":"404 - Not Found - /docente/lista - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:05.723Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:05 +0000] \"GET /docente/lista HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:05.723Z"}
+{"level":"error","message":"404 - Not Found - /docente/lista - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:05.825Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:05 +0000] \"GET /docente/lista HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:05.826Z"}
+{"level":"error","message":"404 - Not Found - /docente/listaDocen - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:06.953Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:06 +0000] \"GET /docente/listaDocen HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:06.955Z"}
+{"level":"error","message":"404 - Not Found - /docente/listaDocen - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:45:07.038Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:45:07 +0000] \"GET /docente/listaDocen HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:45:07.040Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T03:45:07.629Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T03:45:07.663Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T03:45:22.895Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T03:45:22.941Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T03:45:49.582Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:43 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:43.968Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:43 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:43.999Z"}
+{"level":"error","message":"404 - Not Found - /d - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:46.866Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:46 +0000] \"GET /d HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:46.873Z"}
+{"level":"error","message":"404 - Not Found - /d - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:46.937Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:46 +0000] \"GET /d HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:46.939Z"}
+{"level":"error","message":"404 - Not Found - /docente - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:47.895Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:47 +0000] \"GET /docente HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:47.897Z"}
+{"level":"error","message":"404 - Not Found - /docente - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:47.952Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:47 +0000] \"GET /docente HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:47.954Z"}
+{"level":"error","message":"404 - Not Found - /docente/ - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:50.277Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:50 +0000] \"GET /docente/ HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:50.280Z"}
+{"level":"error","message":"404 - Not Found - /docente/ - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:50.338Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:50 +0000] \"GET /docente/ HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:50.341Z"}
+{"level":"error","message":"404 - Not Found - /docente/l - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:50.675Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:50 +0000] \"GET /docente/l HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:50.680Z"}
+{"level":"error","message":"404 - Not Found - /docente/l - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:50.767Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:50 +0000] \"GET /docente/l HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:50.769Z"}
+{"level":"error","message":"404 - Not Found - /docente/listaD - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:51.380Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:51 +0000] \"GET /docente/listaD HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:51.383Z"}
+{"level":"error","message":"404 - Not Found - /docente/listaD - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:47:51.442Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:47:51 +0000] \"GET /docente/listaD HTTP/1.1\" 404 2651 \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:47:51.445Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::ffff:127.0.0.1","timestamp":"2018-04-25T03:48:05.065Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:48:05 +0000] \"GET /favicon.ico HTTP/1.1\" 404 2651 \"https://wet-kangaroo-7.localtunnel.me/docente/listaDocentes\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T03:48:05.067Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:04 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T03:49:04.835Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"-\" \"facebookexternalhit/1.1\"\n","timestamp":"2018-04-25T03:49:50.403Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:49:50.405Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T03:49:50.406Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"https://l.facebook.com/\" \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0\"\n","timestamp":"2018-04-25T03:49:50.409Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"-\" \"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)\"\n","timestamp":"2018-04-25T03:49:50.410Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [25/Apr/2018:03:49:50 +0000] \"GET /docente/listaDocentes HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T03:49:50.411Z"}
