@@ -4,9 +4,9 @@ const cargaController = require("../controller/cargaDatos/cargaPrincipal");
 
 /* GET home page. */
 router.post('/cargaDatos', async function(req, res) {
-    //let carga = await cargaController.cargaPrincipal(req.body);
+    let carga = await cargaController.cargaPrincipal(req.body);
     console.log(req.body)
-    res.send(req.body);
+    res.send(carga);
 });
 
 module.exports = router;
