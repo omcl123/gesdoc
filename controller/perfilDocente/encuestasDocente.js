@@ -15,10 +15,10 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 
 function queryListaEncuestas(preferencesObject) {
     try {
-        let result =  sequelize.query('CALL ENCUESTA_LISTAR(:id_curso)',
+        let result =  sequelize.query('CALL ENCUESTA_LISTAR(:codigo)',
             {
                 replacements: {
-                    id_curso: preferencesObject.id_curso
+                    codigo: preferencesObject.codigo // codigo del profesor
                 }
             }
         );
@@ -31,14 +31,14 @@ function queryListaEncuestas(preferencesObject) {
 }
 
 
-function queryListaComentarios(preferencesObject) {
+function queryListaComentarios(preferencesObject,id_curso) {
     try {
-        let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:id_profesor,:id_curso,:id_ciclo)',
+        let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:codigo,:ciclo,:id_curso)',
             {
                 replacements: {
-                    id_profesor: preferencesObject.id_profesor,
-                    id_curso: preferencesObject.id_curso,
-                    id_ciclo: preferencesObject.id_ciclo
+                    codigo: preferencesObject.codigo,
+                    ciclo: preferencesObject.ciclo,
+                    id_curso: id_curso
                 }
             }
         );
@@ -64,7 +64,7 @@ async function listaEncuestas(preferencesObject) {
             innerPart.horario = item.horario;
             innerPart.porcentaje = item.porcentaje;
             innerPart.puntaje = item.puntaje;
-            let listaComentarios = await queryListaComentarios(preferencesObject);
+            let listaComentarios = await queryListaComentarios(preferencesObject,item.id_curso);
             innerPart.comentarios = listaComentarios;
             return innerPart;
         }));
