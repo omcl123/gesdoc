@@ -14,14 +14,14 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 });
 
 
-function horasDescargaDetalle(preferencesObject) {
+function horasDescargaDetalle(preferencesObject,id_curso) {
     try {
-        let result =  sequelize.query('CALL HORAS_DESCARGA_DETALLE(:id_profesor,:id_curso,:id_ciclo)',
+        let result =  sequelize.query('CALL HORAS_DESCARGA_DETALLE(:codigo,:ciclo,:id_curso)',
             {
                 replacements: {
-                    id_profesor: preferencesObject.id_profesor,
-                    id_curso: preferencesObject.id_curso,
-                    id_ciclo: preferencesObject.id_ciclo
+                    codigo: preferencesObject.codigo,
+                    ciclo: preferencesObject.ciclo,
+                    id_curso: id_curso
                 }
             }
         );
@@ -35,12 +35,11 @@ function horasDescargaDetalle(preferencesObject) {
 
 function horasDescargaListar(preferencesObject) {
     try {
-        let result =  sequelize.query('CALL HORAS_DESCARGA_LISTAR(:id_profesor,:id_curso,:id_ciclo)',
+        let result =  sequelize.query('CALL HORAS_DESCARGA_LISTAR(:codigo,:ciclo)',
             {
                 replacements: {
-                    id_profesor: preferencesObject.id_profesor,
-                    id_curso: preferencesObject.id_curso,
-                    id_ciclo: preferencesObject.id_ciclo
+                    codigo: preferencesObject.codigo,
+                    ciclo: preferencesObject.ciclo
                 }
             }
         );
@@ -65,7 +64,7 @@ async function horasDescarga(preferencesObject) {
             innerPart.codigo = item.codigo;
             //innerPart.hDictadas = item.hDictadas;
             innerPart.hDescargaTotal = item.hDescarga;
-            let listaSemanal = await horasDescargaDetalle(preferencesObject);
+            let listaSemanal = await horasDescargaDetalle(preferencesObject,item.id_curso);
             let innerPartSemana = {};
             innerPartSemana.numeroSemana = listaSemanal.numeroSemana;
             innerPartSemana.hDescarga = listaSemanal.hDescarga;
