@@ -31,13 +31,14 @@ function queryListaEncuestas(preferencesObject) {
 }
 
 
-function queryListaComentarios(preferencesObject) {
+function queryListaComentarios(preferencesObject,id_curso) {
     try {
-        let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:codigo,:ciclo)',
+        let result =  sequelize.query('CALL ENCUESTA_COMENTARIOS(:codigo,:ciclo,:id_curso)',
             {
                 replacements: {
                     codigo: preferencesObject.codigo,
-                    ciclo: preferencesObject.ciclo
+                    ciclo: preferencesObject.ciclo,
+                    id_curso: id_curso
                 }
             }
         );
@@ -63,7 +64,7 @@ async function listaEncuestas(preferencesObject) {
             innerPart.horario = item.horario;
             innerPart.porcentaje = item.porcentaje;
             innerPart.puntaje = item.puntaje;
-            let listaComentarios = await queryListaComentarios(preferencesObject);
+            let listaComentarios = await queryListaComentarios(preferencesObject,item.id_curso);
             innerPart.comentarios = listaComentarios;
             return innerPart;
         }));
