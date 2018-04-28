@@ -650,3 +650,23 @@
 {"level":"info","message":"horasDescargaDetalle succesful","timestamp":"2018-04-25T23:26:08.609Z"}
 {"level":"info","message":"horasDescargaDetalle succesful","timestamp":"2018-04-25T23:26:08.609Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:23:26:08 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 3565 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T23:26:08.622Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-28T22:26:01.554Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-28T22:26:01.576Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-28T22:26:01.630Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-28T22:26:01.631Z"}
+{"level":"info","message":"queryListaEncuestas succesful","timestamp":"2018-04-28T22:26:01.655Z"}
+{"level":"info","message":"queryListaComentarios succesful","timestamp":"2018-04-28T22:26:01.673Z"}
+{"level":"info","message":"queryListaComentarios succesful","timestamp":"2018-04-28T22:26:01.674Z"}
+{"level":"info","message":"horasDescargaListar succesful","timestamp":"2018-04-28T22:26:01.683Z"}
+{"level":"info","message":"horasDescargaDetalle succesful","timestamp":"2018-04-28T22:26:01.700Z"}
+{"level":"info","message":"::1 - - [28/Apr/2018:22:26:01 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 2895 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-28T22:26:01.713Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-28T22:30:25.512Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-28T22:30:25.522Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-28T22:30:25.531Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-28T22:30:25.532Z"}
+{"level":"info","message":"queryListaEncuestas succesful","timestamp":"2018-04-28T22:30:25.549Z"}
+{"level":"info","message":"queryListaComentarios succesful","timestamp":"2018-04-28T22:30:25.557Z"}
+{"level":"info","message":"queryListaComentarios succesful","timestamp":"2018-04-28T22:30:25.557Z"}
+{"level":"info","message":"horasDescargaListar succesful","timestamp":"2018-04-28T22:30:25.565Z"}
+{"level":"info","message":"horasDescargaDetalle succesful","timestamp":"2018-04-28T22:30:25.573Z"}
+{"level":"info","message":"::1 - - [28/Apr/2018:22:30:25 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 2841 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-28T22:30:25.578Z"}
