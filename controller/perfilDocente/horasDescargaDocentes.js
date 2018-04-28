@@ -65,11 +65,7 @@ async function horasDescarga(preferencesObject) {
             //innerPart.hDictadas = item.hDictadas;
             innerPart.hDescargaTotal = item.hDescarga;
             let listaSemanal = await horasDescargaDetalle(preferencesObject,item.id_curso);
-            let innerPartSemana = {};
-            innerPartSemana.numeroSemana = listaSemanal.numeroSemana;
-            innerPartSemana.hDescarga = listaSemanal.hDescarga;
-            innerPartSemana.motivo = listaSemanal.motivo;
-            innerPart.semana = innerPartSemana;
+            innerPart.semana = listaSemanal;
             return innerPart;
         }));
 

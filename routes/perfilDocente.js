@@ -5,18 +5,18 @@ const docenteActividadController = require('../controller/perfilDocente/activida
 const docenteCursosController = require('../controller/perfilDocente/cursosCiclo');
 const docenteEncuestaController = require('../controller/perfilDocente/encuestasDocente');
 const listaDocenteController = require('../controller/perfilDocente/listaDocentes');
-//const descargaController = require('../controller/perfilDocente/horasDescargaDocentes');
+const descargaController = require('../controller/perfilDocente/horasDescargaDocentes');
 
 /* GET home page. */
 router.get('/docente', async function(req, res) {
     let jsonBlock = {};
 
-    //jsonBloc = await docenteController.devuelveDocente(req.query);
+    //jsonBlock = await docenteController.devuelveDocente(req.query);
     //jsonBlock.investigaciones = await investigacionController.devuelveInvestigacion(req.query);
-   // jsonBlock.actividades = await docenteActividadController.devuelveActividad(req.query);
+    //jsonBlock.actividades = await docenteActividadController.devuelveActividad(req.query);
     jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
-    //jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
-    //jsonBlock.horasDescarga = await descargaController.horasDescarga(req.query);
+    jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
+    jsonBlock.horasDescarga = await descargaController.horasDescarga(req.query);
 
     res.send(jsonBlock);
 });

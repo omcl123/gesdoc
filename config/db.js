@@ -1,4 +1,4 @@
-const db = 'kairos';
+const db = 'dbsw';
 const user = 'root';
 const password = 'kairosdb';
 const host = 'localhost';
