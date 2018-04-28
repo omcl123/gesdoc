@@ -14,13 +14,14 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 });
 
 
-function horasDescargaDetalle(preferencesObject) {
+function horasDescargaDetalle(preferencesObject,id_curso) {
     try {
-        let result =  sequelize.query('CALL HORAS_DESCARGA_DETALLE(:codigo,:ciclo)',
+        let result =  sequelize.query('CALL HORAS_DESCARGA_DETALLE(:codigo,:ciclo,:id_curso)',
             {
                 replacements: {
                     codigo: preferencesObject.codigo,
-                    ciclo: preferencesObject.ciclo
+                    ciclo: preferencesObject.ciclo,
+                    id_curso: id_curso
                 }
             }
         );
@@ -63,12 +64,8 @@ async function horasDescarga(preferencesObject) {
             innerPart.codigo = item.codigo;
             //innerPart.hDictadas = item.hDictadas;
             innerPart.hDescargaTotal = item.hDescarga;
-            let listaSemanal = await horasDescargaDetalle(preferencesObject);
-            let innerPartSemana = {};
-            innerPartSemana.numeroSemana = listaSemanal.numeroSemana;
-            innerPartSemana.hDescarga = listaSemanal.hDescarga;
-            innerPartSemana.motivo = listaSemanal.motivo;
-            innerPart.semana = innerPartSemana;
+            let listaSemanal = await horasDescargaDetalle(preferencesObject,item.id_curso);
+            innerPart.semana = listaSemanal;
             return innerPart;
         }));
 
