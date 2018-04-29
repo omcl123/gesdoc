@@ -11,17 +11,49 @@ const descargaController = require('../controller/perfilDocente/horasDescargaDoc
 
 /* GET home page. */
 //Muestra el json grande de docente
-router.get('/docente', async function(req, res) {
-    let jsonBlock = {};
+router.get('/docente/general', async function(req, res) {
+    let jsonBlock;
     jsonBlock= await docenteController.devuelveDocente(req.query);
-    jsonBlock.investigaciones = await investigacionController.devuelveListaInvestigacion(req.query);
-    jsonBlock.actividades = await docenteActividadController.devuelveListaActividad(req.query);
-    jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
-    jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
-    jsonBlock.horasDescarga = await descargaController.horasDescarga(req.query);
 
     res.send(jsonBlock);
 });
+
+router.get('/docente/invDocente', async function(req, res) {
+    let jsonBlock;
+    jsonBlock = await investigacionController.devuelveListaInvestigacion(req.query);
+
+    res.send(jsonBlock);
+});
+
+router.get('/docente/actDocente', async function(req, res) {
+    let jsonBlock;
+    jsonBlock = await docenteActividadController.devuelveListaActividad(req.query);
+
+    res.send(jsonBlock);
+});
+
+router.get('/docente/curDocente', async function(req, res) {
+    let jsonBlock;
+    jsonBlock = await docenteCursosController.muestraCursoCiclo( req.query);
+
+    res.send(jsonBlock);
+});
+
+router.get('/docente/encDocente', async function(req, res) {
+    let jsonBlock;
+    jsonBlock = await docenteEncuestaController.listaEncuestas(req.query);
+
+    res.send(jsonBlock);
+});
+
+router.get('/docente/horaDescDocente', async function(req, res) {
+    let jsonBlock;
+    jsonBlock = await descargaController.horasDescarga(req.query);
+
+    res.send(jsonBlock);
+});
+
+
 //Rutas para el registro/Actualizacion/delete de investigaciones
 
 router.get('/investigacion/registrar',async function (req,res){ //Aqui ira el registro de investigaciones
