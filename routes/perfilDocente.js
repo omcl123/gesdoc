@@ -8,12 +8,13 @@ const listaDocenteController = require('../controller/perfilDocente/listaDocente
 const investigacionController = require ('../controller/perfilDocente/investigacionDocente');
 const descargaController = require('../controller/perfilDocente/horasDescargaDocentes');
 
+
 /* GET home page. */
+//Muestra el json grande de docente
 router.get('/docente', async function(req, res) {
     let jsonBlock = {};
     jsonBlock= await docenteController.devuelveDocente(req.query);
     jsonBlock.investigaciones = await investigacionController.devuelveListaInvestigacion(req.query);
-
     jsonBlock.actividades = await docenteActividadController.devuelveListaActividad(req.query);
     jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
     jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
@@ -21,7 +22,26 @@ router.get('/docente', async function(req, res) {
 
     res.send(jsonBlock);
 });
+//Rutas para el registro/Actualizacion/delete de investigaciones
 
+router.get('/investigacion/registrar',async function (req,res){ //Aqui ira el registro de investigaciones
+    // http://localhost:8080/docente/investigacion/registrar?titulo=titulo_random&autor[]=20112728&autor[]=213131&resumen=texto_random&fecha_inicio=20180429
+    // titulo=titulo_random&autor[]=20112728&autor[]=213131&resumen=texto_random&fecha_inicio=20180429&archivo=FALTA
+    //res.end("Aqui ira el registro de investigaciones );
+    res.end(req.query.titulo+ " "+req.query.autor);
+    //console.log(req.query.myarray)
+    // [ '136129', '137794', '137792' ]
+    //codigo=20112728&titulo=holamundo
+});
+
+router.get('/investigacion/actualizar',async function (req,res){ //Aqui ira la actualizacion de investigaciones
+    res.end("Aqui ira la actualizacion de investigaciones");
+
+});
+router.get('/investigacion/eliminar',async function (req,res){ //Aqui ira la eliminacion de investigaciones
+    res.end("Aqui ira la eliminacion de investigaciones");
+
+});
 router.get('/listaDocente', async function (req, res) {
     let queryResult = await listaDocenteController.listaDocente()
    res.send(queryResult) ;
