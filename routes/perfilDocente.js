@@ -4,10 +4,9 @@ const docenteController = require('../controller/perfilDocente/perfilDocente');
 const docenteActividadController = require('../controller/perfilDocente/actividadDocente');
 const docenteCursosController = require('../controller/perfilDocente/cursosCiclo');
 const docenteEncuestaController = require('../controller/perfilDocente/encuestasDocente');
-const listaDocenteController = require('../controller/perfilDocente/listaDocentes');
 const investigacionController = require ('../controller/perfilDocente/investigacionDocente');
 const descargaController = require('../controller/perfilDocente/horasDescargaDocentes');
-
+const ayudaEconController = require('../controller/perfilDocente/ayudaEconomica');
 
 /* GET home page. */
 //Muestra el json grande de docente
@@ -71,14 +70,13 @@ router.delete('/investigacion/eliminar',async function (req,res){ //Aqui ira la 
     res.send("Aqui ira la eliminacion de investigaciones");
 
 });
-router.get('/listaDocente', async function (req, res) {
-    let queryResult = await listaDocenteController.listaDocente()
-   res.send(queryResult) ;
+
+router.get('/ayudaEconomica/lista', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock.ayudas = await ayudaEconController.listaAyudas(req.query);
+
+    res.send(jsonBlock);
 });
 
-router.get('/listaCiclos', async function (req, res) {
-    let queryResult = await listaDocenteController.listaCiclos()
-    res.send(queryResult) ;
-});
 
 module.exports = router;
