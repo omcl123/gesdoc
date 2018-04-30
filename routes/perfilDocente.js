@@ -19,36 +19,36 @@ router.get('/docente/general', async function(req, res) {
 });
 
 router.get('/docente/invDocente', async function(req, res) {
-    let jsonBlock;
-    jsonBlock = await investigacionController.devuelveListaInvestigacion(req.query);
+    let jsonBlock={};
+    jsonBlock.investigaciones = await investigacionController.devuelveListaInvestigacion(req.query);
 
     res.send(jsonBlock);
 });
 
 router.get('/docente/actDocente', async function(req, res) {
-    let jsonBlock;
-    jsonBlock = await docenteActividadController.devuelveListaActividad(req.query);
+    let jsonBlock={};
+    jsonBlock.actividades = await docenteActividadController.devuelveListaActividad(req.query);
 
     res.send(jsonBlock);
 });
 
 router.get('/docente/curDocente', async function(req, res) {
-    let jsonBlock;
-    jsonBlock = await docenteCursosController.muestraCursoCiclo( req.query);
+    let jsonBlock={};
+    jsonBlock.cursos = await docenteCursosController.muestraCursoCiclo( req.query);
 
     res.send(jsonBlock);
 });
 
 router.get('/docente/encDocente', async function(req, res) {
-    let jsonBlock;
-    jsonBlock = await docenteEncuestaController.listaEncuestas(req.query);
+    let jsonBlock={};
+    jsonBlock.encuestas = await docenteEncuestaController.listaEncuestas(req.query);
 
     res.send(jsonBlock);
 });
 
 router.get('/docente/horaDescDocente', async function(req, res) {
-    let jsonBlock;
-    jsonBlock = await descargaController.horasDescarga(req.query);
+    let jsonBlock={};
+    jsonBlock.descargas = await descargaController.horasDescarga(req.query);
 
     res.send(jsonBlock);
 });
