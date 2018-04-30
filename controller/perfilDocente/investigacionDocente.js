@@ -76,7 +76,7 @@ async function registraInvestigaciones(preferencesObject){
         //registra investigacion
         let fecha_i ;
         let fecha_f;
-        console.log(preferencesObject);
+        //console.log(preferencesObject);
         if (preferencesObject.fecha_inicio!=null) {
             console.log("Fecha inicio NO es nulo");
              fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
@@ -96,7 +96,7 @@ async function registraInvestigaciones(preferencesObject){
 
 
 
-        console.log(fecha_i);
+        //console.log(fecha_i);
 
          await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
             {
@@ -122,13 +122,13 @@ async function registraInvestigaciones(preferencesObject){
             }
         );
         console.log("Investigacion registrada correctamente");
-        console.log(last_id[0].nuevo_id);
+        //console.log(last_id[0].nuevo_id);
 
 
         let autores=[] ;
         let i;
         longitud=preferencesObject.autor.length;
-        console.log(longitud)
+        //console.log(longitud)
         for ( i =0; i<longitud;i++){
 
             await sequelize.query('CALL insertaAutorInvestigacion(:codigo_profesor,:id_investigacion)',

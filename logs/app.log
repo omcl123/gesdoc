@@ -1050,3 +1050,9 @@
 {"level":"info","message":"::1 - - [30/Apr/2018:00:23:58 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 15 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-30T00:23:58.954Z"}
 {"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-04-30T00:24:33.098Z"}
 {"level":"info","message":"::1 - - [30/Apr/2018:00:24:33 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 15 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-30T00:24:33.110Z"}
+{"level":"error","message":"registraInvestigaciones failed","timestamp":"2018-04-30T00:56:13.479Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:00:56:13 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 15 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-30T00:56:13.700Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-04-30T01:10:59.428Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:01:10:59 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 14 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-30T01:10:59.451Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-04-30T01:13:55.345Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:01:13:55 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 23 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-30T01:13:55.369Z"}

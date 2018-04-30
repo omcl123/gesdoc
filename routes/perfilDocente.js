@@ -58,7 +58,7 @@ router.get('/docente/horaDescDocente', async function(req, res) {
 
 router.post('/investigacion/registrar',async function (req,res){ //Aqui ira el registro de investigaciones
     let jsonRes={}
-    jsonRes.nuevo_id=await investigacionController.registraInvestigaciones(req.body);
+    jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigaciones(req.body);
     res.send(jsonRes);
 
 });
