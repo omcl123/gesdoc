@@ -3,12 +3,14 @@ const router = express.Router();
 const listaController = require('../controller/general/listas');
 
 router.get('/listaDocente', async function (req, res) {
-    let queryResult = await listaController.listaDocente()
+    let queryResult= {};
+    queryResult.docentes = await listaController.listaDocente()
     res.send(queryResult) ;
 });
 
 router.get('/listaCiclos', async function (req, res) {
-    let queryResult = await listaController.listaCiclos()
+    let queryResult= {};
+    queryResult.ciclos = await listaController.listaCiclos()
     res.send(queryResult) ;
 });
 
