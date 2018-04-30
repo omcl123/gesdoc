@@ -27,15 +27,17 @@ async function cargaDocente(dataArray) {
                 let email = item[5];
                 let seccion = item[6]
                 let tipo = item[7];
+                let codigo = item[8];
                 if (nombre === undefined || apellidoP === undefined || apellidoM === undefined|| dni === undefined
-                    || telefono === undefined|| seccion === undefined|| tipo === undefined|| email === undefined){
+                    || telefono === undefined|| seccion === undefined|| tipo === undefined|| email === undefined
+                    || codigo === undefined ){
                     return message = "cargaDocente Failed undefined or empty columns";
                 }else{
-                    let esRepetido = await sequelize.query(`CALL verifica_docente_repetido (${dni})`);
+                    let esRepetido = await sequelize.query(`CALL verifica_docente_repetido (${codigo})`);
 
                     if (esRepetido[0] === undefined) {
                         await sequelize.query(`CALL insert_docente ('${nombre}', '${apellidoP}', '${apellidoM}',
-                        ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}')`);
+                        ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}'),${codigo}`);
                     }
                     return message = "cargaDocente success on execution";
                 }
