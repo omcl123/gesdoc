@@ -57,13 +57,15 @@ router.get('/docente/horaDescDocente', async function(req, res) {
 
 router.post('/investigacion/registrar',async function (req,res){ //Aqui ira el registro de investigaciones
     let jsonRes={}
-    jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigaciones(req.body);
+    jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigacion(req.body);
     res.send(jsonRes);
 
 });
 
 router.put('/investigacion/actualizar',async function (req,res){ //Aqui ira la actualizacion de investigaciones
-    res.send("Aqui ira la actualizacion de investigaciones");
+
+
+    //res.send("Aqui ira la actualizacion de investigaciones");
 
 });
 router.delete('/investigacion/eliminar',async function (req,res){ //Aqui ira la eliminacion de investigaciones

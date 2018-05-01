@@ -28,11 +28,10 @@ async function devuelveDocente(preferencesObject){
         //
         // let jsonBlock =await querydB(query); //calling sp from the db
 
-        let result = await sequelize.query('CALL devuelveDocente(:id_profesor,:nombre_ciclo)',
+        let result = await sequelize.query('CALL devuelveDocente(:id_profesor)',
             {
                 replacements: {
                     id_profesor: parseInt(preferencesObject.codigo),
-                    nombre_ciclo: preferencesObject.ciclo,
 
                 }
             }
