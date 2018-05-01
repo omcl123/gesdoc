@@ -63,14 +63,17 @@ router.post('/investigacion/registrar',async function (req,res){ //Aqui ira el r
 });
 
 router.put('/investigacion/actualizar',async function (req,res){ //Aqui ira la actualizacion de investigaciones
-
-
+    let jsonRes={}
+    jsonRes.mensaje=await investigacionController.actualizaInvestigacion(req.body);
+    res.send(jsonRes);
     //res.send("Aqui ira la actualizacion de investigaciones");
 
 });
 router.delete('/investigacion/eliminar',async function (req,res){ //Aqui ira la eliminacion de investigaciones
-    res.send("Aqui ira la eliminacion de investigaciones");
-
+    //res.send("Aqui ira la eliminacion de investigaciones");
+    let jsonRes={}
+    jsonRes.mensaje=await investigacionController.eliminarInvestigacion(req.body);
+    res.send(jsonRes);
 });
 
 router.get('/ayudaEconomica/lista', async function(req, res) {

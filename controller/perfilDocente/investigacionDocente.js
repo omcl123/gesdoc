@@ -182,7 +182,7 @@ async function actualizaInvestigacion(preferencesObject){
             await sequelize.query('CALL actualizaInvestigacion(:id_investigacion,:titulo,:resumen,:fecha_inicio,:fecha_fin,:archivo,:hayfecha)',
                 {
                     replacements: {
-                        id_investigacion:preferencesObject.id,
+                        id_investigacion:parseInt(preferencesObject.id),
                         titulo: preferencesObject.titulo,
                         resumen: preferencesObject.resumen,
                         fecha_inicio: fecha_i,
@@ -198,8 +198,8 @@ async function actualizaInvestigacion(preferencesObject){
         longitud=preferencesObject.autor.length;
 
 
-
-
+        mensaje ="investigacion actualizado correctamente "+ parseInt(preferencesObject.id);
+        return mensaje;
 
 
     }catch(e){
@@ -209,8 +209,31 @@ async function actualizaInvestigacion(preferencesObject){
     }
 }
 
+async function eliminarInvestigacion(preferencesObject){
+
+    try{
+        //validar fechas
+
+        await sequelize.query('CALL eliminaInvestigacion(:id_investigacion)',
+            {
+                replacements: {
+                    id_investigacion:parseInt(preferencesObject.id),
+                }
+            }
+        );
+        mensaje ="investigacion eliminada correctamente "+ parseInt(preferencesObject.id);
+        return mensaje;
+
+
+    }catch(e){
+        console.log(e);
+        winston.error("registraInvestigaciones failed");
+        return -1;
+    }
+}
 module.exports ={
     devuelveListaInvestigacion:devuelveListaInvestigacion,
     registraInvestigacion:registraInvestigacion,
-    actualizaInvestigacion:actualizaInvestigacion
+    actualizaInvestigacion:actualizaInvestigacion,
+    eliminarInvestigacion:eliminarInvestigacion
 }
