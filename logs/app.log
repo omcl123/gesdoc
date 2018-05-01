@@ -1068,3 +1068,5 @@
 {"level":"info","message":"::1 - - [01/May/2018:02:27:15 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 231 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T02:27:15.421Z"}
 {"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T02:27:49.195Z"}
 {"level":"info","message":"::1 - - [01/May/2018:02:27:49 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 216 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T02:27:49.203Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:37:52.068Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:37:52 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 218 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:37:52.078Z"}
