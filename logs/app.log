@@ -1295,3 +1295,16 @@
 {"level":"info","message":"::1 - - [01/May/2018:18:36:30 +0000] \"DELETE /docente/investigacion/eliminar?id=1 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T18:36:30.770Z"}
 {"level":"info","message":"::1 - - [01/May/2018:18:36:51 +0000] \"DELETE /docente/investigacion/eliminar?id=5 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T18:36:51.279Z"}
 {"level":"info","message":"::1 - - [01/May/2018:18:37:42 +0000] \"DELETE /docente/investigacion/eliminar?id=100 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T18:37:42.136Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:01:14 +0000] \"DELETE /docente/investigacion/eliminar?id=7 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:01:14.816Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:02:29 +0000] \"PUT /docente/investigacion/actualizar HTTP/1.1\" 200 55 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:02:29.739Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:03:09 +0000] \"PUT /docente/investigacion/actualizar HTTP/1.1\" 200 55 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:03:09.121Z"}
+{"level":"error","message":"404 - Not Found - /docente/investigacion/eliminar?id=1 - PUT - ::1","timestamp":"2018-05-01T21:05:27.468Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:05:27 +0000] \"PUT /docente/investigacion/eliminar?id=1 HTTP/1.1\" 404 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:05:27.469Z"}
+{"level":"error","message":"404 - Not Found - /docente/investigacion/eliminar - PUT - ::1","timestamp":"2018-05-01T21:05:50.434Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:05:50 +0000] \"PUT /docente/investigacion/eliminar HTTP/1.1\" 404 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:05:50.434Z"}
+{"level":"error","message":"404 - Not Found - /docente/investigacion/eliminar - PUT - ::1","timestamp":"2018-05-01T21:06:25.400Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:06:25 +0000] \"PUT /docente/investigacion/eliminar HTTP/1.1\" 404 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:06:25.401Z"}
+{"level":"error","message":"404 - Not Found - /docente/investigacion/eliminar?id=1 - PUT - ::1","timestamp":"2018-05-01T21:06:37.390Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:06:37 +0000] \"PUT /docente/investigacion/eliminar?id=1 HTTP/1.1\" 404 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:06:37.390Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:07:41 +0000] \"DELETE /docente/investigacion/eliminar?id=1 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:07:41.793Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:08:13 +0000] \"DELETE /docente/investigacion/eliminar?id=2 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:08:13.089Z"}
