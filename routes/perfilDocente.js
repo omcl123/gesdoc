@@ -63,7 +63,9 @@ router.post('/investigacion/registrar',async function (req,res){ //Aqui ira el r
 });
 
 router.put('/investigacion/actualizar',async function (req,res){ //Aqui ira la actualizacion de investigaciones
-    res.send("Aqui ira la actualizacion de investigaciones");
+
+
+    //res.send("Aqui ira la actualizacion de investigaciones");
 
 });
 router.delete('/investigacion/eliminar',async function (req,res){ //Aqui ira la eliminacion de investigaciones

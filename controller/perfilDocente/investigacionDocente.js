@@ -35,6 +35,7 @@ async function devuelveListaInvestigacion(preferencesObject){
         console.log(investigaciones);
         let jsonInvestigaciones = await Promise.all(investigaciones.map(async item => {
             let innerPart={};
+            innerPart.id=item.id_investigacion;
             innerPart.titulo=item.titulo;
             innerPart.resumen=item.resumen;
             innerPart.estado=item.estado;
