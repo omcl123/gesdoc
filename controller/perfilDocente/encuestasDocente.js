@@ -107,6 +107,7 @@ async function listaEnxCiclo(preferencesObject){
             innerPart.id = item.id;
             innerPart.curso = item.curso;
             innerPart.horario = item.horario;
+            innerPart.ciclo = item.ciclo;
             innerPart.porcentaje = item.porcentaje;
             innerPart.puntaje = item.puntaje;
             let listaComentarios = await queryListaComentarios(preferencesObject,item.id_curso,item.ciclo);
