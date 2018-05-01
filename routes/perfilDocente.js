@@ -72,6 +72,7 @@ router.put('/investigacion/actualizar',async function (req,res){ //Aqui ira la a
 router.delete('/investigacion/eliminar',async function (req,res){ //Aqui ira la eliminacion de investigaciones
     //res.send("Aqui ira la eliminacion de investigaciones");
     let jsonRes={}
+    console.log(JSON.stringify(req.body));
     jsonRes.mensaje=await investigacionController.eliminarInvestigacion(req.body);
     res.send(jsonRes);
 });
