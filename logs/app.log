@@ -1308,3 +1308,6 @@
 {"level":"info","message":"::1 - - [01/May/2018:21:06:37 +0000] \"PUT /docente/investigacion/eliminar?id=1 HTTP/1.1\" 404 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:06:37.390Z"}
 {"level":"info","message":"::1 - - [01/May/2018:21:07:41 +0000] \"DELETE /docente/investigacion/eliminar?id=1 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:07:41.793Z"}
 {"level":"info","message":"::1 - - [01/May/2018:21:08:13 +0000] \"DELETE /docente/investigacion/eliminar?id=2 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:08:13.089Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:09:38 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:09:38.129Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:09:43 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:09:43.075Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:10:06 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:10:06.794Z"}
