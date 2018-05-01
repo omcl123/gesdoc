@@ -1311,3 +1311,4 @@
 {"level":"info","message":"::1 - - [01/May/2018:21:09:38 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:09:38.129Z"}
 {"level":"info","message":"::1 - - [01/May/2018:21:09:43 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:09:43.075Z"}
 {"level":"info","message":"::1 - - [01/May/2018:21:10:06 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:10:06.794Z"}
+{"level":"info","message":"::1 - - [01/May/2018:21:21:25 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-01T21:21:25.209Z"}

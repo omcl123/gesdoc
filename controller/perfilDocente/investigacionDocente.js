@@ -222,9 +222,7 @@ async function eliminarInvestigacion(preferencesObject){
             }
         );
         mensaje ="investigacion eliminada correctamente "+ parseInt(preferencesObject.id);
-        let i;
-        let size = preference
-        for (i ; i<)
+
 
 
         return mensaje;
