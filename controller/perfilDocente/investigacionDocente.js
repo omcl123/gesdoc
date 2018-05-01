@@ -63,20 +63,8 @@ function convertirFecha(date){
 async function registraInvestigaciones(preferencesObject){
 
     try{
-        // http://localhost:8080/docente/investigacion/registrar?titulo=titulo_random&autor[]=20112728&autor[]=213131&resumen=texto_random&fecha_inicio=20180429
-        // titulo=titulo_random&autor[]=20112728&autor[]=213131&resumen=texto_random&fecha_inicio=20180429&archivo=FALTA
-        //res.end("Aqui ira el registro de investigaciones );
-        //json = {"titulo","autor","resumen","fecha_inicio","fecha_fin","archivo"};
-        //json = req.body;
-        // console.log(preferencesObject);
-        // console.log(preferencesObject.autor[0]+ " "+ preferencesObject.autor[1]+ "longitud de autores: "+preferencesObject.autor.length);
-        // let autores = JSON.stringify(req.body.autor);
-        // console.log(autores);
-
-        //registra investigacion
         let fecha_i ;
         let fecha_f;
-        console.log(preferencesObject);
         if (preferencesObject.fecha_inicio!=null) {
             console.log("Fecha inicio NO es nulo");
              fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
@@ -96,7 +84,7 @@ async function registraInvestigaciones(preferencesObject){
 
 
 
-        console.log(fecha_i);
+
 
          await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
             {
@@ -122,13 +110,13 @@ async function registraInvestigaciones(preferencesObject){
             }
         );
         console.log("Investigacion registrada correctamente");
-        console.log(last_id[0].nuevo_id);
+        //console.log(last_id[0].nuevo_id);
 
 
         let autores=[] ;
         let i;
         longitud=preferencesObject.autor.length;
-        console.log(longitud)
+        //console.log(longitud)
         for ( i =0; i<longitud;i++){
 
             await sequelize.query('CALL insertaAutorInvestigacion(:codigo_profesor,:id_investigacion)',
