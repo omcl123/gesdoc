@@ -16,10 +16,11 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 async function listaAyudas(preferencesObject) {
 
     try {
-
-
+        let jsonBlock = await
+            sequelize.query(`CALL solicitud_profesor_ciclo(${preferencesObject.codigo},'${preferencesObject.ciclo}')`);
         winston.info("listaAyudas success");
-        return arrayCursos;
+        console.log(jsonBlock);
+        return jsonBlock;
     } catch(e) {
         winston.error("listaAyudas Failed: ",e);
         return "error";
