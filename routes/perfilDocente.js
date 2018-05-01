@@ -1,5 +1,12 @@
 const express = require('express');
 const router = express.Router();
+
+const bodyParser = require("body-parser");
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 const docenteController = require('../controller/perfilDocente/perfilDocente');
 const docenteActividadController = require('../controller/perfilDocente/actividadDocente');
 const docenteCursosController = require('../controller/perfilDocente/cursosCiclo');
@@ -24,6 +31,13 @@ router.get('/docente', async function(req, res) {
 router.get('/listaDocente', async function (req, res) {
     let queryResult = await listaDocenteController.listaDocente()
    res.send(queryResult) ;
+});
+
+
+router.post('/registraActividad', async function(req, res) {
+    let carga = await docenteActividadController.registraActividad(req.body);
+    console.log(req.body);
+    res.send(req.body);
 });
 
 module.exports = router;
