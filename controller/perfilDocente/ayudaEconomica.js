@@ -19,6 +19,7 @@ async function listaAyudas(preferencesObject) {
         let jsonBlock = await
             sequelize.query(`CALL solicitud_profesor_ciclo(${preferencesObject.codigo},'${preferencesObject.ciclo}')`);
         winston.info("listaAyudas success");
+        console.log(jsonBlock);
         return jsonBlock;
     } catch(e) {
         winston.error("listaAyudas Failed: ",e);
