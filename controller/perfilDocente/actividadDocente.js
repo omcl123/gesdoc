@@ -13,30 +13,87 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function querydB(query){
-    /*let query = `SELECT p.idProfesor AS 'Codigo Profesor',p.Nombre AS 'Nombre Profesor',a.Descripcion AS 'Actividad'
-                FROM profesor AS p
-                INNER JOIN actividad AS a
-                ON p.idProfesor = a.idProfesor;`;*/
+function listaInvestigacion(preferenceObject){
 
-    return sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
+
 }
 
-
-async function devuelveActividad(){
-    let jsonblock = {};
+async function devuelveListaActividad(preferencesObject){
+    let arregloInv = [];
     try{
-        let query = 'Call devuelveActividad()';
-        let jsonBlock = await querydB(query);
-        winston.info("devuelveActividad succesful");
-        return jsonBlock;
+        let actividades = await sequelize.query('CALL devuelveActividades(:id_profesor,:nombre_ciclo)',
+            {
+                replacements: {
+                    id_profesor: parseInt(preferencesObject.codigo),
+                    nombre_ciclo: preferencesObject.ciclo,
 
+                }
+            }
+        );
+        console.log(actividades);
+        let jsonActividades = await Promise.all(actividades.map(async item => {
+            let innerPart={};
+            innerPart.id=item.id;
+            innerPart.titulo=item.titulo;
+            innerPart.tipo=item.tipo;
+            innerPart.fecha_inicio=item.fecha_inicio;
+            innerPart.fecha_fin=item.fecha_fin;
+            innerPart.estado=item.estado;
+            return innerPart;
+        }));
+        console.log(jsonActividades);
+        winston.info("devuelveListaActividad succesful");
+        return jsonActividades;
+        //return arregloInv;
     }catch(e){
         console.log(e);
-        winston.error("devuelveActividad failed");
+        winston.error("devuelveListaActividad failed");
     }
 }
 
+
+
+async function registraActividad(dataArray) {
+    let message = "";
+
+    try {
+
+        let idProfesor = dataArray.idProfesor;
+        let ciclo = dataArray.ciclo;
+        let tipo = dataArray.tipo;
+        let titulo = dataArray.titulo;
+        let fecha_inicio = dataArray.fecha_inicio;
+        let fecha_fin = dataArray.fecha_fin;
+        let estado = dataArray.estado;
+        let lugar = dataArray.lugar;
+
+
+        let idCiclo = await sequelize.query(`CALL devuelveIdCiclo('${ciclo}')`);
+        let idTipo = await sequelize.query(`CALL devuelveIdTipoActividad('${tipo}')`);
+        let idEstado = await sequelize.query(`CALL devuelveIdEstadoActividad('${estado}')`);
+
+        if (idCiclo[0].id == undefined || idCiclo[0].id == undefined || idCiclo[0].id == undefined){
+            winston.info("registraActividad success on execution");
+            return message = "registraActividad success on execution";
+        }
+
+        await sequelize.query(`CALL insertActividad ('${idProfesor}','${idCiclo[0].id}','${idTipo[0].id}','${titulo}','${fecha_inicio}','${fecha_fin}', '${idEstado[0].id}', '${lugar}')`);
+
+        return message = "registraActividad success on execution";
+
+
+        winston.info("registraActividad success on execution");
+        return message;
+
+    } catch(e) {
+        winston.error("registraActividad Failed: ",e);
+        message = "registraActividad Failed";
+        return message;
+    }
+}
+
+
 module.exports ={
-    devuelveActividad:devuelveActividad
+    registraActividad:registraActividad,
+    devuelveListaActividad:devuelveListaActividad
 }
