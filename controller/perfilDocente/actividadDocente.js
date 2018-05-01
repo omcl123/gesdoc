@@ -56,6 +56,7 @@ async function devuelveListaActividad(preferencesObject){
 
 
 
+
 async function registraActividad(dataArray) {
     let message = "";
 
@@ -77,21 +78,31 @@ async function registraActividad(dataArray) {
 
         if (idCiclo[0].id == undefined || idTipo[0].id == undefined || idEstado[0].id == undefined){
             winston.info("registraActividad success on execution");
-            return message = "registraActividad success on execution";
+            return -1;
         }
 
         await sequelize.query(`CALL insertActividad ('${idProfesor}','${idCiclo[0].id}','${idTipo[0].id}','${titulo}','${fecha_inicio}','${fecha_fin}', '${idEstado[0].id}', '${lugar}')`);
 
-        return message = "registraActividad success on execution";
 
+
+        let last_id = await  sequelize.query('CALL devuelveSiguienteId(:tabla )',
+            {
+
+                replacements: {
+                    tabla: "actividad",
+                }
+            }
+        );
+        console.log("Actividad registrada correctamente");
 
         winston.info("registraActividad success on execution");
-        return message;
+
+        let n_id=last_id[0].nuevo_id;
+        return n_id;
 
     } catch(e) {
         winston.error("registraActividad Failed: ",e);
-        message = "registraActividad Failed";
-        return message;
+        return -1;
     }
 }
 
