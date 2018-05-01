@@ -83,5 +83,26 @@ router.get('/ayudaEconomica/lista', async function(req, res) {
     res.send(jsonBlock);
 });
 
+router.post('/actividad/registrar',async function (req,res){
+    let jsonRes={}
+    jsonRes.nuevo_id_Actividad=await docenteActividadController.registraActividad(req.body);
+    res.send(jsonRes);
+
+});
+
+router.put('/actividad/actualizar',async function (req,res){
+    let jsonRes={}
+    jsonRes.mensaje=await docenteActividadController.actualizaActividad(req.body);
+    res.send(jsonRes);
+
+
+});
+router.delete('/actividad/eliminar',async function (req,res){
+    let jsonRes={}
+    jsonRes.mensaje=await docenteActividadController.eliminaActividad(req.body);
+    res.send(jsonRes);
+});
+
+
 
 module.exports = router;
