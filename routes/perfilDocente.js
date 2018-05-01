@@ -15,7 +15,7 @@ router.get('/docente/general', async function(req, res) {
     jsonBlock= await docenteController.devuelveDocente(req.query);
     res.send(jsonBlock);
 
-s});
+});
 
 router.get('/docente/invDocente', async function(req, res) {
     let jsonBlock={};

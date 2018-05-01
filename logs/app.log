@@ -1146,3 +1146,19 @@
 {"level":"info","message":"listaEstadosAyudaEc success","timestamp":"2018-05-01T04:22:54.540Z"}
 {"level":"info","message":"::1 - - [01/May/2018:04:22:54 +0000] \"GET /general/listaEstadosAyudaEc HTTP/1.1\" 200 117 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:22:54.541Z"}
 
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T15:38:35.018Z"}
+{"level":"info","message":"::1 - - [01/May/2018:15:38:35 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 216 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:38:35.053Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-01T15:38:35.095Z"}
+{"level":"info","message":"::1 - - [01/May/2018:15:38:35 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente/general?codigo=20112728&ciclo=2018-1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:38:35.095Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T15:39:13.403Z"}
+{"level":"info","message":"::1 - - [01/May/2018:15:39:13 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:39:13.413Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-01T15:39:13.430Z"}
+{"level":"info","message":"::1 - - [01/May/2018:15:39:13 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente/general?codigo=20112728&ciclo=2018-1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:39:13.433Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T15:39:57.332Z"}
+{"level":"info","message":"::1 - - [01/May/2018:15:39:57 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:39:57.346Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-01T15:39:57.387Z"}
+{"level":"info","message":"::1 - - [01/May/2018:15:39:57 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente/general?codigo=20112728&ciclo=2018-1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:39:57.388Z"}
+{"level":"error","message":"404 - Not Found - /docente/docente/generaaSDSADSA - GET - ::1","timestamp":"2018-05-01T15:40:08.792Z"}
+{"level":"info","message":"::1 - - [01/May/2018:15:40:08 +0000] \"GET /docente/docente/generaaSDSADSA HTTP/1.1\" 404 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:40:08.792Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-01T15:40:08.811Z"}
+{"level":"info","message":"::1 - - [01/May/2018:15:40:08 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente/generaaSDSADSA\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:40:08.812Z"}
