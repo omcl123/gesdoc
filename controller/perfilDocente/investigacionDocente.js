@@ -14,6 +14,7 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
+let Investigacion={};
 function listaInvestigacion(preferenceObject){
 
 
@@ -49,6 +50,98 @@ async function devuelveListaInvestigacion(preferencesObject){
         winston.error("devuelveListaInvestigacion failed");
     }
 }
+function convertirFecha(date){
+    //20180429
+
+    let year = Math.trunc(date / 10000);
+    let month = Math.trunc((date - (10000 * year)) / 100);
+    let day = date - (10000 * year) - (100 * month);
+    let d = new Date(year + "-" + month + "-" + day);
+
+    return (d);
+}
+async function registraInvestigaciones(preferencesObject){
+
+    try{
+        let fecha_i ;
+        let fecha_f;
+        if (preferencesObject.fecha_inicio!=null) {
+            console.log("Fecha inicio NO es nulo");
+             fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
+        }else{
+            console.log("Fecha inicio es nulo");
+            fecha_i=null;
+        }
+
+
+        if (preferencesObject.fecha_fin != null) {
+            console.log("Fecha fin NO es nulo");
+             fecha_f =await  convertirFecha(preferencesObject.fecha_fin);
+        } else {
+            console.log("Fecha fin es nulo");
+            fecha_f = null;
+        }
+
+
+
+
+
+         await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
+            {
+
+                replacements: {
+
+                    titulo: preferencesObject.titulo,
+                    resumen: preferencesObject.resumen,
+                    fecha_inicio: fecha_i,
+                    fecha_fin: fecha_f,
+                    archivo: preferencesObject.archivo,
+                }
+            }
+        );
+
+
+        let last_id = await  sequelize.query('CALL devuelveSiguienteId(:tabla )',
+            {
+
+                replacements: {
+                    tabla: "investigacion",
+                }
+            }
+        );
+        console.log("Investigacion registrada correctamente");
+        //console.log(last_id[0].nuevo_id);
+
+
+        let autores=[] ;
+        let i;
+        longitud=preferencesObject.autor.length;
+        //console.log(longitud)
+        for ( i =0; i<longitud;i++){
+
+            await sequelize.query('CALL insertaAutorInvestigacion(:codigo_profesor,:id_investigacion)',
+                {
+
+                    replacements: {
+                        codigo_profesor:preferencesObject.autor[i],
+                        id_investigacion:last_id[0].nuevo_id
+                    }
+                }
+
+            );
+            console.log("Autor # "+i+ ": "+preferencesObject.autor[i]+" registrado correctamente");
+            winston.info("registraInvestigaciones success on execution");
+            let n_id=last_id[0].nuevo_id;
+            return n_id;
+        }
+    }catch(e){
+        console.log(e);
+        winston.error("registraInvestigaciones failed");
+        return -1;
+    }
+}
+
 module.exports ={
-    devuelveListaInvestigacion:devuelveListaInvestigacion
+    devuelveListaInvestigacion:devuelveListaInvestigacion,
+    registraInvestigaciones:registraInvestigaciones
 }

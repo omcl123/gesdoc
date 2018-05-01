@@ -9,7 +9,7 @@ const indexRouter = require('./routes/index');
 const testsRouter = require('./routes/tests');
 const docenteRouter = require('./routes/perfilDocente');
 const cargaRouter = require('./routes/cargaDatos');
-
+const generalRouter = require('./routes/general');
 const app = express();
 
 const allowCrossDomain = function (req, res, next) {
@@ -30,7 +30,7 @@ app.use('/', indexRouter);
 app.use('/tests', testsRouter);
 app.use('/docente',docenteRouter);
 app.use('/carga',cargaRouter);
-
+app.use('/general',generalRouter);
 app.use('*',(req,res,next)=>{
     res.end('The link you followed may be broken, or the page may have been removed.');
     next();
@@ -60,7 +60,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.end('error');
 });
 
 
