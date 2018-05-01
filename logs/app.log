@@ -1064,3 +1064,7 @@
 {"level":"info","message":"::1 - - [30/Apr/2018:02:28:02 +0000] \"GET /general/listaCiclos HTTP/1.1\" 200 44 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:28:02.263Z"}
 {"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-30T02:28:39.044Z"}
 {"level":"info","message":"::1 - - [30/Apr/2018:02:28:39 +0000] \"GET /docente/docente/curDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 377 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:28:39.073Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T02:27:15.404Z"}
+{"level":"info","message":"::1 - - [01/May/2018:02:27:15 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 231 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T02:27:15.421Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T02:27:49.195Z"}
+{"level":"info","message":"::1 - - [01/May/2018:02:27:49 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 216 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T02:27:49.203Z"}
