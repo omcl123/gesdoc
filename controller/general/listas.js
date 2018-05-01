@@ -78,10 +78,27 @@ async function listaEstadosAyudaEc() {
     }
 }
 
+async function cicloActual(){
+    try {
+        let currentDate = new Date();
+        let day = currentDate.getDay();
+        let month = currentDate.getMonth();
+        let year = currentDate.getFullYear();
+        let response = await sequelize.query(`CALL encuentra_ciclo('${day}-${month}-${year}')`);
+        console.log(response);
+        winston.info("cicloActual success");
+        return response[0].descripcion;
+    } catch(e) {
+        winston.error("cicloActual Failed: ",e);
+        return "error";
+    }
+}
+
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
     listaSeccciones: listaSeccciones,
     listaEstadosAyudaEc: listaEstadosAyudaEc,
-    listaMotivosAyudaEc: listaMotivosAyudaEc
+    listaMotivosAyudaEc: listaMotivosAyudaEc,
+    cicloActual: cicloActual
 };
