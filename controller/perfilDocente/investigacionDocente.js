@@ -213,7 +213,7 @@ async function eliminarInvestigacion(preferencesObject){
 
     try{
         //validar fechas
-
+        console.log(JSON.stringify(preferencesObject));
         await sequelize.query('CALL eliminaInvestigacion(:id_investigacion)',
             {
                 replacements: {
