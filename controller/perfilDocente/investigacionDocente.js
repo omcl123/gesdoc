@@ -61,7 +61,7 @@ function convertirFecha(date){
 
     return (d);
 }
-async function registraInvestigaciones(preferencesObject){
+async function registraInvestigacion(preferencesObject){
 
     try{
         let fecha_i ;
@@ -99,7 +99,7 @@ async function registraInvestigaciones(preferencesObject){
                     archivo: preferencesObject.archivo,
                 }
             }
-        );
+         );
 
 
         let last_id = await  sequelize.query('CALL devuelveSiguienteId(:tabla )',
@@ -141,8 +141,76 @@ async function registraInvestigaciones(preferencesObject){
         return -1;
     }
 }
+async function actualizaInvestigacion(preferencesObject){
+
+    try{
+        //validar fechas
+        let fecha_i ;
+        let fecha_f;
+        if (preferencesObject.fecha_inicio!=null) {
+            console.log("Fecha inicio NO es nulo");
+            fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
+        }else{
+            console.log("Fecha inicio es nulo");
+            fecha_i=null;
+        }
+
+        let hay_fecha=1;
+        if (preferencesObject.fecha_fin != null) {
+            console.log("Fecha fin NO es nulo");
+            fecha_f =await  convertirFecha(preferencesObject.fecha_fin);
+            hay_fecha=1;
+            await sequelize.query('CALL actualizaInvestigacion(:id_investigacion,:titulo,:resumen,:fecha_inicio,:fecha_fin,:archivo,:hayfecha)',
+                {
+
+                    replacements: {
+                        id_investigacion:preferencesObject.id,
+                        titulo: preferencesObject.titulo,
+                        resumen: preferencesObject.resumen,
+                        fecha_inicio: fecha_i,
+                        fecha_fin: fecha_f,
+                        archivo: preferencesObject.archivo,
+                        hayfecha:hay_fecha
+                    }
+                }
+            );
+
+        } else {
+            console.log("Fecha fin es nulo");
+            fecha_f = null;
+            hay_fecha=2;
+            await sequelize.query('CALL actualizaInvestigacion(:id_investigacion,:titulo,:resumen,:fecha_inicio,:fecha_fin,:archivo,:hayfecha)',
+                {
+                    replacements: {
+                        id_investigacion:preferencesObject.id,
+                        titulo: preferencesObject.titulo,
+                        resumen: preferencesObject.resumen,
+                        fecha_inicio: fecha_i,
+                        fecha_fin: fecha_f,
+                        archivo: preferencesObject.archivo,
+                        hayfecha:hay_fecha
+                    }
+                }
+            );
+        }
+
+        let i;
+        longitud=preferencesObject.autor.length;
+
+
+
+
+
+
+    }catch(e){
+        console.log(e);
+        winston.error("registraInvestigaciones failed");
+        return -1;
+    }
+}
 
 module.exports ={
     devuelveListaInvestigacion:devuelveListaInvestigacion,
-    registraInvestigaciones:registraInvestigaciones
+    registraInvestigacion:registraInvestigacion,
+    actualizaInvestigacion:actualizaInvestigacion
 }
