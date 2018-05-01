@@ -40,4 +40,16 @@ router.post('/registraActividad', async function(req, res) {
     res.send(req.body);
 });
 
+router.post('/actualizaActividad', async function(req, res) {
+    let carga = await docenteActividadController.actualizaActividad(req.body);
+    console.log(req.body);
+    res.send(req.body);
+});
+
+router.post('/eliminaActividad', async function(req, res) {
+    let carga = await docenteActividadController.eliminaActividad(req.body);
+    console.log(req.body);
+    res.send(req.body);
+});
+
 module.exports = router;
