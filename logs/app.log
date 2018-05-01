@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T19:28:59.277Z"}
 {"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:28:59.381Z"}
 {"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:28:59.382Z"}
@@ -15,7 +15,7 @@
 {"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:34:28.239Z"}
 {"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:34:28.240Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:19:34:28 +0000] \"GET /docente/docente?codigo=2&ciclo=2018-1 HTTP/1.1\" 200 1029 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-04-25T19:34:28.482Z"}
-=======
+
 {"level":"info","message":"::1 - - [13/Apr/2018:21:23:30 +0000] \"GET / HTTP/1.1\" 200 170 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-13T21:23:30.961Z"}
 {"level":"info","message":"::1 - - [13/Apr/2018:21:23:31 +0000] \"GET /stylesheets/style.css HTTP/1.1\" 200 111 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-13T21:23:31.031Z"}
 {"level":"info","message":"::1 - - [13/Apr/2018:21:23:31 +0000] \"GET /favicon.ico HTTP/1.1\" 404 1172 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-13T21:23:31.162Z"}
@@ -562,7 +562,7 @@
 {"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-25T19:24:30.812Z"}
 {"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-25T19:24:30.814Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:19:24:30 +0000] \"GET /docente/docente?codigo=1&ciclo=2018-1 HTTP/1.1\" 200 1643 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36\"\n","timestamp":"2018-04-25T19:24:30.841Z"}
->>>>>>> develop
+
 {"level":"error","message":"404 - Not Found - /docente - GET - ::1","timestamp":"2018-04-25T20:43:08.954Z"}
 {"level":"info","message":"::1 - - [25/Apr/2018:20:43:09 +0000] \"GET /docente HTTP/1.1\" 404 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-25T20:43:09.335Z"}
 {"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-25T20:43:19.032Z"}
@@ -1107,3 +1107,42 @@
 {"level":"info","message":"::1 - - [01/May/2018:15:16:56 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente/actDocente?codigo=20112728&ciclo=2018-1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:16:56.872Z"}
 {"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-01T15:16:57.383Z"}
 {"level":"info","message":"::1 - - [01/May/2018:15:16:57 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente/invDocente?codigo=20112728&ciclo=2018-1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-01T15:16:57.386Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-04-30T02:14:54.899Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:02:14:54 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 126 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:14:54.910Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-04-30T02:15:37.117Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:02:15:37 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 734 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:15:37.119Z"}
+{"level":"info","message":"devuelveListaActividad succesful","timestamp":"2018-04-30T02:17:16.847Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:02:17:16 +0000] \"GET /docente/docente/actDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 326 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:17:16.850Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-30T02:25:24.609Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:02:25:24 +0000] \"GET /general/listaDocente HTTP/1.1\" 200 162 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:25:24.618Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-30T02:27:39.001Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:02:27:39 +0000] \"GET /general/listaDocente HTTP/1.1\" 200 175 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:27:39.010Z"}
+{"level":"info","message":"listaCiclos success","timestamp":"2018-04-30T02:28:02.261Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:02:28:02 +0000] \"GET /general/listaCiclos HTTP/1.1\" 200 44 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:28:02.263Z"}
+{"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-30T02:28:39.044Z"}
+{"level":"info","message":"::1 - - [30/Apr/2018:02:28:39 +0000] \"GET /docente/docente/curDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 377 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:28:39.073Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T02:27:15.404Z"}
+{"level":"info","message":"::1 - - [01/May/2018:02:27:15 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 231 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T02:27:15.421Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T02:27:49.195Z"}
+{"level":"info","message":"::1 - - [01/May/2018:02:27:49 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 216 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T02:27:49.203Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:37:52.068Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:37:52 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 218 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:37:52.078Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:44:00.271Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:44:00 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 218 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:44:00.282Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:44:57.171Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:44:57 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 272 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:44:57.175Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:47:53.002Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:47:53 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 334 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:47:53.003Z"}
+{"level":"info","message":"listaSeccciones success","timestamp":"2018-05-01T04:19:41.278Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:19:41 +0000] \"GET /general/listaSecciones HTTP/1.1\" 200 104 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:19:41.289Z"}
+{"level":"info","message":"listaMotivosAyudaEc success","timestamp":"2018-05-01T04:19:53.823Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:19:53 +0000] \"GET /general/listaMotivosAyudaEc HTTP/1.1\" 200 102 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:19:53.824Z"}
+{"level":"info","message":"listaSeccciones success","timestamp":"2018-05-01T04:20:33.693Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:20:33 +0000] \"GET /general/listaSecciones HTTP/1.1\" 200 104 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:20:33.695Z"}
+{"level":"info","message":"listaSeccciones success","timestamp":"2018-05-01T04:21:06.804Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:21:06 +0000] \"GET /general/listaSecciones HTTP/1.1\" 200 107 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:21:06.812Z"}
+{"level":"info","message":"listaMotivosAyudaEc success","timestamp":"2018-05-01T04:22:03.834Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:22:03 +0000] \"GET /general/listaMotivosAyudaEc HTTP/1.1\" 200 103 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:22:03.836Z"}
+{"level":"info","message":"listaEstadosAyudaEc success","timestamp":"2018-05-01T04:22:54.540Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:22:54 +0000] \"GET /general/listaEstadosAyudaEc HTTP/1.1\" 200 117 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:22:54.541Z"}
+
