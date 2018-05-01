@@ -53,6 +53,8 @@ async function devuelveListaActividad(preferencesObject){
 
 
 
+
+
 async function registraActividad(dataArray) {
     let message = "";
 
@@ -72,7 +74,7 @@ async function registraActividad(dataArray) {
         let idTipo = await sequelize.query(`CALL devuelveIdTipoActividad('${tipo}')`);
         let idEstado = await sequelize.query(`CALL devuelveIdEstadoActividad('${estado}')`);
 
-        if (idCiclo[0].id == undefined || idCiclo[0].id == undefined || idCiclo[0].id == undefined){
+        if (idCiclo[0].id == undefined || idTipo[0].id == undefined || idEstado[0].id == undefined){
             winston.info("registraActividad success on execution");
             return message = "registraActividad success on execution";
         }
@@ -93,7 +95,74 @@ async function registraActividad(dataArray) {
 }
 
 
+
+async function actualizaActividad(dataArray) {
+    let message = "";
+
+    try {
+
+        let id_actividad = dataArray.id_actividad;
+        let tipo = dataArray.tipo;
+        let titulo = dataArray.titulo;
+        let fecha_inicio = dataArray.fecha_inicio;
+        let fecha_fin = dataArray.fecha_fin;
+        let estado = dataArray.estado;
+        let lugar = dataArray.lugar;
+
+
+        let idTipo = await sequelize.query(`CALL devuelveIdTipoActividad('${tipo}')`);
+        let idEstado = await sequelize.query(`CALL devuelveIdEstadoActividad('${estado}')`);
+
+        if (idTipo[0].id == undefined || idEstado[0].id == undefined){
+            winston.info("actualizaActividad success on execution");
+            return message = "actualizaActividad success on execution";
+        }
+
+        await sequelize.query(`CALL update_actividad ('${id_actividad}','${fecha_inicio}','${fecha_fin}','${titulo}','${idEstado[0].id}', '${idTipo[0].id}', '${lugar}')`);
+
+        return message = "actualizaActividad success on execution";
+
+
+        winston.info("actualizaActividad success on execution");
+        return message;
+
+    } catch(e) {
+        winston.error("actualizaActividad Failed: ",e);
+        message = "actualizaActividad Failed";
+        return message;
+    }
+}
+
+
+async function eliminaActividad(dataArray) {
+    let message = "";
+
+    try {
+
+        let id_actividad = dataArray.id_actividad;
+
+
+        await sequelize.query(`CALL delete_actividad ('${id_actividad}')`);
+
+        return message = "eliminaActividad success on execution";
+
+
+        winston.info("eliminaActividad success on execution");
+        return message;
+
+    } catch(e) {
+        winston.error("eliminaActividad Failed: ",e);
+        message = "eliminaActividad Failed";
+        return message;
+    }
+}
+
+
+
+
 module.exports ={
     registraActividad:registraActividad,
-    devuelveListaActividad:devuelveListaActividad
+    devuelveListaActividad:devuelveListaActividad,
+    actualizaActividad:actualizaActividad,
+    eliminaActividad:eliminaActividad
 }
