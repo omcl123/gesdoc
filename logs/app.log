@@ -1433,3 +1433,6 @@
 {"level":"info","message":"::1 - - [02/May/2018:17:41:01 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 14 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T17:41:01.698Z"}
 {"level":"error","message":"400 - Unexpected token , in JSON at position 9 - /docente/investigacion/eliminar - DELETE - ::1","timestamp":"2018-05-02T17:41:08.105Z"}
 {"level":"info","message":"::1 - - [02/May/2018:17:41:08 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 400 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T17:41:08.106Z"}
+{"level":"info","message":"::1 - - [02/May/2018:17:52:58 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T17:52:58.500Z"}
+{"level":"info","message":"::1 - - [02/May/2018:17:53:51 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T17:53:51.666Z"}
+{"level":"info","message":"::1 - - [02/May/2018:18:00:34 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T18:00:34.623Z"}
