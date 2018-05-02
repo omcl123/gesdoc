@@ -13,9 +13,31 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-async function cargaEncuestas(preferencesObject) {
+async function cargaEncuestas(dataArray) {
 
     try {
+        await dataArray.map(async item => {
+            try{
+                let id_horario_profesor = item[0];
+                let puntaje = item[1];
+                let comentario = item[2];
+
+                if (id_horario_profesor === undefined || puntaje === undefined || comentario === undefined){
+                    return message = "cargaCurso Failed undefined or empty columns";
+                }else{
+
+
+                        await sequelize.query(`CALL insert_encuesta ('${id_horario_profesor}', '${puntaje}', '${comentario}')`);
+
+                    return message = "cargaEncuesta  success on execution";
+                }
+            }catch (e) {
+                winston.error("cargaEncuesta Failed: ",e);
+                message = "cargaEncuesta Failed";
+                return message;
+            }
+        });
+
         let result = {};
         winston.info("cargaEncuestas success on execution");
         return result;
