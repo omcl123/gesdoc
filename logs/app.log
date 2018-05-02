@@ -1088,3 +1088,8 @@
 {"level":"info","message":"::1 - - [01/May/2018:04:22:03 +0000] \"GET /general/listaMotivosAyudaEc HTTP/1.1\" 200 103 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:22:03.836Z"}
 {"level":"info","message":"listaEstadosAyudaEc success","timestamp":"2018-05-01T04:22:54.540Z"}
 {"level":"info","message":"::1 - - [01/May/2018:04:22:54 +0000] \"GET /general/listaEstadosAyudaEc HTTP/1.1\" 200 117 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:22:54.541Z"}
+{"level":"error","message":"404 - Not Found - /docente/docente/encDocente?codigo=202728&ciclo=2018-1 - POST - ::1","timestamp":"2018-05-02T17:21:14.983Z"}
+{"level":"info","message":"::1 - - [02/May/2018:17:21:15 +0000] \"POST /docente/docente/encDocente?codigo=202728&ciclo=2018-1 HTTP/1.1\" 404 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-02T17:21:15.037Z"}
+{"level":"info","message":"queryListaEncuestas succesful","timestamp":"2018-05-02T17:21:26.761Z"}
+{"level":"error","message":"listaEncuestas failed","timestamp":"2018-05-02T17:21:27.799Z"}
+{"level":"info","message":"::1 - - [02/May/2018:17:21:27 +0000] \"GET /docente/docente/encDocente?codigo=202728&ciclo=2018-1 HTTP/1.1\" 200 2 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-02T17:21:27.804Z"}

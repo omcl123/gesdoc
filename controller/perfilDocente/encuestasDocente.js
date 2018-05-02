@@ -60,12 +60,12 @@ async function listaEncuestas(preferencesObject) {
         let jsonEncuestasComentarios = Promise.all(jsonEncuestas.map(async item => {
             let innerPart = {};
             innerPart.id = item.id;
+            innerPart.codigo = item.codCurso;
             innerPart.curso = item.curso;
             innerPart.horario = item.horario;
             innerPart.porcentaje = item.porcentaje;
             innerPart.puntaje = item.puntaje;
-            let listaComentarios = await queryListaComentarios(preferencesObject,item.id_curso);
-            innerPart.comentarios = listaComentarios;
+            innerPart.comentarios = await queryListaComentarios(preferencesObject, item.id_curso);
             return innerPart;
         }));
 
