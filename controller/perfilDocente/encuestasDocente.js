@@ -105,6 +105,7 @@ async function listaEnxCiclo(preferencesObject){
         let jsonEncuestasComentarios = Promise.all(jsonEncuestas.map(async item => {
             let innerPart = {};
             innerPart.id = item.id;
+            innerPart.codigo = item.codCurso;
             innerPart.curso = item.curso;
             innerPart.horario = item.horario;
             innerPart.ciclo = item.ciclo;
