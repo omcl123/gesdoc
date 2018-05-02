@@ -71,7 +71,9 @@ async function registraInvestigacion(preferencesObject){
              fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
         }else{
             console.log("Fecha inicio es nulo");
+            winston.info("Fecha inicio no puede ser nulo");
             fecha_i=null;
+            return -1;
         }
 
 
@@ -83,8 +85,16 @@ async function registraInvestigacion(preferencesObject){
             fecha_f = null;
         }
 
-
-
+        if ((preferencesObject.titulo==null) ||
+            (preferencesObject.titulo=="")  ) {
+            winston.info("Titulo no pueden ser nulos");
+            return -1;
+        }
+        if ((preferencesObject.resumen==null) ||
+            (preferencesObject.resumen=="") ) {
+            winston.info("Resumen no pueden ser nulos");
+            return -1;
+        }
 
 
          await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
@@ -131,10 +141,11 @@ async function registraInvestigacion(preferencesObject){
 
             );
             console.log("Autor # "+i+ ": "+preferencesObject.autor[i]+" registrado correctamente");
-            winston.info("registraInvestigaciones success on execution");
-            let n_id=last_id[0].nuevo_id;
-            return n_id;
         }
+
+        winston.info("registraInvestigaciones success on execution");
+        let n_id=last_id[0].nuevo_id;
+        return n_id;
     }catch(e){
         console.log(e);
         winston.error("registraInvestigaciones failed");
@@ -153,7 +164,24 @@ async function actualizaInvestigacion(preferencesObject){
         }else{
             console.log("Fecha inicio es nulo");
             fecha_i=null;
+            winston.info("Fecha inicio no puede ser nulo");
+            return -1
         }
+        if ((preferencesObject.id==null) ||(preferencesObject.id=="")){
+            winston.info("ID no puede ser nulo");
+            return -1;
+        }
+        if ((preferencesObject.titulo==null) ||
+            (preferencesObject.titulo=="")  ) {
+            winston.info("Titulo o resumen no pueden ser nulos");
+            return -1;
+        }
+        if ((preferencesObject.resumen==null) ||
+            (preferencesObject.resumen=="") ) {
+            winston.info("Resumen no pueden ser nulos");
+            return -1;
+        }
+
 
         let hay_fecha=1;
         if (preferencesObject.fecha_fin != null) {
@@ -214,6 +242,11 @@ async function eliminarInvestigacion(preferencesObject){
     try{
         //validar fechas
         console.log(JSON.stringify(preferencesObject));
+        if ((preferencesObject.id==null) ||(preferencesObject.id=="")){
+            winston.info("ID no puede ser nulo");
+            return -1;
+        }
+
         await sequelize.query('CALL eliminaInvestigacion(:id_investigacion)',
             {
                 replacements: {
