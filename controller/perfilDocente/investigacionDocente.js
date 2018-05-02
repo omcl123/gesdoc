@@ -35,6 +35,7 @@ async function devuelveListaInvestigacion(preferencesObject){
         console.log(investigaciones);
         let jsonInvestigaciones = await Promise.all(investigaciones.map(async item => {
             let innerPart={};
+            innerPart.id=item.id_investigacion;
             innerPart.titulo=item.titulo;
             innerPart.resumen=item.resumen;
             innerPart.estado=item.estado;
@@ -60,23 +61,11 @@ function convertirFecha(date){
 
     return (d);
 }
-async function registraInvestigaciones(preferencesObject){
+async function registraInvestigacion(preferencesObject){
 
     try{
-        // http://localhost:8080/docente/investigacion/registrar?titulo=titulo_random&autor[]=20112728&autor[]=213131&resumen=texto_random&fecha_inicio=20180429
-        // titulo=titulo_random&autor[]=20112728&autor[]=213131&resumen=texto_random&fecha_inicio=20180429&archivo=FALTA
-        //res.end("Aqui ira el registro de investigaciones );
-        //json = {"titulo","autor","resumen","fecha_inicio","fecha_fin","archivo"};
-        //json = req.body;
-        // console.log(preferencesObject);
-        // console.log(preferencesObject.autor[0]+ " "+ preferencesObject.autor[1]+ "longitud de autores: "+preferencesObject.autor.length);
-        // let autores = JSON.stringify(req.body.autor);
-        // console.log(autores);
-
-        //registra investigacion
         let fecha_i ;
         let fecha_f;
-        console.log(preferencesObject);
         if (preferencesObject.fecha_inicio!=null) {
             console.log("Fecha inicio NO es nulo");
              fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
@@ -96,7 +85,7 @@ async function registraInvestigaciones(preferencesObject){
 
 
 
-        console.log(fecha_i);
+
 
          await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
             {
@@ -110,7 +99,7 @@ async function registraInvestigaciones(preferencesObject){
                     archivo: preferencesObject.archivo,
                 }
             }
-        );
+         );
 
 
         let last_id = await  sequelize.query('CALL devuelveSiguienteId(:tabla )',
@@ -122,13 +111,13 @@ async function registraInvestigaciones(preferencesObject){
             }
         );
         console.log("Investigacion registrada correctamente");
-        console.log(last_id[0].nuevo_id);
+        //console.log(last_id[0].nuevo_id);
 
 
         let autores=[] ;
         let i;
         longitud=preferencesObject.autor.length;
-        console.log(longitud)
+        //console.log(longitud)
         for ( i =0; i<longitud;i++){
 
             await sequelize.query('CALL insertaAutorInvestigacion(:codigo_profesor,:id_investigacion)',
@@ -152,8 +141,102 @@ async function registraInvestigaciones(preferencesObject){
         return -1;
     }
 }
+async function actualizaInvestigacion(preferencesObject){
 
+    try{
+        //validar fechas
+        let fecha_i ;
+        let fecha_f;
+        if (preferencesObject.fecha_inicio!=null) {
+            console.log("Fecha inicio NO es nulo");
+            fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
+        }else{
+            console.log("Fecha inicio es nulo");
+            fecha_i=null;
+        }
+
+        let hay_fecha=1;
+        if (preferencesObject.fecha_fin != null) {
+            console.log("Fecha fin NO es nulo");
+            fecha_f =await  convertirFecha(preferencesObject.fecha_fin);
+            hay_fecha=1;
+            await sequelize.query('CALL actualizaInvestigacion(:id_investigacion,:titulo,:resumen,:fecha_inicio,:fecha_fin,:archivo,:hayfecha)',
+                {
+
+                    replacements: {
+                        id_investigacion:preferencesObject.id,
+                        titulo: preferencesObject.titulo,
+                        resumen: preferencesObject.resumen,
+                        fecha_inicio: fecha_i,
+                        fecha_fin: fecha_f,
+                        archivo: preferencesObject.archivo,
+                        hayfecha:hay_fecha
+                    }
+                }
+            );
+
+        } else {
+            console.log("Fecha fin es nulo");
+            fecha_f = null;
+            hay_fecha=2;
+            await sequelize.query('CALL actualizaInvestigacion(:id_investigacion,:titulo,:resumen,:fecha_inicio,:fecha_fin,:archivo,:hayfecha)',
+                {
+                    replacements: {
+                        id_investigacion:parseInt(preferencesObject.id),
+                        titulo: preferencesObject.titulo,
+                        resumen: preferencesObject.resumen,
+                        fecha_inicio: fecha_i,
+                        fecha_fin: fecha_f,
+                        archivo: preferencesObject.archivo,
+                        hayfecha:hay_fecha
+                    }
+                }
+            );
+        }
+
+        let i;
+        longitud=preferencesObject.autor.length;
+
+
+        mensaje ="investigacion actualizado correctamente "+ parseInt(preferencesObject.id);
+        return mensaje;
+
+
+    }catch(e){
+        console.log(e);
+        winston.error("registraInvestigaciones failed");
+        return -1;
+    }
+}
+
+async function eliminarInvestigacion(preferencesObject){
+
+    try{
+        //validar fechas
+        console.log(JSON.stringify(preferencesObject));
+        await sequelize.query('CALL eliminaInvestigacion(:id_investigacion)',
+            {
+                replacements: {
+                    id_investigacion:parseInt(preferencesObject.id),
+                }
+            }
+        );
+        mensaje ="investigacion eliminada correctamente "+ parseInt(preferencesObject.id);
+
+
+
+        return mensaje;
+
+
+    }catch(e){
+        console.log(e);
+        winston.error("registraInvestigaciones failed");
+        return -1;
+    }
+}
 module.exports ={
     devuelveListaInvestigacion:devuelveListaInvestigacion,
-    registraInvestigaciones:registraInvestigaciones
+    registraInvestigacion:registraInvestigacion,
+    actualizaInvestigacion:actualizaInvestigacion,
+    eliminarInvestigacion:eliminarInvestigacion
 }

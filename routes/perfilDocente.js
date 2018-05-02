@@ -13,8 +13,8 @@ const ayudaEconController = require('../controller/perfilDocente/ayudaEconomica'
 router.get('/docente/general', async function(req, res) {
     let jsonBlock;
     jsonBlock= await docenteController.devuelveDocente(req.query);
-
     res.send(jsonBlock);
+
 });
 
 router.get('/docente/invDocente', async function(req, res) {
@@ -57,18 +57,24 @@ router.get('/docente/horaDescDocente', async function(req, res) {
 
 router.post('/investigacion/registrar',async function (req,res){ //Aqui ira el registro de investigaciones
     let jsonRes={}
-    jsonRes.nuevo_id=await investigacionController.registraInvestigaciones(req.body);
+    jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigacion(req.body);
     res.send(jsonRes);
 
 });
 
 router.put('/investigacion/actualizar',async function (req,res){ //Aqui ira la actualizacion de investigaciones
-    res.send("Aqui ira la actualizacion de investigaciones");
+    let jsonRes={}
+    jsonRes.mensaje=await investigacionController.actualizaInvestigacion(req.body);
+    res.send(jsonRes);
+    //res.send("Aqui ira la actualizacion de investigaciones");
 
 });
 router.delete('/investigacion/eliminar',async function (req,res){ //Aqui ira la eliminacion de investigaciones
-    res.send("Aqui ira la eliminacion de investigaciones");
-
+    //res.send("Aqui ira la eliminacion de investigaciones");
+    let jsonRes={}
+    console.log(JSON.stringify(req.body));
+    jsonRes.mensaje=await investigacionController.eliminarInvestigacion(req.body);
+    res.send(jsonRes);
 });
 
 router.get('/ayudaEconomica/lista', async function(req, res) {
@@ -77,6 +83,27 @@ router.get('/ayudaEconomica/lista', async function(req, res) {
 
     res.send(jsonBlock);
 });
+
+router.post('/actividad/registrar',async function (req,res){
+    let jsonRes={}
+    jsonRes.nuevo_id_Actividad=await docenteActividadController.registraActividad(req.body);
+    res.send(jsonRes);
+
+});
+
+router.put('/actividad/actualizar',async function (req,res){
+    let jsonRes={}
+    jsonRes.mensaje=await docenteActividadController.actualizaActividad(req.body);
+    res.send(jsonRes);
+
+
+});
+router.delete('/actividad/eliminar',async function (req,res){
+    let jsonRes={}
+    jsonRes.mensaje=await docenteActividadController.eliminaActividad(req.body);
+    res.send(jsonRes);
+});
+
 
 
 module.exports = router;
