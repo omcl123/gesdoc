@@ -1064,88 +1064,27 @@
 {"level":"info","message":"::1 - - [30/Apr/2018:02:28:02 +0000] \"GET /general/listaCiclos HTTP/1.1\" 200 44 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:28:02.263Z"}
 {"level":"info","message":"muestraCursosCiclo success","timestamp":"2018-04-30T02:28:39.044Z"}
 {"level":"info","message":"::1 - - [30/Apr/2018:02:28:39 +0000] \"GET /docente/docente/curDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 377 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-04-30T02:28:39.073Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.226Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.230Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.239Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.240Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.247Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.247Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.254Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.254Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.288Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.288Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.293Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.294Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.304Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.304Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.319Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.319Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.324Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.324Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.345Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.345Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.352Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.352Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.357Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.357Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.412Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.412Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.428Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.429Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.439Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.440Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.452Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.453Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.466Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.466Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.497Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.498Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.511Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.511Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.599Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.599Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.606Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.607Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.613Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.614Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.622Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.622Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.638Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.638Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.645Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.646Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.663Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.663Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.682Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.682Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:09.723Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:09 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:09.724Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.156Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.157Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.460Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.461Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.469Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.469Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.495Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.496Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.517Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.517Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.548Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.548Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.575Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.575Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.689Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.690Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.710Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.711Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.725Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.725Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.743Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.744Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.767Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.767Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.788Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.788Z"}
-{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.81.137","timestamp":"2018-05-02T14:58:16.800Z"}
-{"level":"info","message":"::ffff:10.100.81.137 - - [02/May/2018:14:58:16 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-02T14:58:16.800Z"}
-{"level":"info","message":"::1 - - [02/May/2018:15:19:46 +0000] \"POST /carga HTTP/1.1\" 200 5 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-02T15:19:46.803Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T02:27:15.404Z"}
+{"level":"info","message":"::1 - - [01/May/2018:02:27:15 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 231 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T02:27:15.421Z"}
+{"level":"info","message":"devuelveDocente succesful","timestamp":"2018-05-01T02:27:49.195Z"}
+{"level":"info","message":"::1 - - [01/May/2018:02:27:49 +0000] \"GET /docente/docente/general?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 216 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T02:27:49.203Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:37:52.068Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:37:52 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 218 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:37:52.078Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:44:00.271Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:44:00 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 218 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:44:00.282Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:44:57.171Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:44:57 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 272 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:44:57.175Z"}
+{"level":"info","message":"listaAyudas success","timestamp":"2018-05-01T03:47:53.002Z"}
+{"level":"info","message":"::1 - - [01/May/2018:03:47:53 +0000] \"GET /docente/ayudaEconomica/lista?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 334 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T03:47:53.003Z"}
+{"level":"info","message":"listaSeccciones success","timestamp":"2018-05-01T04:19:41.278Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:19:41 +0000] \"GET /general/listaSecciones HTTP/1.1\" 200 104 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:19:41.289Z"}
+{"level":"info","message":"listaMotivosAyudaEc success","timestamp":"2018-05-01T04:19:53.823Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:19:53 +0000] \"GET /general/listaMotivosAyudaEc HTTP/1.1\" 200 102 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:19:53.824Z"}
+{"level":"info","message":"listaSeccciones success","timestamp":"2018-05-01T04:20:33.693Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:20:33 +0000] \"GET /general/listaSecciones HTTP/1.1\" 200 104 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:20:33.695Z"}
+{"level":"info","message":"listaSeccciones success","timestamp":"2018-05-01T04:21:06.804Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:21:06 +0000] \"GET /general/listaSecciones HTTP/1.1\" 200 107 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:21:06.812Z"}
+{"level":"info","message":"listaMotivosAyudaEc success","timestamp":"2018-05-01T04:22:03.834Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:22:03 +0000] \"GET /general/listaMotivosAyudaEc HTTP/1.1\" 200 103 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:22:03.836Z"}
+{"level":"info","message":"listaEstadosAyudaEc success","timestamp":"2018-05-01T04:22:54.540Z"}
+{"level":"info","message":"::1 - - [01/May/2018:04:22:54 +0000] \"GET /general/listaEstadosAyudaEc HTTP/1.1\" 200 117 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\"\n","timestamp":"2018-05-01T04:22:54.541Z"}

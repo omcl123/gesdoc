@@ -39,7 +39,49 @@ async function listaCiclos() {
     }
 }
 
+async function listaSeccciones() {
+
+    try {
+        let response = await sequelize.query('CALL lista_secciones()');
+        console.log(response);
+        winston.info("listaSeccciones success");
+        return response;
+    } catch(e) {
+        winston.error("listaSeccciones Failed: ",e);
+        return "error";
+    }
+}
+
+async function listaMotivosAyudaEc() {
+
+    try {
+        let response = await sequelize.query('CALL lista_motivos()');
+        console.log(response);
+        winston.info("listaMotivosAyudaEc success");
+        return response;
+    } catch(e) {
+        winston.error("listaMotivosAyudaEc Failed: ",e);
+        return "error";
+    }
+}
+
+async function listaEstadosAyudaEc() {
+
+    try {
+        let response = await sequelize.query('CALL lista_estados_ayuda_economica()');
+        console.log(response);
+        winston.info("listaEstadosAyudaEc success");
+        return response;
+    } catch(e) {
+        winston.error("listaEstadosAyudaEc Failed: ",e);
+        return "error";
+    }
+}
+
 module.exports = {
     listaDocente: listaDocente,
-    listaCiclos: listaCiclos
+    listaCiclos: listaCiclos,
+    listaSeccciones: listaSeccciones,
+    listaEstadosAyudaEc: listaEstadosAyudaEc,
+    listaMotivosAyudaEc: listaMotivosAyudaEc
 };
