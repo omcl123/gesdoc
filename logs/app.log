@@ -1438,3 +1438,7 @@
 {"level":"info","message":"::1 - - [02/May/2018:17:53:51 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T17:53:51.666Z"}
 {"level":"info","message":"::1 - - [02/May/2018:18:00:34 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T18:00:34.623Z"}
 
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-03T00:05:57.655Z"}
+{"level":"info","message":"::1 - - [03/May/2018:00:05:57 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 28 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-03T00:05:57.681Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-03T00:07:32.232Z"}
+{"level":"info","message":"::1 - - [03/May/2018:00:07:32 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 28 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-03T00:07:32.233Z"}
