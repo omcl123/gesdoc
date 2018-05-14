@@ -37,7 +37,7 @@ async function cargaDocente(dataArray) {
 
                     if (esRepetido[0] === undefined) {
                         await sequelize.query(`CALL insert_docente ('${nombre}', '${apellidoP}', '${apellidoM}',
-                        ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}'),${codigo}`);
+                        ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}',${codigo})`);
                     }
                     return message = "cargaDocente success on execution";
                 }
