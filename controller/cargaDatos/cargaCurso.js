@@ -31,10 +31,10 @@ async function cargaCurso(dataArray) {
                     || facultad === undefined|| seccion === undefined|| tipoCurso === undefined|| tipoClase === undefined){
                     return message = "cargaCurso Failed undefined or empty columns";
                 }else{
-                    let esRepetido = await sequelize.query(`CALL verifica_curso_repetido (${codigo})`);
+                    let esRepetido = await sequelize.query(`CALL verifica_curso_repetido ('${codigo}')`);
 
                     if (esRepetido[0] === undefined) {
-                        await sequelize.query(`CALL insert_curso ('${nombre}', '${codigo}', ${creditos},
+                        await sequelize.query(`CALL insert_curso ( '${codigo}','${nombre}', ${creditos},
                         ${horasDictado}, '${facultad}', '${seccion}', '${tipoCurso}','${tipoClase}')`);
                     }
                     return message = "cargaCurso success on execution";
