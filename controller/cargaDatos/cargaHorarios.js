@@ -13,22 +13,32 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-async function cargaHorarios(preferencesObject) {
+async function cargaHorarios(dataArray) {
 
     try {
         await dataArray.map(async item => {
             try{
                 let codigoProf = item[0];
-                let codigoCurso = item[1];
-                let ciclo = item[2];
-                let codigoHorario = item[3];
+                let participacion = item[1];
+                let puntaje = item[2];
+                let codigoCurso = item[3];
+                let ciclo = item[4];
+                let codigoHorario = item[5];
 
                 if (codigoProf === undefined || codigoCurso === undefined || ciclo === undefined
                     || codigoHorario === undefined ){
                     return message = "cargaHorarios Failed undefined or empty columns";
                 }else{
+
+                    let esRepetido = await sequelize.query(`CALL verifica_curso_ciclo_repetido ('${codigoCurso}', '${ciclo}')`);
+
+                    if (esRepetido[0] === undefined) {
+                        await sequelize.query(`CALL insert_curso_ciclo ('${codigoCurso}', '${ciclo}')`);
+                        winston.info("cargaHorarios insert new cursoxciclo success on execution");
+                    }
+
                     await sequelize.query(`CALL insert_horario (${codigoProf}, '${codigoCurso}', '${ciclo}',
-                    '${codigoHorario}')`);
+                        '${codigoHorario}', ${participacion}, ${puntaje})`);
 
                     return message = "cargaHorarios  success on execution";
                 }
