@@ -1436,3 +1436,78 @@
 {"level":"info","message":"::1 - - [02/May/2018:17:52:58 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T17:52:58.500Z"}
 {"level":"info","message":"::1 - - [02/May/2018:17:53:51 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T17:53:51.666Z"}
 {"level":"info","message":"::1 - - [02/May/2018:18:00:34 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-02T18:00:34.623Z"}
+{"level":"error","message":"404 - Not Found - /docente/investigacion?id=1 - GET - ::1","timestamp":"2018-05-16T22:20:28.978Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:20:28 +0000] \"GET /docente/investigacion?id=1 HTTP/1.1\" 404 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-16T22:20:28.988Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-16T22:20:31.643Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:20:31 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/investigacion?id=1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-16T22:20:31.643Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:22:52 +0000] \"GET /docente/docente/investigacion?id=1 HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-16T22:22:52.770Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:24:26 +0000] \"GET /docente/docente/investigacion?id=1 HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-16T22:24:26.223Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T22:24:27.962Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T22:24:27.970Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:24:27 +0000] \"GET /docente/docente/investigacion?id=1 HTTP/1.1\" 200 534 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-16T22:24:27.973Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-16T22:24:28.086Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:24:28 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente/investigacion?id=1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-16T22:24:28.087Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T22:24:55.988Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:24:56 +0000] \"GET /docente/docente/investigacion?id=1 HTTP/1.1\" 200 514 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-16T22:24:56.008Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-16T22:24:56.031Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:24:56 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente/docente/investigacion?id=1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-16T22:24:56.031Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T22:25:07.452Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:25:07 +0000] \"GET /docente/docente/investigacion?id=1 HTTP/1.1\" 200 514 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T22:25:07.455Z"}
+{"level":"error","message":"devuelveListaInvestigacion failed","timestamp":"2018-05-16T22:45:16.002Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:45:16 +0000] \"GET /docente/docente/investigacion?id=1 HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T22:45:16.014Z"}
+{"level":"error","message":"devuelveListaInvestigacion failed","timestamp":"2018-05-16T22:53:03.166Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:53:03 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T22:53:03.171Z"}
+{"level":"error","message":"devuelveListaInvestigacion failed","timestamp":"2018-05-16T22:54:24.907Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:54:24 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T22:54:24.919Z"}
+{"level":"error","message":"devuelveListaInvestigacion failed","timestamp":"2018-05-16T22:55:17.403Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:55:17 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T22:55:17.414Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T22:55:39.533Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:55:39 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 587 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T22:55:39.560Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T22:59:47.942Z"}
+{"level":"info","message":"::1 - - [16/May/2018:22:59:47 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 290 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T22:59:47.965Z"}
+{"level":"error","message":"devuelveListaInvestigacion failed","timestamp":"2018-05-16T23:00:53.796Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:00:53 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:00:53.802Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:01:13.289Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:01:13 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 290 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:01:13.301Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:01:50.481Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:01:50 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 290 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:01:50.490Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:03:20.873Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:03:20 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 292 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:03:20.903Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:03:40.671Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:03:40 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 292 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:03:40.692Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:04:57.229Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:04:57 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 587 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:04:57.236Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:06:09.386Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:06:09 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 290 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:06:09.401Z"}
+{"level":"error","message":"devuelveListaInvestigacion failed","timestamp":"2018-05-16T23:06:43.176Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:06:43 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:06:43.183Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:09:27.844Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:09:27 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 290 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:09:27.852Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:11:47.754Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:11:47 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 290 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:11:47.762Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:14:19.955Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:14:19 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 585 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:14:19.964Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:23.389Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:23 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 585 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:23.397Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:28.642Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:28 +0000] \"GET /docente/docente/investigacion?id=1 HTTP/1.1\" 200 563 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:28.643Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:32.956Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:32 +0000] \"GET /docente/docente/investigacion?id=2 HTTP/1.1\" 200 557 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:32.957Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:35.791Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:35 +0000] \"GET /docente/docente/investigacion?id=3 HTTP/1.1\" 200 489 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:35.792Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:38.388Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:38 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 585 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:38.388Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:41.277Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:41 +0000] \"GET /docente/docente/investigacion?id=5 HTTP/1.1\" 200 683 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:41.278Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:45.771Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:45 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 585 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:45.772Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:48.450Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:48 +0000] \"GET /docente/docente/investigacion?id=6 HTTP/1.1\" 200 529 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:48.451Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:51.682Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:51 +0000] \"GET /docente/docente/investigacion?id=5 HTTP/1.1\" 200 683 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:51.682Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:15:54.129Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:15:54 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 585 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:15:54.130Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:23:11.503Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:23:11 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 367 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:23:11.511Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-16T23:23:57.102Z"}
+{"level":"info","message":"::1 - - [16/May/2018:23:23:57 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 345 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-16T23:23:57.111Z"}

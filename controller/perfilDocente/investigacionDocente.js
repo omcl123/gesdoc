@@ -15,11 +15,66 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 });
 
 let Investigacion={};
-function listaInvestigacion(preferenceObject){
-
-
+async function guardaDatos(qinvestigacion){
+    let inv = await Promise.all(qinvestigacion.map(async item => {
+        let innerPart={};
+        innerPart.id = item.id;
+        innerPart.titulo = item.titulo;
+        innerPart.resumen = item.resumen;
+        innerPart.fecha_inicio = item.fecha_inicio;
+        innerPart.fecha_fin = item.fecha_fin;
+        return innerPart;
+    }));
+    let i=0;
+    let investigacion ={};
+    investigacion = inv[0];
+    return investigacion;
 }
 
+async function devuelveInvestigacion (preferencesObject){
+    let jsonInvestigacion={};
+    try{
+         let qinvestigacion = await sequelize.query('CALL devuelveInvestigacion(:id_inv)',
+            {
+                replacements: {
+                    id_inv: parseInt(preferencesObject.id)
+                }
+            }
+        );
+
+        console.log(qinvestigacion);
+        let investigacion=await guardaDatos(qinvestigacion); //guardo los datos de 1 investigacion
+
+
+        jsonInvestigacion.investigacion=investigacion;
+
+        let qautores = await sequelize.query('CALL devuelveAutores(:id_inv)',
+            {
+                replacements: {
+                    id_inv: parseInt(preferencesObject.id)
+                }
+            }
+        );
+        console.log(qautores);
+        let autores = await Promise.all(qautores.map(async item => {
+            //let innerPart={};
+            //innerPart.codigo=item.codigo;
+            //innerPart.correo_pucp=item.correo_pucp;
+            //innerPart.nombres=item.nombres;
+            //innerPart.apellido_paterno=item.apellido_paterno;
+            //innerPart.apellido_materno=item.apellido_materno;
+            return item.codigo;
+        }));
+        jsonInvestigacion.autores=autores; // guardo los datos de todos los autores [ arreglo ed autores]
+        winston.info("devuelveListaInvestigacion succesful");
+        return jsonInvestigacion;
+
+    }catch(e){
+        console.log(e);
+        winston.error("devuelveListaInvestigacion failed");
+    }
+
+}
 async function devuelveListaInvestigacion(preferencesObject){
     let arregloInv = [];
     try{
@@ -271,5 +326,6 @@ module.exports ={
     devuelveListaInvestigacion:devuelveListaInvestigacion,
     registraInvestigacion:registraInvestigacion,
     actualizaInvestigacion:actualizaInvestigacion,
-    eliminarInvestigacion:eliminarInvestigacion
+    eliminarInvestigacion:eliminarInvestigacion,
+    devuelveInvestigacion:devuelveInvestigacion
 }

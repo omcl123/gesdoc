@@ -23,6 +23,13 @@ router.get('/docente/invDocente', async function(req, res) {
 
     res.send(jsonBlock);
 });
+router.get('/docente/investigacion', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock = await investigacionController.devuelveInvestigacion(req.query);
+
+    res.send(jsonBlock);
+});
+
 
 router.get('/docente/actDocente', async function(req, res) {
     let jsonBlock={};
