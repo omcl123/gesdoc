@@ -37,10 +37,11 @@ function horasDescargaDetalle(preferencesObject,id_curso,ciclo) {
 
 function horasDescargaListar(preferencesObject) {
     try {
-        let result =  sequelize.query('CALL HORAS_DESCARGA_LISTAR(:codigo)',
+        let result =  sequelize.query('CALL HORAS_DESCARGA_LISTAR_CICLO(:codigo,:ciclo)',
             {
                 replacements: {
-                    codigo: preferencesObject.codigo
+                    codigo: preferencesObject.codigo,
+                    ciclo: preferencesObject.ciclo
                 }
             }
         );
@@ -140,3 +141,4 @@ async function horasDescarga(preferencesObject) {
 module.exports  ={
     horasDescarga:horasDescarga
 }
+
