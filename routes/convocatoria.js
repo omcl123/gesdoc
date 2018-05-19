@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const convocatoriaController = require('../controller/convocatoria/convocatoria.js');
-
+const postulanteController = require('../controller/convocatoria/postulante.js');
 
 
 
@@ -25,6 +25,12 @@ router.get('/convocatoria/detalle', async function(req, res) {
 
 });
 
+//Listar Postulante
+router.get('/convocatoria/postulante/listar', async function (req,res){
+    let jsonBlock ={}
+    jsonBlock.postulante=await postulanteController.listarPostulante(req.query);
+    res.send(jsonBlock);
+});
 
 
 

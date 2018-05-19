@@ -1836,3 +1836,8 @@
 {"level":"info","message":"::1 - - [19/May/2018:03:42:10 +0000] \"PUT /docente/investigacion/actualizar/agregarAutores HTTP/1.1\" 200 42 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:42:10.820Z"}
 {"level":"info","message":"eliminarAutores success on execution","timestamp":"2018-05-19T03:42:32.606Z"}
 {"level":"info","message":"::1 - - [19/May/2018:03:42:32 +0000] \"DELETE /docente/investigacion/eliminar/eliminarAutores HTTP/1.1\" 200 39 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:42:32.607Z"}
+{"level":"info","message":"listarPostulante succesful","timestamp":"2018-05-19T22:48:50.242Z"}
+{"level":"info","message":"listarPostulante succesful","timestamp":"2018-05-19T22:49:15.495Z"}
+{"level":"info","message":"::1 - - [19/May/2018:22:49:15 +0000] \"GET /convocatoria/convocatoria/postulante/listar?id=1 HTTP/1.1\" 200 189 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\"\n","timestamp":"2018-05-19T22:49:15.504Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-19T22:49:15.561Z"}
+{"level":"info","message":"::1 - - [19/May/2018:22:49:15 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/convocatoria/convocatoria/postulante/listar?id=1\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\"\n","timestamp":"2018-05-19T22:49:15.562Z"}
