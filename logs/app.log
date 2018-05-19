@@ -1781,3 +1781,58 @@
 {"level":"error","message":"404 - Not Found - /general/listaCursos - GET - ::1","timestamp":"2018-05-15T13:39:48.945Z"}
 {"level":"info","message":"::1 - - [15/May/2018:13:39:48 +0000] \"GET /general/listaCursos HTTP/1.1\" 404 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\"\n","timestamp":"2018-05-15T13:39:48.946Z"}
 
+{"level":"info","message":"::1 - - [19/May/2018:02:02:53 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\"\n","timestamp":"2018-05-19T02:02:53.249Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:02:54 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\"\n","timestamp":"2018-05-19T02:02:54.664Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-19T02:02:55.230Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:02:55 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\"\n","timestamp":"2018-05-19T02:02:55.230Z"}
+{"level":"error","message":"404 - Not Found - /docente - GET - ::1","timestamp":"2018-05-19T02:03:05.646Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:03:05 +0000] \"GET /docente HTTP/1.1\" 404 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\"\n","timestamp":"2018-05-19T02:03:05.648Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-19T02:03:05.681Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:03:05 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"http://localhost:8080/docente\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\"\n","timestamp":"2018-05-19T02:03:05.681Z"}
+{"level":"error","message":"registraInvestigaciones failed","timestamp":"2018-05-19T02:06:10.539Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:06:10 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 29 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:06:10.543Z"}
+{"level":"error","message":"registraInvestigaciones failed","timestamp":"2018-05-19T02:10:06.138Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:10:06 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 29 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:10:06.147Z"}
+{"level":"error","message":"registraInvestigaciones failed","timestamp":"2018-05-19T02:11:30.626Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:11:30 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 29 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:11:30.629Z"}
+{"level":"error","message":"registraInvestigaciones failed","timestamp":"2018-05-19T02:12:07.598Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:12:07 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 29 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:12:07.607Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-19T02:13:03.817Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:13:03 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 29 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:13:03.831Z"}
+{"level":"info","message":"ID no puede ser nulo","timestamp":"2018-05-19T02:16:32.830Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:16:32 +0000] \"DELETE /docente/investigacion/eliminar?id=2 HTTP/1.1\" 200 14 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:16:32.831Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:18:14 +0000] \"DELETE /docente/investigacion/eliminar?id=2 HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:18:14.502Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:20:04 +0000] \"DELETE /docente/investigacion/eliminar HTTP/1.1\" 200 53 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:20:04.808Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-19T02:21:16.291Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:21:16 +0000] \"POST /docente/investigacion/registrar HTTP/1.1\" 200 29 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:21:16.294Z"}
+{"level":"error","message":"registraInvestigaciones failed","timestamp":"2018-05-19T02:24:35.090Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:24:35 +0000] \"PUT /docente/investigacion/actualizar HTTP/1.1\" 200 14 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:24:35.091Z"}
+{"level":"info","message":"::1 - - [19/May/2018:02:25:21 +0000] \"PUT /docente/investigacion/actualizar HTTP/1.1\" 200 56 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T02:25:21.535Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-19T03:09:19.946Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:09:19 +0000] \"GET /docente/docente/investigacion?id=2 HTTP/1.1\" 200 435 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:09:19.973Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-19T03:09:30.628Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:09:30 +0000] \"GET /docente/docente/investigacion?id=1 HTTP/1.1\" 200 445 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:09:30.631Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-19T03:09:34.926Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:09:34 +0000] \"GET /docente/docente/investigacion?id=3 HTTP/1.1\" 200 367 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:09:34.927Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-05-19T03:09:38.153Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:09:38 +0000] \"GET /docente/docente/investigacion?id=4 HTTP/1.1\" 200 345 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:09:38.153Z"}
+{"level":"error","message":"agregaAutores failed","timestamp":"2018-05-19T03:24:31.375Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:24:31 +0000] \"PUT /docente/investigacion/actualizar/agregarAutores HTTP/1.1\" 200 14 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:24:31.385Z"}
+{"level":"error","message":"400 - Unexpected token } in JSON at position 44 - /docente/investigacion/actualizar/agregarAutores - PUT - ::1","timestamp":"2018-05-19T03:27:18.260Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:27:18 +0000] \"PUT /docente/investigacion/actualizar/agregarAutores HTTP/1.1\" 400 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:27:18.268Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-19T03:27:28.840Z"}
+{"level":"error","message":"agregaAutores failed","timestamp":"2018-05-19T03:27:28.846Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:27:28 +0000] \"PUT /docente/investigacion/actualizar/agregarAutores HTTP/1.1\" 200 14 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:27:28.853Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-19T03:27:57.905Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:27:57 +0000] \"PUT /docente/investigacion/actualizar/agregarAutores HTTP/1.1\" 200 42 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:27:57.913Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-19T03:28:20.540Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:28:20 +0000] \"PUT /docente/investigacion/actualizar/agregarAutores HTTP/1.1\" 200 42 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:28:20.543Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-19T03:32:35.501Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:32:35 +0000] \"PUT /docente/investigacion/actualizar/agregarAutores HTTP/1.1\" 200 42 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:32:35.502Z"}
+{"level":"info","message":"eliminarAutores success on execution","timestamp":"2018-05-19T03:39:08.328Z"}
+{"level":"info","message":"eliminarAutores success on execution","timestamp":"2018-05-19T03:40:55.562Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:40:55 +0000] \"DELETE /docente/investigacion/eliminar/eliminarAutores HTTP/1.1\" 200 39 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:40:55.585Z"}
+{"level":"info","message":"registraInvestigaciones success on execution","timestamp":"2018-05-19T03:42:10.816Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:42:10 +0000] \"PUT /docente/investigacion/actualizar/agregarAutores HTTP/1.1\" 200 42 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:42:10.820Z"}
+{"level":"info","message":"eliminarAutores success on execution","timestamp":"2018-05-19T03:42:32.606Z"}
+{"level":"info","message":"::1 - - [19/May/2018:03:42:32 +0000] \"DELETE /docente/investigacion/eliminar/eliminarAutores HTTP/1.1\" 200 39 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-19T03:42:32.607Z"}
