@@ -10,7 +10,7 @@ const testsRouter = require('./routes/tests');
 const docenteRouter = require('./routes/perfilDocente');
 const cargaRouter = require('./routes/cargaDatos');
 const generalRouter = require('./routes/general');
-const asignacionHorariosRouter = require('./routes/manejoHorariosRoutes');
+const convocatoriaRouter=require('./routes/convocatoria');
 const app = express();
 
 const allowCrossDomain = function (req, res, next) {
@@ -30,9 +30,9 @@ app.use(allowCrossDomain);
 app.use('/', indexRouter);
 app.use('/tests', testsRouter);
 app.use('/docente',docenteRouter);
+app.use('/convocatoria',convocatoriaRouter);
 app.use('/carga',cargaRouter);
 app.use('/general',generalRouter);
-app.use('/asignacionHorarios',asignacionHorariosRouter);
 app.use('*',(req,res,next)=>{
     res.end('The link you followed may be broken, or the page may have been removed.');
     next();
