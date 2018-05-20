@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const formController = require('../controller/manejoHorarios/formulario');
 const preferenciasController = require('../controller/manejoHorarios/consultaPreferencias');
+const asignaDocenteController = require('../controller/manejoHorarios/asignacionDocente');
+const consultaCargaController = require('../controller/manejoHorarios/consultaCarga');
 /* GET home page. */
 router.get('/listaCursosPreferencia',async function(req, res) {
     let jsonblock;
@@ -33,20 +35,28 @@ router.get('/horariosCursoDisponible',async function(req, res) {
     res.send(jsonblock);
 });
 
-router.get('/listaDocenteAsignar', function(req, res) {
-    res.send('Hello, friend!');
+router.get('/listaDocenteAsignar',async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.listaDocenteAsignar(req.query);
+    res.send(jsonblock);
 });
 
-router.post('/asignarDocenteHorario', function(req, res) {
-    res.send('Hello, friend!');
+router.post('/asignarDocenteHorario', async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.asignaDocenteHorario(req.body);
+    res.send(jsonblock);
 });
 
-router.get('/listaDocenteCargaAsignada', function(req, res) {
-    res.send('Hello, friend!');
+router.get('/listaDocenteCargaAsignada',async function(req, res) {
+    let jsonblock;
+    jsonblock = await consultaCargaController.listaDocenteCargaAsignada(req.query);
+    res.send(jsonblock);
 });
 
-router.get('/detalleCargaDocenteAsignado', function(req, res) {
-    res.send('Hello, friend!');
+router.get('/detalleCargaDocenteAsignado',async function(req, res) {
+    let jsonblock;
+    jsonblock = await consultaCargaController.detalleCargaDocenteAsignado(req.query);
+    res.send(jsonblock);
 });
 
 module.exports = router;

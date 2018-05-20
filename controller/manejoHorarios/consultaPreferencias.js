@@ -49,8 +49,23 @@ async function consultaPreferencias(preferencesObject){
     return jsonBlock;
 }
 
-function getHorariosbyTeacherPreference(preferencesObject) {
-
+async function getHorariosbyTeacherPreference(preferencesObject) {
+    try {
+        let horariosArray = await sequelize.query();
+        await horariosArray.map(async item => {
+            try {
+                let partHorarios = {};
+                partHorarios.numHorario = item.numHorario;
+                partHorarios.docentesInscritos = await sequelize.query();
+                return partHorarios;
+            }catch (e){
+                return e;
+            }
+        });
+        return horariosArray;
+    } catch(e){
+        return "error";
+    }
 }
 
 async function horariosCursosDisponible(preferencesObject){
