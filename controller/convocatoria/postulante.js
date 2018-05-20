@@ -34,16 +34,16 @@ async function listarPostulante(preferencesObject){
         let jsonPostulantes = await Promise.all(postulantes.map(async item => {
             let innerPart={};
             innerPart.id=item.id;
-            innerPart.titulo=item.nombres;
-            innerPart.resumen=item.apellido_paterno;
-            innerPart.estado=item.apellido_materno;
-            innerPart.archivo=item.correo;
-            innerPart.archivo=item.fecha_nacimiento;
-            innerPart.archivo=item.numero_documento;
-            innerPart.archivo=item.tipo_documento;
-            innerPart.archivo=item.pais;
-            innerPart.archivo=item.sexo;
-            innerPart.archivo=item.estado_postulante;
+            innerPart.nombres=item.nombres;
+            innerPart.apellido_paterno=item.apellido_paterno;
+            innerPart.apellido_materno=item.apellido_materno;
+            innerPart.correo=item.correo;
+            innerPart.fecha_nacimiento=item.fecha_nacimiento;
+            innerPart.numero_documento=item.numero_documento;
+            innerPart.tipo_documento=item.tipo_documento;
+            innerPart.pais=item.pais;
+            innerPart.sexo=item.sexo;
+            innerPart.estado_postulante=item.estado_postulante;
 
             return innerPart;
         }));
