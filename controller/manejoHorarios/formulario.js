@@ -22,7 +22,13 @@ async function llenaPreferenciasFormulario(preferencesObject) {
             try {
                 let codCurso = item.codigoCurso;
                 let ciclo = item.ciclo;
-                await sequelize.query(`CALL insert_curso_preferencia (${codigoProf},'${codCurso}','${ciclo}');`);
+                let esRepetido =
+                    await sequelize.query(`CALL verifica_preferencia_repetido (${codigoProf},'${codCurso}','${ciclo}');`);
+
+                if (esRepetido[0] === undefined) {
+                    await sequelize.query(`CALL insert_curso_preferencia (${codigoProf},'${codCurso}','${ciclo}');`);
+                }
+
             } catch (e) {
                 return "CALL insert_curso_preferencia Failed";
             }
