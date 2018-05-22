@@ -19,38 +19,43 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 
 async function getPreferencebyTeacher(codCurso) {
     try{
-        let docentesCiclo1 = await sequelize.query(`CALL lista_docente_curso_preferencia_ciclo1('${codCurso}');`);
-        let docentesCiclo2 = await sequelize.query(`CALL lista_docente_curso_preferencia_ciclo2('${codCurso}');`);
-        docentesCiclo1 =Promise.all( await docentesCiclo1.map(async item =>{
+        let docentesCiclo = await sequelize.query(`CALL lista_docente_curso_preferencia('${codCurso}');`);
+        docentesCiclo =Promise.all( await docentesCiclo.map(async item =>{
             try{
                 let partObject = {};
-                partObject.codigo = item.codigo;
-                partObject.nombre = item.nombre;
-                partObject.tipo = item.tipo;
-                partObject.ciclo1 = true;
-                partObject.ciclo2 = false;
-                return partObject;
+                console.log(item);
+                if(item.codigo1 === null){
+                    partObject.codigo = item.codigo2;
+                }else {
+                    partObject.codigo = item.codigo1;
+                }
+                if(item.nombre1 === null){
+                    partObject.nombre = item.nombre2;
+                }else {
+                    partObject.nombre = item.nombre1;
+                }
+                if(item.tipo1 === null){
+                    partObject.tipo = item.tipo2;
+                }else {
+                    partObject.tipo = item.tipo1;
+                }
+                if(item.ciclo1 != null){
+                    partObject.ciclo1 = true;
+                }else{
+                    partObject.ciclo1 = false;
+                }
+                if(item.ciclo2 != null){
+                    partObject.ciclo2 = true;
+                }else{
+                    partObject.ciclo2 = false;
+                }
+                return partObject
             }catch (e) {
                 return "error";
             }
 
         }));
-        docentesCiclo2 = Promise.all( await docentesCiclo2.map(async item =>{
-            try{
-                let partObject = {};
-                partObject.codigo = item.codigo;
-                partObject.nombre = item.nombre;
-                partObject.tipo = item.tipo;
-                partObject.ciclo1 = false;
-                partObject.ciclo2 = true;
-                return partObject;
-            }catch (e) {
-                return "error";
-            }
-
-        }));
-
-        return docentesCiclo1;
+        return docentesCiclo;
     }catch(e){
         return"error";
     }
