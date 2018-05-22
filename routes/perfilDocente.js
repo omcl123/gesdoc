@@ -76,6 +76,20 @@ router.put('/investigacion/actualizar',async function (req,res){ //Aqui ira la a
     //res.send("Aqui ira la actualizacion de investigaciones");
 
 });
+router.put('/investigacion/actualizar/agregarAutores',async function (req,res){ //Aqui ira la actualizacion de investigaciones
+    let jsonRes={}
+    jsonRes.mensaje=await investigacionController.agregaAutores(req.body);
+    res.send(jsonRes);
+    //res.send("Aqui ira la actualizacion de investigaciones");
+
+});
+router.delete('/investigacion/eliminar/eliminarAutores',async function (req,res){ //Aqui ira la eliminacion de investigaciones
+    //res.send("Aqui ira la eliminacion de autores");
+    let jsonRes={}
+    console.log(JSON.stringify(req.body));
+    jsonRes.mensaje=await investigacionController.eliminarAutores(req.body);
+    res.send(jsonRes);
+});
 router.delete('/investigacion/eliminar',async function (req,res){ //Aqui ira la eliminacion de investigaciones
     //res.send("Aqui ira la eliminacion de investigaciones");
     let jsonRes={}

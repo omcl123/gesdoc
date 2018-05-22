@@ -16,19 +16,24 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 
 let Investigacion={};
 async function guardaDatos(qinvestigacion){
-    let inv = await Promise.all(qinvestigacion.map(async item => {
-        let innerPart={};
-        innerPart.id = item.id;
-        innerPart.titulo = item.titulo;
-        innerPart.resumen = item.resumen;
-        innerPart.fecha_inicio = item.fecha_inicio;
-        innerPart.fecha_fin = item.fecha_fin;
-        return innerPart;
-    }));
-    let i=0;
-    let investigacion ={};
-    investigacion = inv[0];
-    return investigacion;
+    try{
+        let inv = await Promise.all(qinvestigacion.map(async item => {
+            let innerPart={};
+            innerPart.id = item.id;
+            innerPart.titulo = item.titulo;
+            innerPart.resumen = item.resumen;
+            innerPart.fecha_inicio = item.fecha_inicio;
+            innerPart.fecha_fin = item.fecha_fin;
+            return innerPart;
+        }));
+        let i=0;
+        let investigacion ={};
+        investigacion = inv[0];
+        return investigacion;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelveListaInvestigacion failed");
+    }
 }
 
 async function devuelveInvestigacion (preferencesObject){
@@ -118,76 +123,117 @@ function convertirFecha(date){
 }
 
 async function registraAutores(preferencesObject,last_id){
-    let autores=[] ;
-    let i;
-    longitud=preferencesObject.autor.length;
-    //console.log(longitud)
-    for ( i =0; i<longitud;i++){
+    try{
+        let autores=[] ;
+        let i;
+        longitud=preferencesObject.autor.length;
+        //console.log(longitud)
+        for ( i =0; i<longitud;i++){
 
-        await sequelize.query('CALL insertaAutorInvestigacion(:codigo_profesor,:id_investigacion)',
+            await sequelize.query('CALL insertaAutorInvestigacion(:codigo_profesor,:id_investigacion)',
+                {
+
+                    replacements: {
+                        codigo_profesor:preferencesObject.autor[i],
+                        id_investigacion:last_id[0].nuevo_id
+                    }
+                }
+
+            );
+            console.log("Autor # "+i+ ": "+preferencesObject.autor[i]+" registrado correctamente");
+        }
+
+        winston.info("registraAutores success on execution");
+        return last_id[0].nuevo_id;
+    }catch(e){
+        console.log(e);
+        winston.error("registraAutores failed");
+        return -1;
+    }
+}
+async function registraAutoresAgregar(preferencesObject,last_id){
+    try{
+        let autores=[] ;
+        let i;
+        longitud=preferencesObject.autor.length;
+        //console.log(longitud)
+        for ( i =0; i<longitud;i++){
+
+            await sequelize.query('CALL insertaAutorInvestigacion(:codigo_profesor,:id_investigacion)',
+                {
+
+                    replacements: {
+                        codigo_profesor:preferencesObject.autor[i],
+                        id_investigacion:last_id
+                    }
+                }
+
+            );
+            console.log("Autor # "+i+ ": "+preferencesObject.autor[i]+" registrado correctamente");
+        }
+
+        winston.info("registraInvestigaciones success on execution");
+        return last_id;
+    }catch(e){
+        console.log(e);
+        winston.error("registraAutoresAgregar failed");
+        return -1;
+    }
+}
+async function insertaInvestigacion(preferencesObject){
+    try{
+        let fecha_i ;
+        let fecha_f;
+        if (preferencesObject.fecha_inicio!=null) {
+            console.log("Fecha inicio NO es nulo");
+            fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
+        }else{
+            console.log("Fecha inicio es nulo");
+            winston.info("Fecha inicio no puede ser nulo");
+            fecha_i=null;
+            return -1;
+        }
+
+
+        if (preferencesObject.fecha_fin != null) {
+            console.log("Fecha fin NO es nulo");
+            fecha_f =await  convertirFecha(preferencesObject.fecha_fin);
+        } else {
+            console.log("Fecha fin es nulo");
+            fecha_f = null;
+        }
+
+        if ((preferencesObject.titulo==null) ||
+            (preferencesObject.titulo=="")  ) {
+            winston.info("Titulo no pueden ser nulos");
+            return -1;
+        }
+        if ((preferencesObject.resumen==null) ||
+            (preferencesObject.resumen=="") ) {
+            winston.info("Resumen no pueden ser nulos");
+            return -1;
+        }
+
+
+        await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
             {
 
                 replacements: {
-                    codigo_profesor:preferencesObject.autor[i],
-                    id_investigacion:last_id[0].nuevo_id
+
+                    titulo: preferencesObject.titulo,
+                    resumen: preferencesObject.resumen,
+                    fecha_inicio: fecha_i,
+                    fecha_fin: fecha_f,
+                    archivo: preferencesObject.archivo,
                 }
             }
-
         );
-        console.log("Autor # "+i+ ": "+preferencesObject.autor[i]+" registrado correctamente");
-    }
-
-    winston.info("registraInvestigaciones success on execution");
-    return last_id[0].nuevo_id;
-}
-
-async function insertaInvestigacion(preferencesObject){
-    let fecha_i ;
-    let fecha_f;
-    if (preferencesObject.fecha_inicio!=null) {
-        console.log("Fecha inicio NO es nulo");
-        fecha_i = await convertirFecha(preferencesObject.fecha_inicio);
-    }else{
-        console.log("Fecha inicio es nulo");
-        winston.info("Fecha inicio no puede ser nulo");
-        fecha_i=null;
+        winston.info("insertaInvestigacion succesful");
+    }catch(e){
+        console.log(e);
+        winston.error("insertaInvestigacion failed");
         return -1;
     }
-
-
-    if (preferencesObject.fecha_fin != null) {
-        console.log("Fecha fin NO es nulo");
-        fecha_f =await  convertirFecha(preferencesObject.fecha_fin);
-    } else {
-        console.log("Fecha fin es nulo");
-        fecha_f = null;
-    }
-
-    if ((preferencesObject.titulo==null) ||
-        (preferencesObject.titulo=="")  ) {
-        winston.info("Titulo no pueden ser nulos");
-        return -1;
-    }
-    if ((preferencesObject.resumen==null) ||
-        (preferencesObject.resumen=="") ) {
-        winston.info("Resumen no pueden ser nulos");
-        return -1;
-    }
-
-
-    await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
-        {
-
-            replacements: {
-
-                titulo: preferencesObject.titulo,
-                resumen: preferencesObject.resumen,
-                fecha_inicio: fecha_i,
-                fecha_fin: fecha_f,
-                archivo: preferencesObject.archivo,
-            }
-        }
-    );
 }
 
 
@@ -301,7 +347,53 @@ async function actualizaInvestigacion(preferencesObject){
         return -1;
     }
 }
+async function agregaAutores(preferencesObject){
+    try{
+        //validar fechas
+        await registraAutoresAgregar(preferencesObject, parseInt(preferencesObject.id));
+        mensaje ="agregaAutores correctamente "
 
+
+
+        return mensaje;
+
+
+    }catch(e){
+        console.log(e);
+        winston.error("agregaAutores failed");
+        return -1;
+    }
+
+}
+async function eliminarAutores(preferencesObject){
+    try{
+        longitud=preferencesObject.autor.length;
+
+        for ( i =0; i<longitud;i++){
+
+            await sequelize.query('CALL eliminaAutorInvestigacion(:codigo_profesor,:id_investigacion)',
+                {
+
+                    replacements: {
+                        codigo_profesor:preferencesObject.autor[i],
+                        id_investigacion:preferencesObject.id
+                    }
+                }
+
+            );
+
+            console.log("Autor # "+i+ ": "+preferencesObject.autor[i]+" eliminado correctamente");
+        }
+
+        winston.info("eliminarAutores success on execution");
+
+        return "eliminarAutores correctos";
+    }catch(e){
+        console.log(e);
+        winston.error("eliminarAutores failed");
+        return -1;
+    }
+}
 async function eliminarInvestigacion(preferencesObject){
 
     try{
@@ -337,5 +429,7 @@ module.exports ={
     registraInvestigacion:registraInvestigacion,
     actualizaInvestigacion:actualizaInvestigacion,
     eliminarInvestigacion:eliminarInvestigacion,
-    devuelveInvestigacion:devuelveInvestigacion
+    devuelveInvestigacion:devuelveInvestigacion,
+    agregaAutores:agregaAutores,
+    eliminarAutores:eliminarAutores
 }
