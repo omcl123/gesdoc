@@ -17,15 +17,28 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 async function listaDocenteCargaAsignada(preferencesObject) {
     try{
         let jsonblock = {};
-        let cargaArray = await sequelize.query();
-        cargaArray.map(item =>{
+        let cargaArray = await sequelize.query(`call lista_docente_carga_asignada('${preferencesObject.ciclo}');`);
+        cargaArray = Promise.all(cargaArray.map(async item =>{
             try{
                 let cargaPart = {};
+                cargaPart.tipo = item.tipo;
+                cargaPart.codigo = item.codigo;
+                cargaPart.nombre = item.nombre;
+                cargaPart.horasRequeridas = item.horasRequeridas;
+                let resumenCargaDocente =
+                    await sequelize.query(`call resumen_carga_docente('${item.codigo}','${preferencesObject.ciclo}');`);
+                cargaPart.numCursos = resumenCargaDocente[0].numCursos;
+                if (resumenCargaDocente.numCursos === 0){
+                    cargaPart.horasAsignadas = 0;
+                }else{
+                    cargaPart.horasAsignadas = resumenCargaDocente[0].horasAsignadas;
+                }
+                cargaPart.diferenciaHoras = item.horasRequeridas - resumenCargaDocente[0].horasAsignadas;
                 return cargaPart;
             } catch (e){
                 return "error";
             }
-        });
+        }));
         jsonblock.docentes = cargaArray;
         return jsonblock;
     } catch (e){
@@ -33,10 +46,11 @@ async function listaDocenteCargaAsignada(preferencesObject) {
     }
 }
 
-async function detalleCargaDocenteAsignado() {
+async function detalleCargaDocenteAsignado(preferencesObject) {
     try {
         let jsonBlock = {};
-        jsonBlock.cursos = await sequelize.query();
+        jsonBlock.cursos =
+            await sequelize.query(`call detalle_carga_docente_asignado('${preferencesObject.codDocente}','${preferencesObject.ciclo}');`);
         return jsonBlock;
     } catch (e){
         return "error";
