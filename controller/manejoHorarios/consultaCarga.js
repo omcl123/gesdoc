@@ -39,7 +39,7 @@ async function listaDocenteCargaAsignada(preferencesObject) {
                 return "error";
             }
         }));
-        jsonblock.docentes = cargaArray;
+        jsonblock.docentes = await cargaArray;
         return jsonblock;
     } catch (e){
         return "error";

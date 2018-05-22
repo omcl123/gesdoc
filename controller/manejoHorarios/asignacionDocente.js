@@ -37,22 +37,26 @@ async function listaDocenteAsignar(preferencesObject) {
         let jsonBlock = {};
         let listapreferencia =
             await sequelize.query(`call lista_docente_encuesta_preferencia('${preferencesObject.codCurso}','${preferencesObject.ciclo}');`);
-        jsonBlock.preferencia = Promise.all(await listapreferencia.map(async item =>{
+        let preferencia = Promise.all(await listapreferencia.map(async item =>{
             let partPref = {};
             partPref.codigo = item.codigo;
             partPref.nombre = item.nombre;
             partPref.encuesta =
                 await sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`);
+            return partPref;
         }));
         let listaGeneral =
             await sequelize.query(`call lista_docente_encuesta_general();`);
-        jsonBlock.general = Promise.all(await listaGeneral.map(async item =>{
+        let general = Promise.all(await listaGeneral.map(async item =>{
             let partPref = {};
             partPref.codigo = item.codigo;
             partPref.nombre = item.nombre;
             partPref.encuesta =
                 await sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`);
+            return partPref;
         }));
+        jsonBlock.preferencia = await preferencia;
+        jsonBlock.general = await general;
         return jsonBlock;
     } catch (e){
         return "error";
