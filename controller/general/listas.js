@@ -81,8 +81,9 @@ async function listaEstadosAyudaEc() {
 async function cicloActual(){
     try {
         let currentDate = new Date();
-        let day = currentDate.getDay();
-        let month = currentDate.getMonth();
+        console.log(currentDate);
+        let day = currentDate.getDate();
+        let month = currentDate.getMonth()+1;
         let year = currentDate.getFullYear();
         let response = await sequelize.query(`CALL encuentra_ciclo('${day}-${month}-${year}')`);
         console.log(response);
