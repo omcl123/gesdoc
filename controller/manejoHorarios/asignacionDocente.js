@@ -23,7 +23,8 @@ async function asignaDocenteHorario(preferencesObject){
         let ciclo = preferencesObject.ciclo;
         await sequelize.query(`call asignar_docente_horario(${codigo},'${codCurso}',${numHorario},${horasAsignadas},'${ciclo}');`);
         let esNuevoHorario = await sequelize.query(`call verifica_nuevo_horario('${codCurso}',${numHorario},'${ciclo}');`);
-        if (esNuevoHorario[0].result === 0){
+        console.log(esNuevoHorario[0]);
+        if (esNuevoHorario[0].result === 1){
             await sequelize.query(`call asigna_nuevo_horario('${codCurso}','${ciclo}');`);
         }
         return "success";
@@ -41,9 +42,22 @@ async function listaDocenteAsignar(preferencesObject) {
             let partPref = {};
             partPref.codigo = item.codigo;
             partPref.nombre = item.nombre;
+            partPref.tipo = item.tipo;
+            let resumenCargaDocente =
+                await sequelize.query(`call resumen_carga_docente('${item.codigo}','${preferencesObject.ciclo}');`);
+            partPref.numCursos = resumenCargaDocente[0].numCursos;
+            if (resumenCargaDocente.numCursos === 0){
+                partPref.horasAsignadas = 0;
+            }else{
+                partPref.horasAsignadas = resumenCargaDocente[0].horasAsignadas;
+            }
             let encuesta =
                 await (sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`));
-            partPref.encuesta = encuesta[0].encuesta;
+            if (await encuesta > 0){
+                partPref.encuesta = encuesta[0].encuesta;
+            }else{
+                partPref.encuesta = "-";
+            }
             return partPref;
         }));
         let listaGeneral =
@@ -52,9 +66,22 @@ async function listaDocenteAsignar(preferencesObject) {
             let partPref = {};
             partPref.codigo = item.codigo;
             partPref.nombre = item.nombre;
+            partPref.tipo = item.tipo;
+            let resumenCargaDocente =
+                await sequelize.query(`call resumen_carga_docente('${item.codigo}','${preferencesObject.ciclo}');`);
+            partPref.numCursos = resumenCargaDocente[0].numCursos;
+            if (resumenCargaDocente.numCursos === 0){
+                partPref.horasAsignadas = 0;
+            }else{
+                partPref.horasAsignadas = resumenCargaDocente[0].horasAsignadas;
+            }
             let encuesta =
                 await sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`);
-            partPref.encuesta = encuesta[0].encuesta;
+            if (await encuesta > 0){
+                partPref.encuesta = encuesta[0].encuesta;
+            }else{
+                partPref.encuesta = "-";
+            }
             return partPref;
         }));
         jsonBlock.preferencia = await preferencia;
