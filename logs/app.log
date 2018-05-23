@@ -1879,3 +1879,11 @@
 {"level":"info","message":"::1 - - [20/May/2018:22:15:24 +0000] \"DELETE /docente/investigacion/eliminar/eliminarAutores HTTP/1.1\" 200 14 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-20T22:15:24.364Z"}
 {"level":"info","message":"eliminarAutores success on execution","timestamp":"2018-05-20T22:16:22.033Z"}
 {"level":"info","message":"::1 - - [20/May/2018:22:16:22 +0000] \"DELETE /docente/investigacion/eliminar/eliminarAutores HTTP/1.1\" 200 39 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-20T22:16:22.047Z"}
+{"level":"info","message":"listarPostulante succesful","timestamp":"2018-05-23T15:12:04.171Z"}
+{"level":"info","message":"::1 - - [23/May/2018:15:12:04 +0000] \"GET /convocatoria/convocatoria/postulante/listar?id=1 HTTP/1.1\" 200 960 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0\"\n","timestamp":"2018-05-23T15:12:04.181Z"}
+{"level":"error","message":"404 - Not Found - /favicon.ico - GET - ::1","timestamp":"2018-05-23T15:12:04.887Z"}
+{"level":"info","message":"::1 - - [23/May/2018:15:12:04 +0000] \"GET /favicon.ico HTTP/1.1\" 404 - \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0\"\n","timestamp":"2018-05-23T15:12:04.889Z"}
+{"level":"error","message":"404 - Not Found - /convocatoria/convocatoria/postulante/listar?id=1 - DELETE - ::1","timestamp":"2018-05-23T15:12:38.790Z"}
+{"level":"info","message":"::1 - - [23/May/2018:15:12:38 +0000] \"DELETE /convocatoria/convocatoria/postulante/listar?id=1 HTTP/1.1\" 404 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T15:12:38.791Z"}
+{"level":"info","message":"listarPostulante succesful","timestamp":"2018-05-23T15:12:46.683Z"}
+{"level":"info","message":"::1 - - [23/May/2018:15:12:46 +0000] \"GET /convocatoria/convocatoria/postulante/listar?id=1 HTTP/1.1\" 200 960 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T15:12:46.686Z"}
