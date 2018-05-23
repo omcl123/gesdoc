@@ -367,6 +367,8 @@ async function agregaAutores(preferencesObject){
 }
 async function eliminarAutores(preferencesObject){
     try{
+        if (preferencesObject.autor.length == 0)
+            return -1;
         longitud=preferencesObject.autor.length;
 
         for ( i =0; i<longitud;i++){
@@ -383,6 +385,7 @@ async function eliminarAutores(preferencesObject){
             );
 
             console.log("Autor # "+i+ ": "+preferencesObject.autor[i]+" eliminado correctamente");
+
         }
 
         winston.info("eliminarAutores success on execution");

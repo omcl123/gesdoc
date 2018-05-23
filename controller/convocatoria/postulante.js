@@ -28,22 +28,27 @@ async function listarPostulante(preferencesObject){
             }
         );
         console.log(postulantes);
-        //t.id,t.nombres,t.apellido_paterno,t.apellido_materno,t.correo,t.fecha_nacimiento,t.numero_documento,
-        // d.descripcion as 'tipo_documento',
-        // s.nombre as 'pais',x.descripcion as 'sexo',e.descripcion as 'estado_postulante'
+        //p.nombres, p.apellido_paterno,p.apellido_materno,p.correo,p.fecha_nacimiento,p.numero_documento,
+        // t.descripcion as 'tipo_documento',x.descripcion as 'sexo',s.nombre as 'pais_nacimiento',
+        // p.lugar_nacimiento,p.direccion_domicilio,i.nombre as 'pais_domicilio',p.telefono,p.celular,d.descripcion as 'estado_postulante'
         let jsonPostulantes = await Promise.all(postulantes.map(async item => {
             let innerPart={};
             innerPart.id=item.id;
-            innerPart.titulo=item.nombres;
-            innerPart.resumen=item.apellido_paterno;
-            innerPart.estado=item.apellido_materno;
-            innerPart.archivo=item.correo;
-            innerPart.archivo=item.fecha_nacimiento;
-            innerPart.archivo=item.numero_documento;
-            innerPart.archivo=item.tipo_documento;
-            innerPart.archivo=item.pais;
-            innerPart.archivo=item.sexo;
-            innerPart.archivo=item.estado_postulante;
+            innerPart.nombres=item.nombres;
+            innerPart.apellido_paterno=item.apellido_paterno;
+            innerPart.apellido_materno=item.apellido_materno;
+            innerPart.correo=item.correo;
+            innerPart.fecha_nacimiento=item.fecha_nacimiento;
+            innerPart.numero_documento=item.numero_documento;
+            innerPart.tipo_documento=item.tipo_documento;
+            innerPart.sexo=item.sexo;
+            innerPart.pais_nacimiento=item.pais_nacimiento;
+            innerPart.lugar_nacimiento=item.lugar_nacimiento;
+            innerPart.direccion_domicilio=item.direccion_domicilio;
+            innerPart.pais_domicilio=item.pais_domicilio;
+            innerPart.telefono=item.telefono;
+            innerPart.celular=item.celular;
+            innerPart.estado_postulante=item.estado_postulante;
 
             return innerPart;
         }));

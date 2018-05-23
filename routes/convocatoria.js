@@ -32,8 +32,12 @@ router.get('/convocatoria/postulante/listar', async function (req,res){
     res.send(jsonBlock);
 });
 
-
-
+//registrar postulante
+router.post('/convocatoria/postulante/registrar', async function (req,res){
+    let jsonBlock ={}
+    jsonBlock.mensaje=await postulanteController.registrarPostulante(req.body);
+    res.send(jsonBlock);
+});
 
 
 module.exports = router;
