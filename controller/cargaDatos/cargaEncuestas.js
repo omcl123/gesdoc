@@ -16,7 +16,7 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 async function cargaEncuestas(dataArray) {
 
     try {
-        await dataArray.map(async item => {
+        await Promise.all(dataArray.map(async item => {
             try{
                 let id_horario_profesor = item[0];
                 let puntaje = item[1];
@@ -36,7 +36,7 @@ async function cargaEncuestas(dataArray) {
                 message = "cargaEncuesta Failed";
                 return message;
             }
-        });
+        }));
 
         let result = {};
         winston.info("cargaEncuestas success on execution");
