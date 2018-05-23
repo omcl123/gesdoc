@@ -37,8 +37,16 @@ async function cargaHorarios(dataArray) {
                         winston.info("cargaHorarios insert new cursoxciclo success on execution");
                     }
 
-                    await sequelize.query(`CALL insert_horario (${codigoProf}, '${codigoCurso}', '${ciclo}',
+                    //verifica horario duplicado
+                    let horario_esRepetido = await sequelize.query(`CALL verifica_horario_duplicado ('${codigoCurso}', '${ciclo}','${codigoHorario}')`);
+
+
+                    if (horario_esRepetido[0] === undefined) {
+                        await sequelize.query(`CALL insert_horario (${codigoProf}, '${codigoCurso}', '${ciclo}',
                         '${codigoHorario}', ${participacion}, ${puntaje})`);
+
+                        winston.info("Horarios insert new insert_horario success on execution");
+                    }
 
                     return message = "cargaHorarios  success on execution";
                 }
@@ -59,3 +67,4 @@ async function cargaHorarios(dataArray) {
 module.exports = {
     cargaHorarios: cargaHorarios
 };
+
