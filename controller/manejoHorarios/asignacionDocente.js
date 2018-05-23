@@ -41,8 +41,9 @@ async function listaDocenteAsignar(preferencesObject) {
             let partPref = {};
             partPref.codigo = item.codigo;
             partPref.nombre = item.nombre;
-            partPref.encuesta =
-                await (sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`))[0].encuesta;
+            let encuesta =
+                await (sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`));
+            partPref.encuesta = encuesta[0].encuesta;
             return partPref;
         }));
         let listaGeneral =
@@ -51,8 +52,9 @@ async function listaDocenteAsignar(preferencesObject) {
             let partPref = {};
             partPref.codigo = item.codigo;
             partPref.nombre = item.nombre;
-            partPref.encuesta =
-                await sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`)[0].encuesta;
+            let encuesta =
+                await sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`);
+            partPref.encuesta = encuesta[0].encuesta;
             return partPref;
         }));
         jsonBlock.preferencia = await preferencia;
