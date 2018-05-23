@@ -17,34 +17,47 @@ async function cargaAsignacionHorarios(dataArray) {
     let message = "";
 
     try {
-        await dataArray.map(async item => {
+        await Promise.all(dataArray.map(async item => {
             try{
-                let codigo = item[0];
-                let nombre = item[1];
-                let creditos = item[2];
-                let horasDictado = item[3];
-                let facultad = item[4];
-                let seccion = item[5];
-                let tipoCurso = item[6];
-                let tipoClase = item[7];
-                if (nombre === undefined || codigo === undefined || creditos === undefined|| horasDictado === undefined
-                    || facultad === undefined|| seccion === undefined|| tipoCurso === undefined|| tipoClase === undefined){
-                    return message = "cargaCurso Failed undefined or empty columns";
-                }else{
-                    let esRepetido = await sequelize.query(`CALL verifica_curso_repetido ('${codigo}')`);
+                let command = item[0];
+                if (command === 0){
+                    let curso = item[1];
+                    let ciclo = item[2];
+                    let numHorarios = item[3];
 
-                    if (esRepetido[0] === undefined) {
-                        await sequelize.query(`CALL insert_curso ( '${codigo}','${nombre}', ${creditos},
-                        ${horasDictado}, '${facultad}', '${seccion}', '${tipoCurso}','${tipoClase}')`);
+                    if (curso === undefined || ciclo === undefined || numHorarios === undefined){
+                        return message = "cargaAsignacionHorarios Failed undefined or empty columns";
+                    }else{
+                        let esRepetido = await sequelize.query(`CALL verifica_asignacion_repetida ('${curso}','${ciclo}')`);
+
+                        if (esRepetido[0] === undefined) {
+                            await sequelize.query(`CALL insert_asignacion_horario ( '${curso}','${ciclo}', ${numHorarios})`);
+                        }
+                        return message = "cargaAsignacionHorarios success on execution";
                     }
-                    return message = "cargaCurso success on execution";
+
+                }else if (command === 1){
+                    let curso = item[1];
+                    let ciclo = item[2];
+
+                    if (curso === undefined || ciclo === undefined || numHorario === undefined){
+                        return message = "cargaAsignacionHorarios Failed undefined or empty columns";
+                    }else{
+                        let horEli = await sequelize.query(`CALL verifica_numero_horarios ('${curso}','${ciclo}')`);
+
+                        if (horEli[0] > 0) {
+                            await sequelize.query(`CALL elimina_asignacion_horario ( '${curso}','${ciclo}',${horEli})`);
+                        }
+
+                        return message = "cargaAsignacionHorarios success on execution";
+                    }
                 }
             }catch (e) {
-                winston.error("cargaCurso Failed: ",e);
-                message = "cargaCurso Failed";
+                winston.error("cargaAsignacionHorarios Failed: ",e);
+                message = "cargaAsignacionHorarios Failed";
                 return message;
             }
-        });
+        }));
         winston.info("cargaCurso success on execution");
         return message;
     } catch(e) {
