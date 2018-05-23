@@ -33,6 +33,13 @@ router.get('/convocatoria/postulante/listar', async function (req,res){
     res.send(jsonBlock);
 });
 
+//Registrar Convocatoria
+router.post('/convocatoria/registrar',async function (req,res){ //Aqui ira el registro de convocatorias
+    let jsonRes={}
+    jsonRes.nuevo_id_convocatoria=await convocatoriaController.registraConvocatoria(req.body);
+    res.send(jsonRes);
+
+});
 
 
 module.exports = router;
