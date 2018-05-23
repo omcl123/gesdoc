@@ -9,7 +9,7 @@ const postulanteController = require('../controller/convocatoria/postulante.js')
 //Lista convocatorias
 router.get('/convocatoria/lista', async function(req, res) {
     let jsonBlock={};
-    jsonBlock.ayudas = await convocatoriaController.listaConvocatoria(req.query);
+    jsonBlock.convocatorias= await convocatoriaController.listaConvocatoria(req.query);
 
     res.send(jsonBlock);
 
@@ -19,11 +19,12 @@ router.get('/convocatoria/lista', async function(req, res) {
 //Detalle convocatoria
 router.get('/convocatoria/detalle', async function(req, res) {
     let jsonBlock={};
-    jsonBlock.ayudas = await convocatoriaController.detalleConvocatoria(req.query);
+    jsonBlock = await convocatoriaController.detalleConvocatoria(req.query);
 
     res.send(jsonBlock);
 
 });
+
 
 //Listar Postulante
 router.get('/convocatoria/postulante/listar', async function (req,res){
@@ -32,11 +33,20 @@ router.get('/convocatoria/postulante/listar', async function (req,res){
     res.send(jsonBlock);
 });
 
+
 //registrar postulante
-router.post('/convocatoria/postulante/registrar', async function (req,res){
-    let jsonBlock ={}
-    jsonBlock.mensaje=await postulanteController.registrarPostulante(req.body);
+router.post('/convocatoria/postulante/registrar', async function (req,res) {
+    let jsonBlock = {}
+    jsonBlock.mensaje = await postulanteController.registrarPostulante(req.body);
     res.send(jsonBlock);
+});
+//Registrar Convocatoria
+router.post('/convocatoria/registrar',async function (req,res){ //Aqui ira el registro de convocatorias
+    let jsonRes={}
+    jsonRes.nuevo_id_convocatoria=await convocatoriaController.registraConvocatoria(req.body);
+    res.send(jsonRes);
+
+
 });
 
 

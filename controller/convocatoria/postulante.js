@@ -57,6 +57,7 @@ async function listarPostulante(preferencesObject){
             innerPart.pais_domicilio=item.pais_domicilio;
             innerPart.telefono=item.telefono;
             innerPart.celular=item.celular;
+
             innerPart.estado_postulante=item.estado_postulante;
 
             return innerPart;
@@ -354,6 +355,8 @@ async function registrarPostulante(preferencesObject){
     }
 }
 module.exports  ={
+
     listarPostulante:listarPostulante,
     registrarPostulante:registrarPostulante
 }
+

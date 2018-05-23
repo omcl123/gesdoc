@@ -14,17 +14,41 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
+const postulante_controller  = require('./postulante');
 
 
+const grado_academico_titulo_profesional = "Titulo Profesional";
+const grado_academico_maestria = "Maestria";
+const grado_academico_doctorado = "Doctorado";
+const grado_academico_diplomatura = "Diplomatura";
+const docencia_curso = "Cargos a su curso";
+const docencia_asesoria = "Asesoria de Tesis";
+const docencia_premios = "Premios a la Docencia";
+const experiencia_profesional = "Solicitar Experiencia Profesional";
+const investigacion = "Solicitar Investigacion";
 
 async function listaConvocatoria(preferencesObject){
+    // codigo(id), clave_curso, nombre_convocatoria, fecha creacion, estado
     try {
 
-        let jsonlistaConvocatoria = await sequelize.query('CALL listaConvocatoria()');
+        let convocatorias = await sequelize.query('CALL listaConvocatoria()');
 
+        let jsonConvocatorias= await Promise.all(convocatorias.map(async item => {
+            let innerPart={};
+            innerPart.codigo=item.codigo;
+            innerPart.clave_curso=item.clave_curso;
+            innerPart.nombre_curso=item.nombre_curso;
+            innerPart.fecha_creacion=item.fecha_creacion;
+            innerPart.fecha_limite=item.fecha_limite;
+            innerPart.estado_convocatoria=item.estado_convocatoria;
+
+
+            return innerPart;
+        }));
+        console.log(jsonConvocatorias);
         winston.info("listaConvocatoria succesful");
-        console.log (result);
-        return jsonlistaConvocatoria;
+        return jsonConvocatorias;
+
 
     }catch(e){
         console.log(e);
@@ -35,19 +59,48 @@ async function listaConvocatoria(preferencesObject){
 
 
 async function detalleConvocatoria(preferencesObject){
+    // nombre_convocatoria, cantidad de postulantes, cantidad de postulantes aceptados, lista de postulantes
     try {
 
-        let jsondetalleConvocatoria = await sequelize.query('CALL detalleConvocatoria(:codigo)',
+        let convocatoria = await sequelize.query('CALL detalleConvocatoria(:in_convocatoria)',
             {
                 replacements: {
-                    codigo: preferencesObject.codigo
+                    in_convocatoria: preferencesObject.id
 
                 }
             }
         );
 
-        winston.info("detalleConvocatoria succesful");
-        console.log (result);
+        console.log (convocatoria);
+
+        //listado de postulantes
+        let list_postulantes = await postulante_controller.listarPostulante(preferencesObject);
+
+        console.log ("Respuesta del import");
+        console.log (list_postulantes);
+
+        let jsondetalleConvocatoria= await Promise.all(convocatoria.map(async item => {
+            let innerPart={};
+            innerPart.codigo=item.codigo;
+            innerPart.nombre=item.nombre;
+            innerPart.fecha_limite=item.fecha_limite;
+            innerPart.cantidad_postulantes=item.cantidad_postulantes;
+            innerPart.cantidad_postulantes_aceptados=item.cantidad_postulantes_aceptados;
+
+            innerPart.postulantes = await Promise.all(list_postulantes.map(async item2 => {
+                let innerPart2={};
+                innerPart2.codigo = item2.id;
+                innerPart2.nombre = item2.nombres + ' ' +item2.apellido_paterno + ' ' + item2.apellido_materno;
+                innerPart2.fecha_postulacion = item2.fecha_nacimiento;
+                innerPart2.estado_postulacion = item2.estado_postulante;
+                //innerPart2.estado_documentos = falta
+                return innerPart2;
+            }));
+
+            return innerPart;
+        }));
+
+
         return jsondetalleConvocatoria;
 
     }catch(e){
@@ -57,7 +110,256 @@ async function detalleConvocatoria(preferencesObject){
 }
 
 
+async function cantidad_elementos(data){
+    let key, count = 0;
+    for(key in data) {
+        if(data.hasOwnProperty(key)) {
+            count++;
+        }
+    }
+    return count;
+}
+
+async function tiene_elemento(data,elemento){
+    let key, peso = -1;
+    for(key in data) {
+        //console.log("data -> " , data[key]);
+        if(data[key].descripcion == elemento)
+            return data[key].peso;
+    }
+    return peso;
+}
+
+
+function convertirFecha(date){
+    //20180429
+
+    let year = Math.trunc(date / 10000);
+    let month = Math.trunc((date - (10000 * year)) / 100);
+    let day = date - (10000 * year) - (100 * month);
+    let d = new Date(year + "-" + month + "-" + day);
+
+    return (d);
+}
+
+
+async function insertaConvocatoria(preferencesObject){
+    console.log("Comienza insert");
+    let fecha_i ;
+    let fecha_f;
+    let nombre;
+    let codigo_curso;
+    let requiere_investigacion = 0;
+    let requiere_experiencia = 0;
+    let requiere_docencia_cargo = 0;
+    let requiere_docencia_asesoria = 0;
+    let requiere_docencia_premio = 0;
+    let requiere_grado_titulo = 0;
+    let requiere_grado_maestria = 0;
+    let requiere_grado_doctorado = 0;
+    let requiere_grado_diplomatura = 0;
+    let peso_grado_academico_titulo_profesional = -1;
+    let peso_grado_academico_maestria = -1;
+    let peso_grado_academico_doctorado = -1;
+    let peso_grado_academico_diplomatura = -1;
+    let peso_docencia_curso = -1;
+    let peso_docencia_asesoria = -1;
+    let peso_docencia_premios = -1;
+    let peso_experiencia_profesional = -1;
+    let peso_investigacion = -1;
+
+    if (preferencesObject.fecha_inicio!=null) {
+        console.log("Fecha inicio NO es nulo");
+        fecha_i = convertirFecha(preferencesObject.fecha_inicio);
+    }else{
+        console.log("Fecha inicio es nulo");
+        winston.info("Fecha inicio no puede ser nulo");
+        fecha_i=null;
+        return -1;
+    }
+
+
+    if (preferencesObject.fecha_fin != null) {
+        console.log("Fecha fin NO es nulo");
+        fecha_f = convertirFecha(preferencesObject.fecha_fin);
+    } else {
+        console.log("Fecha fin es nulo");
+        fecha_f = null;
+    }
+
+
+    if (preferencesObject.nombre != null) {
+        console.log("nombre NO es nulo");
+        nombre = preferencesObject.nombre;
+    } else {
+        console.log("nombre es nulo");
+        nombre = null;
+    }
+
+    if (preferencesObject.codigo_curso != null) {
+        console.log("codigo_curso NO es nulo");
+        codigo_curso = preferencesObject.codigo_curso;
+    } else {
+        console.log("codigo_curso es nulo");
+    }
+
+    if (preferencesObject.grados_academicos != null) {
+        console.log("grados_academicos NO es nulo");
+        let cant_grados_academicos = await cantidad_elementos(preferencesObject.grados_academicos);
+        console.log("cant -> ",cant_grados_academicos);
+        if (cant_grados_academicos > 0) {
+            peso_grado_academico_titulo_profesional = await tiene_elemento(preferencesObject.grados_academicos,grado_academico_titulo_profesional);
+            peso_grado_academico_maestria = await tiene_elemento(preferencesObject.grados_academicos,grado_academico_maestria);
+            peso_grado_academico_doctorado = await tiene_elemento(preferencesObject.grados_academicos,grado_academico_doctorado);
+            peso_grado_academico_diplomatura = await tiene_elemento(preferencesObject.grados_academicos,grado_academico_diplomatura);
+
+            console.log("peso_grado_academico_titulo_profesional ->" ,peso_grado_academico_titulo_profesional);
+            console.log("peso_grado_academico_maestria ->" ,peso_grado_academico_maestria);
+            console.log("peso_grado_academico_doctorado ->" ,peso_grado_academico_doctorado);
+            console.log("peso_grado_academico_diplomatura ->" ,peso_grado_academico_diplomatura);
+
+            if (peso_grado_academico_titulo_profesional > 0) requiere_grado_titulo = 1;
+            if (peso_grado_academico_maestria > 0) requiere_grado_maestria = 1;
+            if (peso_grado_academico_doctorado > 0) requiere_grado_doctorado = 1;
+            if (peso_grado_academico_diplomatura > 0) requiere_grado_diplomatura = 1;
+        }
+    }else  {
+        console.log("grados_academicos es nulo");
+    }
+
+    if (preferencesObject.docencia != null) {
+        console.log("docencia NO es nulo");
+        let cant_docencia = await cantidad_elementos(preferencesObject.docencia);
+        console.log("cant -> ",cant_docencia);
+        if (cant_docencia > 0) {
+            peso_docencia_curso = await tiene_elemento(preferencesObject.docencia,docencia_curso);
+            peso_docencia_asesoria = await tiene_elemento(preferencesObject.docencia,docencia_asesoria);
+            peso_docencia_premios = await tiene_elemento(preferencesObject.docencia,docencia_premios);
+
+            console.log("peso_docencia_curso ->" ,peso_docencia_curso);
+            console.log("peso_docencia_asesoria ->" ,peso_docencia_asesoria);
+            console.log("peso_docencia_premios ->" ,peso_docencia_premios);
+
+            if (peso_docencia_curso > 0) requiere_docencia_cargo = 1;
+            if (peso_docencia_asesoria > 0) requiere_docencia_asesoria = 1;
+            if (peso_docencia_premios > 0) requiere_docencia_premio = 1;
+        }
+    }else  {
+        console.log("docencia es nulo");
+    }
+
+    if (preferencesObject.experiencia_profesional != null) {
+        console.log("experiencia_profesional NO es nulo");
+        let cant_experiencia_profesional = await cantidad_elementos(preferencesObject.experiencia_profesional);
+        console.log("cant -> ",cant_experiencia_profesional);
+        if (cant_experiencia_profesional > 0) {
+            peso_experiencia_profesional = await tiene_elemento(preferencesObject.experiencia_profesional,experiencia_profesional);
+            console.log("peso_experiencia_profesional ->" ,peso_experiencia_profesional);
+
+            if (peso_experiencia_profesional > 0) requiere_experiencia = 1;
+        }
+    }else  {
+        console.log("experiencia_profesional es nulo");
+    }
+
+    if (preferencesObject.investigacion != null) {
+        console.log("investigacion NO es nulo");
+        let cant_investigacion = await cantidad_elementos(preferencesObject.investigacion);
+        console.log("cant -> ",cant_investigacion);
+        if (cant_investigacion > 0) {
+            peso_investigacion = await tiene_elemento(preferencesObject.investigacion,investigacion);
+            console.log("peso_investigacion ->" ,peso_investigacion);
+
+            if (peso_investigacion > 0) requiere_investigacion = 1;
+        }
+    }else  {
+        console.log("investigacion es nulo");
+    }
+
+    await sequelize.query('CALL insertaConvocatoria(:nombre,:codigo_curso,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura)',
+        {
+
+            replacements: {
+                nombre: nombre,
+                codigo_curso: codigo_curso,
+                fecha_inicio: fecha_i,
+                fecha_fin: fecha_f,
+                requiere_investigacion: requiere_investigacion,
+                requiere_experiencia: requiere_experiencia,
+                requiere_docencia_cargo: requiere_docencia_cargo,
+                requiere_docencia_asesoria: requiere_docencia_asesoria,
+                requiere_docencia_premio: requiere_docencia_premio,
+                requiere_grado_titulo: requiere_grado_titulo,
+                requiere_grado_maestria: requiere_grado_maestria,
+                requiere_grado_doctorado: requiere_grado_doctorado,
+                requiere_grado_diplomatura: requiere_grado_diplomatura,
+                peso_investigacion: peso_investigacion,
+                peso_experiencia: peso_experiencia_profesional,
+                peso_docencia_cargo: peso_docencia_curso,
+                peso_docencia_asesoria: peso_docencia_asesoria,
+                peso_docencia_premio: peso_docencia_premios,
+                peso_grado_titulo: peso_grado_academico_titulo_profesional,
+                peso_grado_maestria: peso_grado_academico_maestria,
+                peso_grado_doctorado: peso_grado_academico_doctorado,
+                peso_grado_diplomatura: peso_grado_academico_diplomatura
+
+            }
+        }
+    );
+}
+
+
+async function verifica_curso(codigo_curso){
+
+    let existe = await sequelize.query('CALL verifica_curso_repetido(:codigoC)',
+        {
+
+            replacements: {
+
+                codigoC: codigo_curso
+            }
+        }
+    );
+
+    if (!existe) return -1;
+    return existe;
+}
+
+
+async function registraConvocatoria(preferencesObject){
+
+    try{
+        let last_id = -1;
+        let existe_curso = await verifica_curso(preferencesObject.codigo_curso);
+
+        if (existe_curso != null){
+
+
+            await insertaConvocatoria(preferencesObject);
+
+
+            last_id = await  sequelize.query('CALL devuelveSiguienteId(:tabla )',
+                {
+
+                    replacements: {
+                        tabla: "convocatoria",
+                    }
+                }
+            );
+            console.log("Convocatoria registrada correctamente");
+
+        }else console.log("No existe el curso");
+        return last_id;
+    }catch(e){
+        console.log(e);
+        winston.error("registraConvocatoria failed");
+        return -1;
+    }
+}
+
+
 module.exports  ={
     detalleConvocatoria:detalleConvocatoria,
-    listaConvocatoria:listaConvocatoria
+    listaConvocatoria:listaConvocatoria,
+    registraConvocatoria:registraConvocatoria
 }
