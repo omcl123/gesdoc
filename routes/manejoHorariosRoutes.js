@@ -47,6 +47,18 @@ router.post('/asignarDocenteHorario', async function(req, res) {
     res.send(jsonblock);
 });
 
+router.post('/actualizaDocenteHorario', async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.actualizaDocenteHorario(req.body);
+    res.send(jsonblock);
+});
+
+router.post('/eliminaDocenteHorario', async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.eliminaDocenteHorario(req.body);
+    res.send(jsonblock);
+});
+
 router.get('/listaDocenteCargaAsignada',async function(req, res) {
     let jsonblock;
     jsonblock = await consultaCargaController.listaDocenteCargaAsignada(req.query);

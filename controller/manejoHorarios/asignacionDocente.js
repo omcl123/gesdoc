@@ -14,6 +14,34 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
+async function eliminaDocenteHorario(preferencesObject){
+    try {
+        let codigo = preferencesObject.codigoDocente;
+        let codCurso = preferencesObject.codCurso;
+        let numHorario = preferencesObject.numHorario;
+        let ciclo = preferencesObject.ciclo;
+        await sequelize.query(`call elimina_docente_horario(${codigo},'${codCurso}',${numHorario},'${ciclo}');`);
+        return "success";
+    }catch (e){
+        return "error";
+    }
+}
+
+async function actualizaDocenteHorario(preferencesObject){
+    try {
+        let codigo = preferencesObject.codigoDocente;
+        let codCurso = preferencesObject.codCurso;
+        let numHorario = preferencesObject.numHorario;
+        let horasAsignadas = preferencesObject.horasAsignadas;
+        let ciclo = preferencesObject.ciclo;
+        await sequelize.query(`call actualiza_docente_horario(${codigo},'${codCurso}',${numHorario},${horasAsignadas},'${ciclo}');`);
+        return "success";
+    }catch (e){
+        return "error";
+    }
+}
+
+
 async function asignaDocenteHorario(preferencesObject){
     try {
         let codigo = preferencesObject.codigoDocente;
@@ -94,5 +122,7 @@ async function listaDocenteAsignar(preferencesObject) {
 
 module.exports ={
     listaDocenteAsignar:listaDocenteAsignar,
-    asignaDocenteHorario:asignaDocenteHorario
+    asignaDocenteHorario:asignaDocenteHorario,
+    actualizaDocenteHorario:actualizaDocenteHorario,
+    eliminaDocenteHorario:eliminaDocenteHorario
 };
