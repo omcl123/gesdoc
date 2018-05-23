@@ -143,7 +143,8 @@ async function registrarPostulanteExperiencia(preferencesObject,last_id){
                     descripcion:preferencesObject.postulante_experiencia[i].descripcion,
                     fecha_ini:fecha_i,
                     fecha_fin:fecha_f,
-                    archivo:preferencesObject.postulante_experiencia[i].archivo_experiencia
+                    archivo:preferencesObject.postulante_experiencia[i].archivo_experiencia,
+                    institucion:preferencesObject.postulante_experiencia[i].institucion
                 }
             }
         );
@@ -157,7 +158,7 @@ async function registrarPostulanteDocenciaCargo(preferencesObject,last_id){
     for (i=0; i<longitud;i++) {
         let fecha_i= convertirFecha(preferencesObject.postulante_docencia_cargo[i].fecha_inicio);
         let fecha_f= convertirFecha(preferencesObject.postulante_docencia_cargo[i].fecha_fin);
-        await sequelize.query('CALL registraPostulanteDocenciaCargo(:id_postulante,:nombre,:fecha_ini,:fecha_fin,:institucion,:archivo)',
+        await sequelize.query('CALL registraPostulanteDocenciaCargo(:id_postulante,:nombre,:fecha_ini,:fecha_fin,:archivo,:institucion)',
             {
 
                 replacements: {
@@ -165,8 +166,8 @@ async function registrarPostulanteDocenciaCargo(preferencesObject,last_id){
                     nombre:preferencesObject.postulante_docencia_cargo[i].nombre,
                     fecha_ini:fecha_i,
                     fecha_fin:fecha_f,
-                    institucion:preferencesObject.postulante_docencia_cargo[i].institucion,
-                    archivo:preferencesObject.postulante_docencia_cargo[i].archivo_cargo
+                    archivo:preferencesObject.postulante_docencia_cargo[i].archivo_cargo,
+                    institucion:preferencesObject.postulante_docencia_cargo[i].institucion
                 }
             }
         );
@@ -176,16 +177,16 @@ async function registrarPostulanteDocenciaAsesoria(preferencesObject,last_id){
     let longitud = preferencesObject.postulante_docencia_asesoria.length;
     let i ;
     for (i=0; i<longitud;i++) {
-        let fecha = convertirFecha(preferencesObject.requiere_docencia_asesoria[i].fecha_publicacion);
+        let fecha = convertirFecha(preferencesObject.postulante_docencia_asesoria[i].fecha_publicacion);
 
         await sequelize.query('CALL registraPostulanteDocenciaAsesoria(:id_postulante,:titulo,:resumen,:fecha)',
             {
 
                 replacements: {
                     id_postulante: last_id,
-                    nombre: preferencesObject.postulante_docencia_asesoria[i].titulo,
+                    titulo: preferencesObject.postulante_docencia_asesoria[i].titulo,
                     fecha: fecha,
-                    institucion: preferencesObject.postulante_docencia_asesoria[i].resumen
+                    resumen: preferencesObject.postulante_docencia_asesoria[i].resumen
 
                 }
             }
@@ -220,15 +221,16 @@ async function registrarPremioGrado(preferencesObject,last_id,i){
             }
         }
     );
-    let longitud2= preferencesObject.postulante_grado_academico[i].premio;
+    let longitud2= preferencesObject.postulante_grado_academico[i].premio.length;
+    console.log(longitud2);
     let j;
     for (j=0; j<longitud2;j++) {
 
-        await sequelize.query('CALL registraPostulanteDocenciaGrado(:id_postulante_grado,:archivo_premio,:url,:descripcion_url,:descripcion_archivo_premio)',
+        await sequelize.query('CALL registraPostulantePremioGrado(:id_postulante_grado,:archivo_premio,:url,:descripcion_url,:descripcion_archivo_premio)',
             {
 
                 replacements: {
-                    id_postulante_grado: last_id2,
+                    id_postulante_grado: last_id2[0].nuevo_id,
                     archivo_premio: preferencesObject.postulante_grado_academico[i].premio[j].archivo_premio,
                     url: preferencesObject.postulante_grado_academico[i].premio[j].url,
                     descripcion_url: preferencesObject.postulante_grado_academico[i].premio[j].descripcion_url,
@@ -245,11 +247,11 @@ async function registrarPostulanteGrado(preferencesObject,last_id){
     let i ;
     for (i=0; i<longitud;i++) {
         let fecha_obtencion1= convertirFecha(preferencesObject.postulante_grado_academico[i].fecha_obtencion);
-        await sequelize.query('CALL registraPostulanteDocenciaGrado(:id_postulante,:especialidad,:pais,:institucion,:nombre_titulo,:egresado,:fecha_obtencion,:titulo_tesis,:url_tesis,:grado_academico)',
+        await sequelize.query('CALL registraPostulanteDocenciaGrado(:id_postulante,:especialidad,:pais,:institucion,:nombre_titulo,:egresado,:fecha_obtencion,:titulo_tesis,:url_tesis,:archivo_tesis,:grado_academico)',
             {
 
                 replacements: {
-                    id_postulante: preferencesObject.postulante.id,
+                    id_postulante: last_id,
                     especialidad: preferencesObject.postulante_grado_academico[i].especialidad,
                     pais: preferencesObject.postulante_grado_academico[i].pais,
                     institucion: preferencesObject.postulante_grado_academico[i].institucion,
@@ -258,6 +260,7 @@ async function registrarPostulanteGrado(preferencesObject,last_id){
                     fecha_obtencion:fecha_obtencion1,
                     titulo_tesis: preferencesObject.postulante_grado_academico[i].titulo_tesis,
                     url_tesis: preferencesObject.postulante_grado_academico[i].url_tesis,
+                    archivo_tesis:preferencesObject.postulante_grado_academico[i].archivo_tesis,
                     grado_academico: preferencesObject.postulante_grado_academico[i].grado_academico
 
 
@@ -291,37 +294,37 @@ async function requerimientos(preferencesObject,last_id){
         else  return -1;
 
     }
-    // if (requerimientos[0].requiere_experiencia){
-    //     if(preferencesObject.postulante_experiencia!=null)  {
-    //         await registrarPostulanteExperiencia(preferencesObject,last_id);
-    //     }
-    //     else  return -1;
-    // }
-    // if (requerimientos[0].requiere_docencia_cargo){
-    //     if(preferencesObject.postulante_docencia_cargo!=null)  {
-    //         await registrarPostulanteDocenciaCargo(preferencesObject,last_id);
-    //     }
-    //     else  return -1;
-    // }
-    // if (requerimientos[0].requiere_docencia_asesoria){
-    //     if(preferencesObject.postulante_docencia_asesoria!=null)  {
-    //         await registrarPostulanteDocenciaAsesoria(preferencesObject,last_id);
-    //     }
-    //     else  return -1;
-    // }
-    // if (requerimientos[0].requiere_docencia_premio){
-    //     if(preferencesObject.postulante_docencia_premio!=null)  {
-    //         await registrarPostulanteDocenciaPremio(preferencesObject,last_id);
-    //     }
-    //     else  return -1;
-    // }
-    // if (requerimientos[0].requiere_grado_titulo || requerimientos[0].requiere_grado_maestria || requerimientos[0].requiere_grado_doctorado
-    //     || requerimientos[0].requiere_grado_diplomatura ){
-    //     if(preferencesObject.postulante_grado_academico!=null)  {
-    //         await registrarPostulanteGrado(preferencesObject,last_id);
-    //     }
-    //     else  return -1;
-    // }
+    if (requerimientos[0].requiere_experiencia){
+        if(preferencesObject.postulante_experiencia!=null)  {
+            await registrarPostulanteExperiencia(preferencesObject,last_id);
+        }
+        else  return -1;
+    }
+    if (requerimientos[0].requiere_docencia_cargo){
+        if(preferencesObject.postulante_docencia_cargo!=null)  {
+            await registrarPostulanteDocenciaCargo(preferencesObject,last_id);
+        }
+        else  return -1;
+    }
+    if (requerimientos[0].requiere_docencia_asesoria){
+        if(preferencesObject.postulante_docencia_asesoria!=null)  {
+            await registrarPostulanteDocenciaAsesoria(preferencesObject,last_id);
+        }
+        else  return -1;
+    }
+    if (requerimientos[0].requiere_docencia_premio){
+        if(preferencesObject.postulante_docencia_premio!=null)  {
+            await registrarPostulanteDocenciaPremio(preferencesObject,last_id);
+        }
+        else  return -1;
+    }
+    if (requerimientos[0].requiere_grado_titulo || requerimientos[0].requiere_grado_maestria || requerimientos[0].requiere_grado_doctorado
+        || requerimientos[0].requiere_grado_diplomatura ){
+        if(preferencesObject.postulante_grado_academico!=null)  {
+            await registrarPostulanteGrado(preferencesObject,last_id);
+        }
+        else  return -1;
+    }
 
     return "Registro requerimientos correcto"
 }
@@ -329,7 +332,7 @@ async function registrarPostulante(preferencesObject){
     try{
         mensaje = "";
         console.log(JSON.stringify(preferencesObject.postulante.apellido_paterno));
-        //await insertaPostulante(preferencesObject);
+        await insertaPostulante(preferencesObject);
         let last_id= await sequelize.query(' CALL devuelveSiguienteId(:tabla )',
             {
 

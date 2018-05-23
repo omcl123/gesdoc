@@ -1918,3 +1918,51 @@
 {"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:22:54.304Z"}
 {"level":"error","message":"listarPostulante failed","timestamp":"2018-05-23T19:22:54.346Z"}
 {"level":"info","message":"::1 - - [23/May/2018:19:22:54 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:22:54.356Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:24:20.136Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:24:20 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:24:20.766Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:27:08.709Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:27:08 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 14 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:27:08.715Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:35:37.097Z"}
+{"level":"error","message":"listarPostulante failed","timestamp":"2018-05-23T19:35:37.256Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:35:37 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:35:37.278Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:36:53.321Z"}
+{"level":"error","message":"listarPostulante failed","timestamp":"2018-05-23T19:36:53.570Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:36:53 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:36:53.581Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:39:04.478Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:39:05 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:39:05.083Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:45:33.738Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:45:34 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:45:34.542Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:50:21.040Z"}
+{"level":"error","message":"listarPostulante failed","timestamp":"2018-05-23T19:50:21.726Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:50:21 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:50:21.736Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:51:35.349Z"}
+{"level":"error","message":"listarPostulante failed","timestamp":"2018-05-23T19:51:36.861Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:51:36 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:51:36.868Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:52:20.070Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:52:21 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:52:21.097Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T19:57:40.636Z"}
+{"level":"info","message":"::1 - - [23/May/2018:19:57:41 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T19:57:41.815Z"}
+{"level":"error","message":"listarPostulante failed","timestamp":"2018-05-23T20:20:43.775Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:20:43 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:20:43.790Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:21:23.236Z"}
+{"level":"error","message":"listarPostulante failed","timestamp":"2018-05-23T20:21:24.533Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:21:24 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:21:24.544Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:22:49.008Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:22:50 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:22:50.453Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:31:47.749Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:31:49 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:31:49.114Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:33:02.450Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:33:03 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:33:03.669Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:34:06.427Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:34:07 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:34:07.284Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:34:27.116Z"}
+{"level":"error","message":"listarPostulante failed","timestamp":"2018-05-23T20:34:28.612Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:34:28 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:34:28.618Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:35:29.447Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:35:31 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:35:31.287Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:35:41.871Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:35:43 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:35:43.391Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:38:40.264Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:38:41 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:38:41.120Z"}
+{"level":"info","message":"registrarPostulante succesful","timestamp":"2018-05-23T20:41:12.913Z"}
+{"level":"info","message":"::1 - - [23/May/2018:20:41:14 +0000] \"POST /convocatoria/convocatoria/postulante/registrar HTTP/1.1\" 200 46 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-23T20:41:14.956Z"}
