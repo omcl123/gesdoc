@@ -35,16 +35,51 @@ async function listaConvocatoria(preferencesObject){
 
         let jsonConvocatorias= await Promise.all(convocatorias.map(async item => {
             let innerPart={};
+            innerPart.id = item.id;
             innerPart.codigo=item.codigo;
-            innerPart.clave_curso=item.clave_curso;
-            innerPart.nombre_curso=item.nombre_curso;
-            innerPart.fecha_creacion=item.fecha_creacion;
-            innerPart.fecha_limite=item.fecha_limite;
-            innerPart.estado_convocatoria=item.estado_convocatoria;
+            innerPart.nombre = item.nombre;
+            innerPart.estado=item.estado;
+            innerPart.fecha_inicio=item.fecha_inicio;
+            innerPart.fecha_registro=item.fecha_registro;
+            innerPart.fecha_fin=item.fecha_fin;
+            innerPart.cantidadPostulantes = item.cantidad_postulantes;
+
+
+            //curso y seccion
+            try {
+                let detalle_curso = await sequelize.query('CALL detalleCurso(:codigo_curso)',
+                    {
+                        replacements: {
+                            codigo_curso: item.codigo_curso
+                        }
+                    }
+                );
+
+                innerPart.curso = await Promise.all(detalle_curso.map(async itemCurso => {
+                    let innerCurso={};
+                    innerCurso.id = itemCurso.id;
+                    innerCurso.nombre = itemCurso.nombre;
+                    innerCurso.codigo = itemCurso.codigo;
+                    return innerCurso;
+                }));
+
+                innerPart.seccion = await Promise.all(detalle_curso.map(async itemSeccion => {
+                    let innerSeccion={};
+                    innerSeccion.id = itemSeccion.id_seccion;
+                    innerSeccion.nombre = itemSeccion.nombre_seccion;
+                    return innerSeccion;
+                }));
+
+            }catch(e){
+                console.log(e);
+                winston.error("detalle_curso failed");
+            }
+
 
 
             return innerPart;
         }));
+
         console.log(jsonConvocatorias);
         winston.info("listaConvocatoria succesful");
         return jsonConvocatorias;
