@@ -16,7 +16,7 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 async function cargaHorarios(dataArray) {
 
     try {
-        await dataArray.map(async item => {
+        await Promise.all( dataArray.map(async item => {
             try{
                 let codigoProf = item[0];
                 let participacion = item[1];
@@ -37,8 +37,16 @@ async function cargaHorarios(dataArray) {
                         winston.info("cargaHorarios insert new cursoxciclo success on execution");
                     }
 
-                    await sequelize.query(`CALL insert_horario (${codigoProf}, '${codigoCurso}', '${ciclo}',
+                    //verifica horario duplicado
+                    let horario_esRepetido = await sequelize.query(`CALL verifica_horario_duplicado ('${codigoCurso}', '${ciclo}','${codigoHorario}')`);
+
+
+                    if (horario_esRepetido[0] === undefined) {
+                        await sequelize.query(`CALL insert_horario (${codigoProf}, '${codigoCurso}', '${ciclo}',
                         '${codigoHorario}', ${participacion}, ${puntaje})`);
+
+                        winston.info("Horarios insert new insert_horario success on execution");
+                    }
 
                     return message = "cargaHorarios  success on execution";
                 }
@@ -47,7 +55,7 @@ async function cargaHorarios(dataArray) {
                 message = "cargaHorarios Failed";
                 return message;
             }
-        });
+        }));
         let result = {};
         winston.info("cargaHorarios success on execution");
         return result;
@@ -59,3 +67,4 @@ async function cargaHorarios(dataArray) {
 module.exports = {
     cargaHorarios: cargaHorarios
 };
+

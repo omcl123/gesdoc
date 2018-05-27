@@ -3,7 +3,7 @@ const cargaProfesores = require('./cargaProfesores');
 const cargaCurso = require('./cargaCurso');
 const cargaEncuestas = require('./cargaEncuestas');
 const cargaHorarios = require('./cargaHorarios');
-
+const cargaAsignacion = require('./cargaAsignacionHorarios')
 
 async function cargaPrincipal(preferencesObject) {
 
@@ -17,7 +17,10 @@ async function cargaPrincipal(preferencesObject) {
             result.message = await cargaEncuestas.cargaEncuestas(preferencesObject.data);
         } else if (preferencesObject.type === 'horarios'){
             result.message = await cargaHorarios.cargaHorarios(preferencesObject.data);
+        } else if (preferencesObject.type === 'asignacionHorarios'){
+            result.message = await cargaAsignacion.cargaAsignacionHorarios(preferencesObject.data);
         }
+
         winston.info("cargaPrincipal success on execution");
 
         return result;

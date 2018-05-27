@@ -17,7 +17,7 @@ async function cargaCurso(dataArray) {
     let message = "";
 
     try {
-        await dataArray.map(async item => {
+        await Promise.all(dataArray.map(async item => {
             try{
                 let codigo = item[0];
                 let nombre = item[1];
@@ -44,7 +44,7 @@ async function cargaCurso(dataArray) {
                 message = "cargaCurso Failed";
                 return message;
             }
-        });
+        }));
         winston.info("cargaCurso success on execution");
         return message;
     } catch(e) {

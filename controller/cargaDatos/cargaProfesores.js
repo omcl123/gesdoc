@@ -17,7 +17,7 @@ async function cargaDocente(dataArray) {
     let message = "";
 
     try {
-        await dataArray.map(async item => {
+        await Promise.all( dataArray.map(async item => {
             try{
                 let nombre = item[0];
                 let apellidoP = item[1];
@@ -46,7 +46,7 @@ async function cargaDocente(dataArray) {
                 message = "cargaDocente Failed";
                 return message;
             }
-        });
+        }));
         winston.info("cargaDocente success on execution");
         return message;
     } catch(e) {
