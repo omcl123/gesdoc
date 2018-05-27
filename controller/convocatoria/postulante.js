@@ -359,7 +359,7 @@ async function guardaDatos(qinvestigacion){
         //console.log(qinvestigacion);
         let inv = await Promise.all(qinvestigacion.map(async item => {
             let innerPart={};
-            innerPart.id=item.postulante_id;
+            innerPart.id=item.id;
             innerPart.nombres= item.nombres;
             innerPart.apellido_paterno= item.apellido_paterno;
             innerPart.apellido_materno= item.apellido_materno;

@@ -2427,3 +2427,55 @@
 {"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T15:53:42.960Z"}
 {"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T15:53:42.962Z"}
 {"level":"info","message":"::1 - - [27/May/2018:15:53:42 +0000] \"GET /convocatoria/convocatoria/postulante/devolver?id_postulante=2 HTTP/1.1\" 200 7557 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T15:53:42.964Z"}
+{"level":"info","message":"devuelvePostulante succesful","timestamp":"2018-05-27T19:08:38.652Z"}
+{"level":"info","message":"devuelvePostulanteInvestigacion correcto","timestamp":"2018-05-27T19:08:38.977Z"}
+{"level":"info","message":"devuelvePostulanteExperiencia correcto","timestamp":"2018-05-27T19:08:39.029Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaCargo correcto","timestamp":"2018-05-27T19:08:39.066Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaAsesoria correcto","timestamp":"2018-05-27T19:08:39.098Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:08:39.155Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:08:39.353Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:08:39.501Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:08:39.519Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:08:39.521Z"}
+{"level":"info","message":"::1 - - [27/May/2018:19:08:39 +0000] \"GET /convocatoria/convocatoria/postulante/devolver?id_postulante=2 HTTP/1.1\" 200 7557 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T19:08:39.599Z"}
+{"level":"info","message":"devuelvePostulante succesful","timestamp":"2018-05-27T19:09:28.298Z"}
+{"level":"info","message":"devuelvePostulanteInvestigacion correcto","timestamp":"2018-05-27T19:09:28.303Z"}
+{"level":"info","message":"devuelvePostulanteExperiencia correcto","timestamp":"2018-05-27T19:09:28.306Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaCargo correcto","timestamp":"2018-05-27T19:09:28.309Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaAsesoria correcto","timestamp":"2018-05-27T19:09:28.312Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:09:28.322Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:09:28.327Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:09:28.329Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:09:28.331Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:09:28.333Z"}
+{"level":"info","message":"::1 - - [27/May/2018:19:09:28 +0000] \"GET /convocatoria/convocatoria/postulante/devolver?id_postulante=2 HTTP/1.1\" 200 7557 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T19:09:28.334Z"}
+{"level":"error","message":"devuelvePostulante failed","timestamp":"2018-05-27T19:09:52.242Z"}
+{"level":"info","message":"::1 - - [27/May/2018:19:09:52 +0000] \"GET /convocatoria/convocatoria/postulante/devolver?id=2 HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T19:09:52.243Z"}
+{"level":"info","message":"listarPostulante succesful","timestamp":"2018-05-27T19:10:56.726Z"}
+{"level":"info","message":"::1 - - [27/May/2018:19:10:56 +0000] \"GET /convocatoria/convocatoria/postulante/listar?id=2 HTTP/1.1\" 200 17 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T19:10:56.728Z"}
+{"level":"info","message":"listarPostulante succesful","timestamp":"2018-05-27T19:11:04.070Z"}
+{"level":"info","message":"::1 - - [27/May/2018:19:11:04 +0000] \"GET /convocatoria/convocatoria/postulante/listar?id=1 HTTP/1.1\" 200 4729 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T19:11:04.071Z"}
+{"level":"error","message":"devuelvePostulante failed","timestamp":"2018-05-27T19:17:13.909Z"}
+{"level":"info","message":"::1 - - [27/May/2018:19:17:13 +0000] \"GET /convocatoria/convocatoria/postulante/devolver?id=1 HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T19:17:13.917Z"}
+{"level":"info","message":"devuelvePostulante succesful","timestamp":"2018-05-27T19:17:34.253Z"}
+{"level":"info","message":"devuelvePostulanteInvestigacion correcto","timestamp":"2018-05-27T19:17:34.260Z"}
+{"level":"info","message":"devuelvePostulanteExperiencia correcto","timestamp":"2018-05-27T19:17:34.264Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaCargo correcto","timestamp":"2018-05-27T19:17:34.275Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaAsesoria correcto","timestamp":"2018-05-27T19:17:34.278Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:34.282Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:34.285Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:34.287Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:34.289Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:34.291Z"}
+{"level":"info","message":"::1 - - [27/May/2018:19:17:34 +0000] \"GET /convocatoria/convocatoria/postulante/devolver?id_postulante=1 HTTP/1.1\" 200 791 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T19:17:34.294Z"}
+{"level":"info","message":"devuelvePostulante succesful","timestamp":"2018-05-27T19:17:56.162Z"}
+{"level":"info","message":"devuelvePostulanteInvestigacion correcto","timestamp":"2018-05-27T19:17:56.180Z"}
+{"level":"info","message":"devuelvePostulanteExperiencia correcto","timestamp":"2018-05-27T19:17:56.198Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaCargo correcto","timestamp":"2018-05-27T19:17:56.223Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaAsesoria correcto","timestamp":"2018-05-27T19:17:56.235Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:56.247Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:56.268Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:56.274Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:56.277Z"}
+{"level":"info","message":"devuelvePostulanteDocenciaPremio correcto","timestamp":"2018-05-27T19:17:56.280Z"}
+{"level":"info","message":"::1 - - [27/May/2018:19:17:56 +0000] \"GET /convocatoria/convocatoria/postulante/devolver?id_postulante=2 HTTP/1.1\" 200 7564 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-27T19:17:56.281Z"}
