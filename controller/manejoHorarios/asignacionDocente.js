@@ -65,7 +65,7 @@ async function listaDocenteAsignar(preferencesObject) {
     try {
         let jsonBlock = {};
         let listapreferencia =
-            await sequelize.query(`call lista_docente_encuesta_preferencia('${preferencesObject.codCurso}','${preferencesObject.ciclo}');`);
+            await sequelize.query(`call lista_docente_encuesta_preferencia('${preferencesObject.codCur}','${preferencesObject.ciclo}');`);
         let preferencia = Promise.all(await listapreferencia.map(async item =>{
             let partPref = {};
             partPref.codigo = item.codigo;
@@ -80,7 +80,7 @@ async function listaDocenteAsignar(preferencesObject) {
                 partPref.horasAsignadas = resumenCargaDocente[0].horasAsignadas;
             }
             let encuesta =
-                await (sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`));
+                await (sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCur}');`));
             if (await encuesta > 0){
                 partPref.encuesta = encuesta[0].encuesta;
             }else{
@@ -109,7 +109,7 @@ async function listaDocenteAsignar(preferencesObject) {
                 partPref.horasAsignadas = resumenCargaDocente[0].horasAsignadas;
             }
             let encuesta =
-                await sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCurso}');`);
+                await sequelize.query(`call devuelve_promedio_encuesta('${item.codigo}','${preferencesObject.codCur}');`);
             if (await encuesta > 0){
                 partPref.encuesta = encuesta[0].encuesta;
             }else{
