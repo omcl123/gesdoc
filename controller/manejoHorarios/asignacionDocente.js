@@ -73,8 +73,8 @@ async function listaDocenteAsignar(preferencesObject) {
             partPref.tipo = item.tipo;
             let resumenCargaDocente =
                 await sequelize.query(`call resumen_carga_docente('${item.codigo}','${preferencesObject.ciclo}');`);
-            partPref.numCursos = resumenCargaDocente[0].numCursos;
-            if (resumenCargaDocente.numCursos === 0){
+            partPref.numCursos = await resumenCargaDocente[0].numCursos;
+            if (partPref.numCursos === 0){
                 partPref.horasAsignadas = 0;
             }else{
                 partPref.horasAsignadas = resumenCargaDocente[0].horasAsignadas;
@@ -97,8 +97,13 @@ async function listaDocenteAsignar(preferencesObject) {
             partPref.tipo = item.tipo;
             let resumenCargaDocente =
                 await sequelize.query(`call resumen_carga_docente('${item.codigo}','${preferencesObject.ciclo}');`);
-            partPref.numCursos = resumenCargaDocente[0].numCursos;
-            if (resumenCargaDocente.numCursos === 0){
+            if (resumenCargaDocente[0].numCursos === null){
+                partPref.numCursos = 0;
+            } else{
+                partPref.numCursos = resumenCargaDocente[0].numCursos;
+            }
+
+            if (partPref.numCursos === 0){
                 partPref.horasAsignadas = 0;
             }else{
                 partPref.horasAsignadas = resumenCargaDocente[0].horasAsignadas;

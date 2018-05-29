@@ -32,7 +32,12 @@ router.get('/convocatoria/postulante/listar', async function (req,res){
     jsonBlock.postulante=await postulanteController.listarPostulante(req.query);
     res.send(jsonBlock);
 });
-
+//devuelve POstulante
+router.get('/convocatoria/postulante/devolver', async function (req,res){
+    let jsonBlock ={}
+    jsonBlock=await postulanteController.devuelvePostulante(req.query);
+    res.send(jsonBlock);
+});
 
 //registrar postulante
 router.post('/convocatoria/postulante/registrar', async function (req,res) {

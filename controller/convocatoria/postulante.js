@@ -354,9 +354,330 @@ async function registrarPostulante(preferencesObject){
         winston.error("listarPostulante failed");
     }
 }
+async function guardaDatos(qinvestigacion){
+    try{
+        //console.log(qinvestigacion);
+        let inv = await Promise.all(qinvestigacion.map(async item => {
+            let innerPart={};
+            innerPart.id=item.id;
+            innerPart.nombres= item.nombres;
+            innerPart.apellido_paterno= item.apellido_paterno;
+            innerPart.apellido_materno= item.apellido_materno;
+            innerPart.correo=item.correo;
+            innerPart.fecha_nacimiento= item.fecha_nacimiento;
+            innerPart.numero_documento= item.numero_documento;
+            innerPart.tipo_documento=item.tipo_documento;
+            innerPart.sexo= item.sexo;
+            innerPart.pais_nacimiento= item.pais_nacimiento;
+            innerPart.lugar_nacimiento= item.lugar_nacimiento;
+            innerPart.pais_domicilio=item.pais_domicilio;
+            innerPart.direccion_domicilio= item.direccion_domicilio;
+            innerPart.telefono= item.telefono;
+            innerPart.celular=item.celular;
+            innerPart.id_convocatoria=parseInt(item.id_convocatoria);
+            return innerPart;
+        }));
+        let i=0;
+        let postulante ={};
+        postulante = inv[0];
+        return postulante;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelveListaInvestigacion failed");
+    }
+}
+async function devuelvePostulanteInvestigacion(preferencesObject){
+
+    try {
+        let investigaciones = await sequelize.query('CALL devuelvePostulateInvestigacion(:id_postulante)',
+            {
+                replacements: {
+                    id_postulante: parseInt(preferencesObject.id_postulante),
+
+                }
+            }
+        );
+
+        let jsonInvestigaciones = await Promise.all(investigaciones.map(async item => {
+            let innerPart={};
+            innerPart.id=item.id;
+            innerPart.titulo=item.titulo;
+            innerPart.resumen=item.resumen;
+            innerPart.fecha=item.fecha;
+            innerPart.archivo_investigacion=item.archivo_investigacion;
+            return innerPart;
+        }));
+        winston.info("devuelvePostulanteInvestigacion correcto")
+        return jsonInvestigaciones;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelvePostulanteInvestigacion failed");
+
+    }
+}
+
+async function devuelvePostulanteExperiencia(preferencesObject){
+
+    try {
+        let experiencias = await sequelize.query('CALL devuelvePostulateExperiencia(:id_postulante)',
+            {
+                replacements: {
+                    id_postulante: parseInt(preferencesObject.id_postulante),
+
+                }
+            }
+        );
+        console.log(experiencias);
+        let jsonExperiencias = await Promise.all(experiencias.map(async item => {
+            let innerPart={};
+            innerPart.id=item.id;
+            innerPart.descripcion=item.descripcion;
+            innerPart.fecha_inicio=item.fecha_inicio;
+            innerPart.fecha_fin=item.fecha_fin;
+            innerPart.archivo_experiencia=item.archivo_experiencia;
+            innerPart.institucion=item.institucion;
+            return innerPart;
+        }));
+        winston.info("devuelvePostulanteExperiencia correcto")
+        return jsonExperiencias;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelvePostulanteExperiencia failed");
+
+    }
+}
+
+async function devuelvePostulanteDocenciaCargo(preferencesObject){
+
+    try {
+        let cargos = await sequelize.query('CALL devuelvePostulateCargos(:id_postulante)',
+            {
+                replacements: {
+                    id_postulante: parseInt(preferencesObject.id_postulante),
+
+                }
+            }
+        );
+        console.log(cargos);
+        let jsoncargos = await Promise.all(cargos.map(async item => {
+            let innerPart={};
+            innerPart.id=item.id;
+            innerPart.nombre_curso=item.nombre_curso;
+            innerPart.fecha_inicio=item.fecha_inicio;
+            innerPart.fecha_fin=item.fecha_fin;
+            innerPart.archivo_cargo=item.archivo_cargo;
+            innerPart.institucion=item.institucion;
+            return innerPart;
+        }));
+        winston.info("devuelvePostulanteDocenciaCargo correcto")
+        return jsoncargos;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelvePostulanteDocenciaCargo failed");
+
+    }
+}
+
+async function devuelvePostulanteDocenciaAsesoria(preferencesObject){
+
+    try {
+        let asesoria = await sequelize.query('CALL devuelvePostulateAsesoria(:id_postulante)',
+            {
+                replacements: {
+                    id_postulante: parseInt(preferencesObject.id_postulante),
+
+                }
+            }
+        );
+        console.log(asesoria);
+        let jsonasesoria = await Promise.all(asesoria.map(async item => {
+            let innerPart={};
+            innerPart.id=item.id;
+            innerPart.fecha_publicacion=item.fecha_publicacion;
+            innerPart.titulo=item.titulo;
+            innerPart.resumen=item.resumen;
+
+            return innerPart;
+        }));
+        winston.info("devuelvePostulanteDocenciaAsesoria correcto")
+        return jsonasesoria;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelvePostulanteDocenciaAsesoria failed");
+
+    }
+}
+
+async function devuelvePostulanteDocenciaPremio(preferencesObject){
+
+    try {
+        let premio = await sequelize.query('CALL devuelvePostulatePremio(:id_postulante)',
+            {
+                replacements: {
+                    id_postulante: parseInt(preferencesObject.id_postulante),
+
+                }
+            }
+        );
+        console.log(premio);
+        let jsonaspremio = await Promise.all(premio.map(async item => {
+            let innerPart={};
+            innerPart.id=item.id;
+            innerPart.archivo_premio=item.archivo_premio;
+            innerPart.url_premio=item.url_premio;
+            innerPart.descripcion=item.descripcion;
+
+            return innerPart;
+        }));
+        winston.info("devuelvePostulanteDocenciaPremio correcto")
+        return jsonaspremio;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelvePostulanteDocenciaPremio failed");
+
+    }
+}
+
+async function devuelvePostulanteGrado(preferencesObject,tipo){
+
+    try {
+        let grado = await sequelize.query('CALL devuelvePostulateGrados(:id_postulante,:tipo)',
+            {
+                replacements: {
+                    id_postulante: parseInt(preferencesObject.id_postulante),
+                    tipo:tipo
+
+                }
+            }
+        );
+        console.log(grado);
+        let jsonasgrado = await Promise.all(grado.map(async item => {
+            let innerPart={};
+            innerPart.id=item.id;
+            innerPart.especialidad=item.especialidad;
+            innerPart.pais=item.pais;
+            innerPart.institucion=item.institucion;
+            innerPart.modalidad=item.modalidad;
+            innerPart.egresado=item.egresado;
+            innerPart.fecha_obtencion=item.fecha_obtencion;
+            innerPart.titulo_tesis=item.titulo_tesis;
+            innerPart.url_tesis=item.url_tesis;
+            innerPart.archivo_tesis=item.archivo_tesis;
+            return innerPart;
+        }));
+        winston.info("devuelvePostulanteDocenciaPremio correcto")
+        return jsonasgrado;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelvePostulanteDocenciaPremio failed");
+
+    }
+}
+async function devuelvePostulante(preferencesObject){
+    try{
+        let jsonPostulante={};
+        postulante= await sequelize.query(' CALL devuelvePostulante(:id_postulante )',
+            {
+
+                replacements: {
+                    id_postulante: preferencesObject.id_postulante
+                }
+            }
+        );
+        let jpostulante = await guardaDatos(postulante);
+        //console.log(jpostulante);
+
+
+        winston.info("devuelvePostulante succesful");
+        //return "correcto";
+        let requerimientos = await sequelize.query('CALL devuelveRequerimientosConvocatoria(:id_convocatoria)',
+            {
+                replacements: {
+                    id_convocatoria: parseInt(jpostulante.id_convocatoria),
+
+
+                }
+            }
+        );
+
+        //para registrar las tablas
+        let jsonPostulanteInvestigacion={};
+        let jsonPostulanteExperiencia={};
+        let jsonPostulanteDocenciaCargo={};
+        let jsonPostulanteDocenciaAsesoria={};
+        let jsonPostulantePremio={};
+        let jsonPostulanteTitulo={};
+        let jsonPostulanteMaestria={};
+        let jsonPostulanteDoctorado={};
+        let jsonPostulanteDiplomatura={};
+
+        if (requerimientos[0].requiere_investigacion){
+
+            jsonPostulanteInvestigacion= await devuelvePostulanteInvestigacion(preferencesObject);
+
+
+
+        }
+        if (requerimientos[0].requiere_experiencia){
+
+            jsonPostulanteExperiencia = await devuelvePostulanteExperiencia(preferencesObject);
+
+        }
+        if (requerimientos[0].requiere_docencia_cargo){
+
+            jsonPostulanteDocenciaCargo=  await devuelvePostulanteDocenciaCargo(preferencesObject);
+
+        }
+        if (requerimientos[0].requiere_docencia_asesoria){
+
+            jsonPostulanteDocenciaAsesoria=  await devuelvePostulanteDocenciaAsesoria(preferencesObject);
+
+        }
+        if (requerimientos[0].requiere_docencia_premio){
+
+            jsonPostulantePremio= await devuelvePostulanteDocenciaPremio(preferencesObject);
+
+        }
+        if (requerimientos[0].requiere_grado_titulo){
+
+                jsonPostulanteTitulo =await devuelvePostulanteGrado(preferencesObject,1);
+
+        }
+        if (requerimientos[0].requiere_grado_maestria ){
+
+                jsonPostulanteMaestria= await devuelvePostulanteGrado(preferencesObject,2);
+
+        }
+        if ( requerimientos[0].requiere_grado_doctorado){
+
+                jsonPostulanteDoctorado=await devuelvePostulanteGrado(preferencesObject,3);
+
+        }
+        if (requerimientos[0].requiere_grado_diplomatura){
+
+                jsonPostulanteDiplomatura=await devuelvePostulanteGrado(preferencesObject,4);
+
+        }
+        jsonPostulante.postulante=postulante;
+        jsonPostulante.postulante_investigacion=jsonPostulanteInvestigacion;
+        jsonPostulante.postulante_experiencia= jsonPostulanteExperiencia;
+        jsonPostulante.postulante_docencia_cargo=jsonPostulanteDocenciaCargo;
+        jsonPostulante.postulante_docencia_premio=jsonPostulantePremio;
+        jsonPostulante.postulante_docencia_asesoria=jsonPostulanteDocenciaAsesoria;
+        jsonPostulante.postulante_grado_titulo=jsonPostulanteTitulo;
+        jsonPostulante.postulante_grado_maestria=jsonPostulanteMaestria;
+        jsonPostulante.postulante_grado_doctorado=jsonPostulanteDoctorado;
+        jsonPostulante.postulante_grado_diplomatura=jsonPostulanteDiplomatura;
+        return jsonPostulante;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelvePostulante failed");
+    }
+}
 module.exports  ={
 
     listarPostulante:listarPostulante,
-    registrarPostulante:registrarPostulante
+    registrarPostulante:registrarPostulante,
+    devuelvePostulante:devuelvePostulante
 }
 
