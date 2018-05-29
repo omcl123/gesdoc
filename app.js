@@ -12,6 +12,7 @@ const cargaRouter = require('./routes/cargaDatos');
 const generalRouter = require('./routes/general');
 const convocatoriaRouter=require('./routes/convocatoria');
 const asignacionRouter = require('./routes/manejoHorariosRoutes');
+const ayudasEconomicasRouter = require('./routes/ayudasEconomicas');
 const app = express();
 
 const allowCrossDomain = function (req, res, next) {
@@ -33,6 +34,7 @@ app.use('/tests', testsRouter);
 app.use('/docente',docenteRouter);
 app.use('/convocatoria',convocatoriaRouter);
 app.use('/asignacionHorarios',asignacionRouter);
+app.use('/ayudasEconomicas',ayudasEconomicasRouter);
 app.use('/carga',cargaRouter);
 app.use('/general',generalRouter);
 app.use('*',(req,res,next)=>{
