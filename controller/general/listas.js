@@ -95,11 +95,50 @@ async function cicloActual(){
     }
 }
 
+async function listaTipoDocumento(){
+    try{
+        let tipo_documentos= await sequelize.query('call devuelveTipoDocumento()');
+        console.log(tipo_documentos);
+        winston.info("listaTipoDocumento success");
+        return tipo_documentos;
+    } catch( e){
+        winston.error("listaTipoDocumento failed: ",e);
+        return "error";
+
+    }
+}
+async function listaPais(){
+    try{
+        let paises= await sequelize.query('call devuelvePais()');
+        console.log(paises);
+        winston.info("listaPais success");
+        return paises;
+    } catch( e){
+        winston.error("listaPais failed: ",e);
+        return "error";
+
+    }
+}
+async function listaCurso(){
+    try{
+        let cursos= await sequelize.query('call devuelveCurso()');
+        console.log(cursos);
+        winston.info("listaCurso success");
+        return cursos;
+    } catch( e){
+        winston.error("listaCurso failed: ",e);
+        return "error";
+
+    }
+}
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
     listaSeccciones: listaSeccciones,
     listaEstadosAyudaEc: listaEstadosAyudaEc,
     listaMotivosAyudaEc: listaMotivosAyudaEc,
-    cicloActual: cicloActual
+    cicloActual: cicloActual,
+    listaCurso:listaCurso,
+    listaPais:listaPais,
+    listaTipoDocumento:listaTipoDocumento
 };
