@@ -37,5 +37,19 @@ router.get('/cicloActual', async function (req, res) {
     queryResult.cicloActual = await listaController.cicloActual();
     res.send(queryResult) ;
 });
-
+router.get('/listaPais', async function (req, res) {
+    let queryResult= {};
+    queryResult.pais = await listaController.listaPais();
+    res.send(queryResult) ;
+});
+router.get('/listaCurso', async function (req, res) {
+    let queryResult= {};
+    queryResult.curso = await listaController.listaCurso();
+    res.send(queryResult) ;
+});
+router.get('/listaTipoDocumento', async function (req, res) {
+    let queryResult= {};
+    queryResult.tipo_documento = await listaController.listaTipoDocumento();
+    res.send(queryResult) ;
+});
 module.exports = router;
