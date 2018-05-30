@@ -1,24 +1,39 @@
 const express = require('express');
 const router = express.Router();
 
+
 const ayudasEconomicasAsistenteController = require('../controller/ayudasEconomicas/ayudasEconomicasAsistente.js'); //carlos
 const ayudasEconomicasJefeController = require('../controller/ayudasEconomicas/ayudasEconomicasJefe.js'); //moises
+const ayudasEconomicasController = require('../controller/ayudasEconomicas/ayudasEconomicas');
 
 
-router.get('/a', async function(req, res) {
+
+
+
+
+//Lista ayudasEconomicas
+router.get('/ayudasEconomicas/lista', async function(req, res) {
     let jsonBlock={};
-    jsonBlock.prueba= await ayudasEconomicasJefeController.prueba(req.query);
+    jsonBlock.ayudasEconomicas= await ayudasEconomicasController.listaAyudasEconomicas(req.query);
+
 
     res.send(jsonBlock);
 
 });
 
-router.get('/b', async function(req, res) {
+
+//Detalle ayudasEconomicas
+router.get('/ayudasEconomicas/detalle', async function(req, res) {
     let jsonBlock={};
-    jsonBlock.prueba= await ayudasEconomicasAsistenteController.prueba(req.query);
+    jsonBlock = await ayudasEconomicasController.detalleAyudasEconomicas(req.query);
+
 
     res.send(jsonBlock);
 
 });
+
+
+
 
 module.exports = router;
+

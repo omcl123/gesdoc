@@ -34,6 +34,7 @@ app.use('/tests', testsRouter);
 app.use('/docente',docenteRouter);
 app.use('/convocatoria',convocatoriaRouter);
 app.use('/asignacionHorarios',asignacionRouter);
+app.use('/ayudasEconomicas',ayudasEconomicasRouter);
 app.use('/carga',cargaRouter);
 app.use('/ayudasEconomicas',ayudasEconomicasRouter);
 app.use('/general',generalRouter);
