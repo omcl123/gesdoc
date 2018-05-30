@@ -33,7 +33,11 @@ router.get('/ayudasEconomicas/detalle', async function(req, res) {
 });
 
 
-
+router.get('/ayudasEconomicas/listar',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicas(req.query);
+    res.send(jsonBlock);
+});
 
 module.exports = router;
 
