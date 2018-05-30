@@ -64,10 +64,10 @@ router.get('/listaDepartamentos', async function (req, res) {
     res.send(queryResult) ;
 });
 router.get('/listaSecciones', async function (req, res) {
-    let queryResult= {};
+    let queryResult = {};
     queryResult.tipos = await listaController.listaSecciones(req.query);
-    res.send(queryResult) ;
-
+    res.send(queryResult);
+});
 router.get('/listaProfesorSeccion',async function (req,res){
    let queryResult={};
    queryResult.profesor=await listaController.listaProfesoresSeccion(req.query);
