@@ -52,4 +52,14 @@ router.get('/listaTipoDocumento', async function (req, res) {
     queryResult.tipo_documento = await listaController.listaTipoDocumento();
     res.send(queryResult) ;
 });
+router.get('/listaProfesorSeccion',async function (req,res){
+   let queryResult={};
+   queryResult.profesor=await listaController.listaProfesoresSeccion(req.query);
+   res.send(queryResult);
+});
+router.get('/listaProfesorTipo',async function (req,res){
+    let queryResult={};
+    queryResult.profesor=await listaController.listaProfesoresTipo(req.query);
+    res.send(queryResult);
+});
 module.exports = router;
