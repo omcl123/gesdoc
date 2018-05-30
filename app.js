@@ -12,6 +12,7 @@ const cargaRouter = require('./routes/cargaDatos');
 const generalRouter = require('./routes/general');
 const convocatoriaRouter=require('./routes/convocatoria');
 const asignacionRouter = require('./routes/manejoHorariosRoutes');
+const authController = require('./auth/authController');
 const app = express();
 
 const allowCrossDomain = function (req, res, next) {
@@ -35,6 +36,7 @@ app.use('/convocatoria',convocatoriaRouter);
 app.use('/asignacionHorarios',asignacionRouter);
 app.use('/carga',cargaRouter);
 app.use('/general',generalRouter);
+app.use('/auth',authController);
 app.use('*',(req,res,next)=>{
     res.end('The link you followed may be broken, or the page may have been removed.');
     next();
