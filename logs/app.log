@@ -2619,3 +2619,28 @@
 {"level":"info","message":"::1 - - [30/May/2018:14:16:14 +0000] \"GET /tests HTTP/1.1\" 200 56 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-30T14:16:14.053Z"}
 {"level":"info","message":"::1 - - [30/May/2018:14:47:38 +0000] \"GET /tests HTTP/1.1\" 200 80 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-30T14:47:38.441Z"}
 {"level":"info","message":"::1 - - [30/May/2018:14:48:19 +0000] \"GET /tests HTTP/1.1\" 200 67 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-30T14:48:19.512Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:52.967Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.010Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:53.242Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.243Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:53.265Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.265Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:53.286Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.286Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:53.326Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.326Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:53.354Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.354Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:53.372Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.372Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:53.807Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.808Z"}
+{"level":"error","message":"404 - Not Found - /DevMgmt/DiscoveryTree.xml - GET - ::ffff:10.100.82.153","timestamp":"2018-05-30T18:36:53.854Z"}
+{"level":"info","message":"::ffff:10.100.82.153 - - [30/May/2018:18:36:53 +0000] \"GET /DevMgmt/DiscoveryTree.xml HTTP/1.1\" 404 - \"-\" \"hp Proxy/3.0\"\n","timestamp":"2018-05-30T18:36:53.855Z"}
+{"level":"error","message":"400 - Unexpected string in JSON at position 21 - /carga/cargaDatos - POST - ::1","timestamp":"2018-05-30T18:41:49.310Z"}
+{"level":"info","message":"::1 - - [30/May/2018:18:41:49 +0000] \"POST /carga/cargaDatos HTTP/1.1\" 400 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-30T18:41:49.316Z"}
+{"level":"info","message":"cargaPrincipal success on execution","timestamp":"2018-05-30T18:42:32.131Z"}
+{"level":"info","message":"::1 - - [30/May/2018:18:42:32 +0000] \"POST /carga/cargaDatos HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-30T18:42:32.153Z"}
+{"level":"info","message":"cargaDocente success on execution","timestamp":"2018-05-30T18:45:19.428Z"}
+{"level":"info","message":"cargaPrincipal success on execution","timestamp":"2018-05-30T18:45:19.428Z"}
+{"level":"info","message":"::1 - - [30/May/2018:18:45:19 +0000] \"POST /carga/cargaDatos HTTP/1.1\" 200 47 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-05-30T18:45:19.430Z"}
