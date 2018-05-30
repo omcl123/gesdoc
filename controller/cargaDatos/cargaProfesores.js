@@ -25,7 +25,7 @@ async function cargaDocente(dataArray) {
                 let dni = item[3];
                 let telefono = item[4];
                 let email = item[5];
-                let seccion = item[6]
+                let seccion = item[6];
                 let tipo = item[7];
                 let codigo = item[8];
                 if (nombre === undefined || apellidoP === undefined || apellidoM === undefined|| dni === undefined
