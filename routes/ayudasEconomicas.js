@@ -39,5 +39,22 @@ router.get('/ayudasEconomicas/listar',async function (req,res){
     res.send(jsonBlock);
 });
 
+
+//registrar ayudaEconomica
+router.post('/ayudasEconomicas/registrar', async function (req,res) {
+    let jsonBlock = {}
+    jsonBlock = await ayudasEconomicasController.registrarAyudaEconomica(req.body);
+    res.send(jsonBlock);
+});
+
+//registrar gasto
+router.post('/ayudasEconomicas/DocumentoGasto/registrar', async function (req,res) {
+    let jsonBlock = {}
+    jsonBlock = await ayudasEconomicasController.registrarDocumentoGasto(req.body);
+    res.send(jsonBlock);
+});
+
+
+
 module.exports = router;
 
