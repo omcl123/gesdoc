@@ -12,7 +12,7 @@ const cargaRouter = require('./routes/cargaDatos');
 const generalRouter = require('./routes/general');
 const convocatoriaRouter=require('./routes/convocatoria');
 const asignacionRouter = require('./routes/manejoHorariosRoutes');
-const authController = require('./auth/authController');
+const authController = require('./auth/AuthController');
 const ayudasEconomicasRouter = require('./routes/ayudasEconomicas');
 const app = express();
 
