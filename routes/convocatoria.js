@@ -54,5 +54,14 @@ router.post('/convocatoria/registrar',async function (req,res){ //Aqui ira el re
 
 });
 
+//devuelve convocatoria
+router.get('/convocatoria/devolver', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock = await convocatoriaController.devuelveConvocatoria(req.query);
+
+    res.send(jsonBlock);
+
+});
+
 
 module.exports = router;

@@ -14,6 +14,7 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
+
 async function eliminaDocenteHorario(preferencesObject){
     try {
         let codigo = preferencesObject.codigoDocente;
