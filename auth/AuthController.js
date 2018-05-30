@@ -42,11 +42,12 @@ router.post('/register',async  function(req, res) {
             unidad  = req.body.id_seccion;
         }
 
-        let userId =
+        let esRepetido = await sequelize.query(`call verifica_usuario_repetido(${codigo})`);
+
+        console.log(esRepetido[0].esRepetido);
+        if (await esRepetido[0].esRepetido > 0){
             await sequelize.query(`call registra_nuevo_usuario('${nombres}','${apellido_materno}','${apellido_paterno}'
             ,${dni},${telefono},${codigo},'${email}','${hashedPassword}',${tipoUsuario},${unidad});`);
-        console.log(userId);
-        if (await userId > 1){
             return res.status(200).send("User succesfully registered");
         } else {
             return res.status(500).send("User already exist.");
