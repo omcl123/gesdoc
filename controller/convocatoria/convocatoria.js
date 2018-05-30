@@ -400,9 +400,29 @@ async function registraConvocatoria(preferencesObject){
     }
 }
 
+async function devuelveConvocatoria(preferencesObject){
+    try {
+        let convo = await sequelize.query('CALL devuelveConvocatoria(:id)',
+            {
+                replacements: {
+                    id: preferencesObject.id
+                }
+            }
+        );
+
+        return convo;
+
+    }catch(e){
+        console.log(e);
+        winston.error("devuelveConvocatoria failed");
+    return -1;
+}
+}
+
 
 module.exports  ={
     detalleConvocatoria:detalleConvocatoria,
     listaConvocatoria:listaConvocatoria,
-    registraConvocatoria:registraConvocatoria
+    registraConvocatoria:registraConvocatoria,
+    devuelveConvocatoria:devuelveConvocatoria
 }
