@@ -205,7 +205,7 @@ module.exports = {
     listaTipoDocumento:listaTipoDocumento,
     listaTipoUsuarios:listaTipoUsuarios,
     listaDepartamentos:listaDepartamentos,
-    listaSecciones:listaSecciones
+    listaSecciones:listaSecciones,
     listaProfesoresSeccion:listaProfesoresSeccion,
     listaProfesoresTipo:listaProfesoresTipo
 };
