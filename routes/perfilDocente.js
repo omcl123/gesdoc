@@ -9,6 +9,7 @@ const descargaController = require('../controller/perfilDocente/horasDescargaDoc
 const ayudaEconController = require('../controller/perfilDocente/ayudaEconomica');
 
 /* GET home page. */
+
 //Muestra el json grande de docente
 router.get('/docente/general', async function(req, res) {
     let jsonBlock;
@@ -125,6 +126,10 @@ router.delete('/actividad/eliminar',async function (req,res){
     res.send(jsonRes);
 });
 
-
+router.get('/actividad/mostrar',async function (req,res){
+    let jsonBlock;
+    jsonBlock=await docenteActividadController.devuelveActividad(req.query);
+    res.send(jsonBlock);
+});
 
 module.exports = router;
