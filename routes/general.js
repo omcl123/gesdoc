@@ -52,6 +52,11 @@ router.get('/listaTipoDocumento', async function (req, res) {
     queryResult.tipo_documento = await listaController.listaTipoDocumento();
     res.send(queryResult) ;
 });
+router.get('/listaTipoActividad', async function (req, res) {
+    let queryResult= {};
+    queryResult.tipo_actividad = await listaController.listaTipoActividad();
+    res.send(queryResult) ;
+});
 
 router.get('/listaTipoUsuarios', async function (req, res) {
     let queryResult= {};

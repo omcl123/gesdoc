@@ -162,6 +162,16 @@ async function listaSecciones(req){
     }
 }
 
+async function listaTipoActividad(req){
+    try{
+        return await sequelize.query(`call lista_actividades()`);
+    } catch( e){
+        winston.error("lista_actividades failed: ",e);
+        return "error";
+
+    }
+}
+
 async function listaProfesoresSeccion(preferencesObject){
     try{
         let profesores_seccion=await sequelize.query('call devuelveProfesoresSeccion(:seccion)',{
@@ -207,5 +217,6 @@ module.exports = {
     listaDepartamentos:listaDepartamentos,
     listaSecciones:listaSecciones,
     listaProfesoresSeccion:listaProfesoresSeccion,
-    listaProfesoresTipo:listaProfesoresTipo
+    listaProfesoresTipo:listaProfesoresTipo,
+    listaTipoActividad:listaTipoActividad
 };
