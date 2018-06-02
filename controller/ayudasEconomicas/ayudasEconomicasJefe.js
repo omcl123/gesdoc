@@ -34,6 +34,8 @@ async function devuelveAyudasEconomicas(preferencesObject){
         if (ciclo == undefined || ciclo[0]==undefined || ciclo.length==0)
             return -1;
         else {
+
+
             console.log(ciclo);
             let ayudas=await sequelize.query(`call devuelveAyudasEconomicas(:ciclo)`,
                 {
@@ -74,6 +76,22 @@ async function devuelveAyudasEconomicas(preferencesObject){
         winston.error("devuelveAyudasEconomicas failed");
     }
 
+}
+async function devuelveAyudasEconomicasFiltro(preferencesObject){
+    try{
+        //codigo_inv=1&titulo=AAAA&profesor=2011111&seccion=
+        //AAAA&motivo=AAAAA&estado=AAAA&montoMin=200
+        // &montoMAX=300&fecha_inicio=02/06/18& fecha_fin=02/06/2018
+
+        // let ayudas = await sequelize.query('call devuelveAEFiltro(:codigo_inv,:titulo,:profesor,:seccion,:motivo,:estado,:montoMin,:montoMax,:fecha_inicio,:fecha_fin)',
+        //     {
+        //        replacements:{
+        //
+        //        }
+        //     });
+    }catch (e){
+        winston.error("devuelveAyudasEconomicas")
+    }
 }
 module.exports={
     devuelveAyudasEconomicas:devuelveAyudasEconomicas
