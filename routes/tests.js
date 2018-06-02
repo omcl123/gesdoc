@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var testController = require("../controller/tests");
+const express = require('express');
+const router = express.Router();
+const VerifyToken = require('../auth/VerifyToken');
 /* GET users listing. */
-router.get('/', async function(req, res, next) {
-	let jsonBlock = await testController.devuelveTabla();
+router.get('/',VerifyToken,function(req, res, next) {
+	let jsonBlock = {};
+	jsonBlock.user = req.user;
+	console.log(req.user);
 	res.send(jsonBlock);
 });
 
