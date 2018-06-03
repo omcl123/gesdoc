@@ -44,8 +44,8 @@ router.post('/register',async  function(req, res) {
 
         let esRepetido = await sequelize.query(`call verifica_usuario_repetido(${codigo})`);
 
-        console.log(esRepetido[0].esRepetido);
-        if (await esRepetido[0].esRepetido > 0){
+        console.log(await esRepetido[0].esRepetido);
+        if (await esRepetido[0].esRepetido === 0){
             await sequelize.query(`call registra_nuevo_usuario('${nombres}','${apellido_materno}','${apellido_paterno}'
             ,${dni},${telefono},${codigo},'${email}','${hashedPassword}',${tipoUsuario},${unidad});`);
             return res.status(200).send("User succesfully registered");
@@ -63,7 +63,7 @@ router.post('/login',async function(req, res) {
         let codigo = req.body.codigo;
         let existe = await sequelize.query(`call existe_usuario(${codigo});`);
         console.log(existe);
-        if (existe[0].id_cargo === undefined) return res.status(404).send('No user found.');
+        if (await existe[0].id_cargo === undefined) return res.status(404).send('No user found.');
         else{
             let user = await sequelize.query(`call encuentra_usuario(${codigo},${existe[0].id_cargo});`);
             console.log(user);
