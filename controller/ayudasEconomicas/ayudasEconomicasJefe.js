@@ -80,58 +80,66 @@ async function devuelveAyudasEconomicas(preferencesObject){
 }
 async function devuelveAyudasEconomicasFiltro(preferencesObject){
     try{
-       // codigo_inv=1&titulo=AAAA&profesor=2011111&seccion=
-       // AAAA&motivo=AAAAA&estado=AAAA&montoMin=200
-       // &montoMAX=300&fecha_inicio=02/06/18& fecha_fin=02/06/2018
-        let codig_inv ;
+
+        let codigo_inv ;
         let titulo;let codigo_profesor;let seccion;
         let motivo; let estado; let montoMin; let montoMax;let fecha_inicio;let fecha_fin;
-        if (preferencesObject.codig_inv ==-1)
-            codig_inv=-1;
+        //console.log(preferencesObject);
+        if (parseInt(preferencesObject.codigo_inv) ==-1)
+            codigo_inv=-1;
         else
             codigo_inv=preferencesObject.codigo_inv;
 
-        if (preferencesObject.titulo==-1)
+        if (parseInt(preferencesObject.titulo)==-1)
             titulo = "";
         else
             titulo=preferencesObject.titulo;
-        if (preferencesObject.codigo_profesor==-1)
+
+        if (parseInt(preferencesObject.codigo_profesor)==-1)
             codigo_profesor = -1;
         else
             codigo_profesor=preferencesObject.codigo_profesor;
-        if (preferencesObject.seccion==-1)
+
+        if (parseInt(preferencesObject.seccion)==-1)
             seccion = "";
         else
             seccion=preferencesObject.seccion;
-        if (preferencesObject.motivo==-1)
+
+        if (parseInt(preferencesObject.motivo)==-1)
             motivo = "";
         else
             motivo=preferencesObject.motivo;
-        if (preferencesObject.estado==-1)
+
+        if (parseInt(preferencesObject.estado)==-1)
             estado = "";
         else
             estado=preferencesObject.estado;
-        if (preferencesObject.montoMin==-1)
+
+        if (parseInt(preferencesObject.montoMin)==-1)
             montoMin = -1;
         else
             montoMin=preferencesObject.montoMin;
-        if (preferencesObject.montoMax==-1)
+
+        if (parseInt(preferencesObject.montoMax)==-1)
             montoMax = -1;
         else
             montoMax=preferencesObject.montoMax;
-        if (preferencesObject.fecha_inicio==-1)
+
+        if (parseInt(preferencesObject.fecha_inicio)==-1)
             fecha_inicio=null;
         else
             fecha_inicio=preferencesObject.fecha_inicio;
-        if (preferencesObject.fecha_fin==-1)
+
+        if (parseInt(preferencesObject.fecha_fin)==-1)
             fecha_fin=null;
         else
             fecha_fin=preferencesObject.fecha_fin;
 
+        console.log(codigo_inv + " "+ titulo+" "+codigo_profesor+ " "+motivo+" "+estado+ " "+montoMin+ " "+montoMax+" "+fecha_inicio+" "+fecha_fin);
         let ayudas = await sequelize.query('call devuelveAEFiltro(:codigo_inv,:titulo,:profesor,:seccion,:motivo,:estado,:montoMin,:montoMax,:fecha_inicio,:fecha_fin)',
             {
                replacements:{
-                   codig_inv:codig_inv,
+                   codigo_inv:codigo_inv,
                    titulo:titulo,
                    profesor:codigo_profesor,
                    seccion:seccion,

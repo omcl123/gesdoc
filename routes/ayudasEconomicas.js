@@ -38,7 +38,7 @@ router.get('/ayudasEconomicas/listar',async function (req,res){
     jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicas(req.query);
     res.send(jsonBlock);
 });
-router.get('/ayudasEconomicas/filtro',async function (req,res){
+router.get('/ayudasEconomicas/filtrar',async function (req,res){
     let jsonBlock={};
     jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicasFiltro(req.query);
     res.send(jsonBlock);
