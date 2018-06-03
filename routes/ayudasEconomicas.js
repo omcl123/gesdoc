@@ -9,30 +9,6 @@ const ayudasEconomicasController = require('../controller/ayudasEconomicas/ayuda
 
 
 
-
-
-//Lista ayudasEconomicas
-router.get('/ayudasEconomicas/lista', async function(req, res) {
-    let jsonBlock={};
-    jsonBlock.ayudasEconomicas= await ayudasEconomicasController.listaAyudasEconomicas(req.query);
-
-
-    res.send(jsonBlock);
-
-});
-
-
-//Detalle ayudasEconomicas
-router.get('/ayudasEconomicas/detalle', async function(req, res) {
-    let jsonBlock={};
-    jsonBlock = await ayudasEconomicasController.detalleAyudasEconomicas(req.query);
-
-
-    res.send(jsonBlock);
-
-});
-
-
 router.get('/ayudasEconomicas/listar',async function (req,res){
     let jsonBlock={};
     jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicas(req.query);
@@ -43,14 +19,14 @@ router.get('/ayudasEconomicas/listar',async function (req,res){
 //registrar ayudaEconomica
 router.post('/ayudasEconomicas/registrar', async function (req,res) {
     let jsonBlock = {}
-    jsonBlock = await ayudasEconomicasController.registrarAyudaEconomica(req.body);
+    jsonBlock = await ayudasEconomicasAsistenteController.registrarAyudaEconomica(req.body);
     res.send(jsonBlock);
 });
 
 //registrar gasto
 router.post('/ayudasEconomicas/DocumentoGasto/registrar', async function (req,res) {
     let jsonBlock = {}
-    jsonBlock = await ayudasEconomicasController.registrarDocumentoGasto(req.body);
+    jsonBlock = await ayudasEconomicasAsistenteController.registrarDocumentoGasto(req.body);
     res.send(jsonBlock);
 });
 
