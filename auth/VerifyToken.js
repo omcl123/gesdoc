@@ -32,7 +32,7 @@ function verifyToken(req, res, next) {
         let unidad = await
             sequelize.query(`CALL devuelve_unidad_usuario(${userResponse[0].nombre_usuario},${userResponse[0].id_cargo})`);
         user.unidad = unidad[0].unidad;
-        req.user = user;
+        req.body.verifiedUser = user;
         next();
     });
 }
