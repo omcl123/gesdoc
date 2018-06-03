@@ -155,9 +155,68 @@ async function devuelveAyudasEconomicasFiltro(preferencesObject){
         return ayudas;
     }catch (e){
         winston.error("devuelveAyudasEconomicasFiltro error");
+        return "error";
+    }
+}
+async function devuelveDetalleAyudaEconomica(preferencesObject){
+    try{
+        let ayudas = await sequelize.query('call devolverDetalleAyudaEconomica(:id_ayudaeconomica)',{
+            replacements:{
+                id_ayudaeconomica:preferencesObject.id
+            }
+        });
+        let jsonAyudaEconomica = await Promise.all(ayudas.map(async item =>{
+            let innerPart ={};
+            let profesor={};
+
+            innerPart.id=item.id;
+            innerPart.titulo=item.titulo;
+            innerPart.motivo=item.motivo;
+            innerPart.monto_otorgado=item.monto_otorgado;
+            innerPart.fecha_solicitud=item.fecha_solicitud;
+            innerPart.fecha_inicio=item.fecha_inicio;
+            innerPart.fecha_fin=item.fecha_fin;
+            innerPart.comentarios_adicionales=item.comentarios_adicionales;
+            innerPart.servicio_boletos=item.servicio_boletos;
+            innerPart.servicio_costo_maestria=item.servicio_costo_maestria;
+            innerPart.servicio_inscripcion=item.servicio_inscripcion;
+            innerPart.servicio_viaticos=item.servicio_viaticos;
+
+            profesor.codigo_profesor=item.codigo_profesor;
+            profesor.nombres=item.nombres;
+            profesor.apellido_paterno=item.apellido_paterno;
+            profesor.apellido_materno=item.apellido_materno;
+            profesor.correo_pucp=item.correo_pucp;
+            profesor.seccion=item.seccion;
+
+            innerPart.profesor=profesor;
+            return innerPart;
+
+        }));
+        return jsonAyudaEconomica[0];
+    }catch(e){
+        winston.error("devuelveAyudasEconomicasFiltro error");
+        return "error";
+    }
+}
+async function modificarAyudaEconomica(preferencesObject){
+    try{
+        await sequelize.query('call modificarAyudaEconomica(:id_ayudaeconomica,:estado_ayuda)',{
+            replacements:{
+                id_ayudaeconomica:preferencesObject.id,
+                estado_ayuda:preferencesObject.estado_ayuda
+            }
+        });
+        winston.info("modificarAyudaEconomica success");
+        return "modificarAyudaEconomica success";
+    }catch(e){
+        winston.error("devuelveAyudasEconomicasFiltro error");
+        return "error";
     }
 }
 module.exports={
     devuelveAyudasEconomicas:devuelveAyudasEconomicas,
-    devuelveAyudasEconomicasFiltro:devuelveAyudasEconomicasFiltro
+    devuelveAyudasEconomicasFiltro:devuelveAyudasEconomicasFiltro,
+    devuelveDetalleAyudaEconomica:devuelveDetalleAyudaEconomica,
+    modificarAyudaEconomica:modificarAyudaEconomica
 }

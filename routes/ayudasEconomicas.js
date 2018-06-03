@@ -43,7 +43,17 @@ router.get('/ayudasEconomicas/filtrar',async function (req,res){
     jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicasFiltro(req.query);
     res.send(jsonBlock);
 });
+router.get('/ayudasEconomicas/detallar',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveDetalleAyudaEconomica(req.query);
+    res.send(jsonBlock);
+});
 
+router.put('/ayudasEconomicas/modificar',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.mensaje = await ayudasEconomicasJefeController.modificarAyudaEconomica(req.body);
+    res.send(jsonBlock);
+});
 //registrar ayudaEconomica
 router.post('/ayudasEconomicas/registrar', async function (req,res) {
     let jsonBlock = {}
