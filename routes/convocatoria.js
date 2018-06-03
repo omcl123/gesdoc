@@ -45,6 +45,15 @@ router.post('/convocatoria/postulante/registrar', async function (req,res) {
     jsonBlock.mensaje = await postulanteController.registrarPostulante(req.body);
     res.send(jsonBlock);
 });
+
+//modificar Postulante
+router.put('/convocatoria/postulante/modificar',async function (req,res){ //Aqui ira el registro de convocatorias
+    let jsonRes={}
+    jsonRes.nuevo_id_convocatoria=await postulanteController.modificarPostulante(req.body);
+    res.send(jsonRes);
+
+});
+
 //Registrar Convocatoria
 router.post('/convocatoria/registrar',async function (req,res){ //Aqui ira el registro de convocatorias
     let jsonRes={}
@@ -53,6 +62,8 @@ router.post('/convocatoria/registrar',async function (req,res){ //Aqui ira el re
 
 
 });
+
+
 
 //devuelve convocatoria
 router.get('/convocatoria/devolver', async function(req, res) {

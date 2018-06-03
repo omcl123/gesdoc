@@ -674,10 +674,26 @@ async function devuelvePostulante(preferencesObject){
         winston.error("devuelvePostulante failed");
     }
 }
+async function modificarPostulante(preferencesObject){
+    try{
+        await sequelize.query('call modificarPostulante(:id_postulante,:estado_postulante)',{
+            replacements:{
+                id_postulante:preferencesObject.id,
+                estado_postulante:preferencesObject.estado_postulante
+            }
+        });
+        winston.info("modificarPostulante success");
+        return "modificarPostulante success";
+    }catch(e){
+        winston.error("modificarPostulante error");
+        return "error";
+    }
+}
 module.exports  ={
 
     listarPostulante:listarPostulante,
     registrarPostulante:registrarPostulante,
-    devuelvePostulante:devuelvePostulante
+    devuelvePostulante:devuelvePostulante,
+    modificarPostulante:modificarPostulante,
 }
 
