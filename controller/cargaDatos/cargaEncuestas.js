@@ -13,6 +13,7 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
+
 async function cargaEncuestas(dataArray) {
 
     try {
