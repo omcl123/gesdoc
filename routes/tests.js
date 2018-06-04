@@ -23,6 +23,15 @@ router.post('/upload', type, async (req, res) => {
     } catch (err) {
         res.sendStatus(400);
     }
-})
+});
+
+router.get('/download', async (req, res) => {
+    try {
+        res.setHeader('Content-Type', 'image/jpeg');
+        fs.createReadStream(path.join(UPLOAD_PATH, '216252d31e8692b818b76f990628acca')).pipe(res);
+    } catch (err) {
+        res.sendStatus(400);
+    }
+});
 
 module.exports = router;
