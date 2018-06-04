@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const VerifyToken = require('../auth/VerifyToken');
+const fs = require('fs');
 
 const UPLOAD_PATH = '/home/inf245/files/test/';
 const upload = multer({ dest: `${UPLOAD_PATH}/` });
