@@ -3,7 +3,7 @@ const multer = require('multer');
 const router = express.Router();
 const VerifyToken = require('../auth/VerifyToken');
 
-const UPLOAD_PATH = 'home/inf245/files/test/';
+const UPLOAD_PATH = '/home/inf245/files/test/';
 const upload = multer({ dest: `${UPLOAD_PATH}/` });
 const type = upload.single('file');
 /* GET users listing. */
