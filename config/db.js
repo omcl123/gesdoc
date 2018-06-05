@@ -2,7 +2,7 @@
 
 const db = 'dbsw';
 const user = 'root';
-const password = 'kairosdb';
+const password = 'W900hA$';
 //const host = 'localhost:3306';
 const host = 'localhost';
 const dialect = 'mysql';

@@ -89,14 +89,25 @@ router.post('/login',async function(req, res) {
 
 router.get('/verificaPermiso',async  function(req, res) {
     try {
-        let cargo = req.query.cargo;
-        let ruta = req.query.ruta;
-        let tienePermiso = await sequelize.query(`call verifica_ruta_usuario(${cargo},'${ruta}')`);
-        if (tienePermiso[0].tiene === 1){
-            return res.status(200).send({permiso: true});
-        } else {
-            return res.status(200).send({permiso: false});
-        }
+        let token = req.headers['x-access-token'];
+        if (!token)
+            return res.status(403).send({ auth: false, message: 'No token provided.' });
+        jwt.verify(token, config.secret, async function (err, decoded) {
+            if (err)
+                return res.status(500).send({auth: false, message: 'Failed to authenticate token.'});
+            // if everything good, save to request for use in other routes
+            let userResponse = await sequelize.query(`CALL devuelve_datos_permiso_usuario(${decoded.id})`);
+            console.log(userResponse);
+            let id_cargo = userResponse[0].id_cargo;
+            let ruta = req.query.ruta;
+            let tienePermiso = await sequelize.query(`call verifica_ruta_usuario(${id_cargo},'${ruta}')`);
+            if (tienePermiso[0].tiene === 1){
+                return res.status(200).send({permiso: true});
+            } else {
+                return res.status(200).send({permiso: false});
+            }
+        });
+
     }catch(e){
         return res.status(500).send('Error on the server.');
     }
