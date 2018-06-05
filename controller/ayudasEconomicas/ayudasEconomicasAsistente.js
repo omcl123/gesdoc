@@ -44,6 +44,15 @@ async function tiene_elemento(data,elemento){
     return 0;
 }
 
+async function cantidad_elementos(data){
+    let key, count = 0;
+    for(key in data) {
+        if(data.hasOwnProperty(key)) {
+            count++;
+        }
+    }
+    return count;
+}
 
 async function insertaAyudaEconomica(preferencesObject){
     try {
@@ -205,7 +214,10 @@ async function insertaAyudaEconomica(preferencesObject){
 
             console.log(inv_profe);
 
-            if (inv_profe == null){
+            let cant_inv_profe = await cantidad_elementos(inv_profe);
+            console.log(cant_inv_profe);
+
+            if (cant_inv_profe == 0){
                 console.log("Se inserta inv_profe");
                 await sequelize.query("CALL insertaInvProfesor(:codigo_profesor,:investigacion)",
                     {
