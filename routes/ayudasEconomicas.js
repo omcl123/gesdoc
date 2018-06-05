@@ -49,6 +49,12 @@ router.post('/ayudasEconomicas/DocumentoGasto/registrar', async function (req,re
     res.send(jsonBlock);
 });
 
+//listar motivo
+router.get('/ayudasEconomicas/motivos',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.motivos = await ayudasEconomicasController.listarMotivos(req.query);
+    res.send(jsonBlock);
+});
 
 
 module.exports = router;
