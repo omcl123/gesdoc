@@ -14,6 +14,11 @@ router.get('/ayudasEconomicas/listar',async function (req,res){
     jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicas(req.query);
     res.send(jsonBlock);
 });
+router.get('/ayudasEconomicas/devuelveJustificacion',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudaEconomicaJustificacion(req.query);
+    res.send(jsonBlock);
+});
 router.get('/ayudasEconomicas/filtrar',async function (req,res){
     let jsonBlock={};
     jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicasFiltro(req.query);
