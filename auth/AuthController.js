@@ -46,8 +46,9 @@ router.post('/register',async  function(req, res) {
 
         console.log(await esRepetido[0].esRepetido);
         if (await esRepetido[0].esRepetido === 0){
-            let personaExiste = await sequelize.query(`call verifica_persona_existente(${email})`);
-            if (await personaExiste[0].idPersona === undefined){
+            let personaExiste = await sequelize.query(`call verifica_persona_existente('${email}')`);
+            console.log(await esRepetido[0].idPersona);
+            if (await personaExiste[0].idPersona === 0){
                 await sequelize.query(`call registra_nuevo_usuario('${nombres}','${apellido_materno}','${apellido_paterno}'
             ,${dni},${telefono},${codigo},'${email}','${hashedPassword}',${tipoUsuario},${unidad});`);
             }else {
