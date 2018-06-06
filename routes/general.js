@@ -85,4 +85,12 @@ router.get('/listaProfesorTipo',VerifyToken,async function (req,res){
     res.send(queryResult);
 
 });
+router.get('/listaProfesorW',VerifyToken,async function (req,res){
+    let queryResult={};
+    queryResult.profesor=await listaController.listaProfesoresW(req.query);
+    res.send(queryResult);
+
+});
+
+
 module.exports = router;
