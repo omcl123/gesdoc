@@ -223,6 +223,7 @@ async function devuelveDetalleAyudaEconomica(preferencesObject){
             let profesor={};
 
             innerPart.id=item.id;
+            innerPart.id_investigacion=item.id_investigacion;
             innerPart.titulo=item.titulo;
             innerPart.motivo=item.motivo;
             innerPart.monto_otorgado=item.monto_otorgado;
@@ -267,9 +268,67 @@ async function modificarAyudaEconomica(preferencesObject){
         return "error";
     }
 }
+async function devuelveAyudaEconomicaJustificacion(preferencesObject){
+    try{
+        let ayuda={};
+        let ayudas =await  sequelize.query('call devolverDetalleAyudaEconomica(:id_ayuda)',{
+            replacements: {
+                id_ayuda:preferencesObject.id
+            }
+        });
+        let jsonAyudaEconomica={};
+         jsonAyudaEconomica = await Promise.all(ayudas.map(async item =>{
+            let innerPart ={};
+            let profesor={};
+            let investigacion={};
+
+
+
+            innerPart.id=item.id;
+
+            innerPart.motivo=item.motivo;
+            innerPart.monto_otorgado=item.monto_otorgado;
+            innerPart.fecha_solicitud=item.fecha_solicitud;
+            innerPart.fecha_inicio=item.fecha_inicio;
+            innerPart.fecha_fin=item.fecha_fin;
+            innerPart.comentarios_adicionales=item.comentarios_adicionales;
+
+
+            profesor.codigo_profesor=item.codigo_profesor;
+            profesor.nombres=item.nombres;
+            profesor.apellido_paterno=item.apellido_paterno;
+            profesor.apellido_materno=item.apellido_materno;
+            profesor.correo_pucp=item.correo_pucp;
+            profesor.seccion=item.seccion;
+
+            investigacion.id=item.id_investigacion;
+            investigacion.titulo=item.titulo;
+
+            innerPart.docenteSolicitante=profesor;
+            innerPart.investigacion = investigacion;
+            return innerPart;
+
+        }));
+
+         let gastos = await sequelize.query('call devolverJustificacionAyudaEconomica(:id_ayuda)',{
+             replacements:{
+                 id_ayuda:preferencesObject.id
+             }
+         });
+         console.log(gastos);
+         ayuda=jsonAyudaEconomica[0];
+         ayuda.justificacion=gastos;
+
+        return ayuda;
+    }catch(e) {
+        winston.error("devuelveAyudaEconomicaJustificacion");
+        return "error";
+    }
+}
 module.exports={
     devuelveAyudasEconomicas:devuelveAyudasEconomicas,
     devuelveAyudasEconomicasFiltro:devuelveAyudasEconomicasFiltro,
     devuelveDetalleAyudaEconomica:devuelveDetalleAyudaEconomica,
-    modificarAyudaEconomica:modificarAyudaEconomica
+    modificarAyudaEconomica:modificarAyudaEconomica,
+    devuelveAyudaEconomicaJustificacion:devuelveAyudaEconomicaJustificacion
 }

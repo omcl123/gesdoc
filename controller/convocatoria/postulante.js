@@ -584,94 +584,98 @@ async function devuelvePostulante(preferencesObject){
                 }
             }
         );
-        let jpostulante = await guardaDatos(postulante);
-        //console.log(jpostulante);
+        if (postulante.length!=0) {
+            let jpostulante = await guardaDatos(postulante);
+            //console.log(jpostulante);
 
 
-        winston.info("devuelvePostulante succesful");
-        //return "correcto";
-        let requerimientos = await sequelize.query('CALL devuelveRequerimientosConvocatoria(:id_convocatoria)',
-            {
-                replacements: {
-                    id_convocatoria: parseInt(jpostulante.id_convocatoria),
+            winston.info("devuelvePostulante succesful");
+            //return "correcto";
+            let requerimientos = await sequelize.query('CALL devuelveRequerimientosConvocatoria(:id_convocatoria)',
+                {
+                    replacements: {
+                        id_convocatoria: parseInt(jpostulante.id_convocatoria),
 
 
+                    }
                 }
+            );
+
+            //para registrar las tablas
+            let jsonPostulanteInvestigacion = [];
+            let jsonPostulanteExperiencia = [];
+            let jsonPostulanteDocenciaCargo = [];
+            let jsonPostulanteDocenciaAsesoria = [];
+            let jsonPostulantePremio = [];
+            let jsonPostulanteTitulo = [];
+            let jsonPostulanteMaestria = [];
+            let jsonPostulanteDoctorado = [];
+            let jsonPostulanteDiplomatura = [];
+
+            if (requerimientos[0].requiere_investigacion) {
+
+                jsonPostulanteInvestigacion = await devuelvePostulanteInvestigacion(preferencesObject);
+
+
             }
-        );
+            if (requerimientos[0].requiere_experiencia) {
 
-        //para registrar las tablas
-        let jsonPostulanteInvestigacion={};
-        let jsonPostulanteExperiencia={};
-        let jsonPostulanteDocenciaCargo={};
-        let jsonPostulanteDocenciaAsesoria={};
-        let jsonPostulantePremio={};
-        let jsonPostulanteTitulo={};
-        let jsonPostulanteMaestria={};
-        let jsonPostulanteDoctorado={};
-        let jsonPostulanteDiplomatura={};
+                jsonPostulanteExperiencia = await devuelvePostulanteExperiencia(preferencesObject);
 
-        if (requerimientos[0].requiere_investigacion){
+            }
+            if (requerimientos[0].requiere_docencia_cargo) {
 
-            jsonPostulanteInvestigacion= await devuelvePostulanteInvestigacion(preferencesObject);
+                jsonPostulanteDocenciaCargo = await devuelvePostulanteDocenciaCargo(preferencesObject);
 
+            }
+            if (requerimientos[0].requiere_docencia_asesoria) {
 
+                jsonPostulanteDocenciaAsesoria = await devuelvePostulanteDocenciaAsesoria(preferencesObject);
 
+            }
+            if (requerimientos[0].requiere_docencia_premio) {
+
+                jsonPostulantePremio = await devuelvePostulanteDocenciaPremio(preferencesObject);
+
+            }
+            if (requerimientos[0].requiere_grado_titulo) {
+
+                jsonPostulanteTitulo = await devuelvePostulanteGrado(preferencesObject, 1);
+
+            }
+            if (requerimientos[0].requiere_grado_maestria) {
+
+                jsonPostulanteMaestria = await devuelvePostulanteGrado(preferencesObject, 2);
+
+            }
+            if (requerimientos[0].requiere_grado_doctorado) {
+
+                jsonPostulanteDoctorado = await devuelvePostulanteGrado(preferencesObject, 3);
+
+            }
+            if (requerimientos[0].requiere_grado_diplomatura) {
+
+                jsonPostulanteDiplomatura = await devuelvePostulanteGrado(preferencesObject, 4);
+
+            }
+            jsonPostulante.postulante = postulante;
+            jsonPostulante.postulante_investigacion = jsonPostulanteInvestigacion;
+            jsonPostulante.postulante_experiencia = jsonPostulanteExperiencia;
+            jsonPostulante.postulante_docencia_cargo = jsonPostulanteDocenciaCargo;
+            jsonPostulante.postulante_docencia_premio = jsonPostulantePremio;
+            jsonPostulante.postulante_docencia_asesoria = jsonPostulanteDocenciaAsesoria;
+            jsonPostulante.postulante_grado_titulo = jsonPostulanteTitulo;
+            jsonPostulante.postulante_grado_maestria = jsonPostulanteMaestria;
+            jsonPostulante.postulante_grado_doctorado = jsonPostulanteDoctorado;
+            jsonPostulante.postulante_grado_diplomatura = jsonPostulanteDiplomatura;
+            return jsonPostulante;
+        }else {
+            return "No existe postulante :"+ preferencesObject.id_postulante;
         }
-        if (requerimientos[0].requiere_experiencia){
-
-            jsonPostulanteExperiencia = await devuelvePostulanteExperiencia(preferencesObject);
-
-        }
-        if (requerimientos[0].requiere_docencia_cargo){
-
-            jsonPostulanteDocenciaCargo=  await devuelvePostulanteDocenciaCargo(preferencesObject);
-
-        }
-        if (requerimientos[0].requiere_docencia_asesoria){
-
-            jsonPostulanteDocenciaAsesoria=  await devuelvePostulanteDocenciaAsesoria(preferencesObject);
-
-        }
-        if (requerimientos[0].requiere_docencia_premio){
-
-            jsonPostulantePremio= await devuelvePostulanteDocenciaPremio(preferencesObject);
-
-        }
-        if (requerimientos[0].requiere_grado_titulo){
-
-                jsonPostulanteTitulo =await devuelvePostulanteGrado(preferencesObject,1);
-
-        }
-        if (requerimientos[0].requiere_grado_maestria ){
-
-                jsonPostulanteMaestria= await devuelvePostulanteGrado(preferencesObject,2);
-
-        }
-        if ( requerimientos[0].requiere_grado_doctorado){
-
-                jsonPostulanteDoctorado=await devuelvePostulanteGrado(preferencesObject,3);
-
-        }
-        if (requerimientos[0].requiere_grado_diplomatura){
-
-                jsonPostulanteDiplomatura=await devuelvePostulanteGrado(preferencesObject,4);
-
-        }
-        jsonPostulante.postulante=postulante;
-        jsonPostulante.postulante_investigacion=jsonPostulanteInvestigacion;
-        jsonPostulante.postulante_experiencia= jsonPostulanteExperiencia;
-        jsonPostulante.postulante_docencia_cargo=jsonPostulanteDocenciaCargo;
-        jsonPostulante.postulante_docencia_premio=jsonPostulantePremio;
-        jsonPostulante.postulante_docencia_asesoria=jsonPostulanteDocenciaAsesoria;
-        jsonPostulante.postulante_grado_titulo=jsonPostulanteTitulo;
-        jsonPostulante.postulante_grado_maestria=jsonPostulanteMaestria;
-        jsonPostulante.postulante_grado_doctorado=jsonPostulanteDoctorado;
-        jsonPostulante.postulante_grado_diplomatura=jsonPostulanteDiplomatura;
-        return jsonPostulante;
     }catch(e){
         console.log(e);
         winston.error("devuelvePostulante failed");
+        return "error";
     }
 }
 async function modificarPostulante(preferencesObject){
