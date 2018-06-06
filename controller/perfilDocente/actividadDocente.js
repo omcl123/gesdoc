@@ -169,6 +169,24 @@ async function eliminaActividad(dataArray) {
     }
 }
 
+async function devuelveActividad(preferencesObject){
+    let message= "";
+    try{
+        let actividad = await sequelize.query('call devuelveActividad(:id_actividad)',
+            {
+               replacements:{
+                   id_actividad:preferencesObject.id_actividad
+               }
+            });
+        winston.info('devuelveActividad success');
+        return actividad;
+    }catch(e){
+        winston.error("devuelveActividad Failed: ",e);
+        message = "devuelveActividad Failed";
+        return message;
+    }
+}
+
 
 
 
@@ -176,5 +194,6 @@ module.exports ={
     registraActividad:registraActividad,
     devuelveListaActividad:devuelveListaActividad,
     actualizaActividad:actualizaActividad,
-    eliminaActividad:eliminaActividad
+    eliminaActividad:eliminaActividad,
+    devuelveActividad:devuelveActividad
 }

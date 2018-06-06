@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const VerifyToken = require('../auth/VerifyToken');
+
 
 const ayudasEconomicasAsistenteController = require('../controller/ayudasEconomicas/ayudasEconomicasAsistente.js'); //carlos
 const ayudasEconomicasJefeController = require('../controller/ayudasEconomicas/ayudasEconomicasJefe.js'); //moises
@@ -9,51 +9,52 @@ const ayudasEconomicasController = require('../controller/ayudasEconomicas/ayuda
 
 
 
-
-
-//Lista ayudasEconomicas
-router.get('/ayudasEconomicas/lista',VerifyToken, async function(req, res) {
-    let jsonBlock={};
-    jsonBlock.ayudasEconomicas= await ayudasEconomicasController.listaAyudasEconomicas(req.query);
-
-
-    res.send(jsonBlock);
-
-});
-
-
-//Detalle ayudasEconomicas
-router.get('/ayudasEconomicas/detalle',VerifyToken, async function(req, res) {
-    let jsonBlock={};
-    jsonBlock = await ayudasEconomicasController.detalleAyudasEconomicas(req.query);
-
-
-    res.send(jsonBlock);
-
-});
-
-
-router.get('/ayudasEconomicas/listar',VerifyToken,async function (req,res){
+router.get('/ayudasEconomicas/listar',async function (req,res){
     let jsonBlock={};
     jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicas(req.query);
     res.send(jsonBlock);
 });
+router.get('/ayudasEconomicas/devuelveJustificacion',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudaEconomicaJustificacion(req.query);
+    res.send(jsonBlock);
+});
+router.get('/ayudasEconomicas/filtrar',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicasFiltro(req.query);
+    res.send(jsonBlock);
+});
+router.get('/ayudasEconomicas/detallar',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveDetalleAyudaEconomica(req.query);
+    res.send(jsonBlock);
+});
 
-
+router.put('/ayudasEconomicas/modificar',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.mensaje = await ayudasEconomicasJefeController.modificarAyudaEconomica(req.body);
+    res.send(jsonBlock);
+});
 //registrar ayudaEconomica
-router.post('/ayudasEconomicas/registrar',VerifyToken, async function (req,res) {
+router.post('/ayudasEconomicas/registrar', async function (req,res) {
     let jsonBlock = {}
-    jsonBlock = await ayudasEconomicasController.registrarAyudaEconomica(req.body);
+    jsonBlock = await ayudasEconomicasAsistenteController.registrarAyudaEconomica(req.body);
     res.send(jsonBlock);
 });
 
 //registrar gasto
-router.post('/ayudasEconomicas/DocumentoGasto/registrar',VerifyToken, async function (req,res) {
+router.post('/ayudasEconomicas/DocumentoGasto/registrar', async function (req,res) {
     let jsonBlock = {}
-    jsonBlock = await ayudasEconomicasController.registrarDocumentoGasto(req.body);
+    jsonBlock = await ayudasEconomicasAsistenteController.registrarDocumentoGasto(req.body);
     res.send(jsonBlock);
 });
 
+//listar motivo
+router.get('/ayudasEconomicas/motivos',async function (req,res){
+    let jsonBlock={};
+    jsonBlock.motivos = await ayudasEconomicasController.listarMotivos(req.query);
+    res.send(jsonBlock);
+});
 
 
 module.exports = router;
