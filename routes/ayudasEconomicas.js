@@ -57,5 +57,29 @@ router.get('/ayudasEconomicas/motivos',async function (req,res){
 });
 
 
+//modificar ayuda economica
+router.put('/ayudasEconomicasAsistente/modificar',async function (req,res){
+    let jsonRes={}
+    jsonRes.mensaje=await ayudasEconomicasAsistenteController.modificarAyudaEconomica(req.body);
+    res.send(jsonRes);
+
+});
+
+//eliminar ayuda economica
+router.delete('/ayudasEconomicasAsistente/rechazar',async function (req,res){
+    let jsonRes={}
+    console.log(JSON.stringify(req.body));
+    jsonRes.mensaje=await ayudasEconomicasAsistenteController.rechazaAyudaEconomica(req.body);
+    res.send(jsonRes);
+});
+
+//eliminar eliminar justificacion
+router.delete('/ayudasEconomicasAsistente/DocumentoGasto/eliminar',async function (req,res){
+    let jsonRes={}
+    console.log(JSON.stringify(req.body));
+    jsonRes.mensaje=await ayudasEconomicasAsistenteController.eliminarDocumentoGasto(req.body);
+    res.send(jsonRes);
+});
+
 module.exports = router;
 
