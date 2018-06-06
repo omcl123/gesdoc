@@ -1,84 +1,85 @@
 const express = require('express');
 const router = express.Router();
 const listaController = require('../controller/general/listas');
+const VerifyToken = require('../auth/VerifyToken');
 
-router.get('/listaDocente', async function (req, res) {
+router.get('/listaDocente',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.docentes = await listaController.listaDocente();
     res.send(queryResult) ;
 });
 
-router.get('/listaCiclos', async function (req, res) {
+router.get('/listaCiclos',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.ciclos = await listaController.listaCiclos();
     res.send(queryResult) ;
 });
 
-router.get('/listaSecciones', async function (req, res) {
+router.get('/listaSecciones',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.secciones = await listaController.listaSeccciones();
     res.send(queryResult) ;
 });
 
-router.get('/listaMotivosAyudaEc', async function (req, res) {
+router.get('/listaMotivosAyudaEc',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.motivos = await listaController.listaMotivosAyudaEc();
     res.send(queryResult) ;
 });
 
-router.get('/listaEstadosAyudaEc', async function (req, res) {
+router.get('/listaEstadosAyudaEc',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.estados = await listaController.listaEstadosAyudaEc();
     res.send(queryResult) ;
 });
 
-router.get('/cicloActual', async function (req, res) {
+router.get('/cicloActual',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.cicloActual = await listaController.cicloActual();
     res.send(queryResult) ;
 });
-router.get('/listaPais', async function (req, res) {
+router.get('/listaPais',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.pais = await listaController.listaPais();
     res.send(queryResult) ;
 });
-router.get('/listaCurso', async function (req, res) {
+router.get('/listaCurso',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.curso = await listaController.listaCurso();
     res.send(queryResult) ;
 });
-router.get('/listaTipoDocumento', async function (req, res) {
+router.get('/listaTipoDocumento',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.tipo_documento = await listaController.listaTipoDocumento();
     res.send(queryResult) ;
 });
-router.get('/listaTipoActividad', async function (req, res) {
+router.get('/listaTipoActividad',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.tipo_actividad = await listaController.listaTipoActividad();
     res.send(queryResult) ;
 });
 
-router.get('/listaTipoUsuarios', async function (req, res) {
+router.get('/listaTipoUsuarios',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.tipos = await listaController.listaTipoUsuarios();
     res.send(queryResult) ;
 });
-router.get('/listaDepartamentos', async function (req, res) {
+router.get('/listaDepartamentos',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.tipos = await listaController.listaDepartamentos();
     res.send(queryResult) ;
 });
-router.get('/listaSecciones', async function (req, res) {
+router.get('/listaSecciones',VerifyToken, async function (req, res) {
     let queryResult = {};
     queryResult.tipos = await listaController.listaSecciones(req.query);
     res.send(queryResult);
 });
-router.get('/listaProfesorSeccion',async function (req,res){
+router.get('/listaProfesorSeccion',VerifyToken,async function (req,res){
    let queryResult={};
    queryResult.profesor=await listaController.listaProfesoresSeccion(req.query);
    res.send(queryResult);
 });
-router.get('/listaProfesorTipo',async function (req,res){
+router.get('/listaProfesorTipo',VerifyToken,async function (req,res){
     let queryResult={};
     queryResult.profesor=await listaController.listaProfesoresTipo(req.query);
     res.send(queryResult);
