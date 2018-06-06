@@ -84,4 +84,12 @@ router.get('/listaProfesorTipo',async function (req,res){
     res.send(queryResult);
 
 });
+router.get('/listaProfesorW',async function (req,res){
+    let queryResult={};
+    queryResult.profesor=await listaController.listaProfesoresW(req.query);
+    res.send(queryResult);
+
+});
+
+
 module.exports = router;
