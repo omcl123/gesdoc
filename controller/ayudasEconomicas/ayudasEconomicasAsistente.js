@@ -396,7 +396,230 @@ async function registrarDocumentoGasto(preferencesObject){
 }
 
 
+async function modificarAyudaEconomica(preferencesObject){
+    try {
+        let id_ayuda_economica;
+        let motivo;
+        let monto;
+        let fecha_solicitud;
+        let fecha_inicio;
+        let fecha_fin;
+        let pais;
+        let servicios;
+        let servicio_boletos = 0;
+        let servicio_viaticos = 0;
+        let servicio_costo_maestria = 0;
+        let servicio_inscripcion = 0;
+        let comentario;
+        let observaciones;
+
+
+        let instituto_universidad;
+
+        if (preferencesObject.id_ayuda_economica != null) {
+            console.log("id_ayuda_economica NO es nulo");
+            id_ayuda_economica = preferencesObject.id_ayuda_economica;
+        } else {
+            console.log("id_ayuda_economica es nulo");
+            id_ayuda_economica = null;
+        }
+
+        if (preferencesObject.fecha_solicitud!=null) {
+            console.log("fecha_solicitud NO es nulo");
+            fecha_solicitud = convertirFecha(preferencesObject.fecha_solicitud);
+        }else{
+            console.log("fecha_solicitud es nulo");
+            winston.info("fecha_solicitud no puede ser nulo");
+            fecha_solicitud=null;
+            return -1;
+        }
+
+        if (preferencesObject.fecha_inicio!=null) {
+            console.log("fecha_inicio NO es nulo");
+            fecha_inicio = convertirFecha(preferencesObject.fecha_inicio);
+        }else{
+            console.log("fecha_inicio es nulo");
+            winston.info("fecha_inicio no puede ser nulo");
+            fecha_inicio=null;
+            return -1;
+        }
+        if (preferencesObject.fecha_fin!=null) {
+            console.log("fecha_fin NO es nulo");
+            fecha_fin = convertirFecha(preferencesObject.fecha_fin);
+        }else{
+            console.log("fecha_fin es nulo");
+            winston.info("fecha_fin no puede ser nulo");
+            fecha_fin=null;
+            return -1;
+        }
+
+
+        if (preferencesObject.motivo != null) {
+            console.log("motivo NO es nulo");
+            motivo = preferencesObject.motivo;
+        } else {
+            console.log("motivo es nulo");
+            motivo = null;
+        }
+
+
+        if (preferencesObject.observaciones != null) {
+            console.log("observaciones NO es nulo");
+            observaciones = preferencesObject.observaciones;
+        } else {
+            console.log("observaciones es nulo");
+            observaciones = null;
+        }
+
+
+
+        if (preferencesObject.monto != null) {
+            console.log("monto NO es nulo");
+            monto = preferencesObject.monto;
+        } else {
+            console.log("monto es nulo");
+            monto = null;
+        }
+
+
+        if (preferencesObject.comentario != null) {
+            console.log("comentario NO es nulo");
+            comentario = preferencesObject.comentario;
+        } else {
+            console.log("comentario es nulo");
+            comentario = null;
+        }
+
+        if (preferencesObject.pais != null) {
+            console.log("pais NO es nulo");
+            pais = preferencesObject.pais;
+        } else {
+            console.log("pais es nulo");
+            pais = null;
+        }
+
+        if (preferencesObject.instituto_universidad != null) {
+            console.log("instituto_universidad NO es nulo");
+            instituto_universidad = preferencesObject.instituto_universidad;
+        } else {
+            console.log("instituto_universidad es nulo");
+            instituto_universidad = null;
+        }
+
+
+        if (preferencesObject.servicios != null) {
+            console.log("servicios NO es nulo");
+            servicios = preferencesObject.servicios;
+        } else {
+            console.log("servicios es nulo");
+            servicios = null;
+        }
+
+
+        if (servicios != null){
+
+            servicio_boletos = await tiene_elemento(servicios,s_boletos);
+            servicio_costo_maestria = await tiene_elemento(servicios,s_costo_maestria);
+            servicio_inscripcion = await tiene_elemento(servicios,s_inscripcion);
+            servicio_viaticos = await tiene_elemento(servicios,s_viaticos);
+
+
+        }
+
+        if (id_ayuda_economica!=null&&motivo!=null&&monto!=null&&fecha_solicitud!=null&&fecha_inicio!=null&&fecha_fin!=null){
+            await sequelize.query('CALL modificaAyudaEconomica(:id_ayuda_economica,:monto,:fecha_solicitud,:fecha_inicio,:fecha_fin,:motivo,:comentario,:observaciones,:instituto_universidad,:pais,:servicio_boletos,:servicio_costo_maestria,:servicio_inscripcion,:servicio_viaticos)',
+                {
+
+                    replacements: {
+                        id_ayuda_economica:id_ayuda_economica,
+                        monto:monto,
+                        fecha_solicitud:fecha_solicitud,
+                        fecha_inicio:fecha_inicio,
+                        fecha_fin:fecha_fin,
+                        motivo:motivo,
+                        instituto_universidad:instituto_universidad,
+                        comentario:comentario,
+                        observaciones:observaciones,
+                        pais:pais,
+                        servicio_boletos:servicio_boletos,
+                        servicio_costo_maestria:servicio_costo_maestria,
+                        servicio_inscripcion:servicio_inscripcion,
+                        servicio_viaticos:servicio_viaticos
+                    }
+                }
+            );
+
+            return "Modificacion exitosa";
+        }
+
+        return "Modificacion fallida";
+    }catch(e){
+        console.log(e);
+        winston.error("registrarAyudaEconomica update failed");
+        return "Modificacion fallida";
+    }
+
+}
+
+async function rechazaAyudaEconomica(preferencesObject){
+    try{
+        //validar fechas
+        console.log(JSON.stringify(preferencesObject));
+        if ((preferencesObject.id==null) ||(preferencesObject.id=="")){
+            winston.info("ID no puede ser nulo");
+            return "error";
+        }
+
+        await sequelize.query('CALL rechazaAyudaEconomica(:id_ayudaEconomica)',
+            {
+                replacements: {
+                    id_ayudaEconomica:parseInt(preferencesObject.id),
+                }
+            }
+        );
+        mensaje ="AyudaEconomica rechazada correctamente "+ parseInt(preferencesObject.id);
+
+        return mensaje;
+
+
+    }catch(e){
+        console.log(e);
+        winston.error("AyudaEconomica failed");
+        return "error";
+    }
+}
+
+async function eliminarDocumentoGasto(preferencesObject){
+    try{
+        //validar fechas
+        console.log(JSON.stringify(preferencesObject));
+        if ((preferencesObject.id==null) ||(preferencesObject.id=="")){
+            winston.info("ID no puede ser nulo");
+            return "error";
+        }
+
+        await sequelize.query('CALL eliminaDocumentoGasto(:id_documentoGasto)',
+            {
+                replacements: {
+                    id_documentoGasto:parseInt(preferencesObject.id),
+                }
+            }
+        );
+        mensaje ="DocumentoGasto eliminada correctamente "+ parseInt(preferencesObject.id);
+
+        return mensaje;
+
+
+    }catch(e){
+        console.log(e);
+        winston.error("DocumentoGasto failed");
+        return "error";
+    }
+}
 module.exports  ={
     registrarAyudaEconomica:registrarAyudaEconomica,
-    registrarDocumentoGasto:registrarDocumentoGasto
+    registrarDocumentoGasto:registrarDocumentoGasto,
+    modificarAyudaEconomica:modificarAyudaEconomica,
+    rechazaAyudaEconomica:rechazaAyudaEconomica,
+    eliminarDocumentoGasto:eliminarDocumentoGasto
 }
