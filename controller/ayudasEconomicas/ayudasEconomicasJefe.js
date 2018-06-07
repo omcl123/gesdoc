@@ -285,7 +285,7 @@ async function devuelveAyudaEconomicaJustificacion(preferencesObject){
 
 
             innerPart.id=item.id;
-
+            innerPart.codigo=item.codigo_solicitud;
             innerPart.motivo=item.motivo;
             innerPart.monto_otorgado=item.monto_otorgado;
             innerPart.fecha_solicitud=item.fecha_solicitud;
