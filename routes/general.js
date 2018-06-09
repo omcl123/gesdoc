@@ -5,7 +5,7 @@ const VerifyToken = require('../auth/VerifyToken');
 
 router.get('/listaDocente',VerifyToken, async function (req, res) {
     let queryResult= {};
-    queryResult.docentes = await listaController.listaDocente();
+    queryResult.docentes = await listaController.listaDocente(req.body.verifiedUser);
     res.send(queryResult) ;
 });
 
