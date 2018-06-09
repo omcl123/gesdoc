@@ -3102,4 +3102,8 @@
 {"level":"info","message":"::1 - - [09/Jun/2018:21:29:28 +0000] \"GET /convocatoria/convocatoria/detalle?id=1 HTTP/1.1\" 200 608 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:29:28.990Z"}
 {"level":"info","message":"::1 - - [09/Jun/2018:21:29:32 +0000] \"GET /convocatoria/convocatoria/detalle?id=1 HTTP/1.1\" 403 45 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:29:32.453Z"}
 {"level":"info","message":"listarPostulante succesful","timestamp":"2018-06-09T21:29:35.304Z"}
+
 {"level":"info","message":"::1 - - [09/Jun/2018:21:29:35 +0000] \"GET /convocatoria/convocatoria/detalle?id=1 HTTP/1.1\" 200 608 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:29:35.313Z"}
+
+{"level":"info","message":"::1 - - [09/Jun/2018:21:29:35 +0000] \"GET /convocatoria/convocatoria/detalle?id=1 HTTP/1.1\" 200 608 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:29:35.313Z"}
+
