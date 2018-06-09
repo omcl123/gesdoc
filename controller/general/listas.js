@@ -13,10 +13,10 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-async function listaDocente() {
+async function listaDocente(verifiedUser) {
 
     try {
-        let response = await sequelize.query('CALL listaDocentes()');
+        let response = await sequelize.query(`CALL listaDocentes(${verifiedUser.tipo_query},${verifiedUser.unidad})`);
         console.log(response);
         winston.info("muestraCursosCiclo success");
         return response;
