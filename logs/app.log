@@ -3082,3 +3082,8 @@
 {"level":"info","message":"::1 - - [06/Jun/2018:21:55:10 +0000] \"GET /general/listarProfesoresW?seccion=Informatica&tipo=TC HTTP/1.1\" 404 - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-06T21:55:10.293Z"}
 {"level":"info","message":"listaProfesoresW success","timestamp":"2018-06-06T21:55:22.648Z"}
 {"level":"info","message":"::1 - - [06/Jun/2018:21:55:22 +0000] \"GET /general/listaProfesorW?seccion=Informatica&tipo=TC HTTP/1.1\" 200 489 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-06T21:55:22.649Z"}
+{"level":"info","message":"::1 - - [09/Jun/2018:21:39:06 +0000] \"POST /auth/login HTTP/1.1\" 200 205 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:39:06.463Z"}
+{"level":"info","message":"::1 - - [09/Jun/2018:21:40:35 +0000] \"GET /ayudasEconomicas/ayudasEconomicas/listar?ciclo=2018-1 HTTP/1.1\" 500 56 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:40:35.140Z"}
+{"level":"info","message":"::1 - - [09/Jun/2018:21:40:48 +0000] \"GET /ayudasEconomicas/ayudasEconomicas/listar?ciclo=2018-1 HTTP/1.1\" 500 56 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:40:48.011Z"}
+{"level":"info","message":"devuelveAyudasEconomicas successful","timestamp":"2018-06-09T21:40:58.551Z"}
+{"level":"info","message":"::1 - - [09/Jun/2018:21:40:58 +0000] \"GET /ayudasEconomicas/ayudasEconomicas/listar?ciclo=2018-1 HTTP/1.1\" 200 1678 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:40:58.553Z"}
