@@ -220,6 +220,18 @@ async function listaProfesoresW(preferencesObject){
         return "error";
     }
 }
+async function listaDocumentoPagoTipo(preferencesObject){
+    try{
+        let tipos=await sequelize.query('call devuelveDocumentoPagoTipo()');
+
+        winston.info("listaAEArchivoTipo success");
+        return tipos;
+    }catch(e){
+        winston.error("listaAEArchivoTipo failed",e);
+        return "error";
+    }
+}
+
 
 module.exports = {
     listaDocente: listaDocente,
@@ -237,5 +249,6 @@ module.exports = {
     listaProfesoresSeccion:listaProfesoresSeccion,
     listaProfesoresTipo:listaProfesoresTipo,
     listaTipoActividad:listaTipoActividad,
-    listaProfesoresW:listaProfesoresW
+    listaProfesoresW:listaProfesoresW,
+    listaDocumentoPagoTipo:listaDocumentoPagoTipo
 };
