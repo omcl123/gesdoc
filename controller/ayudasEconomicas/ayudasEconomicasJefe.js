@@ -19,10 +19,13 @@ function prueba (preferencesObject){
     return "prueba";
 }
 
-async function devuelveAyudasEconomicas(preferencesObject){
+async function devuelveAyudasEconomicas(preferencesObject,bodyObject){
     try{
-        let jsonAyudaEconomica
+        let user = bodyObject.verifiedUser;
+
+        let jsonAyudaEconomica;
         console.log(preferencesObject.ciclo);
+
         let ciclo = await sequelize.query(`call devuelveIdCiclo(:ciclo)`,
             {
                 replacements:{
@@ -37,40 +40,45 @@ async function devuelveAyudasEconomicas(preferencesObject){
 
 
             console.log(ciclo);
-            let ayudas=await sequelize.query(`call devuelveAyudasEconomicas(:ciclo)`,
-                {
-                    replacements:{
-                        ciclo:preferencesObject.ciclo
-                    }
-                });
-            console.log(JSON.stringify(ayudas));
-            jsonAyudaEconomica = await Promise.all(ayudas.map(async item =>{
-                let innerPart ={};
-                let profesor={};
+                let ayudas = await sequelize.query(`call devuelveAyudasEconomicas(:ciclo,:tipo_query,:id_unidad)`,
+                    {
+                        replacements: {
+                            ciclo: preferencesObject.ciclo,
+                            tipo_query:user.tipo_query,
+                            id_unidad:user.unidad
 
-                innerPart.id=item.id;
-                innerPart.codigo_solicitud=item.codigo_solicitud;
-                innerPart.id_investigacion=item.id_investigacion;
-                innerPart.titulo=item.titulo;
-                innerPart.motivo=item.motivo;
-                innerPart.monto_otorgado=item.monto_otorgado;
-                innerPart.estado=item.estado;
-                innerPart.fecha_solicitud=item.fecha_solicitud;
+                        }
+                    });
 
-                profesor.codigo_profesor=item.codigo_profesor;
-                profesor.nombres=item.nombres;
-                profesor.apellido_paterno=item.apellido_paterno;
-                profesor.apellido_materno=item.apellido_materno;
-                profesor.correo_pucp=item.correo_pucp;
-                profesor.tipo_profesor=item.tipo_profesor;
-                profesor.seccion=item.seccion;
+                console.log(JSON.stringify(ayudas));
+                jsonAyudaEconomica = await Promise.all(ayudas.map(async item => {
+                    let innerPart = {};
+                    let profesor = {};
 
-                innerPart.profesor=profesor;
-                return innerPart;
+                    innerPart.id = item.id;
+                    innerPart.codigo_solicitud = item.codigo_solicitud;
+                    innerPart.id_investigacion = item.id_investigacion;
+                    innerPart.titulo = item.titulo;
+                    innerPart.motivo = item.motivo;
+                    innerPart.monto_otorgado = item.monto_otorgado;
+                    innerPart.estado = item.estado;
+                    innerPart.fecha_solicitud = item.fecha_solicitud;
 
-            }));
+                    profesor.codigo_profesor = item.codigo_profesor;
+                    profesor.nombres = item.nombres;
+                    profesor.apellido_paterno = item.apellido_paterno;
+                    profesor.apellido_materno = item.apellido_materno;
+                    profesor.correo_pucp = item.correo_pucp;
+                    profesor.tipo_profesor = item.tipo_profesor;
+                    profesor.seccion = item.seccion;
 
-            winston.info("devuelveAyudasEconomicas successful");
+                    innerPart.profesor = profesor;
+                    return innerPart;
+
+                }));
+
+                winston.info("devuelveAyudasEconomicas successful");
+
             return jsonAyudaEconomica;
         }
 
