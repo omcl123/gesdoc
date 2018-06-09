@@ -91,6 +91,12 @@ router.get('/listaProfesorW',VerifyToken,async function (req,res){
     res.send(queryResult);
 
 });
+router.get('/listaDocumentoPagoTipo',VerifyToken,async function (req,res){
+    let queryResult={};
+    queryResult.profesor=await listaController.listaDocumentoPagoTipo(req.query);
+    res.send(queryResult);
+
+});
 
 
 module.exports = router;
