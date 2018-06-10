@@ -18,6 +18,11 @@ router.post('/enviarPreferenciaProfesor',async function(req, res) {
     res.send(jsonblock);
 });
 
+router.get('/verificaCodigoDocente',async function(req, res) {
+    let jsonblock;
+    jsonblock = await formController.verificaCodigoDocente(req.query,res);
+});
+
 router.get('/consultaPreferencias',VerifyToken, async function(req, res) {
     let jsonblock;
     jsonblock = await preferenciasController.consultaPreferencias(req.query);
@@ -71,5 +76,7 @@ router.get('/detalleCargaDocenteAsignado',VerifyToken,async function(req, res) {
     jsonblock = await consultaCargaController.detalleCargaDocenteAsignado(req.query);
     res.send(jsonblock);
 });
+
+
 
 module.exports = router;
