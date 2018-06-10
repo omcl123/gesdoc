@@ -23,6 +23,7 @@ router.get('/verificaCodigoDocente',async function(req, res) {
     jsonblock = await formController.verificaCodigoDocente(req.query,res);
 });
 
+
 router.get('/consultaPreferencias',VerifyToken, async function(req, res) {
     let jsonblock;
     jsonblock = await preferenciasController.consultaPreferencias(req.query);
