@@ -13,10 +13,10 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-async function listaDocente() {
+async function listaDocente(verifiedUser) {
 
     try {
-        let response = await sequelize.query('CALL listaDocentes()');
+        let response = await sequelize.query(`CALL listaDocentes(${verifiedUser.tipo_query},${verifiedUser.unidad})`);
         console.log(response);
         winston.info("muestraCursosCiclo success");
         return response;
@@ -203,6 +203,36 @@ async function listaProfesoresTipo(preferencesObject){
         return "error";
     }
 }
+async function listaProfesoresW(preferencesObject){
+    try{
+        let profesores=await sequelize.query('call devuelveProfesores(:seccion,:tipo)',{
+            replacements:{
+                tipo:preferencesObject.tipo,
+                seccion:preferencesObject.seccion,
+            }
+
+        });
+
+        winston.info("listaProfesoresW success");
+        return profesores;
+    }catch(e){
+        winston.error("listaProfesoresW failed",e);
+        return "error";
+    }
+}
+async function listaDocumentoPagoTipo(preferencesObject){
+    try{
+        let tipos=await sequelize.query('call devuelveDocumentoPagoTipo()');
+
+        winston.info("listaAEArchivoTipo success");
+        return tipos;
+    }catch(e){
+        winston.error("listaAEArchivoTipo failed",e);
+        return "error";
+    }
+}
+
+
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
@@ -218,5 +248,7 @@ module.exports = {
     listaSecciones:listaSecciones,
     listaProfesoresSeccion:listaProfesoresSeccion,
     listaProfesoresTipo:listaProfesoresTipo,
-    listaTipoActividad:listaTipoActividad
+    listaTipoActividad:listaTipoActividad,
+    listaProfesoresW:listaProfesoresW,
+    listaDocumentoPagoTipo:listaDocumentoPagoTipo
 };

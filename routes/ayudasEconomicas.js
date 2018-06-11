@@ -11,7 +11,7 @@ const ayudasEconomicasController = require('../controller/ayudasEconomicas/ayuda
 
 router.get('/ayudasEconomicas/listar',VerifyToken,async function (req,res){
     let jsonBlock={};
-    jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicas(req.query);
+    jsonBlock.ayudaEconomica = await ayudasEconomicasJefeController.devuelveAyudasEconomicas(req.query,req.body);
     res.send(jsonBlock);
 });
 router.get('/ayudasEconomicas/devuelveJustificacion',VerifyToken,async function (req,res){
