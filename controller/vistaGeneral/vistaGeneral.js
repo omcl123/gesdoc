@@ -48,7 +48,7 @@ async function convocatoriaEstadoSeccion(preferencesObject){
 
 async function docentesTipoDepartamento(preferencesObject, unidad){
     try{
-        return await sequelize.query(`CALL docentes_tipo_departamento(${unidad}) )`);
+        return await sequelize.query(`CALL docentes_tipo_departamento(${unidad})`);
     }catch (e) {
         return "error";
     }
