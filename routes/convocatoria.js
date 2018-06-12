@@ -9,7 +9,7 @@ const VerifyToken = require('../auth/VerifyToken');
 //Lista convocatorias
 router.get('/convocatoria/lista',VerifyToken, async function(req, res) {
     let jsonBlock={};
-    jsonBlock.convocatorias= await convocatoriaController.listaConvocatoria(req.query);
+    jsonBlock.convocatorias= await convocatoriaController.listaConvocatoria(req.query,req.body);
 
     res.send(jsonBlock);
 

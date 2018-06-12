@@ -46,7 +46,24 @@ async function listaCursosFormulario() {
     }
 }
 
+async function verificaCodigoDocente(preferencesObject,res) {
+    try {
+        let result = await sequelize.query(`CALL verifca_codigo_docente(${preferencesObject.codigo})`);
+        console.log(result);
+        if (result[0] !== undefined){
+            return res.status(200).send({exists: true, nombre: result[0].nombre});
+
+        }else{
+            return res.status(500).send({exists: false, nombre: 'Can´t find user'});
+        }
+    } catch (e) {
+        winston.error("verificaCodigoDocente Failed: ",e);
+        return "error";
+    }
+}
+
 module.exports ={
     listaCursosFormulario:listaCursosFormulario,
-    llenaPreferenciasFormulario:llenaPreferenciasFormulario
+    llenaPreferenciasFormulario:llenaPreferenciasFormulario,
+    verificaCodigoDocente:verificaCodigoDocente
 };

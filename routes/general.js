@@ -5,7 +5,7 @@ const VerifyToken = require('../auth/VerifyToken');
 
 router.get('/listaDocente',VerifyToken, async function (req, res) {
     let queryResult= {};
-    queryResult.docentes = await listaController.listaDocente();
+    queryResult.docentes = await listaController.listaDocente(req.body.verifiedUser);
     res.send(queryResult) ;
 });
 
@@ -18,6 +18,12 @@ router.get('/listaCiclos',VerifyToken, async function (req, res) {
 router.get('/listaSecciones',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.secciones = await listaController.listaSeccciones();
+    res.send(queryResult) ;
+});
+
+router.get('/listaSeccionesDep',VerifyToken, async function (req, res) {
+    let queryResult= {};
+    queryResult.secciones = await listaController.listaSecccionesDep(req.body);
     res.send(queryResult) ;
 });
 

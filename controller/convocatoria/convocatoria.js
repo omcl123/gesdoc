@@ -27,11 +27,28 @@ const docencia_premios = "Premios a la Docencia";
 const experiencia_profesional = "Solicitar Experiencia Profesional";
 const investigacion = "Solicitar Investigacion";
 
-async function listaConvocatoria(preferencesObject){
+async function listaConvocatoria(preferencesObject,bodyObject){
     // codigo(id), clave_curso, nombre_convocatoria, fecha creacion, estado
     try {
+        let user = await bodyObject.verifiedUser;
 
-        let convocatorias = await sequelize.query('CALL listaConvocatoria()');
+
+
+        console.log(user);
+
+        let convocatorias = await sequelize.query(`call listaConvocatoria(:tipo_query,:id_unidad)`,
+            {
+                replacements: {
+
+                    tipo_query:user.tipo_query,
+                    id_unidad:user.unidad
+
+                }
+            });
+
+
+
+
 
         let jsonConvocatorias= await Promise.all(convocatorias.map(async item => {
             let innerPart={};
@@ -191,7 +208,7 @@ async function insertaConvocatoria(preferencesObject){
     let fecha_i ;
     let fecha_f;
     let nombre;
-    let codigo_curso;
+    let seccion;
     let requiere_investigacion = 0;
     let requiere_experiencia = 0;
     let requiere_docencia_cargo = 0;
@@ -239,11 +256,13 @@ async function insertaConvocatoria(preferencesObject){
         nombre = null;
     }
 
-    if (preferencesObject.codigo_curso != null) {
-        console.log("codigo_curso NO es nulo");
-        codigo_curso = preferencesObject.codigo_curso;
+
+    if (preferencesObject.seccion != null) {
+        console.log("seccion NO es nulo");
+        seccion = preferencesObject.seccion;
     } else {
-        console.log("codigo_curso es nulo");
+        console.log("seccion es nulo");
+        seccion = null;
     }
 
     if (preferencesObject.grados_academicos != null) {
@@ -319,12 +338,12 @@ async function insertaConvocatoria(preferencesObject){
         console.log("investigacion es nulo");
     }
 
-    await sequelize.query('CALL insertaConvocatoria(:nombre,:codigo_curso,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura)',
+    await sequelize.query('CALL insertaConvocatoria(:nombre,:seccion,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura)',
         {
 
             replacements: {
                 nombre: nombre,
-                codigo_curso: codigo_curso,
+                seccion:seccion,
                 fecha_inicio: fecha_i,
                 fecha_fin: fecha_f,
                 requiere_investigacion: requiere_investigacion,
@@ -373,9 +392,6 @@ async function registraConvocatoria(preferencesObject){
 
     try{
         let last_id = -1;
-        let existe_curso = await verifica_curso(preferencesObject.codigo_curso);
-
-        if (existe_curso != null){
 
 
             await insertaConvocatoria(preferencesObject);
@@ -391,7 +407,7 @@ async function registraConvocatoria(preferencesObject){
             );
             console.log("Convocatoria registrada correctamente");
 
-        }else console.log("No existe el curso");
+
         return last_id;
     }catch(e){
         console.log(e);
