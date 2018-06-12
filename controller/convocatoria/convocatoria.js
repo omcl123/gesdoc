@@ -27,11 +27,28 @@ const docencia_premios = "Premios a la Docencia";
 const experiencia_profesional = "Solicitar Experiencia Profesional";
 const investigacion = "Solicitar Investigacion";
 
-async function listaConvocatoria(preferencesObject){
+async function listaConvocatoria(preferencesObject,bodyObject){
     // codigo(id), clave_curso, nombre_convocatoria, fecha creacion, estado
     try {
+        let user = await bodyObject.verifiedUser;
 
-        let convocatorias = await sequelize.query('CALL listaConvocatoria()');
+
+
+        console.log(user);
+
+        let convocatorias = await sequelize.query(`call listaConvocatoria(:tipo_query,:id_unidad)`,
+            {
+                replacements: {
+
+                    tipo_query:user.tipo_query,
+                    id_unidad:user.unidad
+
+                }
+            });
+
+
+
+
 
         let jsonConvocatorias= await Promise.all(convocatorias.map(async item => {
             let innerPart={};
