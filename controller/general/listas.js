@@ -52,6 +52,38 @@ async function listaSeccciones() {
     }
 }
 
+async function listaSecccionesDep(bodyObject) {
+
+
+    try {
+
+        let user = await bodyObject.verifiedUser;
+
+        console.log(user);
+
+
+        let response = await sequelize.query(`call lista_seccionesDep(:tipo_query,:id_unidad)`,
+            {
+                replacements: {
+
+                    tipo_query:user.tipo_query,
+                    id_unidad:user.unidad
+
+                }
+            });
+
+
+
+
+        console.log(response);
+        winston.info("listaSeccciones success");
+        return response;
+    } catch(e) {
+        winston.error("listaSeccciones Failed: ",e);
+        return "error";
+    }
+}
+
 async function listaMotivosAyudaEc() {
 
     try {
@@ -246,6 +278,7 @@ module.exports = {
     listaTipoUsuarios:listaTipoUsuarios,
     listaDepartamentos:listaDepartamentos,
     listaSecciones:listaSecciones,
+    listaSecccionesDep,listaSecccionesDep,
     listaProfesoresSeccion:listaProfesoresSeccion,
     listaProfesoresTipo:listaProfesoresTipo,
     listaTipoActividad:listaTipoActividad,
