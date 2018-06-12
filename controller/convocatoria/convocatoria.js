@@ -209,6 +209,7 @@ async function insertaConvocatoria(preferencesObject){
     let fecha_f;
     let nombre;
     let seccion;
+    let descripcion;
     let requiere_investigacion = 0;
     let requiere_experiencia = 0;
     let requiere_docencia_cargo = 0;
@@ -263,6 +264,14 @@ async function insertaConvocatoria(preferencesObject){
     } else {
         console.log("seccion es nulo");
         seccion = null;
+    }
+
+    if (preferencesObject.descripcion != null) {
+        console.log("descripcion NO es nulo");
+        descripcion = preferencesObject.descripcion;
+    } else {
+        console.log("descripcion es nulo");
+        descripcion = null;
     }
 
     if (preferencesObject.grados_academicos != null) {
@@ -338,12 +347,13 @@ async function insertaConvocatoria(preferencesObject){
         console.log("investigacion es nulo");
     }
 
-    await sequelize.query('CALL insertaConvocatoria(:nombre,:seccion,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura)',
+    await sequelize.query('CALL insertaConvocatoria(:nombre,:seccion,:descipcion,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura)',
         {
 
             replacements: {
                 nombre: nombre,
                 seccion:seccion,
+                descipcion: descripcion,
                 fecha_inicio: fecha_i,
                 fecha_fin: fecha_f,
                 requiere_investigacion: requiere_investigacion,
