@@ -100,7 +100,8 @@ async function apoyoEconomicoAnoDepartamento(preferencesObject,unidad){
         return await Promise.all(response.map(async (item) => {
             let newPart={};
             newPart.mes = item.mes;
-            if (item.apoyo >= 0){
+            console.log(item);
+            if (item.apoyo !== null){
                 newPart.apoyo = item.apoyo;
             } else{
                 newPart.apoyo = 0;
@@ -118,7 +119,8 @@ async function apoyoEconomicoAnoSeccion(preferencesObject){
         return await Promise.all(response.map(async (item) => {
             let newPart={};
             newPart.mes = item.mes;
-            if (item.apoyo >= 0){
+            console.log(item);
+            if (item.apoyo !== null){
                 newPart.apoyo = item.apoyo;
             } else{
                 newPart.apoyo = 0;
