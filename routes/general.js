@@ -118,7 +118,11 @@ router.get('/listaInvestigacionDep',VerifyToken,async function (req,res){
     res.send(queryResult);
 });
 
-
+router.get('/listaInvestigacionSec',VerifyToken,async function (req,res){
+    let queryResult={};
+    queryResult.investigaciones=await listaController.listaInvestigacionSec(req.query);
+    res.send(queryResult);
+});
 
 
 module.exports = router;
