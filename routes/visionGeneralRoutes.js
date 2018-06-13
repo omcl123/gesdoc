@@ -1,9 +1,36 @@
 const express = require('express');
 const router = express.Router();
 const dashboardController = require('../controller/vistaGeneral/vistaGeneral');
+const dashController = require('../controller/vistaGeneral/dashboard');
 const VerifyToken = require('../auth/VerifyToken');
 
 //departamento
+router.get('/listarAyudasEconomicas',VerifyToken,async function(req,res){
+    let jsonBlock ={};
+    let user = req.body.verifiedUser;
+    if (user.id_cargo===3||user.id_cargo===4 ) {
+        //console.log(req.query);
+        jsonBlock.ayudas = await  dashController.listarAyudasEconomicas(req.query, req.body);
+        console.log(jsonBlock);
+        res.send(jsonBlock);
+    }else{
+        return res.status(300).send('Invalid Permits');
+    }
+
+});
+router.get('/listarAyudasEconomicasSeccion',VerifyToken,async function(req,res){
+    let jsonBlock ={};
+    let user = req.body.verifiedUser;
+    if (user.id_cargo===3||user.id_cargo===4 ) {
+        //console.log(req.query);
+        jsonBlock.ayudas = await  dashController.listarAyudasEconomicasSeccion(req.query, req.body);
+        console.log(jsonBlock);
+        res.send(jsonBlock);
+    }else{
+        return res.status(300).send('Invalid Permits');
+    }
+
+});
 
 router.get('/investigacionesAnoDepartamento',VerifyToken,async function(req, res) {
     let jsonblock;
