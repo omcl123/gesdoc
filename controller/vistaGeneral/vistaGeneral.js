@@ -96,7 +96,17 @@ async function investigacionesAnoSeccion(preferencesObject){
 
 async function apoyoEconomicoAnoDepartamento(preferencesObject,unidad){
     try{
-        return await sequelize.query(`CALL apoyo_ano_departamento(${unidad},'${preferencesObject.anho}')`);
+        let response= await sequelize.query(`CALL apoyo_ano_departamento(${unidad},'${preferencesObject.anho}')`);
+        return await Promise.all(response.map(async (item) => {
+            let newPart={};
+            newPart.mes = item.mes;
+            if (item.apoyo >= 0){
+                newPart.apoyo = item.apoyo;
+            } else{
+                newPart.apoyo = 0;
+            }
+            return newPart;
+        }));
     }catch (e) {
         return "error";
     }
@@ -104,7 +114,17 @@ async function apoyoEconomicoAnoDepartamento(preferencesObject,unidad){
 
 async function apoyoEconomicoAnoSeccion(preferencesObject){
     try{
-        return await sequelize.query(`CALL apoyo_ano_seccion(${preferencesObject.idSeccion},'${preferencesObject.anho}')`);
+        let response= await sequelize.query(`CALL apoyo_ano_seccion(${preferencesObject.idSeccion},'${preferencesObject.anho}')`);
+        return await Promise.all(response.map(async (item) => {
+            let newPart={};
+            newPart.mes = item.mes;
+            if (item.apoyo >= 0){
+                newPart.apoyo = item.apoyo;
+            } else{
+                newPart.apoyo = 0;
+            }
+            return newPart;
+        }));
     }catch (e) {
         return "error";
     }
