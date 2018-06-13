@@ -215,7 +215,7 @@ async function insertaHoraDescDocente(preferencesObject){
 
     try{
 
-    if (horas_reducidas!=null || codigo_profesor!=null || codigo_horario!=null || ciclo!=null || codigo_curso!=null || numero_semana!=null || motivo!=null){
+    if (horas_reducidas!=null && codigo_profesor!=null && codigo_horario!=null && ciclo!=null && codigo_curso!=null && numero_semana!=null && motivo!=null){
         await sequelize.query('CALL insertaHoraDescDocente(:horas_reducidas,:codigo_profesor,:codigo_horario,:ciclo,:codigo_curso,:numero_semana,:motivo,:observaciones)',
             {
 
@@ -270,8 +270,125 @@ async function registraHoraDescDocente(preferencesObject){
     }
 }
 
+
+async function modificaHoraDescDocente(preferencesObject){
+    try {
+        console.log("Comienza modificaHoraDescDocente");
+        let id_descarga;
+        let estado;
+        let horas_reducidas;
+        let numero_semana;
+        let motivo;
+        let observaciones;
+
+        if (preferencesObject.id_descarga != null) {
+            console.log("id_descarga NO es nulo");
+            id_descarga = preferencesObject.id_descarga;
+        } else {
+            console.log("id_descarga es nulo");
+            id_descarga = null;
+        }
+
+        if (preferencesObject.estado != null) {
+            console.log("estado NO es nulo");
+            estado = preferencesObject.estado;
+        } else {
+            console.log("estado es nulo");
+            estado = null;
+        }
+
+        if (preferencesObject.horas_reducidas != null) {
+            console.log("horas_reducidas NO es nulo");
+            horas_reducidas = preferencesObject.horas_reducidas;
+        } else {
+            console.log("horas_reducidas es nulo");
+            horas_reducidas = null;
+        }
+
+
+        if (preferencesObject.numero_semana != null) {
+            console.log("numero_semana NO es nulo");
+            numero_semana = preferencesObject.numero_semana;
+        } else {
+            console.log("numero_semana es nulo");
+            numero_semana = null;
+        }
+
+        if (preferencesObject.motivo != null) {
+            console.log("motivo NO es nulo");
+            motivo = preferencesObject.motivo;
+        } else {
+            console.log("motivo es nulo");
+            motivo = null;
+        }
+
+        if (preferencesObject.observaciones != null) {
+            console.log("observaciones NO es nulo");
+            observaciones = preferencesObject.observaciones;
+        } else {
+            console.log("observaciones es nulo");
+            observaciones = null;
+        }
+
+
+            if (id_descarga != null&&horas_reducidas!=null && numero_semana!=null && estado!=null){
+                await sequelize.query('CALL modificaHoraDescDocente(:id_descarga,:estado,:horas_reducidas,:numero_semana,:motivo,:observaciones)',
+                    {
+
+                        replacements: {
+                            id_descarga:id_descarga,
+                            estado:estado,
+                            horas_reducidas:horas_reducidas,
+                            numero_semana:numero_semana,
+                            motivo:motivo,
+                            observaciones:observaciones
+                        }
+                    }
+                );
+                return "modificaHoraDescDocente exitoso";
+            }
+        return "modificaHoraDescDocente failed";
+    }catch (e){
+        console.log(e);
+        winston.error("modificaHoraDescDocente failed");
+        return "error";
+    }
+}
+
+async function eliminaHoraDescDocente(preferencesObject){
+    try {
+        let id_descarga;
+
+        if (preferencesObject.id_descarga != null) {
+            console.log("id_descarga NO es nulo");
+            id_descarga = preferencesObject.id_descarga;
+        } else {
+            console.log("id_descarga es nulo");
+            id_descarga = null;
+        }
+
+        if (id_descarga != null){
+            await sequelize.query('CALL eliminaHoraDescDocente(:id_descarga)',
+                {
+
+                    replacements: {
+                        id_descarga:id_descarga
+                    }
+                }
+            );
+            return "eliminaHoraDescDocente exitoso";
+        }
+        return "eliminaHoraDescDocente failed";
+    }catch (e){
+        console.log(e);
+        winston.error("eliminaHoraDescDocente failed");
+        return "error";
+    }
+}
 module.exports  ={
     horasDescarga:horasDescarga,
-    registraHoraDescDocente:registraHoraDescDocente
+    registraHoraDescDocente:registraHoraDescDocente,
+    modificaHoraDescDocente:modificaHoraDescDocente,
+    eliminaHoraDescDocente:eliminaHoraDescDocente
 }
 
