@@ -13,7 +13,12 @@ router.get('/listaCurso',VerifyToken, async function (req, res) {
         queryResult.curso = await dashController.listaCurso(req.body);
         res.send(queryResult) ;
     }else{
-        return res.status(300).send('Invalid Permits');
+        if (user.id_cargo===2){
+            queryResult.curso = await dashController.listaCursoSeccion(req.body);
+        }else {
+
+            return res.status(300).send('Invalid Permits');
+        }
     }
 });
 router.get('/listarAyudasEconomicas',VerifyToken,async function(req,res){
