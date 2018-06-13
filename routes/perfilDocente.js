@@ -147,4 +147,13 @@ router.get('/actividad/mostrar',async function (req,res){
     res.send(jsonBlock);
 });
 
+
+router.post('/docente/horaDescDocente/registrar',VerifyToken,async function (req,res){
+    let jsonRes={}
+    jsonRes.nuevo_id_horaDescDocente=await descargaController.registraHoraDescDocente(req.body);
+    res.send(jsonRes);
+
+});
+
+
 module.exports = router;
