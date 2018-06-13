@@ -70,10 +70,21 @@ router.get('/docente/horaDescDocente',VerifyToken, async function(req, res) {
 
 //Rutas para el registro/Actualizacion/delete de investigaciones
 
-router.post('/investigacion/registrar',VerifyToken,type,async function (req,res){ //Aqui ira el registro de investigaciones
+router.post('/investigacion/registrar',VerifyToken,async function (req,res){ //Aqui ira el registro de investigaciones
     let jsonRes={};
+    jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigacion(req.body);
+    res.send(jsonRes);
+
+});
+
+router.post('/investigacion/registrarArchivo',VerifyToken,type,async function (req,res){ //Aqui ira el registro de investigaciones
+
     let data = req.file;
-    jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigacion(req.body,data);
+
+    let jsonRes = await investigacionController.registraInvestigacionArchivo(data);
+
+    console.log(req.file);
+
     res.send(jsonRes);
 
 });

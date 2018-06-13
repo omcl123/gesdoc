@@ -78,6 +78,42 @@ async function convocatoriaEstadoDepartamento(preferencesObject, unidad){
     }
 }
 
+async function investigacionesAnoDepartamento(preferencesObject){
+    try{
+        let ano = preferencesObject.ano;
+        console.log(ano);
+        let anoActual =(new Date()).getFullYear();
+        console.log(anoActual);
+        let tipoQuery;
+        if (ano === anoActual){
+            tipoQuery =1;
+        } else {
+            tipoQuery=2;
+        }
+        return await sequelize.query(`CALL investigaciones_ano_departamento(${unidad},${ano},${tipoQuery})`);
+    }catch (e) {
+        return "error";
+    }
+}
+
+async function investigacionesAnoSeccion(preferencesObject){
+    try{
+        let ano = preferencesObject.ano;
+        console.log(ano);
+        let anoActual =(new Date()).getFullYear();
+        console.log(anoActual);
+        let tipoQuery;
+        if (ano === anoActual){
+            tipoQuery =1;
+        } else {
+            tipoQuery=2;
+        }
+        return await sequelize.query(`CALL investigaciones_ano_seccion(${preferencesObject.idSeccion},${ano},${tipoQuery})`);
+    }catch (e) {
+        return "error";
+    }
+}
+
 module.exports = {
     docentesTipoDepartamento:docentesTipoDepartamento,
     actividadesTipoDepartamento:actividadesTipoDepartamento,
@@ -86,5 +122,7 @@ module.exports = {
     docentesTipoSeccion:docentesTipoSeccion,
     actividadesTipoSeccion:actividadesTipoSeccion,
     apoyoEconomicoEstadoSeccion:apoyoEconomicoEstadoSeccion,
-    convocatoriaEstadoSeccion:convocatoriaEstadoSeccion
+    convocatoriaEstadoSeccion:convocatoriaEstadoSeccion,
+    investigacionesAnoDepartamento:investigacionesAnoDepartamento,
+    investigacionesAnoSeccion:investigacionesAnoSeccion
 };
