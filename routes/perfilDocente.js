@@ -10,7 +10,7 @@ const ayudaEconController = require('../controller/perfilDocente/ayudaEconomica'
 const multer = require('multer');
 const fs = require('fs');
 
-const UPLOAD_PATH = '/home/inf245/files/test/';
+const UPLOAD_PATH = '/home/inf245/files/investigaciones/';
 const upload = multer({ dest: `${UPLOAD_PATH}/` });
 const type = upload.single('file');
 
