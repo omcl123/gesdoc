@@ -104,5 +104,9 @@ router.get('/listaDocumentoPagoTipo',VerifyToken,async function (req,res){
 
 });
 
-
+router.get('/listaCursosSeccion',VerifyToken,async function (req,res){
+    let queryResult={};
+    queryResult.cursos=await listaController.listaCursosSeccion(req.query);
+    res.send(queryResult);
+});
 module.exports = router;

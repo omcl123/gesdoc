@@ -264,7 +264,21 @@ async function listaDocumentoPagoTipo(preferencesObject){
     }
 }
 
+async function listaCursosSeccion(preferencesObject){
+    try{
+        let cursos_seccion=await sequelize.query('call devuelveCursosSeccion(:seccion)',{
+            replacements:{
+                seccion:preferencesObject.seccion
+            }
 
+        });
+        winston.info("cursos_seccion success");
+        return cursos_seccion;
+    }catch(e){
+        winston.error("cursos_seccion failed",e);
+        return "error";
+    }
+}
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
@@ -283,5 +297,6 @@ module.exports = {
     listaProfesoresTipo:listaProfesoresTipo,
     listaTipoActividad:listaTipoActividad,
     listaProfesoresW:listaProfesoresW,
-    listaDocumentoPagoTipo:listaDocumentoPagoTipo
+    listaDocumentoPagoTipo:listaDocumentoPagoTipo,
+    listaCursosSeccion:listaCursosSeccion
 };
