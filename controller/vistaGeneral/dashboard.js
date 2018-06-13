@@ -95,7 +95,27 @@ async function listarAyudasEconomicasSeccion(preferencesObject,bodyUser){
         return "error";
     }
 }
+
+async function listaCurso(bodyUser){
+    try{
+        let user = bodyUser.verifiedUser;
+        let cursos= await sequelize.query('call dashBoardDevuelveCurso(:departamento)',{
+            replacements:{
+                departamento:user.unidad
+            }
+
+        });
+        console.log(cursos);
+        winston.info("listaCurso success");
+        return cursos;
+    } catch( e){
+        winston.error("listaCurso failed: ",e);
+        return "error";
+
+    }
+}
 module.exports = {
     listarAyudasEconomicas:listarAyudasEconomicas,
-    listarAyudasEconomicasSeccion:listarAyudasEconomicasSeccion
+    listarAyudasEconomicasSeccion:listarAyudasEconomicasSeccion,
+    listaCurso:listaCurso
 };

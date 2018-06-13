@@ -5,6 +5,17 @@ const dashController = require('../controller/vistaGeneral/dashboard');
 const VerifyToken = require('../auth/VerifyToken');
 
 //departamento
+router.get('/listaCurso',VerifyToken, async function (req, res) {
+    let queryResult= {};
+
+    let user = req.body.verifiedUser;
+    if (user.id_cargo===3||user.id_cargo===4 ) {
+        queryResult.curso = await dashController.listaCurso(req.body);
+        res.send(queryResult) ;
+    }else{
+        return res.status(300).send('Invalid Permits');
+    }
+});
 router.get('/listarAyudasEconomicas',VerifyToken,async function(req,res){
     let jsonBlock ={};
     let user = req.body.verifiedUser;
