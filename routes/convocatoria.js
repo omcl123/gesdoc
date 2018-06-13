@@ -3,13 +3,13 @@ const router = express.Router();
 
 const convocatoriaController = require('../controller/convocatoria/convocatoria.js');
 const postulanteController = require('../controller/convocatoria/postulante.js');
-
+const VerifyToken = require('../auth/VerifyToken');
 
 
 //Lista convocatorias
-router.get('/convocatoria/lista', async function(req, res) {
+router.get('/convocatoria/lista',VerifyToken, async function(req, res) {
     let jsonBlock={};
-    jsonBlock.convocatorias= await convocatoriaController.listaConvocatoria(req.query);
+    jsonBlock.convocatorias= await convocatoriaController.listaConvocatoria(req.query,req.body);
 
     res.send(jsonBlock);
 
@@ -17,7 +17,7 @@ router.get('/convocatoria/lista', async function(req, res) {
 
 
 //Detalle convocatoria
-router.get('/convocatoria/detalle', async function(req, res) {
+router.get('/convocatoria/detalle',VerifyToken, async function(req, res) {
     let jsonBlock={};
     jsonBlock = await convocatoriaController.detalleConvocatoria(req.query);
 
@@ -27,13 +27,13 @@ router.get('/convocatoria/detalle', async function(req, res) {
 
 
 //Listar Postulante
-router.get('/convocatoria/postulante/listar', async function (req,res){
+router.get('/convocatoria/postulante/listar',VerifyToken, async function (req,res){
     let jsonBlock ={}
     jsonBlock.postulante=await postulanteController.listarPostulante(req.query);
     res.send(jsonBlock);
 });
 //devuelve POstulante
-router.get('/convocatoria/postulante/devolver', async function (req,res){
+router.get('/convocatoria/postulante/devolver',VerifyToken, async function (req,res){
     let jsonBlock ={}
     jsonBlock=await postulanteController.devuelvePostulante(req.query);
     res.send(jsonBlock);
@@ -55,7 +55,7 @@ router.put('/convocatoria/postulante/modificar',async function (req,res){ //Aqui
 });
 
 //Registrar Convocatoria
-router.post('/convocatoria/registrar',async function (req,res){ //Aqui ira el registro de convocatorias
+router.post('/convocatoria/registrar',VerifyToken,async function (req,res){ //Aqui ira el registro de convocatorias
     let jsonRes={}
     jsonRes.nuevo_id_convocatoria=await convocatoriaController.registraConvocatoria(req.body);
     res.send(jsonRes);

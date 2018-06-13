@@ -13,10 +13,10 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-async function listaDocente() {
+async function listaDocente(verifiedUser) {
 
     try {
-        let response = await sequelize.query('CALL listaDocentes()');
+        let response = await sequelize.query(`CALL listaDocentes(${verifiedUser.tipo_query},${verifiedUser.unidad})`);
         console.log(response);
         winston.info("muestraCursosCiclo success");
         return response;
@@ -43,6 +43,38 @@ async function listaSeccciones() {
 
     try {
         let response = await sequelize.query('CALL lista_secciones()');
+        console.log(response);
+        winston.info("listaSeccciones success");
+        return response;
+    } catch(e) {
+        winston.error("listaSeccciones Failed: ",e);
+        return "error";
+    }
+}
+
+async function listaSecccionesDep(bodyObject) {
+
+
+    try {
+
+        let user = await bodyObject.verifiedUser;
+
+        console.log(user);
+
+
+        let response = await sequelize.query(`call lista_seccionesDep(:tipo_query,:id_unidad)`,
+            {
+                replacements: {
+
+                    tipo_query:user.tipo_query,
+                    id_unidad:user.unidad
+
+                }
+            });
+
+
+
+
         console.log(response);
         winston.info("listaSeccciones success");
         return response;
@@ -220,6 +252,18 @@ async function listaProfesoresW(preferencesObject){
         return "error";
     }
 }
+async function listaDocumentoPagoTipo(preferencesObject){
+    try{
+        let tipos=await sequelize.query('call devuelveDocumentoPagoTipo()');
+
+        winston.info("listaAEArchivoTipo success");
+        return tipos;
+    }catch(e){
+        winston.error("listaAEArchivoTipo failed",e);
+        return "error";
+    }
+}
+
 
 module.exports = {
     listaDocente: listaDocente,
@@ -234,8 +278,10 @@ module.exports = {
     listaTipoUsuarios:listaTipoUsuarios,
     listaDepartamentos:listaDepartamentos,
     listaSecciones:listaSecciones,
+    listaSecccionesDep,listaSecccionesDep,
     listaProfesoresSeccion:listaProfesoresSeccion,
     listaProfesoresTipo:listaProfesoresTipo,
     listaTipoActividad:listaTipoActividad,
-    listaProfesoresW:listaProfesoresW
+    listaProfesoresW:listaProfesoresW,
+    listaDocumentoPagoTipo:listaDocumentoPagoTipo
 };

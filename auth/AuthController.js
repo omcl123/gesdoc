@@ -100,7 +100,7 @@ router.get('/verificaPermiso',async  function(req, res) {
             let userResponse = await sequelize.query(`CALL devuelve_datos_permiso_usuario(${decoded.id})`);
             console.log(userResponse);
             let id_cargo = userResponse[0].id_cargo;
-            let ruta = req.query.ruta;
+            let ruta = decodeURIComponent(req.query.ruta);
             let tienePermiso = await sequelize.query(`call verifica_ruta_usuario(${id_cargo},'${ruta}')`);
             if (tienePermiso[0].tiene === 1){
                 return res.status(200).send({permiso: true});
