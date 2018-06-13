@@ -279,6 +279,50 @@ async function listaCursosSeccion(preferencesObject){
         return "error";
     }
 }
+
+
+async function listaInvestigacionDep(preferencesObject){
+    try{
+
+
+        let inv_dep=await sequelize.query('call devuelveInvestigacionDep(:departamento)',{
+            replacements:{
+                departamento:preferencesObject.departamento
+            }
+
+        });
+        winston.info("listaInvestigacionDep success");
+
+
+        let jsonlistaInvestigacionDep = Promise.all(inv_dep.map(async item => {
+            let innerPart = {};
+            innerPart.id = item.id;
+            innerPart.titulo = item.titulo;
+            innerPart.resumen = item.resumen;
+            innerPart.fecha_inicio = item.fecha_inicio;
+            innerPart.fecha_fin = item.fecha_fin;
+            innerPart.estado = item.estado;
+
+            let profesores = await await sequelize.query('call devuelveProfInvestigacionDep(:id)',{
+                replacements:{
+                    id:item.id
+                }
+
+            });
+            innerPart.profesores = profesores;
+            return innerPart;
+        }));
+
+        return jsonlistaInvestigacionDep;
+
+
+
+    }catch(e){
+        winston.error("listaInvestigacionDep failed",e);
+        return "error";
+    }
+}
+
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
@@ -298,5 +342,6 @@ module.exports = {
     listaTipoActividad:listaTipoActividad,
     listaProfesoresW:listaProfesoresW,
     listaDocumentoPagoTipo:listaDocumentoPagoTipo,
-    listaCursosSeccion:listaCursosSeccion
+    listaCursosSeccion:listaCursosSeccion,
+    listaInvestigacionDep:listaInvestigacionDep
 };
