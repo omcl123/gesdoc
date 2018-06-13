@@ -129,7 +129,7 @@ router.get('/descargarArchivo',VerifyToken, async (req, res) => {
     try {
         let archivo = await listaController.descargaArchivo(req.query);
         res.setHeader("Content-Type","application/octet-stream");
-        res.setHeader("Content-Disposition",`inline; filename="${archivo.nombre}"`);
+        res.setHeader("Nombre-Archivo",archivo.nombre);
         await fs.createReadStream(archivo.path).pipe(res);
     } catch (err) {
         res.sendStatus(400);
