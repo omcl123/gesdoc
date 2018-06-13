@@ -128,6 +128,7 @@ router.get('/listaInvestigacionSec',VerifyToken,async function (req,res){
 router.get('/descargarArchivo',VerifyToken, async (req, res) => {
     try {
         let archivo = await listaController.descargaArchivo(req.query);
+
         res.setHeader("Content-Type","application/octet-stream");
         res.setHeader("Nombre-Archivo",archivo.nombre);
         await fs.createReadStream(archivo.path).pipe(res);

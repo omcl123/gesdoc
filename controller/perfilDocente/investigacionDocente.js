@@ -241,6 +241,7 @@ async function insertaInvestigacion(preferencesObject){
 async function registraInvestigacionArchivo(data){
     try{
         let response = await sequelize.query(`call insertaArchivo('${data.originalname}','${data.path}');`);
+        console.log(response[0]);
         return response[0];
     }catch (e) {
         return "error";
