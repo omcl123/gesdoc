@@ -182,7 +182,7 @@ async function registraAutoresAgregar(preferencesObject,last_id){
         return -1;
     }
 }
-async function insertaInvestigacion(preferencesObject){
+async function insertaInvestigacion(preferencesObject,data){
     try{
         let fecha_i ;
         let fecha_f;
@@ -217,7 +217,7 @@ async function insertaInvestigacion(preferencesObject){
         }
 
 
-        await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
+        await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:fecha_inicio,:fecha_fin,:nombre_archivo,:path_archivo)',
             {
 
                 replacements: {
@@ -226,7 +226,8 @@ async function insertaInvestigacion(preferencesObject){
                     resumen: preferencesObject.resumen,
                     fecha_inicio: fecha_i,
                     fecha_fin: fecha_f,
-                    archivo: preferencesObject.archivo,
+                    nombre_archivo: data.originalname,
+                    path_archivo:data.path
                 }
             }
         );
@@ -240,10 +241,10 @@ async function insertaInvestigacion(preferencesObject){
 
 
 
-async function registraInvestigacion(preferencesObject){
+async function registraInvestigacion(preferencesObject,data){
 
     try{
-        await insertaInvestigacion(preferencesObject);
+        await insertaInvestigacion(preferencesObject,data);
 
 
         let last_id = await  sequelize.query('CALL devuelveSiguienteId(:tabla )',
