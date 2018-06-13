@@ -3118,3 +3118,15 @@
 {"level":"info","message":"::1 - - [09/Jun/2018:21:29:35 +0000] \"GET /convocatoria/convocatoria/detalle?id=1 HTTP/1.1\" 200 608 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:29:35.313Z"}
 
 
+{"level":"info","message":"::1 - - [13/Jun/2018:14:51:56 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 500 56 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T14:51:56.165Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:14:52:18 +0000] \"POST /auth/login HTTP/1.1\" 200 205 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T14:52:18.635Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-06-13T14:52:36.650Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:14:52:36 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 711 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T14:52:36.654Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-06-13T14:53:04.170Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:14:53:04 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 711 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T14:53:04.172Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-06-13T14:56:44.817Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:14:56:44 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 711 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T14:56:44.825Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-06-13T14:58:36.102Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:14:58:36 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 861 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T14:58:36.112Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-06-13T15:03:45.144Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:03:45 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 861 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:03:45.145Z"}

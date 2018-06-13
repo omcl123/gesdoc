@@ -100,6 +100,8 @@ async function devuelveListaInvestigacion(preferencesObject){
             innerPart.resumen=item.resumen;
             innerPart.estado=item.estado;
             innerPart.archivo=item.archivo;
+            innerPart.fecha_inicio=item.fecha_inicio;
+            innerPart.fecha_fin=item.fecha_fin;
             return innerPart;
         }));
         console.log(jsonInvestigaciones);
