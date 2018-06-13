@@ -128,7 +128,7 @@ router.delete('/actividad/eliminar',VerifyToken,async function (req,res){
 
 router.get('/actividad/mostrar',async function (req,res){
     let jsonBlock;
-    jsonBlock=await docenteActividadController.devuelveActividad(req.query);
+    jsonBlock.actividad=await docenteActividadController.devuelveActividad(req.query);
     res.send(jsonBlock);
 });
 
