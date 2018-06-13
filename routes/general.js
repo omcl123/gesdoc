@@ -124,5 +124,14 @@ router.get('/listaInvestigacionSec',VerifyToken,async function (req,res){
     res.send(queryResult);
 });
 
+router.get('/descargarArchivo',VerifyToken, async (req, res) => {
+    try {
+        let archivo = await listaController.descargaArchivo(req.query);
+        res.setHeader("Content-Disposition",`inline; filename="${archivo.nombre}"`);
+        await fs.createReadStream(archivo.path).pipe(res);
+    } catch (err) {
+        res.sendStatus(400);
+    }
+});
 
 module.exports = router;
