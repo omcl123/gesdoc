@@ -109,4 +109,16 @@ router.get('/listaCursosSeccion',VerifyToken,async function (req,res){
     queryResult.cursos=await listaController.listaCursosSeccion(req.query);
     res.send(queryResult);
 });
+
+
+
+router.get('/listaInvestigacionDep',VerifyToken,async function (req,res){
+    let queryResult={};
+    queryResult.investigaciones=await listaController.listaInvestigacionDep(req.query);
+    res.send(queryResult);
+});
+
+
+
+
 module.exports = router;
