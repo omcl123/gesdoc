@@ -83,7 +83,7 @@ router.post('/investigacion/registrarArchivo',VerifyToken,type,async function (r
 
     let jsonRes = await investigacionController.registraInvestigacionArchivo(data);
 
-    console.log(req.file);
+    
 
     res.send(jsonRes);
 
