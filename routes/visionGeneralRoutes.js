@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const dashboardController = require('../controller/vistaGeneral/vistaGeneral');
-const dashController=require('../controller/vistaGeneral/dashBoard');
+const dashController = require('../controller/vistaGeneral/dashboard');
 const VerifyToken = require('../auth/VerifyToken');
 
 //departamento
