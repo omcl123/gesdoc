@@ -7,6 +7,13 @@ const docenteEncuestaController = require('../controller/perfilDocente/encuestas
 const investigacionController = require ('../controller/perfilDocente/investigacionDocente');
 const descargaController = require('../controller/perfilDocente/horasDescargaDocentes');
 const ayudaEconController = require('../controller/perfilDocente/ayudaEconomica');
+const multer = require('multer');
+const fs = require('fs');
+
+const UPLOAD_PATH = '/home/inf245/files/test/';
+const upload = multer({ dest: `${UPLOAD_PATH}/` });
+const type = upload.single('file');
+
 const VerifyToken = require('../auth/VerifyToken');
 /* GET home page. */
 
@@ -63,9 +70,10 @@ router.get('/docente/horaDescDocente',VerifyToken, async function(req, res) {
 
 //Rutas para el registro/Actualizacion/delete de investigaciones
 
-router.post('/investigacion/registrar',VerifyToken,async function (req,res){ //Aqui ira el registro de investigaciones
-    let jsonRes={}
-    jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigacion(req.body);
+router.post('/investigacion/registrar',VerifyToken,type,async function (req,res){ //Aqui ira el registro de investigaciones
+    let jsonRes={};
+    let data = req.file;
+    jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigacion(req.body,data);
     res.send(jsonRes);
 
 });
