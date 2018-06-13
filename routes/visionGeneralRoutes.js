@@ -32,6 +32,17 @@ router.get('/listarAyudasEconomicasSeccion',VerifyToken,async function(req,res){
 
 });
 
+router.get('/investigacionesAnoDepartamento',VerifyToken,async function(req, res) {
+    let jsonblock;
+    let user = req.body.verifiedUser;
+    if (user.id_cargo=== 3 ||user.id_cargo === 4  ) {// 2 secion , 3 jefe, 4 asis dep , 5 asis secc;
+        jsonblock = await dashboardController.investigacionesAnoDepartamento(req.query,user.unidad);
+        res.send(jsonblock);
+    }else {
+        return res.status(500).send('Invalid Permits');
+    }
+});
+
 router.get('/docentesTipoDepartamento',VerifyToken,async function(req, res) {
     let jsonblock;
     let user = req.body.verifiedUser;
@@ -116,6 +127,17 @@ router.get('/convocatoriaEstadoSeccion',VerifyToken,async function(req, res) {
     let user = req.body.verifiedUser;
     if (user.id_cargo=== 3 || user.id_cargo === 4 || user.id_cargo === 2 ) {// 2 secion , 3 jefe, 4 asis dep , 5 asis secc;
         jsonblock = await dashboardController.convocatoriaEstadoSeccion(req.query);
+        res.send(jsonblock);
+    }else {
+        return res.status(500).send('Invalid Permits');
+    }
+});
+
+router.get('/investigacionesAnoSeccion',VerifyToken,async function(req, res) {
+    let jsonblock;
+    let user = req.body.verifiedUser;
+    if (user.id_cargo=== 3 ||user.id_cargo === 4 || user.id_cargo === 2 ) {// 2 secion , 3 jefe, 4 asis dep , 5 asis secc;
+        jsonblock = await dashboardController.investigacionesAnoSeccion(req.query);
         res.send(jsonblock);
     }else {
         return res.status(500).send('Invalid Permits');

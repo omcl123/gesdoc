@@ -182,7 +182,7 @@ async function registraAutoresAgregar(preferencesObject,last_id){
         return -1;
     }
 }
-async function insertaInvestigacion(preferencesObject,data){
+async function insertaInvestigacion(preferencesObject){
     try{
         let fecha_i ;
         let fecha_f;
@@ -217,7 +217,7 @@ async function insertaInvestigacion(preferencesObject,data){
         }
 
 
-        await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:fecha_inicio,:fecha_fin,:nombre_archivo,:path_archivo)',
+        await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:fecha_inicio,:fecha_fin,:id_archivo)',
             {
 
                 replacements: {
@@ -226,8 +226,7 @@ async function insertaInvestigacion(preferencesObject,data){
                     resumen: preferencesObject.resumen,
                     fecha_inicio: fecha_i,
                     fecha_fin: fecha_f,
-                    nombre_archivo: data.originalname,
-                    path_archivo:data.path
+                    id_archivo:preferencesObject.archivo
                 }
             }
         );
@@ -239,7 +238,14 @@ async function insertaInvestigacion(preferencesObject,data){
     }
 }
 
-
+async function registraInvestigacionArchivo(data){
+    try{
+        let response = await sequelize.query(`call insertaArchivo('${data.originalname}','${data.path}');`);
+        return response[0];
+    }catch (e) {
+        return "error";
+    }
+}
 
 async function registraInvestigacion(preferencesObject,data){
 
@@ -437,5 +443,6 @@ module.exports ={
     eliminarInvestigacion:eliminarInvestigacion,
     devuelveInvestigacion:devuelveInvestigacion,
     agregaAutores:agregaAutores,
-    eliminarAutores:eliminarAutores
+    eliminarAutores:eliminarAutores,
+    registraInvestigacionArchivo:registraInvestigacionArchivo
 }
