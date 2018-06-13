@@ -80,7 +80,11 @@ router.post('/investigacion/registrar',VerifyToken,async function (req,res){ //A
 router.post('/investigacion/registrarArchivo',VerifyToken,type,async function (req,res){ //Aqui ira el registro de investigaciones
 
     let data = req.file;
+
     let jsonRes = await investigacionController.registraInvestigacionArchivo(data);
+
+    console.log(req.file);
+
     res.send(jsonRes);
 
 });
