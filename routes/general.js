@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const listaController = require('../controller/general/listas');
 const VerifyToken = require('../auth/VerifyToken');
+const fs = require('fs');
 
 router.get('/listaDocente',VerifyToken, async function (req, res) {
     let queryResult= {};
