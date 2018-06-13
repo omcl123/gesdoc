@@ -3087,3 +3087,6 @@
 {"level":"info","message":"::1 - - [09/Jun/2018:21:40:48 +0000] \"GET /ayudasEconomicas/ayudasEconomicas/listar?ciclo=2018-1 HTTP/1.1\" 500 56 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:40:48.011Z"}
 {"level":"info","message":"devuelveAyudasEconomicas successful","timestamp":"2018-06-09T21:40:58.551Z"}
 {"level":"info","message":"::1 - - [09/Jun/2018:21:40:58 +0000] \"GET /ayudasEconomicas/ayudasEconomicas/listar?ciclo=2018-1 HTTP/1.1\" 200 1678 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T21:40:58.553Z"}
+{"level":"info","message":"devuelveAyudasEconomicas successful","timestamp":"2018-06-09T22:38:35.912Z"}
+{"level":"info","message":"::1 - - [09/Jun/2018:22:38:36 +0000] \"GET /ayudasEconomicas/ayudasEconomicas/listar?ciclo=2018-1 HTTP/1.1\" 200 1678 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-09T22:38:36.105Z"}
+{"level":"info","message":"::ffff:10.100.225.30 - - [09/Jun/2018:22:38:59 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"avast! Antivirus\"\n","timestamp":"2018-06-09T22:38:59.176Z"}
