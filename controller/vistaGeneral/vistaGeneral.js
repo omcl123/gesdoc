@@ -78,19 +78,9 @@ async function convocatoriaEstadoDepartamento(preferencesObject, unidad){
     }
 }
 
-async function investigacionesAnoDepartamento(preferencesObject){
+async function investigacionesAnoDepartamento(preferencesObject,unidad){
     try{
-        let ano = preferencesObject.ano;
-        console.log(ano);
-        let anoActual =(new Date()).getFullYear();
-        console.log(anoActual);
-        let tipoQuery;
-        if (ano === anoActual){
-            tipoQuery =1;
-        } else {
-            tipoQuery=2;
-        }
-        return await sequelize.query(`CALL investigaciones_ano_departamento(${unidad},${ano},${tipoQuery})`);
+        return await sequelize.query(`CALL investigaciones_ano_departamento(${unidad},'${preferencesObject.anho}')`);
     }catch (e) {
         return "error";
     }
@@ -98,17 +88,23 @@ async function investigacionesAnoDepartamento(preferencesObject){
 
 async function investigacionesAnoSeccion(preferencesObject){
     try{
-        let ano = preferencesObject.ano;
-        console.log(ano);
-        let anoActual =(new Date()).getFullYear();
-        console.log(anoActual);
-        let tipoQuery;
-        if (ano === anoActual){
-            tipoQuery =1;
-        } else {
-            tipoQuery=2;
-        }
-        return await sequelize.query(`CALL investigaciones_ano_seccion(${preferencesObject.idSeccion},${ano},${tipoQuery})`);
+        return await sequelize.query(`CALL investigaciones_ano_seccion(${preferencesObject.idSeccion},'${preferencesObject.anho}')`);
+    }catch (e) {
+        return "error";
+    }
+}
+
+async function apoyoEconomicoAnoDepartamento(preferencesObject,unidad){
+    try{
+        return await sequelize.query(`CALL apoyo_ano_departamento(${unidad},'${preferencesObject.anho}')`);
+    }catch (e) {
+        return "error";
+    }
+}
+
+async function apoyoEconomicoAnoSeccion(preferencesObject){
+    try{
+        return await sequelize.query(`CALL apoyo_ano_seccion(${preferencesObject.idSeccion},'${preferencesObject.anho}')`);
     }catch (e) {
         return "error";
     }
@@ -124,5 +120,7 @@ module.exports = {
     apoyoEconomicoEstadoSeccion:apoyoEconomicoEstadoSeccion,
     convocatoriaEstadoSeccion:convocatoriaEstadoSeccion,
     investigacionesAnoDepartamento:investigacionesAnoDepartamento,
-    investigacionesAnoSeccion:investigacionesAnoSeccion
+    investigacionesAnoSeccion:investigacionesAnoSeccion,
+    apoyoEconomicoAnoDepartamento:apoyoEconomicoAnoDepartamento,
+    apoyoEconomicoAnoSeccion:apoyoEconomicoAnoSeccion
 };
