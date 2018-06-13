@@ -27,16 +27,20 @@ async function listarAyudasEconomicas(preferencesObject,bodyUser){
             let innerPart = {};
             let profesor={};
             innerPart.id=item.id;
-            innerPart.codigo=item.codigo;
-            profesor.id=item.id_profesor;
+            innerPart.codigo_solicitud=item.codigo;
+            innerPart.titulo=item.titulo;
 
-            profesor.nombre=item.nombre;
+            profesor.id=item.id_profesor;
+            profesor.nombres=item.nombres;
             profesor.apellido_paterno=item.apellido_paterno;
             profesor.apellido_materno=item.apellido_materno;
-            profesor.codigo=item.codigo_profesor;
+            profesor.codigo_profesor=item.codigo_profesor;
+            profesor.correo_pucp=item.correo_pucp;
+            profesor.seccion=item.seccion;
+            profesor.tipo_profesor=item.tipo_profesor;
 
             innerPart.motivo=item.motivo;
-            innerPart.monto=item.monto;
+            innerPart.monto_otorgado=item.monto;
             innerPart.estado=item.estado;
             innerPart.fecha_solicitud=item.fecha_solicitud;
             innerPart.profesor=profesor;
@@ -65,16 +69,20 @@ async function listarAyudasEconomicasSeccion(preferencesObject,bodyUser){
             let innerPart = {};
             let profesor={};
             innerPart.id=item.id;
-            innerPart.codigo=item.codigo;
-            profesor.id=item.id_profesor;
+            innerPart.codigo_solicitud=item.codigo;
+            innerPart.titulo=item.titulo;
 
-            profesor.nombre=item.nombre;
+            profesor.id=item.id_profesor;
+            profesor.nombres=item.nombres;
             profesor.apellido_paterno=item.apellido_paterno;
             profesor.apellido_materno=item.apellido_materno;
-            profesor.codigo=item.codigo_profesor;
+            profesor.codigo_profesor=item.codigo_profesor;
+            profesor.correo_pucp=item.correo_pucp;
+            profesor.seccion=item.seccion;
+            profesor.tipo_profesor=item.tipo_profesor;
 
             innerPart.motivo=item.motivo;
-            innerPart.monto=item.monto;
+            innerPart.monto_otorgado=item.monto;
             innerPart.estado=item.estado;
             innerPart.fecha_solicitud=item.fecha_solicitud;
             innerPart.profesor=profesor;
