@@ -3130,3 +3130,39 @@
 {"level":"info","message":"::1 - - [13/Jun/2018:14:58:36 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 861 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T14:58:36.112Z"}
 {"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-06-13T15:03:45.144Z"}
 {"level":"info","message":"::1 - - [13/Jun/2018:15:03:45 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 861 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:03:45.145Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:38:05.855Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:38:37.439Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:39:52.446Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:40:36.673Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:40:55.455Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-13T15:41:36.284Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:42:19 +0000] \"GET /dashboard/listarAyudasEconomicas HTTP/1.1\" - - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:42:19.719Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-13T15:42:58.945Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:44:09 +0000] \"GET /dashboard/listarAyudasEconomicas HTTP/1.1\" - - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:44:09.174Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-13T15:44:15.023Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-13T15:44:51.404Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:46:51 +0000] \"GET /dashboard/listarAyudasEconomicas?id=1 HTTP/1.1\" - - \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:46:51.311Z"}
+{"level":"info","message":"devuelveListaInvestigacion succesful","timestamp":"2018-06-13T15:47:30.368Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:47:30 +0000] \"GET /docente/docente/invDocente?codigo=20112728&ciclo=2018-1 HTTP/1.1\" 200 861 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:47:30.374Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-13T15:49:00.435Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:49:00 +0000] \"GET /dashboard/listarAyudasEconomicas HTTP/1.1\" 200 1496 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:49:00.446Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-13T15:50:32.845Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:50:32 +0000] \"GET /dashboard/listarAyudasEconomicas HTTP/1.1\" 200 1744 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:50:32.853Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:56:41.080Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:56:41 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?id=2 HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:56:41.089Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:56:50.456Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:56:50 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?id=1 HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:56:50.457Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:57:03.627Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:57:03 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:57:03.628Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:57:12.101Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:57:12 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:57:12.109Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:59:31.337Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:59:31 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:59:31.345Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T15:59:51.947Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:15:59:51 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T15:59:51.957Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T16:00:17.826Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:16:00:17 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T16:00:17.846Z"}
+{"level":"error","message":"listarAyudasEconomicas error","timestamp":"2018-06-13T16:00:44.982Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:16:00:44 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 18 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T16:00:44.992Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-13T16:01:48.506Z"}
+{"level":"info","message":"::1 - - [13/Jun/2018:16:01:48 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 1744 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-13T16:01:48.508Z"}
