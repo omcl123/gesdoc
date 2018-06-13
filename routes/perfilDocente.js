@@ -73,6 +73,7 @@ router.get('/docente/horaDescDocente',VerifyToken, async function(req, res) {
 router.post('/investigacion/registrar',VerifyToken,type,async function (req,res){ //Aqui ira el registro de investigaciones
     let jsonRes={};
     let data = req.file;
+    console.log(req.file);
     jsonRes.nuevo_id_investigacion=await investigacionController.registraInvestigacion(req.body,data);
     res.send(jsonRes);
 
