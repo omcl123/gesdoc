@@ -15,6 +15,7 @@ router.get('/listaCurso',VerifyToken, async function (req, res) {
     }else{
         if (user.id_cargo===2){
             queryResult.curso = await dashController.listaCursoSeccion(req.body);
+            res.send(queryResult);
         }else {
 
             return res.status(300).send('Invalid Permits');
