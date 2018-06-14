@@ -277,7 +277,7 @@ async function devuelveAyudaEconomicaJustificacion(preferencesObject){
         let ayuda={};
         let ayudas =await  sequelize.query('call devolverDetalleAyudaEconomica(:id_ayuda)',{
             replacements: {
-                id_ayuda:preferencesObject.id
+                id_ayuda:parseInt(preferencesObject.id)
             }
         });
         let jsonAyudaEconomica={};
@@ -316,7 +316,7 @@ async function devuelveAyudaEconomicaJustificacion(preferencesObject){
 
          let gastos = await sequelize.query('call devolverJustificacionAyudaEconomica(:id_ayuda)',{
              replacements:{
-                 id_ayuda:preferencesObject.id
+                 id_ayuda:parseInt(preferencesObject.id)
              }
          });
          console.log(gastos);
