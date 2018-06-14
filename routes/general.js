@@ -131,7 +131,7 @@ router.get('/descargarArchivo',VerifyToken, async (req, res) => {
 
 
         res.setHeader("Content-Type",archivo.mimetype);
-        res.setHeader("Authorization",archivo.nombre);
+        res.setHeader("File-Name",archivo.nombre);
 
         await fs.createReadStream(archivo.path).pipe(res);
     } catch (err) {
