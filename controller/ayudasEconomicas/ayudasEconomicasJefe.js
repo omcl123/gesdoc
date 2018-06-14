@@ -221,11 +221,7 @@ async function devuelveAyudasEconomicasFiltro(preferencesObject){
 }
 async function devuelveDetalleAyudaEconomica(preferencesObject){
     try{
-        let ayudas = await sequelize.query('call devolverDetalleAyudaEconomica(:id_ayudaeconomica)',{
-            replacements:{
-                id_ayudaeconomica:parseInt(preferencesObject.id)
-            }
-        });
+        let ayudas = await sequelize.query(`call devolverDetalleAyudaEconomica(${preferencesObject.id});`);
         let jsonAyudaEconomica = await Promise.all(ayudas.map(async item =>{
             let innerPart ={};
             let profesor={};
