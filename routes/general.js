@@ -130,8 +130,8 @@ router.get('/descargarArchivo',VerifyToken, async (req, res) => {
         let archivo = await listaController.descargaArchivo(req.query);
 
 
-        res.setHeader("Content-Type",archivo.nombre);
-        //res.setHeader("Authorization",archivo.nombre);
+        res.setHeader("Content-Type",archivo.mimetype);
+        res.setHeader("Authorization",archivo.nombre);
 
         await fs.createReadStream(archivo.path).pipe(res);
     } catch (err) {
