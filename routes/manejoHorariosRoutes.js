@@ -66,6 +66,18 @@ router.post('/eliminaDocenteHorario',VerifyToken, async function(req, res) {
     res.send(jsonblock);
 });
 
+router.post('/insertaNuevoHorarioCurso',VerifyToken, async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.insertaNuevoHorarioCurso(req.body,res);
+
+});
+
+router.post('/eliminaHorarioCurso',VerifyToken, async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.eliminaHorarioCurso(req.body,res);
+    res.send(jsonblock);
+});
+
 router.get('/listaDocenteCargaAsignada',VerifyToken,async function(req, res) {
     let jsonblock;
     jsonblock = await consultaCargaController.listaDocenteCargaAsignada(req.query);
