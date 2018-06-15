@@ -1,4 +1,3 @@
-const winston = require('../../config/winston');
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
 const dbSpecs = dbCon.connect();
@@ -126,9 +125,31 @@ async function listaDocenteAsignar(preferencesObject) {
     }
 }
 
+async function insertaNuevoHorarioCurso(preferencesObject){
+    try {
+        await
+            sequelize.query
+            (`CALL insert_asignacion_horario ( '${preferencesObject.curso}','${preferencesObject.ciclo}')`);
+    }catch (e) {
+        return "error";
+    }
+}
+
+async function eliminaHorarioCurso(preferencesObject){
+    try {
+        await
+            sequelize.query
+            (`CALL elimina_asignacion_horario ( '${preferencesObject.curso}','${preferencesObject.ciclo}',${preferencesObject.horEli})`);
+    }catch (e) {
+        return "error";
+    }
+}
+
 module.exports ={
     listaDocenteAsignar:listaDocenteAsignar,
     asignaDocenteHorario:asignaDocenteHorario,
     actualizaDocenteHorario:actualizaDocenteHorario,
-    eliminaDocenteHorario:eliminaDocenteHorario
+    eliminaDocenteHorario:eliminaDocenteHorario,
+    insertaNuevoHorarioCurso:insertaNuevoHorarioCurso,
+    eliminaHorarioCurso:eliminaHorarioCurso
 };
