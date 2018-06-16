@@ -68,13 +68,13 @@ router.post('/eliminaDocenteHorario',VerifyToken, async function(req, res) {
 
 router.post('/insertaNuevoHorarioCurso',VerifyToken, async function(req, res) {
     let jsonblock;
-    jsonblock = await asignaDocenteController.insertaNuevoHorarioCurso(req.body);
-    res.send(jsonblock);
+    jsonblock = await asignaDocenteController.insertaNuevoHorarioCurso(req.body,res);
+
 });
 
 router.post('/eliminaHorarioCurso',VerifyToken, async function(req, res) {
     let jsonblock;
-    jsonblock = await asignaDocenteController.eliminaHorarioCurso(req.body);
+    jsonblock = await asignaDocenteController.eliminaHorarioCurso(req.body,res);
     res.send(jsonblock);
 });
 

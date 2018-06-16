@@ -125,23 +125,25 @@ async function listaDocenteAsignar(preferencesObject) {
     }
 }
 
-async function insertaNuevoHorarioCurso(preferencesObject){
+async function insertaNuevoHorarioCurso(preferencesObject,res){
     try {
-        await
+        let response = await
             sequelize.query
             (`CALL insert_asignacion_horario ( '${preferencesObject.curso}','${preferencesObject.ciclo}')`);
+        res.status(200).send({"num_horarios":response[0].horarios_disponibles});
     }catch (e) {
-        return "error";
+        res.status(500).send({"error":"ocurrio un error"});
     }
 }
 
-async function eliminaHorarioCurso(preferencesObject){
+async function eliminaHorarioCurso(preferencesObject,res){
     try {
         await
             sequelize.query
             (`CALL elimina_asignacion_horario ( '${preferencesObject.curso}','${preferencesObject.ciclo}',${preferencesObject.horEli})`);
+        res.status(200).send({"success":true});
     }catch (e) {
-        return "error";
+        res.status(500).send({"error":"ocurrio un error"});
     }
 }
 
