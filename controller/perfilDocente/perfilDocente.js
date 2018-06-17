@@ -1,7 +1,7 @@
-var winston = require('../../config/winston');
+const winston = require('../../config/winston');
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
-const dbSpecs = dbCon.connect()
+const dbSpecs = dbCon.connect();
 
 const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     host: dbSpecs.host,
@@ -13,13 +13,6 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
         idle: 10000
     },
 });
-
-function querydB(query){ //query inside the code
-
-
-    return sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
-}
-
 
 async function devuelveDocente(preferencesObject){
     try{
@@ -49,6 +42,34 @@ async function devuelveDocente(preferencesObject){
     }
 }
 
-module.exports ={
-    devuelveDocente:devuelveDocente
+async function registraFoto(data){
+    try{
+        let response = await sequelize.query(`call insertaArchivo('${data.originalname}','${data.path}','${data.mimetype}');`);
+        console.log(response[0]);
+        return response[0];
+    }catch (e) {
+        return "error";
+    }
 }
+
+async function modificaFoto(data,id){
+    try{
+        let pathAntiguo = await sequelize.query(`call encuentra_archivo(${id});`);
+        let pathRemove = pathAntiguo[0].path;
+        fs.unlink(pathRemove, (err) => {
+            if (err) throw err;
+            console.log('file was deleted');
+        });
+        let response = await sequelize.query(`call modificaArchivo(${id},'${data.originalname}','${data.path}','${data.mimetype}');`);
+        console.log(response[0]);
+        return response[0];
+    }catch (e) {
+        return "error";
+    }
+}
+
+module.exports ={
+    devuelveDocente:devuelveDocente,
+    registraFoto:registraFoto,
+    modificaFoto:modificaFoto
+};
