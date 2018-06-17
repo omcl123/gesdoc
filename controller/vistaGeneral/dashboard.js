@@ -18,7 +18,7 @@ async function listarAyudasEconomicas(preferencesObject,bodyUser){
         let user = bodyUser.verifiedUser;
         let ayudas = await sequelize.query('call dashboardListarAyudas(:id_departamento)',{
             replacements:{
-                id_departamento:user.unidad
+                id_departamento:parseInt(user.unidad)
             }
         });
 
@@ -59,7 +59,7 @@ async function listarAyudasEconomicasSeccion(preferencesObject,bodyUser){
 
         let ayudas = await sequelize.query('call dashboardListarAyudasSeccion(:id_departamento,:seccion)',{
             replacements:{
-                id_departamento:user.unidad,
+                id_departamento:parseInt(user.unidad),
                 seccion:parseInt(preferencesObject.seccion)
             }
         });
@@ -101,7 +101,7 @@ async function listaCurso(bodyUser){
         let user = bodyUser.verifiedUser;
         let cursos= await sequelize.query('call dashBoardDevuelveCurso(:departamento)',{
             replacements:{
-                departamento:user.unidad
+                departamento:parseInt(user.unidad)
             }
 
         });
