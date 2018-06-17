@@ -108,7 +108,7 @@ router.post('/investigacion/registrarArchivo',VerifyToken,type,async function (r
 
 router.post('/investigacion/modificarArchivo',VerifyToken,type,async function (req,res){ //Aqui ira el registro de investigaciones
     let data = req.file;
-    let id = req.header.id
+    let id = req.header.id;
     let jsonRes = await investigacionController.modificaInvestigacionArchivo(data,id);
     res.send(jsonRes);
 
@@ -153,21 +153,6 @@ router.get('/ayudaEconomica/lista',VerifyToken, async function(req, res) {
 router.post('/actividad/registrar',VerifyToken,async function (req,res){
     let jsonRes={};
     jsonRes.nuevo_id_Actividad=await docenteActividadController.registraActividad(req.body);
-    res.send(jsonRes);
-
-});
-
-router.post('/actividad/registrarArchivo',VerifyToken,type_act,async function (req,res){ //Aqui ira el registro de investigaciones
-    let data = req.file;
-    let jsonRes = await docenteActividadController.registraArchivo(data);
-    res.send(jsonRes);
-
-});
-
-router.post('/actividad/modificarArchivo',VerifyToken,type_act,async function (req,res){ //Aqui ira el registro de investigaciones
-    let data = req.file;
-    let id = req.header.id;
-    let jsonRes = await docenteActividadController.registraArchivo(data,id);
     res.send(jsonRes);
 
 });
