@@ -366,6 +366,16 @@ async function listaInvestigacionSec(preferencesObject){
         return "error";
     }
 }
+
+async function descargaArchivo(preferencesObject){
+    try{
+        let response=await sequelize.query(`call desvuelveArchivo(${preferencesObject.id})`);
+        return response[0];
+    }catch(e){
+        return "error";
+    }
+}
+
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
@@ -387,5 +397,6 @@ module.exports = {
     listaDocumentoPagoTipo:listaDocumentoPagoTipo,
     listaCursosSeccion:listaCursosSeccion,
     listaInvestigacionDep:listaInvestigacionDep,
-    listaInvestigacionSec:listaInvestigacionSec
+    listaInvestigacionSec:listaInvestigacionSec,
+    descargaArchivo:descargaArchivo
 };

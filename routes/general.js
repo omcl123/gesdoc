@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const listaController = require('../controller/general/listas');
 const VerifyToken = require('../auth/VerifyToken');
+const fs = require('fs');
 
 router.get('/listaDocente',VerifyToken, async function (req, res) {
     let queryResult= {};
@@ -124,5 +125,18 @@ router.get('/listaInvestigacionSec',VerifyToken,async function (req,res){
     res.send(queryResult);
 });
 
+router.get('/descargarArchivo',VerifyToken, async (req, res) => {
+    try {
+        let archivo = await listaController.descargaArchivo(req.query);
+
+
+        res.setHeader("Content-Type",archivo.mimetype);
+        res.setHeader("File-Name",archivo.nombre);
+
+        await fs.createReadStream(archivo.path).pipe(res);
+    } catch (err) {
+        res.sendStatus(400);
+    }
+});
 
 module.exports = router;

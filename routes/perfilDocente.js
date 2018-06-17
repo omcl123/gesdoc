@@ -83,7 +83,7 @@ router.post('/investigacion/registrarArchivo',VerifyToken,type,async function (r
 
     let jsonRes = await investigacionController.registraInvestigacionArchivo(data);
 
-    console.log(req.file);
+    
 
     res.send(jsonRes);
 
@@ -160,4 +160,18 @@ router.post('/docente/horaDescDocente/registrar',VerifyToken,async function (req
 });
 
 
+router.put('/docente/horaDescDocente/modificar',VerifyToken,async function (req,res){
+    let jsonRes={}
+    jsonRes.mensaje=await descargaController.modificaHoraDescDocente(req.body);
+    res.send(jsonRes);
+
+});
+
+
+router.delete('/docente/horaDescDocente/eliminar',VerifyToken,async function (req,res){
+    let jsonRes={}
+    jsonRes.mensaje=await descargaController.eliminaHoraDescDocente(req.body);
+    res.send(jsonRes);
+
+});
 module.exports = router;

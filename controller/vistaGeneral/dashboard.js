@@ -114,8 +114,27 @@ async function listaCurso(bodyUser){
 
     }
 }
+async function listaCursoSeccion(bodyUser){
+    try{
+        let user = bodyUser.verifiedUser;
+        let cursos= await sequelize.query('call dashBoardDevuelveCursoSeccion(:seccion)',{
+            replacements:{
+                seccion:user.unidad
+            }
+
+        });
+        console.log(cursos);
+        winston.info("listaCurso success");
+        return cursos;
+    } catch( e){
+        winston.error("listaCurso failed: ",e);
+        return "error";
+
+    }
+}
 module.exports = {
     listarAyudasEconomicas:listarAyudasEconomicas,
     listarAyudasEconomicasSeccion:listarAyudasEconomicasSeccion,
-    listaCurso:listaCurso
+    listaCurso:listaCurso,
+    listaCursoSeccion:listaCursoSeccion
 };
