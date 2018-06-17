@@ -174,38 +174,11 @@ async function devuelveActividad(preferencesObject){
 }
 
 
-async function registraArchivo(data){
-    try{
-        let response = await sequelize.query(`call insertaArchivo('${data.originalname}','${data.path}','${data.mimetype}');`);
-        console.log(response[0]);
-        return response[0];
-    }catch (e) {
-        return "error";
-    }
-}
-
-async function modificarArchivo(data,id){
-    try{
-        let pathAntiguo = await sequelize.query(`call encuentra_archivo(${id});`);
-        let pathRemove = pathAntiguo[0].path;
-        fs.unlink(pathRemove, (err) => {
-            if (err) throw err;
-            console.log('file was deleted');
-        });
-        let response = await sequelize.query(`call modificaArchivo(${id},'${data.originalname}','${data.path}','${data.mimetype}');`);
-        console.log(response[0]);
-        return response[0];
-    }catch (e) {
-        return "error";
-    }
-}
 
 module.exports ={
     registraActividad:registraActividad,
     devuelveListaActividad:devuelveListaActividad,
     actualizaActividad:actualizaActividad,
     eliminaActividad:eliminaActividad,
-    devuelveActividad:devuelveActividad,
-    registraArchivo:registraArchivo,
-    modificarArchivo:modificarArchivo
+    devuelveActividad:devuelveActividad
 };
