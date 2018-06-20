@@ -139,4 +139,16 @@ router.get('/descargarArchivo',VerifyToken, async (req, res) => {
     }
 });
 
+router.get('/listarDepartamentos', async function (req, res) {
+    let queryResult= {};
+    queryResult.tipos = await listaController.listarDepartamentos();
+    res.send(queryResult) ;
+});
+
+router.get('/listarSeccionesDep', async function (req, res) {
+    let queryResult= {};
+    queryResult.secciones = await listaController.listarSeccionesDep(req.body);
+    res.send(queryResult) ;
+});
+
 module.exports = router;
