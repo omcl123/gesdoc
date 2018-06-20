@@ -115,7 +115,7 @@ router.get('/listaCursosSeccion',VerifyToken,async function (req,res){
 
 router.get('/listaInvestigacionDep',VerifyToken,async function (req,res){
     let queryResult={};
-    queryResult.investigaciones=await listaController.listaInvestigacionDep(req.query);
+    queryResult.investigaciones=await listaController.listaInvestigacionDep(req.query,req.body);
     res.send(queryResult);
 });
 
