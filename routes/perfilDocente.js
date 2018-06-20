@@ -8,11 +8,11 @@ const investigacionController = require ('../controller/perfilDocente/investigac
 const descargaController = require('../controller/perfilDocente/horasDescargaDocentes');
 const ayudaEconController = require('../controller/perfilDocente/ayudaEconomica');
 const multer = require('multer');
-const fs = require('fs');
 
 const UPLOAD_PATH = '/home/inf245/files/investigaciones/';
 const upload = multer({ dest: `${UPLOAD_PATH}/` });
 const type = upload.single('file');
+
 
 const VerifyToken = require('../auth/VerifyToken');
 /* GET home page. */
@@ -32,7 +32,7 @@ router.get('/docente/invDocente',VerifyToken, async function(req, res) {
     res.send(jsonBlock);
 });
 router.get('/docente/investigacion',VerifyToken, async function(req, res) {
-    let jsonBlock={};
+    let jsonBlock;
     jsonBlock = await investigacionController.devuelveInvestigacion(req.query);
 
     res.send(jsonBlock);
@@ -78,26 +78,29 @@ router.post('/investigacion/registrar',VerifyToken,async function (req,res){ //A
 });
 
 router.post('/investigacion/registrarArchivo',VerifyToken,type,async function (req,res){ //Aqui ira el registro de investigaciones
-
     let data = req.file;
-
     let jsonRes = await investigacionController.registraInvestigacionArchivo(data);
+    res.send(jsonRes);
 
-    
+});
 
+router.post('/investigacion/modificarArchivo',VerifyToken,type,async function (req,res){ //Aqui ira el registro de investigaciones
+    let data = req.file;
+    let id = req.header.id;
+    let jsonRes = await investigacionController.modificaInvestigacionArchivo(data,id);
     res.send(jsonRes);
 
 });
 
 router.put('/investigacion/actualizar',VerifyToken,async function (req,res){ //Aqui ira la actualizacion de investigaciones
-    let jsonRes={}
+    let jsonRes={};
     jsonRes.mensaje=await investigacionController.actualizaInvestigacion(req.body);
     res.send(jsonRes);
     //res.send("Aqui ira la actualizacion de investigaciones");
 
 });
 router.put('/investigacion/actualizar/agregarAutores',VerifyToken,async function (req,res){ //Aqui ira la actualizacion de investigaciones
-    let jsonRes={}
+    let jsonRes={};
     jsonRes.mensaje=await investigacionController.agregaAutores(req.body);
     res.send(jsonRes);
     //res.send("Aqui ira la actualizacion de investigaciones");
@@ -105,14 +108,14 @@ router.put('/investigacion/actualizar/agregarAutores',VerifyToken,async function
 });
 router.delete('/investigacion/eliminar/eliminarAutores',VerifyToken,async function (req,res){ //Aqui ira la eliminacion de investigaciones
     //res.send("Aqui ira la eliminacion de autores");
-    let jsonRes={}
+    let jsonRes={};
     console.log(JSON.stringify(req.body));
     jsonRes.mensaje=await investigacionController.eliminarAutores(req.body);
     res.send(jsonRes);
 });
 router.delete('/investigacion/eliminar',VerifyToken,async function (req,res){ //Aqui ira la eliminacion de investigaciones
     //res.send("Aqui ira la eliminacion de investigaciones");
-    let jsonRes={}
+    let jsonRes={};
     console.log(JSON.stringify(req.body));
     jsonRes.mensaje=await investigacionController.eliminarInvestigacion(req.body);
     res.send(jsonRes);
@@ -126,21 +129,21 @@ router.get('/ayudaEconomica/lista',VerifyToken, async function(req, res) {
 });
 
 router.post('/actividad/registrar',VerifyToken,async function (req,res){
-    let jsonRes={}
+    let jsonRes={};
     jsonRes.nuevo_id_Actividad=await docenteActividadController.registraActividad(req.body);
     res.send(jsonRes);
 
 });
 
 router.put('/actividad/actualizar',VerifyToken,async function (req,res){
-    let jsonRes={}
+    let jsonRes={};
     jsonRes.mensaje=await docenteActividadController.actualizaActividad(req.body);
     res.send(jsonRes);
 
 
 });
 router.delete('/actividad/eliminar',VerifyToken,async function (req,res){
-    let jsonRes={}
+    let jsonRes={};
     jsonRes.mensaje=await docenteActividadController.eliminaActividad(req.body);
     res.send(jsonRes);
 });
@@ -153,7 +156,7 @@ router.get('/actividad/mostrar',async function (req,res){
 
 
 router.post('/docente/horaDescDocente/registrar',VerifyToken,async function (req,res){
-    let jsonRes={}
+    let jsonRes={};
     jsonRes.nuevo_id_horaDescDocente=await descargaController.registraHoraDescDocente(req.body);
     res.send(jsonRes);
 
@@ -161,7 +164,7 @@ router.post('/docente/horaDescDocente/registrar',VerifyToken,async function (req
 
 
 router.put('/docente/horaDescDocente/modificar',VerifyToken,async function (req,res){
-    let jsonRes={}
+    let jsonRes={};
     jsonRes.mensaje=await descargaController.modificaHoraDescDocente(req.body);
     res.send(jsonRes);
 
@@ -169,7 +172,7 @@ router.put('/docente/horaDescDocente/modificar',VerifyToken,async function (req,
 
 
 router.delete('/docente/horaDescDocente/eliminar',VerifyToken,async function (req,res){
-    let jsonRes={}
+    let jsonRes={};
     jsonRes.mensaje=await descargaController.eliminaHoraDescDocente(req.body);
     res.send(jsonRes);
 
