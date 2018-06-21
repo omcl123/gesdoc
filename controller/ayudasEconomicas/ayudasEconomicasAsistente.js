@@ -296,7 +296,6 @@ async function insertaDocumentoGasto(preferencesObject){
         let monto_justificacion;
         let observaciones;
         let tipo_documento;
-        let archivo=preferencesObject.archivo;
 
         if (preferencesObject.id_ayuda_economica != null) {
             console.log("id_ayuda_economica NO es nulo");
@@ -347,7 +346,7 @@ async function insertaDocumentoGasto(preferencesObject){
         }
 
         if (id_ayuda_economica!=null&&numero_documento!=null&&monto_justificacion!=null){
-            await sequelize.query('CALL insertaJustificacion(:id_ayuda_economica,:numero_documento,:detalle,:monto_justificacion,:observaciones,:tipo_documento,:archivo)',
+            await sequelize.query('CALL insertaJustificacion(:id_ayuda_economica,:numero_documento,:detalle,:monto_justificacion,:observaciones,:tipo_documento)',
                 {
 
                     replacements: {
@@ -356,8 +355,7 @@ async function insertaDocumentoGasto(preferencesObject){
                         detalle:detalle,
                         monto_justificacion:monto_justificacion,
                         observaciones:observaciones,
-                        tipo_documento:tipo_documento,
-                        archivo:archivo
+                        tipo_documento:tipo_documento
                     }
                 }
             );
@@ -600,6 +598,7 @@ async function eliminarDocumentoGasto(preferencesObject){
             return "error";
         }
 
+        
         await sequelize.query('CALL eliminaDocumentoGasto(:id_documentoGasto)',
             {
                 replacements: {
