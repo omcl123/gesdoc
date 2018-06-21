@@ -351,13 +351,13 @@ async function insertaDocumentoGasto(preferencesObject){
                 {
 
                     replacements: {
-                        id_ayuda_economica:id_ayuda_economica,
-                        numero_documento:numero_documento,
+                        id_ayuda_economica:parseInt(id_ayuda_economica),
+                        numero_documento:parseInt(numero_documento),
                         detalle:detalle,
-                        monto_justificacion:monto_justificacion,
+                        monto_justificacion:parseFloat(monto_justificacion),
                         observaciones:observaciones,
-                        tipo_documento:tipo_documento,
-                        archivo:archivo
+                        tipo_documento:parseInt(tipo_documento),
+                        archivo:parseInt(archivo)
                     }
                 }
             );
