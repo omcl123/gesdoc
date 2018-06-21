@@ -13,13 +13,6 @@ const UPLOAD_PATH = '/home/inf245/files/investigaciones/';
 const upload = multer({ dest: `${UPLOAD_PATH}/` });
 const type = upload.single('file');
 
-const UPLOAD_PATH_ACT = '/home/inf245/files/actividades/';
-const upload_act = multer({ dest: `${UPLOAD_PATH_ACT}/` });
-const type_act = upload_act.single('file');
-
-const UPLOAD_PATH_DOC = '/home/inf245/files/docentes/';
-const upload_doc = multer({ dest: `${UPLOAD_PATH_DOC}/` });
-const type_doc = upload_doc.single('file');
 
 const VerifyToken = require('../auth/VerifyToken');
 /* GET home page. */
@@ -29,21 +22,6 @@ router.get('/docente/general',VerifyToken, async function(req, res) {
     let jsonBlock;
     jsonBlock= await docenteController.devuelveDocente(req.query);
     res.send(jsonBlock);
-
-});
-
-router.post('/docente/registrarFoto',VerifyToken,type_doc,async function (req,res){ //Aqui ira el registro de investigaciones
-    let data = req.file;
-    let jsonRes = await docenteController.registraFoto(data);
-    res.send(jsonRes);
-
-});
-
-router.post('/docente/modificarFoto',VerifyToken,type_doc,async function (req,res){ //Aqui ira el registro de investigaciones
-    let data = req.file;
-    let id = req.header.id;
-    let jsonRes = await docenteController.modificaFoto(data,id);
-    res.send(jsonRes);
 
 });
 

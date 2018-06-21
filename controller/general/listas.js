@@ -184,6 +184,26 @@ async function listaDepartamentos(){
     }
 }
 
+async function listarDepartamentos(){
+    try{
+        return await sequelize.query('call lista_departamentos()');
+    } catch( e){
+        winston.error("listaDepartamentos failed: ",e);
+        return "error";
+
+    }
+}
+
+async function listarSeccionesDep(prefenecesObject){
+    try{
+        return await sequelize.query(`call listar_secciones_dep(${prefenecesObject.id})`);
+    } catch( e){
+        winston.error("listaDepartamentos failed: ",e);
+        return "error";
+
+    }
+}
+
 async function listaSecciones(req){
     try{
         return await sequelize.query(`call lista_secciones('${req.departamento}')`);
@@ -281,13 +301,18 @@ async function listaCursosSeccion(preferencesObject){
 }
 
 
-async function listaInvestigacionDep(preferencesObject){
+async function listaInvestigacionDep(preferencesObject,bodyObject){
     try{
 
+        let user = await bodyObject.verifiedUser;
+
+
+        console.log(user);
+        console.log(user.unidad);
 
         let inv_dep=await sequelize.query('call devuelveInvestigacionDep(:departamento)',{
             replacements:{
-                departamento:preferencesObject.departamento
+                departamento:user.unidad
             }
 
         });
@@ -389,7 +414,7 @@ module.exports = {
     listaTipoUsuarios:listaTipoUsuarios,
     listaDepartamentos:listaDepartamentos,
     listaSecciones:listaSecciones,
-    listaSecccionesDep,listaSecccionesDep,
+    listaSecccionesDep:listaSecccionesDep,
     listaProfesoresSeccion:listaProfesoresSeccion,
     listaProfesoresTipo:listaProfesoresTipo,
     listaTipoActividad:listaTipoActividad,
@@ -398,5 +423,7 @@ module.exports = {
     listaCursosSeccion:listaCursosSeccion,
     listaInvestigacionDep:listaInvestigacionDep,
     listaInvestigacionSec:listaInvestigacionSec,
-    descargaArchivo:descargaArchivo
+    descargaArchivo:descargaArchivo,
+    listarSeccionesDep:listarSeccionesDep,
+    listarDepartamentos:listarDepartamentos
 };
