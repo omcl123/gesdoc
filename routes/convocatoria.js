@@ -63,6 +63,14 @@ router.post('/convocatoria/registrar',VerifyToken,async function (req,res){ //Aq
 
 });
 
+//Registrar Convocatoria
+router.put('/convocatoria/modificar',VerifyToken,async function (req,res){
+    let jsonRes={}
+    jsonRes.mensaje=await convocatoriaController.modificaConvocatoria(req.body);
+    res.send(jsonRes);
+
+
+});
 
 
 //devuelve convocatoria
