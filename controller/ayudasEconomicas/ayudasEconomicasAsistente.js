@@ -296,7 +296,7 @@ async function insertaDocumentoGasto(preferencesObject){
         let monto_justificacion;
         let observaciones;
         let tipo_documento;
-        let archivo;
+        let archivo=preferencesObject.archivo;
 
         if (preferencesObject.id_ayuda_economica != null) {
             console.log("id_ayuda_economica NO es nulo");

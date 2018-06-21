@@ -3200,3 +3200,13 @@
 {"level":"error","message":"devuelveAyudaEconomicaJustificacion","timestamp":"2018-06-20T23:40:58.198Z"}
 {"level":"info","message":"::1 - - [20/Jun/2018:23:40:58 +0000] \"GET /ayudasEconomicas/ayudasEconomicas/devuelveJustificacion?id=1 HTTP/1.1\" 200 26 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-20T23:40:58.200Z"}
 {"level":"info","message":"::1 - - [20/Jun/2018:23:46:16 +0000] \"GET /ayudasEconomicas/ayudasEconomicas/devuelveJustificacion?id=1 HTTP/1.1\" 200 625 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-20T23:46:16.975Z"}
+{"level":"error","message":"insertaDocumentoGasto failed","timestamp":"2018-06-21T00:42:39.077Z"}
+{"level":"info","message":"::1 - - [21/Jun/2018:00:42:39 +0000] \"POST /ayudasEconomicas/ayudasEconomicas/DocumentoGasto/registrar HTTP/1.1\" 200 16 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-21T00:42:39.226Z"}
+{"level":"error","message":"insertaDocumentoGasto failed","timestamp":"2018-06-21T00:43:20.680Z"}
+{"level":"info","message":"::1 - - [21/Jun/2018:00:43:20 +0000] \"POST /ayudasEconomicas/ayudasEconomicas/DocumentoGasto/registrar HTTP/1.1\" 200 16 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-21T00:43:20.702Z"}
+{"level":"error","message":"insertaDocumentoGasto failed","timestamp":"2018-06-21T00:45:28.154Z"}
+{"level":"info","message":"::1 - - [21/Jun/2018:00:45:28 +0000] \"POST /ayudasEconomicas/ayudasEconomicas/DocumentoGasto/registrar HTTP/1.1\" 200 16 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-21T00:45:28.174Z"}
+{"level":"error","message":"insertaDocumentoGasto failed","timestamp":"2018-06-21T00:47:43.798Z"}
+{"level":"info","message":"::1 - - [21/Jun/2018:00:47:43 +0000] \"POST /ayudasEconomicas/ayudasEconomicas/DocumentoGasto/registrar HTTP/1.1\" 200 16 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-21T00:47:43.826Z"}
+{"level":"info","message":"::1 - - [21/Jun/2018:00:47:56 +0000] \"POST /ayudasEconomicas/ayudasEconomicas/DocumentoGasto/registrar HTTP/1.1\" 200 16 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-21T00:47:56.878Z"}
+{"level":"info","message":"::1 - - [21/Jun/2018:00:48:06 +0000] \"POST /ayudasEconomicas/ayudasEconomicas/DocumentoGasto/registrar HTTP/1.1\" 200 16 \"-\" \"PostmanRuntime/7.1.1\"\n","timestamp":"2018-06-21T00:48:06.053Z"}
