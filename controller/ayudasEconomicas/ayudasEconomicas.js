@@ -34,7 +34,16 @@ async function listarMotivos(preferencesObject){
 
 }
 
+async function estadoAyudaEconomica(preferencesObject,res){
+    try{
+        let response = await sequelize.query(`call estado_ayuda_economica(${preferencesObject.id})`);
+        res.status(200).send({id:response[0].id,descripcion:response[0].descripcion});
+    }catch (e) {
+        return res.status(500).send({error:"error"});
+    }
+}
 
 module.exports  ={
-    listarMotivos:listarMotivos
-}
+    listarMotivos:listarMotivos,
+    estadoAyudaEconomica:estadoAyudaEconomica
+};
