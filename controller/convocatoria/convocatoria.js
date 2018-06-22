@@ -61,7 +61,7 @@ async function listaConvocatoria(preferencesObject,bodyObject){
             innerPart.fecha_fin=item.fecha_fin;
             innerPart.cantidadPostulantes = item.cantidadPostulantes;
 
-
+/*
             //curso y seccion
             try {
                 let detalle_curso = await sequelize.query('CALL detalleCurso(:codigo_curso)',
@@ -95,10 +95,14 @@ async function listaConvocatoria(preferencesObject,bodyObject){
                 if (cant_secc > 0)
                     innerPart.seccion = j_seccion[0];
 
+
+
+
+
             }catch(e){
                 console.log(e);
                 winston.error("detalle_curso failed");
-            }
+            }*/
 
 
 
