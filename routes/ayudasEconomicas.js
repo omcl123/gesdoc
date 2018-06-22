@@ -60,6 +60,10 @@ router.get('/ayudasEconomicas/motivos',VerifyToken,async function (req,res){
     res.send(jsonBlock);
 });
 
+router.get('/ayudasEconomicas/estado',VerifyToken,async function (req,res){
+    await ayudasEconomicasController.estadoAyudaEconomica(req.query,res);
+});
+
 
 //modificar ayuda economica
 router.put('/ayudasEconomicasAsistente/modificar',VerifyToken,async function (req,res){
