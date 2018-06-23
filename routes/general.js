@@ -25,7 +25,7 @@ router.get('/listaSecciones',VerifyToken, async function (req, res) {
 
 router.get('/listaSeccionesDep',VerifyToken, async function (req, res) {
     let queryResult= {};
-    queryResult.secciones = await listaController.listaSecccionesDep(req.body);
+    queryResult.secciones = await listaController.listaSecccionesDep(req.query);
     res.send(queryResult) ;
 });
 
