@@ -356,7 +356,7 @@ async function insertaDocumentoGasto(preferencesObject){
                         monto_justificacion:parseFloat(monto_justificacion),
                         observaciones:observaciones,
                         tipo_documento:parseInt(tipo_documento),
-                        archivo:parseInt(archivo)
+                        archivo:parseInt(preferencesObject.archivo)
 
                     }
                 }
