@@ -3393,3 +3393,7 @@
 {"level":"info","message":"::1 - - [23/Jun/2018:05:13:38 +0000] \"GET /dashboard/actividadesTipoDepartamento HTTP/1.1\" 304 - \"http://localhost:3000/dashboard\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36\"\n","timestamp":"2018-06-23T05:13:38.081Z"}
 {"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-23T05:15:14.766Z"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2018:05:15:14 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 5181 \"-\" \"vscode-restclient\"\n","timestamp":"2018-06-23T05:15:14.775Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-23T05:15:47.044Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2018:05:15:47 +0000] \"GET /dashboard/listarAyudasEconomicasSeccion?seccion=1 HTTP/1.1\" 200 5181 \"-\" \"vscode-restclient\"\n","timestamp":"2018-06-23T05:15:47.057Z"}
+{"level":"info","message":"listarAyudasEconomicas success","timestamp":"2018-06-23T05:16:12.966Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2018:05:16:12 +0000] \"GET /dashboard/listarAyudasEconomicas HTTP/1.1\" 200 5181 \"-\" \"vscode-restclient\"\n","timestamp":"2018-06-23T05:16:12.969Z"}
