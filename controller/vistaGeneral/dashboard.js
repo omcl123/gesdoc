@@ -105,7 +105,7 @@ async function listaCurso(bodyUser){
             }
 
         });
-        console.log(cursos);
+        //console.log(cursos);
         winston.info("listaCurso success");
         return cursos;
     } catch( e){
@@ -119,7 +119,7 @@ async function listaCursoSeccion(bodyUser){
         let user = bodyUser.verifiedUser;
         let cursos= await sequelize.query('call dashBoardDevuelveCursoSeccion(:seccion)',{
             replacements:{
-                seccion:user.unidad
+                seccion:parseInt(user.unidad)
             }
 
         });

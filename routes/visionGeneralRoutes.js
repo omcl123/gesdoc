@@ -9,6 +9,7 @@ router.get('/listaCurso',VerifyToken, async function (req, res) {
     let queryResult= {};
 
     let user = req.body.verifiedUser;
+    console.log("Cargo del usuario: ",user.id_cargo);
     if (user.id_cargo===3||user.id_cargo===4 ) {
         queryResult.curso = await dashController.listaCurso(req.body);
         res.send(queryResult) ;
@@ -25,10 +26,12 @@ router.get('/listaCurso',VerifyToken, async function (req, res) {
 router.get('/listarAyudasEconomicas',VerifyToken,async function(req,res){
     let jsonBlock ={};
     let user = req.body.verifiedUser;
+    
     if (user.id_cargo===3||user.id_cargo===4 ) {
-        //console.log(req.query);
+        //console.log(">>unidad",req.body.verifiedUser.unidad);
+        //console.log (">>>>>>> CARGO DE USER: ",user.id_cargo);
         jsonBlock.ayudas = await  dashController.listarAyudasEconomicas(req.query, req.body);
-        console.log(jsonBlock);
+        //console.log(jsonBlock);
         res.send(jsonBlock);
     }else{
         return res.status(300).send('Invalid Permits');
@@ -39,9 +42,9 @@ router.get('/listarAyudasEconomicasSeccion',VerifyToken,async function(req,res){
     let jsonBlock ={};
     let user = req.body.verifiedUser;
     if (user.id_cargo===3||user.id_cargo===4 ) {
-        //console.log(req.query);
+        console.log(user.id_cargo===3);
         jsonBlock.ayudas = await  dashController.listarAyudasEconomicasSeccion(req.query, req.body);
-        console.log(jsonBlock);
+        //console.log(jsonBlock);
         res.send(jsonBlock);
     }else{
         return res.status(300).send('Invalid Permits');
