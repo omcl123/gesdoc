@@ -60,6 +60,7 @@ async function listaConvocatoria(preferencesObject,bodyObject){
             innerPart.fecha_registro=item.fecha_registro;
             innerPart.fecha_fin=item.fecha_fin;
             innerPart.cantidadPostulantes = item.cantidadPostulantes;
+            innerPart.nombre_seccion = item.nombre_seccion;
 
 /*
             //curso y seccion

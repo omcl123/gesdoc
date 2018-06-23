@@ -346,7 +346,7 @@ async function insertaDocumentoGasto(preferencesObject){
         }
 
         if (id_ayuda_economica!=null&&numero_documento!=null&&monto_justificacion!=null){
-            await sequelize.query('CALL insertaJustificacion(:id_ayuda_economica,:numero_documento,:detalle,:monto_justificacion,:observaciones,:tipo_documento)',
+            await sequelize.query('CALL insertaJustificacion(:id_ayuda_economica,:numero_documento,:detalle,:monto_justificacion,:observaciones,:tipo_documento,:archivo)',
                 {
 
                     replacements: {
@@ -356,7 +356,7 @@ async function insertaDocumentoGasto(preferencesObject){
                         monto_justificacion:parseFloat(monto_justificacion),
                         observaciones:observaciones,
                         tipo_documento:parseInt(tipo_documento),
-                        archivo:parseInt(archivo)
+                        archivo:parseInt(preferencesObject.archivo)
 
                     }
                 }
