@@ -147,7 +147,7 @@ router.get('/listarDepartamentos', async function (req, res) {
 
 router.get('/listarSeccionesDep', async function (req, res) {
     let queryResult= {};
-    queryResult.secciones = await listaController.listarSeccionesDep(req.body);
+    queryResult.secciones = await listaController.listarSeccionesDep(req.query);
     res.send(queryResult) ;
 });
 
