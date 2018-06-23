@@ -66,7 +66,7 @@ router.get('/listaTipoActividad',VerifyToken, async function (req, res) {
     res.send(queryResult) ;
 });
 
-router.get('/listaTipoUsuarios',VerifyToken, async function (req, res) {
+router.get('/listaTipoUsuarios', async function (req, res) {
     let queryResult= {};
     queryResult.tipos = await listaController.listaTipoUsuarios();
     res.send(queryResult) ;
