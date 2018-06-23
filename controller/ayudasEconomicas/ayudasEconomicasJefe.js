@@ -272,6 +272,8 @@ async function modificarAyudaEconomica(preferencesObject){
         return "error";
     }
 }
+
+
 async function devuelveAyudaEconomicaJustificacion(preferencesObject){
     try{
         let ayuda={};
@@ -321,6 +323,8 @@ async function devuelveAyudaEconomicaJustificacion(preferencesObject){
          });
          console.log(gastos);
          ayuda=jsonAyudaEconomica[0];
+
+
          ayuda.justificacion=gastos;
 
         return ayuda;

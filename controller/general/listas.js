@@ -301,13 +301,18 @@ async function listaCursosSeccion(preferencesObject){
 }
 
 
-async function listaInvestigacionDep(preferencesObject){
+async function listaInvestigacionDep(preferencesObject,bodyObject){
     try{
 
+        let user = await bodyObject.verifiedUser;
+
+
+        console.log(user);
+        console.log(user.unidad);
 
         let inv_dep=await sequelize.query('call devuelveInvestigacionDep(:departamento)',{
             replacements:{
-                departamento:preferencesObject.departamento
+                departamento:user.unidad
             }
 
         });

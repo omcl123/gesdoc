@@ -22,6 +22,7 @@ router.get('/listaSecciones',VerifyToken, async function (req, res) {
     res.send(queryResult) ;
 });
 
+
 router.get('/listaSeccionesDep',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.secciones = await listaController.listaSecccionesDep(req.body);
@@ -33,7 +34,6 @@ router.get('/listaMotivosAyudaEc',VerifyToken, async function (req, res) {
     queryResult.motivos = await listaController.listaMotivosAyudaEc();
     res.send(queryResult) ;
 });
-
 router.get('/listaEstadosAyudaEc',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.estados = await listaController.listaEstadosAyudaEc();
@@ -115,7 +115,7 @@ router.get('/listaCursosSeccion',VerifyToken,async function (req,res){
 
 router.get('/listaInvestigacionDep',VerifyToken,async function (req,res){
     let queryResult={};
-    queryResult.investigaciones=await listaController.listaInvestigacionDep(req.query);
+    queryResult.investigaciones=await listaController.listaInvestigacionDep(req.query,req.body);
     res.send(queryResult);
 });
 
