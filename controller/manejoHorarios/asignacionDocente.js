@@ -129,8 +129,12 @@ async function insertaNuevoHorarioCurso(preferencesObject,res){
     try {
         let response = await
             sequelize.query
-            (`CALL insert_asignacion_horario ( '${preferencesObject.curso}','${preferencesObject.ciclo}')`);
-        res.status(200).send({"num_horarios":response[0].horarios_disponibles});
+            (`CALL get_num_horarios_id ( '${preferencesObject.curso}','${preferencesObject.ciclo}')`);
+        let horarios = response[0].horarios_disponibles;
+        let id = response[0].id;
+        let newResponse = await sequelize.query
+        (`CALL insert_asignacion_horario ( '${preferencesObject.curso}','${preferencesObject.ciclo}',${horarios},${id})`);
+        res.status(200).send({"num_horarios":newResponse[0].horarios_disponibles});
     }catch (e) {
         res.status(500).send({"error":"ocurrio un error"});
     }
