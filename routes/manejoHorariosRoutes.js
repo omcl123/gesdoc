@@ -4,7 +4,7 @@ const formController = require('../controller/manejoHorarios/formulario');
 const preferenciasController = require('../controller/manejoHorarios/consultaPreferencias');
 const asignaDocenteController = require('../controller/manejoHorarios/asignacionDocente');
 const consultaCargaController = require('../controller/manejoHorarios/consultaCarga');
-const VerifyToken = require('../auth/VerifyToken');
+const VerifyToken = require('../auth/VerifyTokenEconomia');
 /* GET home page. */
 router.get('/listaCursosPreferencia',async function(req, res) {
     let jsonblock;
