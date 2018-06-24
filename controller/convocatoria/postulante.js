@@ -24,6 +24,8 @@ function convertirFecha(date){
     return (d);
 }
 
+
+
 async function listarPostulante(preferencesObject){
     let arregloInv = [];
     try{
@@ -332,7 +334,7 @@ async function requerimientos(preferencesObject,last_id){
 async function registrarPostulante(preferencesObject){
     try{
         mensaje = "";
-        console.log(JSON.stringify(preferencesObject.postulante.apellido_paterno));
+        //console.log(JSON.stringify(preferencesObject.postulante.apellido_paterno));
         await insertaPostulante(preferencesObject);
         let last_id= await sequelize.query(' CALL devuelveSiguienteId(:tabla )',
             {
@@ -699,5 +701,7 @@ module.exports  ={
     registrarPostulante:registrarPostulante,
     devuelvePostulante:devuelvePostulante,
     modificarPostulante:modificarPostulante,
+    registraArchivo:registraArchivo,
+    modificarArchivo:modificarArchivo
 }
 
