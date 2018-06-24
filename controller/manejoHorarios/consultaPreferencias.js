@@ -97,26 +97,18 @@ async function getHorariosbyTeacherPreference(preferencesObject) {
     try {
         let numHorarios = await
             sequelize.query(`call lista_horarios_curso_disponible('${preferencesObject.codCur}','${preferencesObject.ciclo}');`);
-        console.log(numHorarios);
-        let horariosArray=[];
-        for(let i=0;i<numHorarios[0].horarios_disponibles;i++){
-            let horario={};
-            horario.numHorario = i+1;
-            horariosArray.push(horario);
-            console.log(horariosArray);
-        }
-        horariosArray= Promise.all(await horariosArray.map(async item => {
+
+        return Promise.all(await numHorarios.map(async item => {
             try {
                 let partHorarios = {};
-                partHorarios.numHorario = item.numHorario;
+                partHorarios.numHorario = item.num_horario;
                 partHorarios.docentesInscritos =
-                    await sequelize.query(`call docentes_inscritos_horario('${preferencesObject.codCur}','${preferencesObject.ciclo}',${item.numHorario});`);
+                    await sequelize.query(`call docentes_inscritos_horario('${preferencesObject.codCur}','${preferencesObject.ciclo}',${item.num_horario});`);
                 return partHorarios;
-            }catch (e){
+            } catch (e) {
                 return e;
             }
         }));
-        return horariosArray;
     } catch(e){
         return "error";
     }
