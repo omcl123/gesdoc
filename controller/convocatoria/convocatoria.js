@@ -344,7 +344,7 @@ async function insertaConvocatoria(preferencesObject){
         console.log("investigacion es nulo");
     }
 
-    await sequelize.query('CALL insertaConvocatoria(:nombre,:seccion,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura)',
+    await sequelize.query('CALL insertaConvocatoria(:nombre,:seccion,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura,:descripcion)',
         {
 
             replacements: {
@@ -369,7 +369,8 @@ async function insertaConvocatoria(preferencesObject){
                 peso_grado_titulo: peso_grado_academico_titulo_profesional,
                 peso_grado_maestria: peso_grado_academico_maestria,
                 peso_grado_doctorado: peso_grado_academico_doctorado,
-                peso_grado_diplomatura: peso_grado_academico_diplomatura
+                peso_grado_diplomatura: peso_grado_academico_diplomatura,
+                descripcion:descripcion
 
             }
         }
