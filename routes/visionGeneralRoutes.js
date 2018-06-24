@@ -27,7 +27,7 @@ router.get('/listarAyudasEconomicas',VerifyToken,async function(req,res){
     let jsonBlock ={};
     let user = req.body.verifiedUser;
     
-    if (user.id_cargo===3||user.id_cargo===4 ) {
+    if (user.id_cargo===3||user.id_cargo===4||user.id_cargo===2 ) {
         //console.log(">>unidad",req.body.verifiedUser.unidad);
         //console.log (">>>>>>> CARGO DE USER: ",user.id_cargo);
         jsonBlock.ayudas = await  dashController.listarAyudasEconomicas(req.query, req.body);
@@ -41,7 +41,7 @@ router.get('/listarAyudasEconomicas',VerifyToken,async function(req,res){
 router.get('/listarAyudasEconomicasSeccion',VerifyToken,async function(req,res){
     let jsonBlock ={};
     let user = req.body.verifiedUser;
-    if (user.id_cargo===3||user.id_cargo===4 ) {
+    if (user.id_cargo===3||user.id_cargo===4||user.id_cargo===2 ) {
         console.log(user.id_cargo===3);
         jsonBlock.ayudas = await  dashController.listarAyudasEconomicasSeccion(req.query, req.body);
         //console.log(jsonBlock);
