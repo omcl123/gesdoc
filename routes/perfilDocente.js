@@ -13,6 +13,9 @@ const UPLOAD_PATH = '/home/inf245/files/investigaciones/';
 const upload = multer({ dest: `${UPLOAD_PATH}/` });
 const type = upload.single('file');
 
+const UPLOAD_PATH_ACT = '/home/inf245/files/actividades/';
+const upload_act = multer({ dest: `${UPLOAD_PATH_ACT}/` });
+const type_act = upload_act.single('file');
 
 const VerifyToken = require('../auth/VerifyToken');
 /* GET home page. */
@@ -133,6 +136,19 @@ router.post('/actividad/registrar',VerifyToken,async function (req,res){
     jsonRes.nuevo_id_Actividad=await docenteActividadController.registraActividad(req.body);
     res.send(jsonRes);
 
+});
+
+router.post('/actividad/registrarArchivo',type_act,VerifyToken,async function (req,res){
+    let data = req.file;
+    let jsonRes = await investigacionController.registraInvestigacionArchivo(data);
+    res.send(jsonRes);
+
+});
+router.get('/actividad/devuelveArchivos',VerifyToken, async function(req, res) {
+    let jsonBlock;
+    jsonBlock = await docenteActividadController.devuelveArchivos(req.query);
+
+    res.send(jsonBlock);
 });
 
 router.put('/actividad/actualizar',VerifyToken,async function (req,res){
