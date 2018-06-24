@@ -1,7 +1,7 @@
-var winston = require('../../config/winston');
+const winston = require('../../config/winston');
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
-const dbSpecs = dbCon.connect()
+const dbSpecs = dbCon.connect();
 
 const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     host: dbSpecs.host,
@@ -13,13 +13,6 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
         idle: 10000
     },
 });
-
-function querydB(query){ //query inside the code
-
-
-    return sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
-}
-
 
 async function devuelveDocente(preferencesObject){
     try{
@@ -49,6 +42,7 @@ async function devuelveDocente(preferencesObject){
     }
 }
 
+
 module.exports ={
     devuelveDocente:devuelveDocente
-}
+};

@@ -1,4 +1,4 @@
-var winston = require('../../config/winston');
+const winston = require('../../config/winston');
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
 const dbSpecs = dbCon.connect();
@@ -13,13 +13,8 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     },
 });
 
-function listaInvestigacion(preferenceObject){
-
-
-}
-
 async function devuelveListaActividad(preferencesObject){
-    let arregloInv = [];
+
     try{
         let actividades = await sequelize.query('CALL devuelveActividades(:id_profesor,:nombre_ciclo)',
             {
@@ -58,7 +53,6 @@ async function devuelveListaActividad(preferencesObject){
 
 
 async function registraActividad(dataArray) {
-    let message = "";
 
     try {
 
@@ -76,7 +70,7 @@ async function registraActividad(dataArray) {
         let idTipo = await sequelize.query(`CALL devuelveIdTipoActividad('${tipo}')`);
         let idEstado = await sequelize.query(`CALL devuelveIdEstadoActividad('${estado}')`);
 
-        if (idCiclo[0].id == undefined || idTipo[0].id == undefined || idEstado[0].id == undefined){
+        if (idCiclo[0].id === undefined || idTipo[0].id === undefined || idEstado[0].id === undefined){
             winston.info("registraActividad success on execution");
             return -1;
         }
@@ -97,8 +91,7 @@ async function registraActividad(dataArray) {
 
         winston.info("registraActividad success on execution");
 
-        let n_id=last_id[0].nuevo_id;
-        return n_id;
+        return last_id[0].nuevo_id;
 
     } catch(e) {
         winston.error("registraActividad Failed: ",e);
@@ -120,23 +113,23 @@ async function actualizaActividad(dataArray) {
         let fecha_fin = dataArray.fecha_fin;
         let estado = dataArray.estado;
         let lugar = dataArray.lugar;
+        let arrayArchivos = dataArray.archivos;
 
+        Promise.all(arrayArchivos.map(async item =>{
+            await sequelize.query(`CALL inserta_archivo_actividad(${id_actividad},${item.idArchivo})`);
+        }));
 
         let idTipo = await sequelize.query(`CALL devuelveIdTipoActividad('${tipo}')`);
         let idEstado = await sequelize.query(`CALL devuelveIdEstadoActividad('${estado}')`);
 
-        if (idTipo[0].id == undefined || idEstado[0].id == undefined){
+        if (idTipo[0].id === undefined || idEstado[0].id === undefined){
             winston.info("actualizaActividad success on execution");
-            return message = "actualizaActividad success on execution";
+            return "actualizaActividad success on execution";
         }
 
         await sequelize.query(`CALL update_actividad ('${id_actividad}','${fecha_inicio}','${fecha_fin}','${titulo}','${idEstado[0].id}', '${idTipo[0].id}', '${lugar}')`);
 
         return message = "actualizaActividad success on execution";
-
-
-        winston.info("actualizaActividad success on execution");
-        return message;
 
     } catch(e) {
         winston.error("actualizaActividad Failed: ",e);
@@ -158,9 +151,6 @@ async function eliminaActividad(dataArray) {
 
         return message = "eliminaActividad success on execution";
 
-
-        winston.info("eliminaActividad success on execution");
-        return message;
 
     } catch(e) {
         winston.error("eliminaActividad Failed: ",e);
@@ -187,13 +177,17 @@ async function devuelveActividad(preferencesObject){
     }
 }
 
-
-
+async function devuelveArchivos(preferencesObject){
+    let actividadId = preferencesObject.id;
+    let response = await sequelize.query(`call devuelve_archivos_actividad(${actividadId})`);
+    return response;
+}
 
 module.exports ={
     registraActividad:registraActividad,
     devuelveListaActividad:devuelveListaActividad,
     actualizaActividad:actualizaActividad,
     eliminaActividad:eliminaActividad,
-    devuelveActividad:devuelveActividad
-}
+    devuelveActividad:devuelveActividad,
+    devuelveArchivos:devuelveArchivos
+};

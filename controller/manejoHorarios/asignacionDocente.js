@@ -1,4 +1,3 @@
-const winston = require('../../config/winston');
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
 const dbSpecs = dbCon.connect();
@@ -126,9 +125,37 @@ async function listaDocenteAsignar(preferencesObject) {
     }
 }
 
+async function insertaNuevoHorarioCurso(preferencesObject,res){
+    try {
+        let response = await
+            sequelize.query
+            (`CALL get_num_horarios_id ( '${preferencesObject.curso}','${preferencesObject.ciclo}')`);
+        let horarios = response[0].horarios_disponibles;
+        let id = response[0].id;
+        let newResponse = await sequelize.query
+        (`CALL insert_asignacion_horario ( '${preferencesObject.curso}','${preferencesObject.ciclo}',${horarios},${id})`);
+        res.status(200).send({"num_horarios":newResponse[0].horarios_disponibles});
+    }catch (e) {
+        res.status(500).send({"error":"ocurrio un error"});
+    }
+}
+
+async function eliminaHorarioCurso(preferencesObject,res){
+    try {
+        await
+            sequelize.query
+            (`CALL elimina_asignacion_horario ( '${preferencesObject.curso}','${preferencesObject.ciclo}',${preferencesObject.horEli})`);
+        res.status(200).send({"success":true});
+    }catch (e) {
+        res.status(500).send({"error":"ocurrio un error"});
+    }
+}
+
 module.exports ={
     listaDocenteAsignar:listaDocenteAsignar,
     asignaDocenteHorario:asignaDocenteHorario,
     actualizaDocenteHorario:actualizaDocenteHorario,
-    eliminaDocenteHorario:eliminaDocenteHorario
+    eliminaDocenteHorario:eliminaDocenteHorario,
+    insertaNuevoHorarioCurso:insertaNuevoHorarioCurso,
+    eliminaHorarioCurso:eliminaHorarioCurso
 };

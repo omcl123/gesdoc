@@ -24,6 +24,8 @@ function convertirFecha(date){
     return (d);
 }
 
+
+
 async function listarPostulante(preferencesObject){
     let arregloInv = [];
     try{
@@ -57,7 +59,7 @@ async function listarPostulante(preferencesObject){
             innerPart.pais_domicilio=item.pais_domicilio;
             innerPart.telefono=item.telefono;
             innerPart.celular=item.celular;
-
+            innerPart.fecha_registro=item.fecha_registro;
             innerPart.estado_postulante=item.estado_postulante;
 
             return innerPart;
@@ -332,7 +334,7 @@ async function requerimientos(preferencesObject,last_id){
 async function registrarPostulante(preferencesObject){
     try{
         mensaje = "";
-        console.log(JSON.stringify(preferencesObject.postulante.apellido_paterno));
+        //console.log(JSON.stringify(preferencesObject.postulante.apellido_paterno));
         await insertaPostulante(preferencesObject);
         let last_id= await sequelize.query(' CALL devuelveSiguienteId(:tabla )',
             {
@@ -698,6 +700,6 @@ module.exports  ={
     listarPostulante:listarPostulante,
     registrarPostulante:registrarPostulante,
     devuelvePostulante:devuelvePostulante,
-    modificarPostulante:modificarPostulante,
+    modificarPostulante:modificarPostulante
 }
 

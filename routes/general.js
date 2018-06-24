@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const listaController = require('../controller/general/listas');
 const VerifyToken = require('../auth/VerifyToken');
+const fs = require('fs');
 
 router.get('/listaDocente',VerifyToken, async function (req, res) {
     let queryResult= {};
@@ -21,6 +22,7 @@ router.get('/listaSecciones',VerifyToken, async function (req, res) {
     res.send(queryResult) ;
 });
 
+
 router.get('/listaSeccionesDep',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.secciones = await listaController.listaSecccionesDep(req.body);
@@ -32,7 +34,6 @@ router.get('/listaMotivosAyudaEc',VerifyToken, async function (req, res) {
     queryResult.motivos = await listaController.listaMotivosAyudaEc();
     res.send(queryResult) ;
 });
-
 router.get('/listaEstadosAyudaEc',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.estados = await listaController.listaEstadosAyudaEc();
@@ -65,7 +66,7 @@ router.get('/listaTipoActividad',VerifyToken, async function (req, res) {
     res.send(queryResult) ;
 });
 
-router.get('/listaTipoUsuarios',VerifyToken, async function (req, res) {
+router.get('/listaTipoUsuarios', async function (req, res) {
     let queryResult= {};
     queryResult.tipos = await listaController.listaTipoUsuarios();
     res.send(queryResult) ;
@@ -124,5 +125,30 @@ router.get('/listaInvestigacionSec',VerifyToken,async function (req,res){
     res.send(queryResult);
 });
 
+router.get('/descargarArchivo',VerifyToken, async (req, res) => {
+    try {
+        let archivo = await listaController.descargaArchivo(req.query);
+
+
+        res.setHeader("Content-Type",archivo.mimetype);
+        res.setHeader("File-Name",archivo.nombre);
+
+        await fs.createReadStream(archivo.path).pipe(res);
+    } catch (err) {
+        res.sendStatus(400);
+    }
+});
+
+router.get('/listarDepartamentos', async function (req, res) {
+    let queryResult= {};
+    queryResult.tipos = await listaController.listarDepartamentos();
+    res.send(queryResult) ;
+});
+
+router.get('/listarSeccionesDep', async function (req, res) {
+    let queryResult= {};
+    queryResult.secciones = await listaController.listarSeccionesDep(req.query);
+    res.send(queryResult) ;
+});
 
 module.exports = router;

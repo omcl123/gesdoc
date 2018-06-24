@@ -1,7 +1,7 @@
-var winston = require('../../config/winston');
+const winston = require('../../config/winston');
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
-const dbSpecs = dbCon.connect()
+const dbSpecs = dbCon.connect();
 
 const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     host: dbSpecs.host,
@@ -38,7 +38,7 @@ function convertirFecha(date){
 async function tiene_elemento(data,elemento){
     let key;
     for(key in data) {
-        if(data[key].descripcion == elemento)
+        if(data[key].descripcion === elemento)
             return 1;
     }
     return 0;
@@ -217,7 +217,7 @@ async function insertaAyudaEconomica(preferencesObject){
             let cant_inv_profe = await cantidad_elementos(inv_profe);
             console.log(cant_inv_profe);
 
-            if (cant_inv_profe == 0){
+            if (cant_inv_profe === 0){
                 console.log("Se inserta inv_profe");
                 await sequelize.query("CALL insertaInvProfesor(:codigo_profesor,:investigacion)",
                     {
@@ -355,17 +355,19 @@ async function insertaDocumentoGasto(preferencesObject){
         }
 
         if (id_ayuda_economica!=null&&numero_documento!=null&&monto_justificacion!=null){
+
             await sequelize.query('CALL insertaJustificacion(:id_ayuda_economica,:numero_documento,:detalle,:monto_justificacion,:observaciones,:tipo_documento_pago,:archivo)',
                 {
 
                     replacements: {
-                        id_ayuda_economica:id_ayuda_economica,
-                        numero_documento:numero_documento,
+                        id_ayuda_economica:parseInt(id_ayuda_economica),
+                        numero_documento:parseInt(numero_documento),
                         detalle:detalle,
-                        monto_justificacion:monto_justificacion,
+                        monto_justificacion:parseFloat(monto_justificacion),
                         observaciones:observaciones,
                         tipo_documento_pago:tipo_documento_pago,
                         archivo: archivo
+
                     }
                 }
             );
@@ -599,7 +601,7 @@ async function rechazaAyudaEconomica(preferencesObject){
     try{
         //validar fechas
         console.log(JSON.stringify(preferencesObject));
-        if ((preferencesObject.id==null) ||(preferencesObject.id=="")){
+        if ((preferencesObject.id==null) ||(preferencesObject.id==="")){
             winston.info("ID no puede ser nulo");
             return "error";
         }
@@ -627,6 +629,7 @@ async function eliminarDocumentoGasto(preferencesObject){
     try{
         //validar fechas
         console.log(JSON.stringify(preferencesObject));
+
         if ((preferencesObject.id_ayuda_economica==null) ||(preferencesObject.id_ayuda_economica=="")){
             winston.info("id_ayuda_economica no puede ser nulo");
             return "error id_ayuda_economica es nulo";
@@ -635,8 +638,10 @@ async function eliminarDocumentoGasto(preferencesObject){
         if ((preferencesObject.id_documentoGasto==null) ||(preferencesObject.id_documentoGasto=="")){
             winston.info("id_documentoGasto no puede ser nulo");
             return "error id_documentoGasto es nulo";
+
         }
 
+        
         await sequelize.query('CALL eliminaDocumentoGasto(:id_documentoGasto)',
             {
                 replacements: {
@@ -659,10 +664,39 @@ async function eliminarDocumentoGasto(preferencesObject){
         return "error";
     }
 }
+
+async function registraArchivo(data){
+    try{
+        let response = await sequelize.query(`call insertaArchivo('${data.originalname}','${data.path}','${data.mimetype}');`);
+        console.log(response[0]);
+        return response[0];
+    }catch (e) {
+        return "error";
+    }
+}
+
+async function modificarArchivo(data,id){
+    try{
+        let pathAntiguo = await sequelize.query(`call encuentra_archivo(${id});`);
+        let pathRemove = pathAntiguo[0].path;
+        fs.unlink(pathRemove, (err) => {
+            if (err) throw err;
+            console.log('file was deleted');
+        });
+        let response = await sequelize.query(`call modificaArchivo(${id},'${data.originalname}','${data.path}','${data.mimetype}');`);
+        console.log(response[0]);
+        return response[0];
+    }catch (e) {
+        return "error";
+    }
+}
+
 module.exports  ={
     registrarAyudaEconomica:registrarAyudaEconomica,
     registrarDocumentoGasto:registrarDocumentoGasto,
     modificarAyudaEconomica:modificarAyudaEconomica,
     rechazaAyudaEconomica:rechazaAyudaEconomica,
-    eliminarDocumentoGasto:eliminarDocumentoGasto
-}
+    eliminarDocumentoGasto:eliminarDocumentoGasto,
+    registraArchivo:registraArchivo,
+    modificarArchivo:modificarArchivo
+};

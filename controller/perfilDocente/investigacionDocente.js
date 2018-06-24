@@ -100,6 +100,8 @@ async function devuelveListaInvestigacion(preferencesObject){
             innerPart.resumen=item.resumen;
             innerPart.estado=item.estado;
             innerPart.archivo=item.archivo;
+            innerPart.fecha_inicio=item.fecha_inicio;
+            innerPart.fecha_fin=item.fecha_fin;
             return innerPart;
         }));
         console.log(jsonInvestigaciones);
@@ -215,7 +217,7 @@ async function insertaInvestigacion(preferencesObject){
         }
 
 
-        await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:archivo,:fecha_inicio,:fecha_fin)',
+        await sequelize.query('CALL insertaInvestigacion(:titulo,:resumen,:fecha_inicio,:fecha_fin,:id_archivo)',
             {
 
                 replacements: {
@@ -224,7 +226,7 @@ async function insertaInvestigacion(preferencesObject){
                     resumen: preferencesObject.resumen,
                     fecha_inicio: fecha_i,
                     fecha_fin: fecha_f,
-                    archivo: preferencesObject.archivo,
+                    id_archivo:preferencesObject.archivo
                 }
             }
         );
@@ -236,12 +238,36 @@ async function insertaInvestigacion(preferencesObject){
     }
 }
 
+async function registraInvestigacionArchivo(data){
+    try{
+        let response = await sequelize.query(`call insertaArchivo('${data.originalname}','${data.path}','${data.mimetype}');`);
+        console.log(response[0]);
+        return response[0];
+    }catch (e) {
+        return "error";
+    }
+}
 
+async function modificaInvestigacionArchivo(data,id){
+    try{
+        let pathAntiguo = await sequelize.query(`call encuentra_archivo(${id});`);
+        let pathRemove = pathAntiguo[0].path;
+        fs.unlink(pathRemove, (err) => {
+            if (err) throw err;
+            console.log('file was deleted');
+        });
+        let response = await sequelize.query(`call modificaArchivo(${id},'${data.originalname}','${data.path}','${data.mimetype}');`);
+        console.log(response[0]);
+        return response[0];
+    }catch (e) {
+        return "error";
+    }
+}
 
-async function registraInvestigacion(preferencesObject){
+async function registraInvestigacion(preferencesObject,data){
 
     try{
-        await insertaInvestigacion(preferencesObject);
+        await insertaInvestigacion(preferencesObject,data);
 
 
         let last_id = await  sequelize.query('CALL devuelveSiguienteId(:tabla )',
@@ -283,12 +309,12 @@ async function actualizaInvestigacion(preferencesObject){
             return -1;
         }
         if ((preferencesObject.titulo==null) ||
-            (preferencesObject.titulo=="")  ) {
+            (preferencesObject.titulo==="")  ) {
             winston.info("Titulo o resumen no pueden ser nulos");
             return -1;
         }
         if ((preferencesObject.resumen==null) ||
-            (preferencesObject.resumen=="") ) {
+            (preferencesObject.resumen==="") ) {
             winston.info("Resumen no pueden ser nulos");
             return -1;
         }
@@ -334,7 +360,7 @@ async function actualizaInvestigacion(preferencesObject){
         }
 
         let i;
-        longitud=preferencesObject.autor.length;
+        let longitud=preferencesObject.autor.length;
 
 
         mensaje ="investigacion actualizado correctamente "+ parseInt(preferencesObject.id);
@@ -351,11 +377,7 @@ async function agregaAutores(preferencesObject){
     try{
         //validar fechas
         await registraAutoresAgregar(preferencesObject, parseInt(preferencesObject.id));
-        mensaje ="agregaAutores correctamente "
-
-
-
-        return mensaje;
+        return "agregaAutores correctamente ";
 
 
     }catch(e){
@@ -367,7 +389,7 @@ async function agregaAutores(preferencesObject){
 }
 async function eliminarAutores(preferencesObject){
     try{
-        if (preferencesObject.autor.length == 0)
+        if (preferencesObject.autor.length === 0)
             return -1;
         longitud=preferencesObject.autor.length;
 
@@ -402,7 +424,7 @@ async function eliminarInvestigacion(preferencesObject){
     try{
         //validar fechas
         console.log(JSON.stringify(preferencesObject));
-        if ((preferencesObject.id==null) ||(preferencesObject.id=="")){
+        if ((preferencesObject.id==null) ||(preferencesObject.id==="")){
             winston.info("ID no puede ser nulo");
             return -1;
         }
@@ -434,5 +456,7 @@ module.exports ={
     eliminarInvestigacion:eliminarInvestigacion,
     devuelveInvestigacion:devuelveInvestigacion,
     agregaAutores:agregaAutores,
-    eliminarAutores:eliminarAutores
-}
+    eliminarAutores:eliminarAutores,
+    registraInvestigacionArchivo:registraInvestigacionArchivo,
+    modificaInvestigacionArchivo:modificaInvestigacionArchivo
+};

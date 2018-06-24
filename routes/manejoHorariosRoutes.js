@@ -4,7 +4,7 @@ const formController = require('../controller/manejoHorarios/formulario');
 const preferenciasController = require('../controller/manejoHorarios/consultaPreferencias');
 const asignaDocenteController = require('../controller/manejoHorarios/asignacionDocente');
 const consultaCargaController = require('../controller/manejoHorarios/consultaCarga');
-const VerifyToken = require('../auth/VerifyToken');
+const VerifyToken = require('../auth/VerifyTokenEconomia');
 /* GET home page. */
 router.get('/listaCursosPreferencia',async function(req, res) {
     let jsonblock;
@@ -63,6 +63,18 @@ router.post('/actualizaDocenteHorario',VerifyToken, async function(req, res) {
 router.post('/eliminaDocenteHorario',VerifyToken, async function(req, res) {
     let jsonblock;
     jsonblock = await asignaDocenteController.eliminaDocenteHorario(req.body);
+    res.send(jsonblock);
+});
+
+router.post('/insertaNuevoHorarioCurso',VerifyToken, async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.insertaNuevoHorarioCurso(req.body,res);
+
+});
+
+router.post('/eliminaHorarioCurso',VerifyToken, async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.eliminaHorarioCurso(req.body,res);
     res.send(jsonblock);
 });
 

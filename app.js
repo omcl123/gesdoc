@@ -14,12 +14,14 @@ const convocatoriaRouter=require('./routes/convocatoria');
 const asignacionRouter = require('./routes/manejoHorariosRoutes');
 const authController = require('./auth/AuthController');
 const ayudasEconomicasRouter = require('./routes/ayudasEconomicas');
+const dashboardRouter = require('./routes/visionGeneralRoutes');
 const app = express();
 
 const allowCrossDomain = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, x-access-token');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, x-access-token,Nombre-Archivo');
+    res.header('Access-Control-Expose-Headers', 'Authorization, File-Name');
     next();
 };
 
@@ -39,6 +41,7 @@ app.use('/ayudasEconomicas',ayudasEconomicasRouter);
 app.use('/carga',cargaRouter);
 app.use('/general',generalRouter);
 app.use('/auth',authController);
+app.use('/dashboard',dashboardRouter);
 app.use('*',(req,res,next)=>{
     res.end('The link you followed may be broken, or the page may have been removed.');
     next();

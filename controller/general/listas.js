@@ -184,6 +184,26 @@ async function listaDepartamentos(){
     }
 }
 
+async function listarDepartamentos(){
+    try{
+        return await sequelize.query('call lista_departamentos()');
+    } catch( e){
+        winston.error("listaDepartamentos failed: ",e);
+        return "error";
+
+    }
+}
+
+async function listarSeccionesDep(prefenecesObject){
+    try{
+        return await sequelize.query(`call listar_secciones_dep(${prefenecesObject.id})`);
+    } catch( e){
+        winston.error("listaDepartamentos failed: ",e);
+        return "error";
+
+    }
+}
+
 async function listaSecciones(req){
     try{
         return await sequelize.query(`call lista_secciones('${req.departamento}')`);
@@ -371,6 +391,16 @@ async function listaInvestigacionSec(preferencesObject){
         return "error";
     }
 }
+
+async function descargaArchivo(preferencesObject){
+    try{
+        let response=await sequelize.query(`call desvuelveArchivo(${preferencesObject.id})`);
+        return response[0];
+    }catch(e){
+        return "error";
+    }
+}
+
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
@@ -384,7 +414,7 @@ module.exports = {
     listaTipoUsuarios:listaTipoUsuarios,
     listaDepartamentos:listaDepartamentos,
     listaSecciones:listaSecciones,
-    listaSecccionesDep,listaSecccionesDep,
+    listaSecccionesDep:listaSecccionesDep,
     listaProfesoresSeccion:listaProfesoresSeccion,
     listaProfesoresTipo:listaProfesoresTipo,
     listaTipoActividad:listaTipoActividad,
@@ -392,5 +422,8 @@ module.exports = {
     listaDocumentoPagoTipo:listaDocumentoPagoTipo,
     listaCursosSeccion:listaCursosSeccion,
     listaInvestigacionDep:listaInvestigacionDep,
-    listaInvestigacionSec:listaInvestigacionSec
+    listaInvestigacionSec:listaInvestigacionSec,
+    descargaArchivo:descargaArchivo,
+    listarSeccionesDep:listarSeccionesDep,
+    listarDepartamentos:listarDepartamentos
 };
