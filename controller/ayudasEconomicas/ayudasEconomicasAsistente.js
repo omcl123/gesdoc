@@ -691,6 +691,56 @@ async function modificarArchivo(data,id){
     }
 }
 
+
+async function finalizarGastos(preferencesObject){
+
+    try{
+        console.log(preferencesObject);
+
+        await sequelize.query('CALL finalizarGastos(:id_ayuda_economica)',
+            {
+                replacements: {
+                    id_ayuda_economica:parseInt(preferencesObject.id_ayuda_economica),
+                }
+            }
+        );
+
+        let monto_devolucion = null;
+        let mensaje = "error al calcular monto devolucion";
+        let salida = await sequelize.query('CALL devuelveMontoDevolucion(:id_ayuda_economica)',
+            {
+                replacements: {
+                    id_ayuda_economica:parseInt(preferencesObject.id_ayuda_economica),
+                }
+            }
+        );
+
+        console.log(salida[0].monto_devolucion);
+
+        if (salida != null)
+            monto_devolucion = salida[0].monto_devolucion;
+
+        if (monto_devolucion!= null)
+            if (monto_devolucion > 0){
+                console.log("monto mayor que cero");
+                return monto_devolucion;
+            }else if (monto_devolucion == 0) {
+                console.log("monto igual a cero");
+                return monto_devolucion;
+            }else {
+                console.log("monto menor que cero");
+                return monto_devolucion;
+            }
+
+        return mensaje;
+    }catch(e){
+        console.log(e);
+        winston.error("finalizarGastos failed");
+        return "error finalizarGastos";
+    }
+
+}
+
 module.exports  ={
     registrarAyudaEconomica:registrarAyudaEconomica,
     registrarDocumentoGasto:registrarDocumentoGasto,
@@ -698,5 +748,6 @@ module.exports  ={
     rechazaAyudaEconomica:rechazaAyudaEconomica,
     eliminarDocumentoGasto:eliminarDocumentoGasto,
     registraArchivo:registraArchivo,
-    modificarArchivo:modificarArchivo
+    modificarArchivo:modificarArchivo,
+    finalizarGastos:finalizarGastos
 };
