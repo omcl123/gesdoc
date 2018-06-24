@@ -231,6 +231,7 @@ async function devuelveDetalleAyudaEconomica(preferencesObject){
             innerPart.titulo=item.titulo;
             innerPart.motivo=item.motivo;
             innerPart.monto_otorgado=item.monto_otorgado;
+            innerPart.monto_justificado=item.monto_justificado;
             innerPart.fecha_solicitud=item.fecha_solicitud;
             innerPart.fecha_inicio=item.fecha_inicio;
             innerPart.fecha_fin=item.fecha_fin;
