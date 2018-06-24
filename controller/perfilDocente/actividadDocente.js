@@ -113,7 +113,11 @@ async function actualizaActividad(dataArray) {
         let fecha_fin = dataArray.fecha_fin;
         let estado = dataArray.estado;
         let lugar = dataArray.lugar;
+        let arrayArchivos = dataArray.archivos;
 
+        Promise.all(arrayArchivos.map(async item =>{
+            await sequelize.query(`CALL inserta_archivo_actividad(${id_actividad},${item.idArchivo})`);
+        }));
 
         let idTipo = await sequelize.query(`CALL devuelveIdTipoActividad('${tipo}')`);
         let idEstado = await sequelize.query(`CALL devuelveIdEstadoActividad('${estado}')`);
@@ -173,12 +177,17 @@ async function devuelveActividad(preferencesObject){
     }
 }
 
-
+async function devuelveArchivos(preferencesObject){
+    let actividadId = preferencesObject.id;
+    let response = await sequelize.query(`call devuelve_archivos_actividad(${actividadId})`);
+    return response;
+}
 
 module.exports ={
     registraActividad:registraActividad,
     devuelveListaActividad:devuelveListaActividad,
     actualizaActividad:actualizaActividad,
     eliminaActividad:eliminaActividad,
-    devuelveActividad:devuelveActividad
+    devuelveActividad:devuelveActividad,
+    devuelveArchivos:devuelveArchivos
 };
