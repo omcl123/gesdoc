@@ -101,9 +101,9 @@ async function getHorariosbyTeacherPreference(preferencesObject) {
         return Promise.all(await numHorarios.map(async item => {
             try {
                 let partHorarios = {};
-                partHorarios.numHorario = item.numHorario;
+                partHorarios.numHorario = item.num_horario;
                 partHorarios.docentesInscritos =
-                    await sequelize.query(`call docentes_inscritos_horario('${preferencesObject.codCur}','${preferencesObject.ciclo}',${item.numHorario});`);
+                    await sequelize.query(`call docentes_inscritos_horario('${preferencesObject.codCur}','${preferencesObject.ciclo}',${item.num_horario});`);
                 return partHorarios;
             } catch (e) {
                 return e;
