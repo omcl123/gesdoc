@@ -565,10 +565,63 @@ async function devuelvePostulanteGrado(preferencesObject,tipo){
             innerPart.titulo_tesis=item.titulo_tesis;
             innerPart.url_tesis=item.url_tesis;
             innerPart.archivo_tesis=item.archivo_tesis;
+            
             return innerPart;
         }));
         winston.info("devuelvePostulanteDocenciaPremio correcto")
         return jsonasgrado;
+    }catch(e){
+        console.log(e);
+        winston.error("devuelvePostulanteDocenciaPremio failed");
+
+    }
+}
+async function devuelvePostulanteGrado2(preferencesObject){
+    
+    try {
+    
+        
+        let tipos_id= [1,2,3,4];
+        let arrayGrados= Promise.all(tipos_id.map(async tipo =>{
+            let grado = await sequelize.query('CALL devuelvePostulateGrados(:id_postulante,:tipo)',
+                {
+                    replacements: {
+                        id_postulante: parseInt(preferencesObject.id_postulante),
+                        tipo:tipo
+
+                    }
+                }
+            );
+           
+            //console.log(grado);
+            
+            let jsonasgrado = await Promise.all(grado.map(async item => {
+                if (item != null || item != undefined || item != []){
+                    console.log(item);
+                    let innerPart={};
+                    innerPart.id=item.id;
+                    innerPart.especialidad=item.especialidad;
+                    innerPart.pais=item.pais;
+                    innerPart.institucion=item.institucion;
+                    innerPart.modalidad=item.modalidad;
+                    innerPart.egresado=item.egresado;
+                    innerPart.fecha_obtencion=item.fecha_obtencion;
+                    innerPart.titulo_tesis=item.titulo_tesis;
+                    innerPart.url_tesis=item.url_tesis;
+                    innerPart.archivo_tesis=item.archivo_tesis;
+                    innerPart.id_grado=item.id_grado;
+                    innerPart.grado_academico=item.grado_academico;
+                    return innerPart;
+                }
+            }));
+            
+            return jsonasgrado;
+            
+        }));
+        
+        winston.info("devuelvePostulanteDocenciaPremio correcto");
+        
+        return arrayGrados;
     }catch(e){
         console.log(e);
         winston.error("devuelvePostulanteDocenciaPremio failed");
@@ -700,6 +753,12 @@ module.exports  ={
     listarPostulante:listarPostulante,
     registrarPostulante:registrarPostulante,
     devuelvePostulante:devuelvePostulante,
-    modificarPostulante:modificarPostulante
+    modificarPostulante:modificarPostulante,
+    devuelvePostulanteGrado2:devuelvePostulanteGrado2,
+    devuelvePostulanteDocenciaPremio:devuelvePostulanteDocenciaPremio,
+    devuelvePostulanteDocenciaAsesoria:devuelvePostulanteDocenciaAsesoria,
+    devuelvePostulanteDocenciaCargo:devuelvePostulanteDocenciaCargo,
+    devuelvePostulanteExperiencia:devuelvePostulanteExperiencia,
+    devuelvePostulanteInvestigacion:devuelvePostulanteInvestigacion
 }
 

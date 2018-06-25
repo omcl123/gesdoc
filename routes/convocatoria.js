@@ -81,6 +81,56 @@ router.get('/convocatoria/devolver', async function(req, res) {
     res.send(jsonBlock);
 
 });
+//devolver requerimientos postulante
+router.get('/postulante/devolverGrado', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock = await postulanteController.devuelvePostulanteGrado2(req.query);
+
+    res.send(jsonBlock);
+
+});
+router.get('/postulante/devolverDocenciaPremio', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock = await postulanteController.devuelvePostulanteDocenciaPremio(req.query);
+
+    res.send(jsonBlock);
+
+});
+router.get('/postulante/devolverDocenciaAsesoria', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock = await postulanteController.devuelvePostulanteDocenciaAsesoria(req.query);
+
+    res.send(jsonBlock);
+
+});
+router.get('/postulante/devolverDocenciaCargo', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock = await postulanteController.devuelvePostulanteDocenciaCargo(req.query);
+
+    res.send(jsonBlock);
+
+});
+router.get('/postulante/devolverExperiencia', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock = await postulanteController.devuelvePostulanteExperiencia(req.query);
+
+    res.send(jsonBlock);
+
+});
+router.get('/postulante/devolverInvestigacion', async function(req, res) {
+    let jsonBlock={};
+    jsonBlock = await postulanteController.devuelvePostulanteInvestigacion(req.query);
+
+    res.send(jsonBlock);
+
+});
+
+
+
+
+
+
+
 
 
 
