@@ -104,7 +104,13 @@ router.post('/ayudasEconomicasAsistente/modificarArchivo',VerifyToken,type,async
 
 });
 
+//finalizae gastos en ayuda economica
+router.put('/ayudasEconomicas/DocumentoGasto/finalizar',VerifyToken,async function (req,res){
+    let jsonRes={}
+    jsonRes.monto_devolucion=await ayudasEconomicasAsistenteController.finalizarGastos(req.body);
+    res.send(jsonRes);
 
+});
 
 module.exports = router;
 

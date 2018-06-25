@@ -231,6 +231,7 @@ async function devuelveDetalleAyudaEconomica(preferencesObject){
             innerPart.titulo=item.titulo;
             innerPart.motivo=item.motivo;
             innerPart.monto_otorgado=item.monto_otorgado;
+            innerPart.monto_justificado=item.monto_justificado;
             innerPart.fecha_solicitud=item.fecha_solicitud;
             innerPart.fecha_inicio=item.fecha_inicio;
             innerPart.fecha_fin=item.fecha_fin;
@@ -291,9 +292,11 @@ async function devuelveAyudaEconomicaJustificacion(preferencesObject){
 
 
             innerPart.id=item.id;
-            innerPart.codigo=item.codigo_solicitud;
+
             innerPart.motivo=item.motivo;
             innerPart.monto_otorgado=item.monto_otorgado;
+            innerPart.monto_justificado=item.monto_justificado;
+            innerPart.estado=item.estado;
             innerPart.fecha_solicitud=item.fecha_solicitud;
             innerPart.fecha_inicio=item.fecha_inicio;
             innerPart.fecha_fin=item.fecha_fin;
@@ -307,8 +310,8 @@ async function devuelveAyudaEconomicaJustificacion(preferencesObject){
             profesor.correo_pucp=item.correo_pucp;
             profesor.seccion=item.seccion;
 
-            investigacion.id=item.id_investigacion;
-            investigacion.titulo=item.titulo;
+            investigacion.id_investigacion=item.id_investigacion;
+            investigacion.titulo_investigacion = item.titulo_investigacion;
 
             innerPart.docenteSolicitante=profesor;
             innerPart.investigacion = investigacion;
@@ -316,12 +319,16 @@ async function devuelveAyudaEconomicaJustificacion(preferencesObject){
 
         }));
 
+         console.log(jsonAyudaEconomica);
+
+
          let gastos = await sequelize.query('call devolverJustificacionAyudaEconomica(:id_ayuda)',{
              replacements:{
                  id_ayuda:parseInt(preferencesObject.id)
              }
          });
          console.log(gastos);
+
          ayuda=jsonAyudaEconomica[0];
 
 
