@@ -34,6 +34,7 @@ async function devuelveListaActividad(preferencesObject){
             innerPart.fecha_inicio=item.fecha_inicio;
             innerPart.fecha_fin=item.fecha_fin;
             innerPart.estado=item.estado;
+            innerPart.lugar = item.lugar;
             return innerPart;
         }));
         console.log(jsonActividades);
