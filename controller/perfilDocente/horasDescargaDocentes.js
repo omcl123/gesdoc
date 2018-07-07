@@ -355,6 +355,49 @@ async function modificaHoraDescDocente(preferencesObject){
     }
 }
 
+async function cambioEstadoHoraDescDocente(preferencesObject){
+    try {
+        console.log("Comienza cambio estado");
+        let id_descarga;
+        let estado;
+
+
+
+        if (preferencesObject.id_descarga != null) {
+            console.log("id_descarga NO es nulo");
+            id_descarga = preferencesObject.id_descarga;
+        } else {
+            console.log("id_descarga es nulo");
+            id_descarga = null;
+        }
+
+        if (preferencesObject.estado != null) {
+            console.log("estado NO es nulo");
+            estado = preferencesObject.estado;
+        } else {
+            console.log("estado es nulo");
+            estado = null;
+        }
+
+        if (id_descarga != null&&estado!=null){
+            await sequelize.query('CALL cambioEstadoHoraDescDocente(:id_descarga,:estado)',
+                {
+
+                    replacements: {
+                        id_descarga:id_descarga,
+                        estado:estado
+                    }
+                }
+            );
+            return "cambioEstadoHoraDescDocente exitoso";
+        }
+        return "cambioEstadoHoraDescDocente failed";
+    }catch (e){
+        console.log(e);
+        winston.error("cambioEstadoHoraDescDocente failed");
+        return "error";
+    }
+}
 
 
 
@@ -427,6 +470,7 @@ module.exports  ={
     registraHoraDescDocente:registraHoraDescDocente,
     modificaHoraDescDocente:modificaHoraDescDocente,
     eliminaHoraDescDocente:eliminaHoraDescDocente,
-    aprobarDescDocente:aprobarDescDocente
+    aprobarDescDocente:aprobarDescDocente,
+    cambioEstadoHoraDescDocente:cambioEstadoHoraDescDocente
 }
 
