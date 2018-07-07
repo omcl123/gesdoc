@@ -34,6 +34,7 @@ async function devuelveListaActividad(preferencesObject){
             innerPart.fecha_inicio=item.fecha_inicio;
             innerPart.fecha_fin=item.fecha_fin;
             innerPart.estado=item.estado;
+            innerPart.lugar = item.lugar;
             return innerPart;
         }));
         console.log(jsonActividades);
@@ -115,9 +116,9 @@ async function actualizaActividad(dataArray) {
         let lugar = dataArray.lugar;
         //let arrayArchivos = dataArray.archivos;
 
-        //Promise.all(arrayArchivos.map(async item =>{
-        //    await sequelize.query(`CALL inserta_archivo_actividad(${id_actividad},${item.idArchivo})`);
-        //}));
+        Promise.all(arrayArchivos.map(async item =>{
+          await sequelize.query(`CALL inserta_archivo_actividad(${id_actividad},${item.idArchivo})`);
+        }));
 
         let idTipo = await sequelize.query(`CALL devuelveIdTipoActividad('${tipo}')`);
         let idEstado = await sequelize.query(`CALL devuelveIdEstadoActividad('${estado}')`);
