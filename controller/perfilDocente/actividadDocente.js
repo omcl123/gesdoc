@@ -116,9 +116,9 @@ async function actualizaActividad(dataArray) {
         let lugar = dataArray.lugar;
         //let arrayArchivos = dataArray.archivos;
 
-        //Promise.all(arrayArchivos.map(async item =>{
-         //   await sequelize.query(`CALL inserta_archivo_actividad(${id_actividad},${item.idArchivo})`);
-        //}));
+        Promise.all(arrayArchivos.map(async item =>{
+          await sequelize.query(`CALL inserta_archivo_actividad(${id_actividad},${item.idArchivo})`);
+        }));
 
         let idTipo = await sequelize.query(`CALL devuelveIdTipoActividad('${tipo}')`);
         let idEstado = await sequelize.query(`CALL devuelveIdEstadoActividad('${estado}')`);
