@@ -295,7 +295,8 @@ async function insertaDocumentoGasto(preferencesObject){
         let detalle;
         let monto_justificacion;
         let observaciones;
-        let tipo_documento;
+        let tipo_documento_pago;
+        let archivo;
 
         if (preferencesObject.id_ayuda_economica != null) {
             console.log("id_ayuda_economica NO es nulo");
@@ -311,6 +312,14 @@ async function insertaDocumentoGasto(preferencesObject){
         } else {
             console.log("numero_documento es nulo");
             numero_documento = null;
+        }
+
+        if (preferencesObject.archivo != null) {
+            console.log("archivo NO es nulo");
+            archivo = preferencesObject.archivo;
+        } else {
+            console.log("archivo es nulo");
+            archivo = null;
         }
 
         if (preferencesObject.monto_justificacion != null) {
@@ -329,12 +338,12 @@ async function insertaDocumentoGasto(preferencesObject){
             detalle = null;
         }
 
-        if (preferencesObject.tipo_documento != null) {
-            console.log("tipo_documento NO es nulo");
-            tipo_documento = preferencesObject.tipo_documento;
+        if (preferencesObject.tipo_documento_pago != null) {
+            console.log("tipo_documento_pago NO es nulo");
+            tipo_documento_pago = preferencesObject.tipo_documento_pago;
         } else {
-            console.log("tipo_documento es nulo");
-            tipo_documento = null;
+            console.log("tipo_documento_pago es nulo");
+            tipo_documento_pago = null;
         }
 
         if (preferencesObject.observaciones != null) {
@@ -346,7 +355,8 @@ async function insertaDocumentoGasto(preferencesObject){
         }
 
         if (id_ayuda_economica!=null&&numero_documento!=null&&monto_justificacion!=null){
-            await sequelize.query('CALL insertaJustificacion(:id_ayuda_economica,:numero_documento,:detalle,:monto_justificacion,:observaciones,:tipo_documento,:archivo)',
+
+            await sequelize.query('CALL insertaJustificacion(:id_ayuda_economica,:numero_documento,:detalle,:monto_justificacion,:observaciones,:tipo_documento_pago,:archivo)',
                 {
 
                     replacements: {
@@ -355,8 +365,8 @@ async function insertaDocumentoGasto(preferencesObject){
                         detalle:detalle,
                         monto_justificacion:parseFloat(monto_justificacion),
                         observaciones:observaciones,
-                        tipo_documento:parseInt(tipo_documento),
-                        archivo:parseInt(preferencesObject.archivo)
+                        tipo_documento_pago:tipo_documento_pago,
+                        archivo: archivo
 
                     }
                 }
@@ -371,10 +381,33 @@ async function insertaDocumentoGasto(preferencesObject){
 }
 
 
+async  function actualizaMontoTotal(preferencesObject) {
+    try{
+        let id_ayuda_economica = preferencesObject.id_ayuda_economica;
+
+        await  sequelize.query('CALL actualizaMontoTotal(:id_ayuda_economica )',
+            {
+
+                replacements: {
+                    id_ayuda_economica: id_ayuda_economica,
+                }
+            }
+        );
+
+        return "actualizado monto total";
+
+    }catch(e){
+        console.log(e);
+        winston.error("actualizaMontoTotal failed");
+        return "Error actualizando monto";
+    }
+}
+
 async function registrarDocumentoGasto(preferencesObject){
     try {
 
         await insertaDocumentoGasto(preferencesObject);
+        await actualizaMontoTotal(preferencesObject);
 
 
         last_id = await  sequelize.query('CALL devuelveSiguienteId(:tabla )',
@@ -386,6 +419,7 @@ async function registrarDocumentoGasto(preferencesObject){
             }
         );
         console.log("Documento registrado correctamente");
+
 
         return last_id;
 
@@ -595,20 +629,31 @@ async function eliminarDocumentoGasto(preferencesObject){
     try{
         //validar fechas
         console.log(JSON.stringify(preferencesObject));
-        if ((preferencesObject.id==null) ||(preferencesObject.id==="")){
-            winston.info("ID no puede ser nulo");
-            return "error";
+
+        if ((preferencesObject.id_ayuda_economica==null) ||(preferencesObject.id_ayuda_economica=="")){
+            winston.info("id_ayuda_economica no puede ser nulo");
+            return "error id_ayuda_economica es nulo";
+        }
+
+        if ((preferencesObject.id_documentoGasto==null) ||(preferencesObject.id_documentoGasto=="")){
+            winston.info("id_documentoGasto no puede ser nulo");
+            return "error id_documentoGasto es nulo";
+
         }
 
         
         await sequelize.query('CALL eliminaDocumentoGasto(:id_documentoGasto)',
             {
                 replacements: {
-                    id_documentoGasto:parseInt(preferencesObject.id),
+                    id_documentoGasto:parseInt(preferencesObject.id_documentoGasto),
                 }
             }
         );
-        mensaje ="DocumentoGasto eliminada correctamente "+ parseInt(preferencesObject.id);
+
+        await actualizaMontoTotal(preferencesObject);
+
+
+        mensaje ="DocumentoGasto eliminada correctamente ";
 
         return mensaje;
 
@@ -646,6 +691,56 @@ async function modificarArchivo(data,id){
     }
 }
 
+
+async function finalizarGastos(preferencesObject){
+
+    try{
+        console.log(preferencesObject);
+
+        await sequelize.query('CALL finalizarGastos(:id_ayuda_economica)',
+            {
+                replacements: {
+                    id_ayuda_economica:parseInt(preferencesObject.id_ayuda_economica),
+                }
+            }
+        );
+
+        let monto_devolucion = null;
+        let mensaje = "error al calcular monto devolucion";
+        let salida = await sequelize.query('CALL devuelveMontoDevolucion(:id_ayuda_economica)',
+            {
+                replacements: {
+                    id_ayuda_economica:parseInt(preferencesObject.id_ayuda_economica),
+                }
+            }
+        );
+
+        console.log(salida[0].monto_devolucion);
+
+        if (salida != null)
+            monto_devolucion = salida[0].monto_devolucion;
+
+        if (monto_devolucion!= null)
+            if (monto_devolucion > 0){
+                console.log("monto mayor que cero");
+                return monto_devolucion;
+            }else if (monto_devolucion == 0) {
+                console.log("monto igual a cero");
+                return monto_devolucion;
+            }else {
+                console.log("monto menor que cero");
+                return monto_devolucion;
+            }
+
+        return mensaje;
+    }catch(e){
+        console.log(e);
+        winston.error("finalizarGastos failed");
+        return "error finalizarGastos";
+    }
+
+}
+
 module.exports  ={
     registrarAyudaEconomica:registrarAyudaEconomica,
     registrarDocumentoGasto:registrarDocumentoGasto,
@@ -653,5 +748,6 @@ module.exports  ={
     rechazaAyudaEconomica:rechazaAyudaEconomica,
     eliminarDocumentoGasto:eliminarDocumentoGasto,
     registraArchivo:registraArchivo,
-    modificarArchivo:modificarArchivo
+    modificarArchivo:modificarArchivo,
+    finalizarGastos:finalizarGastos
 };

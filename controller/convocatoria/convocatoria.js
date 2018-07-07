@@ -370,7 +370,7 @@ async function insertaConvocatoria(preferencesObject){
                 peso_grado_maestria: peso_grado_academico_maestria,
                 peso_grado_doctorado: peso_grado_academico_doctorado,
                 peso_grado_diplomatura: peso_grado_academico_diplomatura,
-                descripcion:descripcion
+                descripcion:preferencesObject.descripcion
 
             }
         }
