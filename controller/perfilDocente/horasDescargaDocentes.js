@@ -355,6 +355,43 @@ async function modificaHoraDescDocente(preferencesObject){
     }
 }
 
+
+
+
+async function aprobarDescDocente(preferencesObject){
+    try {
+        console.log("Comienza aprobacion");
+        let id_descarga;
+
+
+        if (preferencesObject.id != null) {
+            console.log("id_descarga NO es nulo");
+            id_descarga = preferencesObject.id;
+        } else {
+            console.log("id_descarga es nulo");
+            id_descarga = null;
+        }
+
+
+        if (id_descarga != null){
+            await sequelize.query('CALL aprobarHoraDescDocente(:id_descarga)',
+                {
+
+                    replacements: {
+                        id_descarga:id_descarga
+                    }
+                }
+            );
+            return "aprobarHoraDescDocente exitoso";
+        }
+        return "aprobarHoraDescDocente failed";
+    }catch (e){
+        console.log(e);
+        winston.error("aprobarHoraDescDocente failed");
+        return "error";
+    }
+}
+
 async function eliminaHoraDescDocente(preferencesObject){
     try {
         let id_descarga;
@@ -389,6 +426,7 @@ module.exports  ={
     horasDescarga:horasDescarga,
     registraHoraDescDocente:registraHoraDescDocente,
     modificaHoraDescDocente:modificaHoraDescDocente,
-    eliminaHoraDescDocente:eliminaHoraDescDocente
+    eliminaHoraDescDocente:eliminaHoraDescDocente,
+    aprobarDescDocente:aprobarDescDocente
 }
 

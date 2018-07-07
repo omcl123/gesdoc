@@ -186,6 +186,12 @@ router.put('/docente/horaDescDocente/modificar',VerifyToken,async function (req,
 
 });
 
+router.put('/docente/horaDescDocente/aceptar',VerifyToken,async function (req,res){
+    let jsonRes={};
+    jsonRes.mensaje=await descargaController.aprobarDescDocente(req.query);
+    res.send(jsonRes);
+
+});
 
 router.delete('/docente/horaDescDocente/eliminar',VerifyToken,async function (req,res){
     let jsonRes={};
