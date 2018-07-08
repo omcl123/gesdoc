@@ -14,7 +14,23 @@ const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
 });
 
 
-function horasDescargaDetalle(preferencesObject,id_curso,ciclo) {
+
+async function horasTotalCalcular(data) {
+    let key;
+    let suma = 0;
+    for(key in data) {
+        if(data[key].estado === "Aprobada"){
+            suma = suma + data[key].hDescarga;
+            console.log(suma);
+        }
+
+    }
+    return suma;
+
+}
+
+
+function horasDescargaDetalle(preferencesObject,id_curso,ciclo,estado) {
     try {
         let result =  sequelize.query('CALL HORAS_DESCARGA_DETALLE(:codigo,:ciclo,:id_curso)',
             {
@@ -80,9 +96,14 @@ async function hDescAll(preferencesObject){
             let innerPart = {};
             innerPart.nombre = item.nombre;
             innerPart.codigo = item.codigo;
-            //innerPart.hDictadas = item.hDictadas;
-            innerPart.hDescargaTotal = item.hDescarga;
+            innerPart.ciclo = item.ciclo;
+
+            let horas_total = 0;
             let listaSemanal = await horasDescargaDetalle(preferencesObject,item.id_curso,item.ciclo);
+
+            horas_total = await horasTotalCalcular(listaSemanal);
+
+            innerPart.hDescargaTotal = horas_total;
             innerPart.semana = listaSemanal;
             return innerPart;
         }));
@@ -100,13 +121,20 @@ async function hDescCiclo(preferencesObject){
 
         let jsonHorasDescargaListar = await horasDescargaListar(preferencesObject);
 
+
+
         let jsonHorasDescargaDetalle = Promise.all(jsonHorasDescargaListar.map(async item => {
             let innerPart = {};
             innerPart.nombre = item.nombre;
             innerPart.codigo = item.codigo;
-            //innerPart.hDictadas = item.hDictadas;
-            innerPart.hDescargaTotal = item.hDescarga;
+            innerPart.ciclo = item.ciclo;
+
+            let horas_total = 0;
             let listaSemanal = await horasDescargaDetalle(preferencesObject,item.id_curso,item.ciclo);
+
+            horas_total = await horasTotalCalcular(listaSemanal);
+
+            innerPart.hDescargaTotal = horas_total;
             innerPart.semana = listaSemanal;
             return innerPart;
         }));
@@ -118,6 +146,9 @@ async function hDescCiclo(preferencesObject){
         winston.error("listaEncuestas failed");
     }
 }
+
+
+
 
 async function horasDescarga(preferencesObject) {
     try{
