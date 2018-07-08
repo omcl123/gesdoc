@@ -186,6 +186,14 @@ router.put('/docente/horaDescDocente/modificar',VerifyToken,async function (req,
 
 });
 
+
+router.put('/docente/horaDescDocente/cambiaEstado',VerifyToken,async function (req,res){
+    let jsonRes={};
+    jsonRes.mensaje=await descargaController.cambioEstadoHoraDescDocente(req.body);
+    res.send(jsonRes);
+
+});
+
 router.put('/docente/horaDescDocente/aceptar',VerifyToken,async function (req,res){
     let jsonRes={};
     jsonRes.mensaje=await descargaController.aprobarDescDocente(req.query);
