@@ -260,10 +260,17 @@ async function devuelveDetalleAyudaEconomica(preferencesObject){
 }
 async function modificarAyudaEconomica(preferencesObject){
     try{
-        await sequelize.query('call modificarAyudaEconomica(:id_ayudaeconomica,:estado_ayuda)',{
+
+        let monto = preferencesObject.monto;
+
+        if (monto == null) monto = -1;
+
+        console.log(preferencesObject);
+        await sequelize.query('call modificarAyudaEconomica(:id_ayudaeconomica,:estado_ayuda,:monto)',{
             replacements:{
-                id_ayudaeconomica:preferencesObject.id,
-                estado_ayuda:preferencesObject.estado_ayuda
+                id_ayudaeconomica:preferencesObject.id_ayudaeconomica,
+                estado_ayuda:preferencesObject.estado_ayuda,
+                monto:monto
             }
         });
         winston.info("modificarAyudaEconomica success");
