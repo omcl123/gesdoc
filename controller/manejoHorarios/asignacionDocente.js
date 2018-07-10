@@ -153,7 +153,7 @@ async function eliminaHorarioCurso(preferencesObject,res){
 
 async function exportaAsignacion(preferencesObject,res){
     try {
-        let jsonBlock;
+        let jsonBlock={};
         let arraycursos = await sequelize.query(`call lista_cursos_disponible('${preferencesObject.ciclo}');`);
         console.log(arraycursos);
         let finalArray = Promise.all(await arraycursos.map(async item =>{
@@ -187,7 +187,7 @@ async function exportaAsignacion(preferencesObject,res){
             }
 
         }));
-        jsonBlock = await finalArray;
+        jsonBlock.lista = await finalArray;
         return jsonBlock;
     }catch (e) {
         return "error";
