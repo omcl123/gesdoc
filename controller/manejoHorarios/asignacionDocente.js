@@ -1,7 +1,7 @@
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
 const dbSpecs = dbCon.connect();
-
+const xl = require("excel4node");
 const sequelize= new Sequelize(dbSpecs.db, dbSpecs.user, dbSpecs.password, {
     host: dbSpecs.host,
     dialect: dbSpecs.dialect,
@@ -151,44 +151,40 @@ async function eliminaHorarioCurso(preferencesObject,res){
     }
 }
 
+async function queryCursos(preferencesObject, array) {
+    return await Promise.all(array.map(async (item) =>{
+        try{
+            console.log(item);
+            let numHorarios = await
+                sequelize.query(`call lista_horarios_curso_disponible('${item.codigo}','${preferencesObject.ciclo}');`);
+            console.log(numHorarios);
+
+            let docentes= await Promise.all(numHorarios.map(async (part) => {
+                try {
+                    let partHorarios = {};
+                    partHorarios.numHorario = part.num_horario;
+                    partHorarios.docentesInscritos =
+                        await sequelize.query(`call docentes_inscritos_horario('${item.codigo}','${preferencesObject.ciclo}',${part.num_horario});`);
+                    return partHorarios;
+                } catch (e) {
+                    return e;
+                }
+            }));
+            item.docentes = await docentes;
+            return item;
+        }catch (e) {
+        }
+
+    }));
+}
+
 async function exportaAsignacion(preferencesObject,res){
     try {
-        let jsonBlock={};
+        let jsonBlock;
         let arraycursos = await sequelize.query(`call lista_cursos_disponible('${preferencesObject.ciclo}');`);
-        console.log(arraycursos);
-        let finalArray = Promise.all(await arraycursos.map(async item =>{
-            try{
-                let innerPart={};
-                innerpart.seccion = item.seccion;
-                innerpart.codigo = item.codigo;
-                innerpart.nombre = item.nombre;
-                innerpart.creditos = item.codigo;
-                innerpart.horas = item.codigo;
-                innerpart.horarios_disponibles = item.horarios_disponibles;
-                innerpart.horarios_asignados = item.horarios_asignados;
-
-                let numHorarios = await
-                    sequelize.query(`call lista_horarios_curso_disponible('${item.codigo}','${preferencesObject.ciclo}');`);
-
-                let docentes= Promise.all(await numHorarios.map(async part => {
-                    try {
-                        let partHorarios = {};
-                        partHorarios.numHorario = part.num_horario;
-                        partHorarios.docentesInscritos =
-                            await sequelize.query(`call docentes_inscritos_horario('${item.codigo}','${preferencesObject.ciclo}',${part.num_horario});`);
-                        return partHorarios;
-                    } catch (e) {
-                        return e;
-                    }
-                }));
-                innerPart.docentes = await docentes;
-                return innerPart;
-            }catch (e) {
-            }
-
-        }));
-        jsonBlock.lista = await finalArray;
-        return jsonBlock;
+        jsonBlock = await queryCursos(preferencesObject,arraycursos);
+        console.log(jsonBlock);
+        return  jsonBlock;
     }catch (e) {
         return "error";
     }

@@ -151,4 +151,10 @@ router.get('/listarSeccionesDep', async function (req, res) {
     res.send(queryResult) ;
 });
 
+router.get('/listaUsuarios', async function (req, res) {
+    let queryResult= {};
+    queryResult.secciones = await listaController.listaUsuarios(req.query);
+    res.send(queryResult) ;
+});
+
 module.exports = router;

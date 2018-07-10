@@ -401,6 +401,15 @@ async function descargaArchivo(preferencesObject){
     }
 }
 
+async function listaUsuarios(preferencesObject){
+    try{
+        let response=await sequelize.query(`call lista_usuarios()`);
+        return response;
+    }catch(e){
+        return "error";
+    }
+}
+
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
@@ -425,5 +434,6 @@ module.exports = {
     listaInvestigacionSec:listaInvestigacionSec,
     descargaArchivo:descargaArchivo,
     listarSeccionesDep:listarSeccionesDep,
-    listarDepartamentos:listarDepartamentos
+    listarDepartamentos:listarDepartamentos,
+    listaUsuarios:listaUsuarios
 };
