@@ -184,10 +184,9 @@ async function exportaAsignacion(preferencesObject,res){
             }
 
         }));
-        console.log(finalArray);
-        res.status(200).send(finalArray);
+        return finalArray;
     }catch (e) {
-        res.status(500).send({"error":"ocurrio un error"});
+        return "error";
     }
 }
 

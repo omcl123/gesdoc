@@ -89,7 +89,9 @@ router.get('/detalleCargaDocenteAsignado',VerifyToken,async function(req, res) {
 });
 
 router.post('/exportaAsignacion',VerifyToken, async function(req, res) {
-    await asignaDocenteController.exportaAsignacion(req.body,res);
+    let jsonblock;
+    jsonblock = await asignaDocenteController.exportaAsignacion(req.body,res);
+    res.send(jsonblock);
 });
 
 module.exports = router;
