@@ -54,10 +54,10 @@ router.post('/register',async  function(req, res) {
             console.log(await esRepetido[0].idPersona);
             if (await personaExiste[0].idPersona === 0){
                 await sequelize.query(`call registra_nuevo_usuario('${nombres}','${apellido_materno}','${apellido_paterno}'
-            ,${dni},${telefono},${codigo},'${email}','${hashedPassword}',${tipoUsuario},${tipo_profesor},${unidad});`);
+            ,${dni},${telefono},${codigo},'${email}','${hashedPassword}',${tipoUsuario},'${tipo_profesor}',${unidad});`);
             }else {
                 await sequelize.query(`call registra_nuevo_usuario_persona_existente(${personaExiste[0].idPersona},
-                '${hashedPassword}',${tipoUsuario},${tipo_profesor},${unidad});`);
+                '${hashedPassword}',${tipoUsuario},'${tipo_profesor}',${unidad});`);
             }
             return res.status(200).send("User succesfully registered");
         } else {
