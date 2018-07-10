@@ -94,9 +94,12 @@ async function hDescAll(preferencesObject){
 
         let jsonHorasDescargaDetalle = Promise.all(jsonHorasDescargaListar.map(async item => {
             let innerPart = {};
-            innerPart.nombre = item.nombre;
+            innerPart.id_curso = item.id_curso;
+            innerPart.curso = item.curso;
             innerPart.codigo = item.codigo;
             innerPart.ciclo = item.ciclo;
+            innerPart.horario = item.horario;
+
 
             let horas_total = 0;
             let listaSemanal = await horasDescargaDetalle(preferencesObject,item.id_curso,item.ciclo);
@@ -125,9 +128,12 @@ async function hDescCiclo(preferencesObject){
 
         let jsonHorasDescargaDetalle = Promise.all(jsonHorasDescargaListar.map(async item => {
             let innerPart = {};
-            innerPart.nombre = item.nombre;
+            innerPart.id_curso = item.id_curso;
+            innerPart.curso = item.curso;
             innerPart.codigo = item.codigo;
             innerPart.ciclo = item.ciclo;
+            innerPart.horario = item.horario;
+
 
             let horas_total = 0;
             let listaSemanal = await horasDescargaDetalle(preferencesObject,item.id_curso,item.ciclo);
