@@ -181,7 +181,6 @@ async function exportaAsignacion(preferencesObject,res){
                 }));
                 return innerPart;
             }catch (e) {
-                res.status(500).send({"error":"ocurrio un error"});
             }
 
         }));
