@@ -156,7 +156,6 @@ async function exportaAsignacion(preferencesObject,res){
         let jsonBlock;
         let arraycursos = await sequelize.query(`call lista_cursos_disponible('${preferencesObject.ciclo}');`);
         let finalArray = Promise.all(await arraycursos.map(async item =>{
-            try{
                 let innerPart={};
                 innerpart.seccion = item.seccion;
                 innerpart.codigo = item.codigo;
@@ -170,20 +169,16 @@ async function exportaAsignacion(preferencesObject,res){
                     sequelize.query(`call lista_horarios_curso_disponible('${item.codigo}','${preferencesObject.ciclo}');`);
 
                 let docentes= Promise.all(await numHorarios.map(async part => {
-                    try {
+
                         let partHorarios = {};
                         partHorarios.numHorario = part.num_horario;
                         partHorarios.docentesInscritos =
                             await sequelize.query(`call docentes_inscritos_horario('${item.codigo}','${preferencesObject.ciclo}',${part.num_horario});`);
                         return partHorarios;
-                    } catch (e) {
-                        return e;
-                    }
+
                 }));
                 innerPart.docentes = await docentes;
                 return innerPart;
-            }catch (e) {
-            }
 
         }));
         jsonBlock = await finalArray;
