@@ -36,7 +36,7 @@ router.post('/register',async  function(req, res) {
         let codigo = req.body.codigo;
         let email = req.body.correo;
         let unidad;
-        let tipo_profesor = null;
+        let tipo_profesor = -1;
         if (req.body.id_tipo_usuario === 3 || req.body.id_tipo_usuario === 4){
             unidad  = req.body.id_departamento;
         }else {
