@@ -186,7 +186,7 @@ async function exportaAsignacion(preferencesObject,res){
         jsonBlock.lista = await finalArray;
         return jsonBlock;
     }catch (e) {
-        return "error";
+        return e;
     }
 }
 
