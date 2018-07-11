@@ -451,5 +451,6 @@ module.exports = {
     descargaArchivo:descargaArchivo,
     listarSeccionesDep:listarSeccionesDep,
     listarDepartamentos:listarDepartamentos,
-    listaUsuarios:listaUsuarios
+    listaUsuarios:listaUsuarios,
+    listaTipo_profesor:listaTipo_profesor
 };
