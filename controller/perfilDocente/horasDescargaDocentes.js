@@ -502,12 +502,40 @@ async function eliminaHoraDescDocente(preferencesObject){
         return "error";
     }
 }
+
+async function listaCargaHorariaSeccion(preferencesObject){
+    try{
+        let jsonLista = {};
+        let response = await sequelize.query(`call devuelveDocente(${preferencesObject.codigo})`);
+        jsonLista.tipoProf = response[0].descripcion;
+        jsonLista.nombreCompleto = response[0].nombres + " " +response[0].apellido_paterno+ " " +response[0].apellido_materno;
+
+        if ( response[0].descripcion === "TC"){
+            let datosCiclo =  await sequelize.query(`call devuelveDatosCiclo('${preferencesObject.ciclo}')`);
+            jsonLista.horasRequeridas = datosCiclo[0].numero_semanas * 10;
+            let horasPorCurso =
+               await sequelize.query(`call devuelveHorasCursoDocente(${response[0].id},${datosCiclo[0].id})`);
+            jsonLista.horasPorCurso = horasPorCurso[0].total * 10;
+            let horasDescarga =
+                await sequelize.query(`call devuelveHorasDescargaDocente(${response[0].id},${datosCiclo[0].id})`);
+            jsonLista.horasDescarga = horasDescarga[0].total*1;
+            jsonLista.horasDeuda = (datosCiclo[0].numero_semanas * 10)-(horasPorCurso[0].total * 10)+(horasDescarga[0].total*1);
+        } else{
+            console.log("TPA");
+        }
+        return jsonLista;
+    }catch (e) {
+        return e;
+    }
+}
+
 module.exports  ={
     horasDescarga:horasDescarga,
     registraHoraDescDocente:registraHoraDescDocente,
     modificaHoraDescDocente:modificaHoraDescDocente,
     eliminaHoraDescDocente:eliminaHoraDescDocente,
     aprobarDescDocente:aprobarDescDocente,
-    cambioEstadoHoraDescDocente:cambioEstadoHoraDescDocente
-}
+    cambioEstadoHoraDescDocente:cambioEstadoHoraDescDocente,
+    listaCargaHorariaSeccion:listaCargaHorariaSeccion
+};
 

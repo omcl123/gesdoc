@@ -2,7 +2,7 @@
 
 const db = 'kairos';
 const user = 'root';
-const password = 'W900hA$';
+const password = 'kairosdb';
 //const host = 'localhost:3306';
 const host = 'localhost';
 const dialect = 'mysql';
