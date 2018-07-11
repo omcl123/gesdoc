@@ -140,7 +140,7 @@ async function listaCargaHorariaSeccion(preferencesObject){
         array.lista = Promise.all(docenteSeccion.map(async (item) =>{
             try{
                 let jsonLista = {};
-                let response = await sequelize.query(`call devuelveDocente(${item.id})`);
+                let response = await sequelize.query(`call devuelveDocente(${item.codigo})`);
                 jsonLista.seccion=item.nombre;
                 jsonLista.tipoProf = response[0].descripcion;
                 jsonLista.nombreCompleto = response[0].nombres + " " +response[0].apellido_paterno+ " " +response[0].apellido_materno;
