@@ -135,7 +135,8 @@ async function apoyoEconomicoAnoSeccion(preferencesObject){
 async function listaCargaHorariaSeccion(preferencesObject){
     try{
         let docenteSeccion = await sequelize.query(`CALL listaDocenteSeccion(${preferencesObject.id})`);
-        let array =Promise.all(docenteSeccion.map(async (item) =>{
+        let array={};
+        array.lista = await Promise.all(docenteSeccion.map(async (item) =>{
             try{
                 let jsonLista = {};
                 let response = await sequelize.query(`call devuelveDocente(${item.id})`);
