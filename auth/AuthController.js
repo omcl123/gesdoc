@@ -55,6 +55,8 @@ router.post('/register',async  function(req, res) {
             if (await personaExiste[0].idPersona === 0){
                 await sequelize.query(`call registra_nuevo_usuario('${nombres}','${apellido_materno}','${apellido_paterno}'
             ,${dni},${telefono},${codigo},'${email}','${hashedPassword}',${tipoUsuario},'${tipo_profesor}',${unidad});`);
+                if (req.body.es_profesor ===1)
+                    await sequelize.query(`call registra_nuevo_docente(${codigo},'${tipo_profesor}',${unidad});`);
             }else {
                 await sequelize.query(`call registra_nuevo_usuario_persona_existente(${personaExiste[0].idPersona},
                 '${hashedPassword}',${tipoUsuario},'${tipo_profesor}',${unidad});`);
