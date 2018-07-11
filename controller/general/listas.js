@@ -405,6 +405,7 @@ async function descargaArchivo(preferencesObject){
 async function listaUsuarios(preferencesObject){
     try{
         let response=await sequelize.query(`call lista_usuarios()`);
+        return response;
         }
     catch(e){
         return "error";
