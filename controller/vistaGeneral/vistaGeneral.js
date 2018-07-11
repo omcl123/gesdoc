@@ -156,7 +156,14 @@ async function listaCargaHorariaSeccion(preferencesObject){
                     jsonLista.horasDescarga = horasDescarga[0].total*1;
                     jsonLista.horasDeuda = (datosCiclo[0].numero_semanas * 10)-(horasPorCurso[0].total * 10)+(horasDescarga[0].total*1);
                 } else{
-                    console.log("TPA");
+                    let horasPorCurso =
+                        await sequelize.query(`call devuelveHorasCursoDocente(${response[0].id},${datosCiclo[0].id})`);
+                    jsonLista.horasRequeridas = horasPorCurso[0].total * 10;
+                    jsonLista.horasPorCurso = horasPorCurso[0].total * 10;
+                    let horasDescarga =
+                        await sequelize.query(`call devuelveHorasDescargaDocente(${response[0].id},${datosCiclo[0].id})`);
+                    jsonLista.horasDescarga = horasDescarga[0].total*1;
+                    jsonLista.horasDeuda = (horasPorCurso[0].total * 10)-(horasDescarga[0].total*1);
                 }
                 console.log(jsonLista);
                 return jsonLista;
