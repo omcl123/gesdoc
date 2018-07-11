@@ -158,6 +158,7 @@ async function listaCargaHorariaSeccion(preferencesObject){
                 } else{
                     console.log("TPA");
                 }
+                console.log(jsonLista);
                 return jsonLista;
             }catch (e) {
                 "error"
