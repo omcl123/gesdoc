@@ -86,7 +86,7 @@ router.post('/login',async function(req, res) {
                 expiresIn: 86400 // expires in 24 hours
             });
             res.status(200).send
-            ({ auth: true, token: token ,user:{id:user[0].id,nombre:user[0].nombre,unidad:user[0].unidad,tipo_usuario:user[0].id_cargo}});
+            ({ auth: true, token: token ,user:{id:user[0].id,nombre:user[0].nombre,codigo:codigo,unidad:user[0].unidad,tipo_usuario:user[0].id_cargo}});
         }
     }catch(e){
         return res.status(500).send('Error on the server.');
