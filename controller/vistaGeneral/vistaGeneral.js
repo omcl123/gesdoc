@@ -136,26 +136,31 @@ async function listaCargaHorariaSeccion(preferencesObject){
     try{
         let docenteSeccion = await sequelize.query(`CALL listaDocenteSeccion(${preferencesObject.id})`);
         return Promise.all(docenteSeccion.map(async (item) =>{
-            let jsonLista = {};
-            let response = await sequelize.query(`call devuelveDocente(${item.id})`);
-            jsonLista.seccion=item.nombre;
-            jsonLista.tipoProf = response[0].descripcion;
-            jsonLista.nombreCompleto = response[0].nombres + " " +response[0].apellido_paterno+ " " +response[0].apellido_materno;
+            try{
+                let jsonLista = {};
+                let response = await sequelize.query(`call devuelveDocente(${item.id})`);
+                jsonLista.seccion=item.nombre;
+                jsonLista.tipoProf = response[0].descripcion;
+                jsonLista.nombreCompleto = response[0].nombres + " " +response[0].apellido_paterno+ " " +response[0].apellido_materno;
 
-            if ( response[0].descripcion === "TC"){
-                let datosCiclo =  await sequelize.query(`call devuelveDatosCiclo('${preferencesObject.ciclo}')`);
-                jsonLista.horasRequeridas = datosCiclo[0].numero_semanas * 10;
-                let horasPorCurso =
-                    await sequelize.query(`call devuelveHorasCursoDocente(${response[0].id},${datosCiclo[0].id})`);
-                jsonLista.horasPorCurso = horasPorCurso[0].total * 10;
-                let horasDescarga =
-                    await sequelize.query(`call devuelveHorasDescargaDocente(${response[0].id},${datosCiclo[0].id})`);
-                jsonLista.horasDescarga = horasDescarga[0].total*1;
-                jsonLista.horasDeuda = (datosCiclo[0].numero_semanas * 10)-(horasPorCurso[0].total * 10)+(horasDescarga[0].total*1);
-            } else{
-                console.log("TPA");
+                if ( response[0].descripcion === "TC"){
+                    let datosCiclo =  await sequelize.query(`call devuelveDatosCiclo('${preferencesObject.ciclo}')`);
+                    jsonLista.horasRequeridas = datosCiclo[0].numero_semanas * 10;
+                    let horasPorCurso =
+                        await sequelize.query(`call devuelveHorasCursoDocente(${response[0].id},${datosCiclo[0].id})`);
+                    jsonLista.horasPorCurso = horasPorCurso[0].total * 10;
+                    let horasDescarga =
+                        await sequelize.query(`call devuelveHorasDescargaDocente(${response[0].id},${datosCiclo[0].id})`);
+                    jsonLista.horasDescarga = horasDescarga[0].total*1;
+                    jsonLista.horasDeuda = (datosCiclo[0].numero_semanas * 10)-(horasPorCurso[0].total * 10)+(horasDescarga[0].total*1);
+                } else{
+                    console.log("TPA");
+                }
+                return jsonLista;
+            }catch (e) {
+                "error"
             }
-            return jsonLista;
+
         }));
     }catch (e) {
         return "error";
