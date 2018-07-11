@@ -401,6 +401,15 @@ async function descargaArchivo(preferencesObject){
     }
 }
 
+async function listaTipo_profesor(){
+    try{
+        let response = await sequelize.query(`select * from tipo_profesor`)
+        return response;
+    }catch(e){
+        return "error";
+    }
+
+}
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
