@@ -405,6 +405,7 @@ async function descargaArchivo(preferencesObject){
 async function listaUsuarios(preferencesObject){
     try{
         let response=await sequelize.query(`call lista_usuarios()`);
+         console.log(response);
         return response;
         }
     catch(e){
@@ -415,7 +416,7 @@ async function listaUsuarios(preferencesObject){
 async function listaTipo_profesor(){
     try{
         let response = await sequelize.query(`call devuelveTipo_Profesor()`)
-
+        console.log(response);
         return response;
     }catch(e){
         return "error";
