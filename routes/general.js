@@ -107,7 +107,7 @@ router.get('/listaDocumentoPagoTipo',VerifyToken,async function (req,res){
 
 router.get('/listaTipoProfesor',VerifyToken,async function (req,res){
     let queryResult={};
-    queryResult.profesor=await listaController.listaTipo_profesor(req.query);
+    queryResult.profesor=await listaController.listaTipo_profesor();
     res.send(queryResult);
 
 });
