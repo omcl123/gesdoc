@@ -46,6 +46,9 @@ async function cargaHorarios(dataArray) {
                         '${codigoHorario}', ${participacion}, ${puntaje})`);
 
                         winston.info("Horarios insert new insert_horario success on execution");
+                    }else{
+                        await sequelize.query(`CALL insert_horario_profesor (${codigoProf}, '${codigoCurso}', '${ciclo}',
+                        '${codigoHorario}', ${participacion}, ${puntaje})`);
                     }
 
                     return message = "cargaHorarios  success on execution";

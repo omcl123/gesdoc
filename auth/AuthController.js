@@ -36,11 +36,15 @@ router.post('/register',async  function(req, res) {
         let codigo = req.body.codigo;
         let email = req.body.correo;
         let unidad;
+        let tipo_profesor = null;
         if (req.body.id_tipo_usuario === 3 || req.body.id_tipo_usuario === 4){
             unidad  = req.body.id_departamento;
         }else {
             unidad  = req.body.id_seccion;
         }
+
+        if (req.body.tipo_profesor != null)
+            tipo_profesor = req.body.tipo_profesor;
 
         let esRepetido = await sequelize.query(`call verifica_usuario_repetido(${codigo})`);
 
@@ -50,10 +54,10 @@ router.post('/register',async  function(req, res) {
             console.log(await esRepetido[0].idPersona);
             if (await personaExiste[0].idPersona === 0){
                 await sequelize.query(`call registra_nuevo_usuario('${nombres}','${apellido_materno}','${apellido_paterno}'
-            ,${dni},${telefono},${codigo},'${email}','${hashedPassword}',${tipoUsuario},${unidad});`);
+            ,${dni},${telefono},${codigo},'${email}','${hashedPassword}',${tipoUsuario},'${tipo_profesor}',${unidad});`);
             }else {
                 await sequelize.query(`call registra_nuevo_usuario_persona_existente(${personaExiste[0].idPersona},
-                '${hashedPassword}',${tipoUsuario},${unidad});`);
+                '${hashedPassword}',${tipoUsuario},'${tipo_profesor}',${unidad});`);
             }
             return res.status(200).send("User succesfully registered");
         } else {
