@@ -414,7 +414,7 @@ async function listaUsuarios(preferencesObject){
 
 async function listaTipo_profesor(){
     try{
-        let response = await sequelize.query(`select * from tipo_profesor`)
+        let response = await sequelize.query(`call devuelveTipo_Profesor()`)
 
         return response;
     }catch(e){
