@@ -503,7 +503,7 @@ async function eliminaHoraDescDocente(preferencesObject){
     }
 }
 
-async function listaCargaHorariaSeccion(preferencesObject){
+async function CargaHoraria(preferencesObject){
     try{
         let jsonLista = {};
         let response = await sequelize.query(`call devuelveDocente(${preferencesObject.codigo})`);
@@ -536,6 +536,6 @@ module.exports  ={
     eliminaHoraDescDocente:eliminaHoraDescDocente,
     aprobarDescDocente:aprobarDescDocente,
     cambioEstadoHoraDescDocente:cambioEstadoHoraDescDocente,
-    listaCargaHorariaSeccion:listaCargaHorariaSeccion
+    CargaHoraria:CargaHoraria
 };
 
