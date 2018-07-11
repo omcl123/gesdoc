@@ -401,14 +401,28 @@ async function descargaArchivo(preferencesObject){
     }
 }
 
+
 async function listaUsuarios(preferencesObject){
     try{
         let response=await sequelize.query(`call lista_usuarios()`);
+        }
+    catch(e){
+        return "error";
+    }
+}
+
+async function listaTipo_profesor(){
+    try{
+        let response = await sequelize.query(`select * from tipo_profesor`)
+
         return response;
     }catch(e){
         return "error";
     }
+
 }
+
+
 
 module.exports = {
     listaDocente: listaDocente,
