@@ -156,6 +156,7 @@ async function listaCargaHorariaSeccion(preferencesObject){
                     jsonLista.horasDescarga = horasDescarga[0].total*1;
                     jsonLista.horasDeuda = (datosCiclo[0].numero_semanas * 10)-(horasPorCurso[0].total * 10)+(horasDescarga[0].total*1);
                 } else{
+                    let datosCiclo =  await sequelize.query(`call devuelveDatosCiclo('${preferencesObject.ciclo}')`);
                     let horasPorCurso =
                         await sequelize.query(`call devuelveHorasCursoDocente(${response[0].id},${datosCiclo[0].id})`);
                     jsonLista.horasRequeridas = horasPorCurso[0].total * 10;
