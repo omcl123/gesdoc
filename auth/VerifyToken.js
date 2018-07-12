@@ -29,9 +29,14 @@ function verifyToken(req, res, next) {
         user.id = userResponse[0].id;
         user.nombre_usuario = userResponse[0].nombre_usuario;
         user.id_cargo = userResponse[0].id_cargo;
-        let unidad = await
-            sequelize.query(`CALL devuelve_unidad_usuario(${userResponse[0].nombre_usuario},${userResponse[0].id_cargo})`);
-        user.unidad = unidad[0].unidad;
+        if (userResponse[0].id_cargo===6){
+            user.unidad = '-';
+        }else{
+            let unidad = await
+                sequelize.query(`CALL devuelve_unidad_usuario(${userResponse[0].nombre_usuario},${userResponse[0].id_cargo})`);
+            user.unidad = unidad[0].unidad;
+
+        }
 
         if (user.id_cargo=== 3 ||user.id_cargo==5  ) {// 2 secion , 3 jefe, 4 asis dep , 5 asis secc;
             user.tipo_query=1;//departamento;
