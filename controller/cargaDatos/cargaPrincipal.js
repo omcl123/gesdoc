@@ -57,7 +57,7 @@ async function nuevoCurso(preferencesObject){
             return message = "cargaCurso success on execution";
         }
     }catch (e) {
-
+            return message = " error"
     }
 }
 
@@ -87,7 +87,7 @@ async function nuevoDocente(preferencesObject){
             return message = "cargaDocente success on execution";
         }
     }catch (e) {
-        
+        return message = " error"
     }
 }
 async function nuevaEncuesta(preferencesObject){
