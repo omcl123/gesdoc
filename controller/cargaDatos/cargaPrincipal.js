@@ -57,7 +57,7 @@ async function nuevoCurso(preferencesObject){
             return message = "cargaCurso success on execution";
         }
     }catch (e) {
-            return message = " error"
+            return message = e.message
     }
 }
 
