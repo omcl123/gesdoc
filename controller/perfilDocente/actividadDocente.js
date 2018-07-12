@@ -63,7 +63,7 @@ async function registraActividad(dataArray) {
         let titulo = dataArray.titulo;
         let fecha_inicio = dataArray.fecha_inicio;
         let fecha_fin = dataArray.fecha_fin;
-        let estado = dataArray.estado;
+        let estado = "Asistira";
         let lugar = dataArray.lugar;
 
 
