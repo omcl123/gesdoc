@@ -42,7 +42,17 @@ async function devuelveDocente(preferencesObject){
     }
 }
 
+async function cambiaTipoDocente(preferencesObject){
+    try{
+        await sequelize.query(`CALL cambia_tipo_docente(${preferencesObject.codigo},${preferencesObject.tipo})'`);
+        return "Se cambió el tipo exitosamente";
+
+    }catch(e){
+        console.log(e);
+    }
+}
 
 module.exports ={
-    devuelveDocente:devuelveDocente
+    devuelveDocente:devuelveDocente,
+    cambiaTipoDocente:cambiaTipoDocente
 };

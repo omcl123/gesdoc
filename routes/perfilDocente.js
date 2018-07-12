@@ -28,6 +28,13 @@ router.get('/docente/general',VerifyToken, async function(req, res) {
 
 });
 
+router.post('/cambiaTipoDocente',VerifyToken, async function(req, res) {
+    let jsonBlock;
+    jsonBlock= await docenteController.cambiaTipoDocente(req.body);
+    res.send(jsonBlock);
+
+});
+
 router.get('/docente/invDocente',VerifyToken, async function(req, res) {
     let jsonBlock={};
     jsonBlock.investigaciones = await investigacionController.devuelveListaInvestigacion(req.query);
