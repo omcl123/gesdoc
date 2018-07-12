@@ -1,4 +1,3 @@
-const winston = require('../../config/winston');
 const dbCon = require('../../config/db');
 const Sequelize = require ('sequelize');
 const dbSpecs = dbCon.connect();

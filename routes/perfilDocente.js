@@ -28,6 +28,13 @@ router.get('/docente/general',VerifyToken, async function(req, res) {
 
 });
 
+router.post('/cambiaTipoDocente',VerifyToken, async function(req, res) {
+    let jsonBlock;
+    jsonBlock= await docenteController.cambiaTipoDocente(req.body);
+    res.send(jsonBlock);
+
+});
+
 router.get('/docente/invDocente',VerifyToken, async function(req, res) {
     let jsonBlock={};
     jsonBlock.investigaciones = await investigacionController.devuelveListaInvestigacion(req.query);
@@ -210,6 +217,7 @@ router.delete('/docente/horaDescDocente/eliminar',VerifyToken,async function (re
 
 
 
+
 router.put('/docente/horaDescDocente/rechazar',VerifyToken,async function (req,res){
     let jsonRes={};
     jsonRes.mensaje=await descargaController.rechazarDescDocente(req.body);
@@ -217,9 +225,11 @@ router.put('/docente/horaDescDocente/rechazar',VerifyToken,async function (req,r
 
 });
 
-router.get('/listaCargaHorariaSeccion',VerifyToken, async function(req, res) {
+
+router.get('/CargaHoraria',VerifyToken, async function(req, res) {
+
     let jsonBlock;
-    jsonBlock = await descargaController.listaCargaHorariaSeccion(req.query);
+    jsonBlock = await descargaController.CargaHoraria(req.query);
 
     res.send(jsonBlock);
 
