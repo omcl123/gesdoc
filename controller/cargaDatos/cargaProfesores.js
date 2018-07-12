@@ -28,16 +28,17 @@ async function cargaDocente(dataArray) {
                 let seccion = item[6];
                 let tipo = item[7];
                 let codigo = item[8];
+                let password = bcrypt.hashSync(item[9], 8);
                 if (nombre === undefined || apellidoP === undefined || apellidoM === undefined|| dni === undefined
                     || telefono === undefined|| seccion === undefined|| tipo === undefined|| email === undefined
-                    || codigo === undefined ){
+                    || codigo === undefined || password){
                     return message = "cargaDocente Failed undefined or empty columns";
                 }else{
                     let esRepetido = await sequelize.query(`CALL verifica_docente_repetido (${codigo})`);
 
                     if (esRepetido[0] === undefined) {
                         await sequelize.query(`CALL insert_docente ('${nombre}', '${apellidoP}', '${apellidoM}',
-                        ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}',${codigo})`);
+                        ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}',${codigo},'${password}')`);
                     }
                     return message = "cargaDocente success on execution";
                 }
