@@ -18,7 +18,7 @@ function queryListaEncuestas(preferencesObject) {
         let result =  sequelize.query('CALL ENCUESTA_LISTAR_CICLO(:codigo,:ciclo)',
             {
                 replacements: {
-                    codigo: preferencesObject.codigo, // codigo del profesor
+                    codigo: parseInt(preferencesObject.codigo), // codigo del profesor
                     ciclo: preferencesObject.ciclo
                 }
             }
@@ -36,7 +36,7 @@ function queryListaEncuestasAll(preferencesObject) {
         let result =  sequelize.query('CALL ENCUESTA_LISTAR(:codigo)',
             {
                 replacements: {
-                    codigo: preferencesObject.codigo // codigo del profeso
+                    codigo: parseInt(preferencesObject.codigo) // codigo del profeso
                 }
             }
         );
