@@ -207,4 +207,13 @@ router.delete('/docente/horaDescDocente/eliminar',VerifyToken,async function (re
     res.send(jsonRes);
 
 });
+
+
+router.put('/docente/horaDescDocente/rechazar',VerifyToken,async function (req,res){
+    let jsonRes={};
+    jsonRes.mensaje=await descargaController.rechazarDescDocente(req.body);
+    res.send(jsonRes);
+
+});
+
 module.exports = router;

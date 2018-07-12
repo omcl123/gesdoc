@@ -502,12 +502,57 @@ async function eliminaHoraDescDocente(preferencesObject){
         return "error";
     }
 }
+
+
+
+async function rechazarDescDocente(preferencesObject){
+    try {
+        let id_descarga,observacion;
+
+        if (preferencesObject.id_descarga != null) {
+            console.log("id_descarga NO es nulo");
+            id_descarga = preferencesObject.id_descarga;
+        } else {
+            console.log("id_descarga es nulo");
+            id_descarga = null;
+        }
+
+
+        if (preferencesObject.observacion != null) {
+            console.log("comentario NO es nulo");
+            observacion = preferencesObject.observacion;
+        } else {
+            console.log("comentario es nulo");
+            observacion = null;
+        }
+
+        if (id_descarga != null){
+            await sequelize.query('CALL rechazarDescDocente(:id_descarga,:observacion)',
+                {
+
+                    replacements: {
+                        id_descarga:id_descarga,
+                        observacion:observacion
+                    }
+                }
+            );
+            return "rechazarDescDocente exitoso";
+        }
+        return "rechazarDescDocente failed";
+    }catch (e){
+        console.log(e);
+        winston.error("rechazarDescDocente failed");
+        return "error";
+    }
+}
+
 module.exports  ={
     horasDescarga:horasDescarga,
     registraHoraDescDocente:registraHoraDescDocente,
     modificaHoraDescDocente:modificaHoraDescDocente,
     eliminaHoraDescDocente:eliminaHoraDescDocente,
     aprobarDescDocente:aprobarDescDocente,
-    cambioEstadoHoraDescDocente:cambioEstadoHoraDescDocente
+    cambioEstadoHoraDescDocente:cambioEstadoHoraDescDocente,
+    rechazarDescDocente:rechazarDescDocente
 }
 
