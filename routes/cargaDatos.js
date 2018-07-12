@@ -9,4 +9,16 @@ router.post('/cargaDatos',VerifyToken, async function(req, res) {
     res.send(carga);
 });
 
+router.post('/nuevoDocente',VerifyToken, async function(req, res) {
+    let carga = await cargaController.nuevoDocente(req.body);
+    console.log(req.body);
+    res.send(carga);
+});
+
+router.post('/nuevoCurso',VerifyToken, async function(req, res) {
+    let carga = await cargaController.nuevoCurso(req.body);
+    console.log(req.body);
+    res.send(carga);
+});
+
 module.exports = router;

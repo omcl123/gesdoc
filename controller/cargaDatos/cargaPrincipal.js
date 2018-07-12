@@ -34,6 +34,65 @@ async function cargaPrincipal(preferencesObject) {
     }
 }
 
+async function nuevoCurso(preferencesObject){
+    try {
+        let codigo = preferencesObject.codigo;
+        let nombre =preferencesObject.nombre;
+        let creditos = preferencesObject.creditos;
+        let horasDictado = preferencesObject.horasDictado;
+        let facultad = preferencesObject.facultad;
+        let seccion = preferencesObject.seccion;
+        let tipoCurso = preferencesObject.tipoCurso;
+        let tipoClase = preferencesObject.tipoClase;
+        if (nombre === undefined || codigo === undefined || creditos === undefined|| horasDictado === undefined
+            || facultad === undefined|| seccion === undefined|| tipoCurso === undefined|| tipoClase === undefined){
+            return message = "cargaCurso Failed undefined or empty columns";
+        }else{
+            let esRepetido = await sequelize.query(`CALL verifica_curso_repetido ('${codigo}')`);
+
+            if (esRepetido[0] === undefined) {
+                await sequelize.query(`CALL insert_curso ( '${codigo}','${nombre}', ${creditos},
+                        ${horasDictado}, '${facultad}', '${seccion}', '${tipoCurso}','${tipoClase}')`);
+            }
+            return message = "cargaCurso success on execution";
+        }
+    }catch (e) {
+
+    }
+}
+
+async function nuevoDocente(preferencesObject){
+    try {
+        let nombre = preferencesObject.nombre;
+        let apellidoP = preferencesObject.apellidoP;
+        let apellidoM = preferencesObject.apellidoM;
+        let dni = preferencesObject.dni;
+        let telefono = preferencesObject.telefono;
+        let email = preferencesObject.email;
+        let seccion = preferencesObject.seccion;
+        let tipo = preferencesObject.tipo;
+        let codigo = preferencesObject.codigo;
+        let password = bcrypt.hashSync(preferencesObject.password, 8);
+        if (nombre === undefined || apellidoP === undefined || apellidoM === undefined|| dni === undefined
+            || telefono === undefined|| seccion === undefined|| tipo === undefined|| email === undefined
+            || codigo === undefined || password){
+            return message = "cargaDocente Failed undefined or empty columns";
+        }else{
+            let esRepetido = await sequelize.query(`CALL verifica_docente_repetido (${codigo})`);
+
+            if (esRepetido[0] === undefined) {
+                await sequelize.query(`CALL insert_docente ('${nombre}', '${apellidoP}', '${apellidoM}',
+                        ${dni}, ${telefono}, '${email}', '${seccion}', '${tipo}',${codigo},'${password}')`);
+            }
+            return message = "cargaDocente success on execution";
+        }
+    }catch (e) {
+        
+    }
+}
+
 module.exports = {
-    cargaPrincipal: cargaPrincipal
+    cargaPrincipal: cargaPrincipal,
+    nuevoCurso:nuevoCurso,
+    nuevoDocente:nuevoDocente
 };
