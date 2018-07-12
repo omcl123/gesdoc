@@ -90,9 +90,71 @@ async function nuevoDocente(preferencesObject){
         
     }
 }
+async function nuevaEncuesta(preferencesObject){
+    try{
+        let id_horario_profesor =preferencesObject.id_horario_profesor;
+        let puntaje = id_horario_profesor.puntaje;
+        let comentario = id_horario_profesor.comentario;
 
+        if (id_horario_profesor === undefined || puntaje === undefined || comentario === undefined){
+            return message = "cargaCurso Failed undefined or empty columns";
+        }else{
+
+            await sequelize.query(`CALL insert_encuesta ('${id_horario_profesor}', '${puntaje}', '${comentario}')`);
+
+            return message = "cargaEncuesta  success on execution";
+        } 
+    }catch(e){
+        return message = "Ha ocurrido un error";
+    }
+}
+async function nuevoHorario(preferencesObject){
+    try{
+        let codigoProf = preferencesObject.codigo_profesor;
+        let participacion =preferencesObject.participacion;
+        let puntaje = preferencesObject.puntaje;
+        let codigoCurso = preferencesObject.codigo_curso;
+        let ciclo = preferencesObject.ciclo;
+        let codigoHorario = preferencesObject.codigo_horario;
+
+        if (codigoProf === undefined || codigoCurso === undefined || ciclo === undefined
+            || codigoHorario === undefined ){
+            return message = "cargaHorarios Failed undefined or empty columns";
+        }else{
+
+            let esRepetido = await sequelize.query(`CALL verifica_curso_ciclo_repetido ('${codigoCurso}', '${ciclo}')`);
+
+            if (esRepetido[0] === undefined) {
+                await sequelize.query(`CALL insert_curso_ciclo ('${codigoCurso}', '${ciclo}')`);
+                winston.info("cargaHorarios insert new cursoxciclo success on execution");
+            }
+
+            //verifica horario duplicado
+            let horario_esRepetido = await sequelize.query(`CALL verifica_horario_duplicado ('${codigoCurso}', '${ciclo}','${codigoHorario}')`);
+
+
+            if (horario_esRepetido[0] === undefined) {
+                await sequelize.query(`CALL insert_horario (${codigoProf}, '${codigoCurso}', '${ciclo}',
+                '${codigoHorario}', ${participacion}, ${puntaje})`);
+
+                winston.info("Horarios insert new insert_horario success on execution");
+            }else{
+                await sequelize.query(`CALL insert_horario_profesor (${codigoProf}, '${codigoCurso}', '${ciclo}',
+                '${codigoHorario}', ${participacion}, ${puntaje})`);
+            }
+
+            return message = "cargaHorarios  success on execution";
+        }
+    }catch (e) {
+        winston.error("cargaHorarios Failed: ",e);
+        message = "cargaHorarios Failed";
+        return message;
+    }    
+}    
 module.exports = {
     cargaPrincipal: cargaPrincipal,
     nuevoCurso:nuevoCurso,
-    nuevoDocente:nuevoDocente
+    nuevoDocente:nuevoDocente,
+    nuevaEncuesta:nuevaEncuesta,
+    nuevoHorario:nuevoHorario
 };
