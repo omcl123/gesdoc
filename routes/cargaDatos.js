@@ -20,5 +20,15 @@ router.post('/nuevoCurso',VerifyToken, async function(req, res) {
     console.log(req.body);
     res.send(carga);
 });
-
+router.post('/nuevaEncuesta',VerifyToken, async function(req, res) {
+    let carga = await cargaController.nuevaEncuesta(req.body);
+    console.log(req.body);
+    res.send(carga);
+});
+router.post('/nuevoHorario',VerifyToken, async function(req, res) {
+    let carga = await cargaController.nuevoHorario(req.body);
+    console.log(req.body);
+    //FIX FIX FIX
+    res.send(carga);
+});
 module.exports = router;
