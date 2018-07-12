@@ -7,7 +7,7 @@ const fs = require('fs');
 router.get('/listaDocente',VerifyToken, async function (req, res) {
     let queryResult= {};
     queryResult.docentes = await listaController.listaDocente(req.body.verifiedUser);
-    res.send(queryResult) ;
+    res.send(queryResult);
 });
 
 router.get('/listaCiclos',VerifyToken, async function (req, res) {
