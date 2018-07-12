@@ -209,10 +209,19 @@ router.delete('/docente/horaDescDocente/eliminar',VerifyToken,async function (re
 });
 
 
+
 router.put('/docente/horaDescDocente/rechazar',VerifyToken,async function (req,res){
     let jsonRes={};
     jsonRes.mensaje=await descargaController.rechazarDescDocente(req.body);
     res.send(jsonRes);
+
+});
+
+router.get('/listaCargaHorariaSeccion',VerifyToken, async function(req, res) {
+    let jsonBlock;
+    jsonBlock = await descargaController.listaCargaHorariaSeccion(req.query);
+
+    res.send(jsonBlock);
 
 });
 

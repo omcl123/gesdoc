@@ -401,6 +401,31 @@ async function descargaArchivo(preferencesObject){
     }
 }
 
+
+async function listaUsuarios(preferencesObject){
+    try{
+        let response=await sequelize.query(`call lista_usuarios()`);
+         console.log(response);
+        return response;
+        }
+    catch(e){
+        return "error";
+    }
+}
+
+async function listaTipo_profesor(){
+    try{
+        let response = await sequelize.query(`call devuelveTipo_Profesor()`)
+        console.log(response);
+        return response;
+    }catch(e){
+        return "error";
+    }
+
+}
+
+
+
 module.exports = {
     listaDocente: listaDocente,
     listaCiclos: listaCiclos,
@@ -425,5 +450,7 @@ module.exports = {
     listaInvestigacionSec:listaInvestigacionSec,
     descargaArchivo:descargaArchivo,
     listarSeccionesDep:listarSeccionesDep,
-    listarDepartamentos:listarDepartamentos
+    listarDepartamentos:listarDepartamentos,
+    listaUsuarios:listaUsuarios,
+    listaTipo_profesor:listaTipo_profesor
 };

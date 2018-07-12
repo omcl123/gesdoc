@@ -105,6 +105,13 @@ router.get('/listaDocumentoPagoTipo',VerifyToken,async function (req,res){
 
 });
 
+router.get('/listaTipoProfesor',VerifyToken,async function (req,res){
+    let queryResult={};
+    queryResult.profesor=await listaController.listaTipo_profesor();
+    res.send(queryResult);
+
+});
+
 router.get('/listaCursosSeccion',VerifyToken,async function (req,res){
     let queryResult={};
     queryResult.cursos=await listaController.listaCursosSeccion(req.query);
@@ -148,6 +155,12 @@ router.get('/listarDepartamentos', async function (req, res) {
 router.get('/listarSeccionesDep', async function (req, res) {
     let queryResult= {};
     queryResult.secciones = await listaController.listarSeccionesDep(req.query);
+    res.send(queryResult) ;
+});
+
+router.get('/listaUsuarios', async function (req, res) {
+    let queryResult= {};
+    queryResult.secciones = await listaController.listaUsuarios(req.query);
     res.send(queryResult) ;
 });
 

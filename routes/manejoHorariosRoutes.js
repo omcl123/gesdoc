@@ -19,8 +19,7 @@ router.post('/enviarPreferenciaProfesor',async function(req, res) {
 });
 
 router.get('/verificaCodigoDocente',async function(req, res) {
-    let jsonblock;
-    jsonblock = await formController.verificaCodigoDocente(req.query,res);
+    await formController.verificaCodigoDocente(req.query,res);
 });
 
 
@@ -67,8 +66,7 @@ router.post('/eliminaDocenteHorario',VerifyToken, async function(req, res) {
 });
 
 router.post('/insertaNuevoHorarioCurso',VerifyToken, async function(req, res) {
-    let jsonblock;
-    jsonblock = await asignaDocenteController.insertaNuevoHorarioCurso(req.body,res);
+    await asignaDocenteController.insertaNuevoHorarioCurso(req.body,res);
 
 });
 
@@ -90,6 +88,10 @@ router.get('/detalleCargaDocenteAsignado',VerifyToken,async function(req, res) {
     res.send(jsonblock);
 });
 
-
+router.post('/exportaAsignacion',VerifyToken, async function(req, res) {
+    let jsonblock;
+    jsonblock = await asignaDocenteController.exportaAsignacion(req.body,res);
+    res.send(jsonblock);
+});
 
 module.exports = router;

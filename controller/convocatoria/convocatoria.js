@@ -52,6 +52,7 @@ async function listaConvocatoria(preferencesObject,bodyObject){
 
         let jsonConvocatorias= await Promise.all(convocatorias.map(async item => {
             let innerPart={};
+            innerPart.id_tipo_profesor=item.id_tipo_profesor;
             innerPart.id = item.id;
             innerPart.codigo=item.codigo;
             innerPart.nombre = item.nombre;
@@ -146,6 +147,7 @@ async function detalleConvocatoria(preferencesObject){
 
         let jsondetalleConvocatoria= await Promise.all(convocatoria.map(async item => {
             let innerPart={};
+            innerPart.id_tipo_profesor=item.id_tipo_profesor;
             innerPart.codigo=item.codigo;
             innerPart.nombre=item.nombre;
             innerPart.fecha_limite=item.fecha_limite;
@@ -344,10 +346,11 @@ async function insertaConvocatoria(preferencesObject){
         console.log("investigacion es nulo");
     }
 
-    await sequelize.query('CALL insertaConvocatoria(:nombre,:seccion,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura,:descripcion)',
+    await sequelize.query('CALL insertaConvocatoria(:tipo_profesor,:nombre,:seccion,:fecha_inicio,:fecha_fin,:requiere_investigacion,:requiere_experiencia,:requiere_docencia_cargo,:requiere_docencia_asesoria,:requiere_docencia_premio,:requiere_grado_titulo,:requiere_grado_maestria,:requiere_grado_doctorado,:requiere_grado_diplomatura,:peso_investigacion,:peso_experiencia,:peso_docencia_cargo,:peso_docencia_asesoria,:peso_docencia_premio,:peso_grado_titulo,:peso_grado_maestria,:peso_grado_doctorado,:peso_grado_diplomatura,:descripcion)',
         {
 
             replacements: {
+                tipo_profesor:preferencesObject.tipo_profesor,
                 nombre: nombre,
                 seccion:seccion,
                 fecha_inicio: fecha_i,
@@ -370,7 +373,7 @@ async function insertaConvocatoria(preferencesObject){
                 peso_grado_maestria: peso_grado_academico_maestria,
                 peso_grado_doctorado: peso_grado_academico_doctorado,
                 peso_grado_diplomatura: peso_grado_academico_diplomatura,
-                descripcion:descripcion
+                descripcion:preferencesObject.descripcion
 
             }
         }
